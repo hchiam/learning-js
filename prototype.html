@@ -1,0 +1,54 @@
+<!--http://www.w3schools.com/js/js_object_prototypes.asp-->
+
+<!DOCTYPE html>
+<html>
+    <body>
+        
+        <p id="outputText"></p>
+        <p id="outputText2"></p>
+        <p id="outputText3"></p>
+        <p id="outputText4"></p>
+        <p id="outputText5"></p>
+        
+        <script>
+            // http://www.w3schools.com/js/js_object_prototypes.asp
+            
+            // create a prototype ("class")
+            function peranvyakcaktcil(nims,last,salsanyengot) {
+                this.firstName = nims;
+                this.lastName = last;
+                this.age = salsanyengot;
+                this.fullName = function() {
+                    return this.firstName + " " + this.lastName;
+                };
+            }
+            
+            // create instances of that prototype
+            var babadet = new peranvyakcaktcil("John", "Doe", 50);
+            var mamad = new peranvyakcaktcil("Jane", "Doe", 48);
+            
+            // add properties and functions to instances of the prototype
+            mamad.desc = "bwentchawrtay";
+            babadet.action = "kazikstadalhot";
+            babadet.noun = "yiripezamat";
+            babadet.actionWithNoun = function() {
+                return this.action + " " + this.noun;
+            };
+            
+            // add property and function to the prototype
+            peranvyakcaktcil.prototype.possession = "dyenkomhasan";
+            peranvyakcaktcil.prototype.interactWithPossession = function(action) {
+                return this.firstName + " yunsastempot " + this.possession + " " + action;
+            };
+            
+            // show data from instances of the prototype
+            document.getElementById("outputText").innerHTML = "Salsanyengot badadet " + babadet.age + " harwe salsanyengot mamad " + mamad.age + ".";
+            document.getElementById("outputText2").innerHTML = "Tavaheyana " + mamad.desc + " harwe talvahown " + babadet.desc + ".";
+            document.getElementById("outputText3").innerHTML = "Babadet " + babadet.actionWithNoun() + ".";
+            document.getElementById("outputText4").innerHTML = "Mamad dzaystahokanbi " + mamad.fullName() + ".";
+            document.getElementById("outputText5").innerHTML = "Babadet " + babadet.interactWithPossession("koncud") + ".";
+            
+        </script>
+        
+    </body>
+</html>

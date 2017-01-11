@@ -1,0 +1,71 @@
+<!-- based on my code solution for https://www.freecodecamp.com/challenges/sum-all-odd-fibonacci-numbers -->
+<!-- see my original code at https://www.freecodecamp.com/hchiam -->
+<!-- also makes use of AngularJS to automatically refreshing results without reloading the page -->
+<!DOCTYPE html>
+<html>
+  <body ng-app="myApp" ng-controller="MainController">
+    
+    <p>Get the sum of all odd Fibonacci numbers under or equal to <input id='inpt' type='number' ng-model='number'  ng-change='recompute()'/></p>
+    <p>Number = <b>{{number}}</b></p>
+    <p>Fibonacci List = <b>{{list}}</b></p>
+    <p>List of Odd Numbers = <b>{{oddlist}}</b></p>
+    <p>Sum = <b>{{sum}}</b></p>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+    
+    <script>
+      function findAllFibs(uptothisnumber) {
+        var allFibs = [1];
+        var i = 0;
+        var j = 1;
+        var temp = 1;
+        while (j<=uptothisnumber) {
+          temp = j;
+          j = i+j;
+          i = temp;
+          if (j<=uptothisnumber) {
+            allFibs.push(j);
+          }
+        }
+        return allFibs;
+      }
+      
+      function getAllOddsInArray(arr) { // uses array filter() to include/exclude elements based on boolean function
+        function booleanFilter(element) {
+          return element%2!==0;
+        }
+        return arr.filter(booleanFilter);
+      }
+      
+      function getSumOfArray(arr) { // uses array reduce() to combine elements into one return value based on a "combining" function
+        function getSum(total, num) {
+          return total + num;
+        }
+        return arr.reduce(getSum);
+      }
+      
+      function sumOddFibs(num) { // uses the above functions
+        var sum = getSumOfArray(getAllOddsInArray(findAllFibs(num)));
+        return sum;
+      }
+      
+      // AngularJS Module:
+      var app = angular.module("myApp", []);
+      
+      // AngularJS Controller:
+      app.controller('MainController', ['$scope', function($scope) {
+        $scope.number = 5; // default value on load
+        $scope.list = findAllFibs($scope.number);
+        $scope.oddlist = getAllOddsInArray(findAllFibs($scope.number));
+        $scope.sum = sumOddFibs($scope.number);
+        
+        // recompute values for dependent variables, which will be automatically refreshed in the view
+        $scope.recompute = function() {
+          $scope.list = findAllFibs($scope.number);
+          $scope.oddlist = getAllOddsInArray(findAllFibs($scope.number));
+          $scope.sum = sumOddFibs($scope.number);
+        };
+      }]);
+    </script>
+  </body>
+</html>

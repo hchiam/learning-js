@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+<script type="text/javascript">
+<!--
+
+/**
+ * Lists blog entries from the specified JSON feed
+ * by creating a new 'ul' element in the DOM.  Each
+ * bullet is the title of one blog entry, and contains
+ * a hyperlink to that entry's URL.
+ *
+ * @param {JSON} json is the JSON object pulled from the Blogger service.
+ */
+function listEntries(json) {
+  // Clear any information displayed under the "data" div.
+  removeOldResults();
+  var ul = document.createElement('ul');
+
+  for (var i = 0; i < json.feed.entry.length; i++) {
+    var entry = json.feed.entry[i];
+    var alturl;
+
+    for (var k = 0; k < entry.link.length; k++) {
+      if (entry.link[k].rel == 'alternate') {
+        alturl = entry.link[k].href;
+        break;
+      }
+    }
+
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.href="/gdata/samples/alturl;"
+    a.target = '_blank';
+
+    var txt = document.createTextNode(entry.title.$t);
+    a.appendChild(txt);
+    li.appendChild(a);
+
+    ul.appendChild(li);
+  }
+
+  // Install the bullet list of blog posts.
+  document.getElementById('data').appendChild(ul);
+
+  // Re-enable the search button.
+  var search_button = document.getElementById('search_button');
+  search_button.removeAttribute('disabled');
+}
+
+/**
+ * Called when the user clicks the 'Search' button to
+ * retrieve a blog's JSON feed.  Creates a new script
+ * element in the DOM whose source is the JSON feed
+ * 'query'.blogspot.com, and specifies that the callback
+ * function is 'listEntries' (above).
+ *
+ * @param {String} query is the blog to be retrieved, specified
+ *     as a prefix of ".blogspot.com".
+ */
+function search(query) {
+  // Delete any previous JSON script nodes.
+  removeOldJSONScriptNodes();
+  // Clear any old data to prepare to display the Loading... message.
+  removeOldResults();
+
+  // Show a "Loading..." indicator.
+  var div = document.getElementById('data');
+  var p = document.createElement('p');
+  p.appendChild(document.createTextNode('Loading...'));
+  div.appendChild(p);
+
+  // Disable the search button.
+  var search_button = document.getElementById('search_button');
+  search_button.disabled = 'true';
+
+  // Retrieve the JSON feed.
+  var script = document.createElement('script');
+  script.setAttribute('src', 'https://' + query + '.blogspot.com/feeds/posts' +
+                      '/default?alt=json-in-script&callback=listEntries');
+  script.setAttribute('id', 'jsonScript');
+  script.setAttribute('type', 'text/javascript');
+  document.documentElement.firstChild.appendChild(script);
+}
+
+/**
+ * Deletes any old script elements which have been created by previous calls
+ * to search().
+ */
+function removeOldJSONScriptNodes() {
+  var jsonScript = document.getElementById('jsonScript');
+  if (jsonScript) {
+    jsonScript.parentNode.removeChild(jsonScript);
+  }
+}
+
+/**
+ * Deletes pre-existing children of the data div from the page. The data div 
+ * may contain a "Loading..." message, or the results of a previous query. 
+ * This old data should be removed before displaying new data.
+ */
+function removeOldResults() {
+  var div = document.getElementById('data');
+  if (div.firstChild) {
+    div.removeChild(div.firstChild);
+  }
+}
+
+//-->
+</script>
+
+<form onsubmit="return false">
+    <p>Blog: http://
+        <select name="blog_name">
+            <option>google-code-updates</option>
+            <option>hchiam</option>
+        </select>.blogspot.com&nbsp;
+        <button id = 'search_button' onclick="search(this.form.blog_name.options[this.form.blog_name.selectedIndex].text);">Search</button>
+    </p>
+</form>
+
+<div id="data"></div>
+    <script>
+      var dataLayer = [{"freeTrialEligibleUser": "False", "language": {"requested": "en", "served": null}, "projectName": null, "scriptsafe": "scriptsafe", "signedIn": "False", "internalUser": "False"}];
+    </script>
+    <script>
+      window.onload = function() {
+          // Initialize the settings variables we get from the server side
+        devsite.settings.initSettings({'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'VERSION_HASH': '450826e131', 'SITE_NAME': 'devsite', 'HISTORY_ENABLED': 1, 'SUBPATH': '', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.appspot.com', '.devsitetest.how', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0, 'SCRIPTSAFE_DOMAIN': 'google-developers.appspot.com'} || {});
+        // DevsiteUtilParams rely on devsite.settings.
+        devsite.utils.initDevsiteUtilParams('https://google-developers.appspot.com/',
+            devsite.settings['ALLOWED_HOSTS'].concat('youtube.com'));
+        devsite.permissions.init({"dbf0e738b8ca34a787d59b20daa90e83": true, "782f0ac910272faf7315ed00833f4d6b": false, "5d17cf7d98343d37cdc5bede08b7b28e": true, "098dafe57affddc137df300142652cfd": false, "cb025a64a50094835616312f4774a53d": true, "e243c7e32cf8217137654928e1480ad1": true, "51470233c56fc1fde50f00b73c52b216": false, "6decc2350b46d7e6433a3c4ae1ab018f": true, "752953480de00a336d911a46966cc16d": false, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true});
+        devsite.base.init(null, null, top, false);
+        
+        devsite.analytics.InitAnalytics(true);
+      }
+    </script>
+  </body>
+</html>

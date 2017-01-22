@@ -18,7 +18,7 @@ if (found !== null) {
 // another example
 
 var text = "-5. -2 3.1415 test +89 12.44 0.5 .7";
-var re = /[-+]?\d*\.?\d+/g; // find all matches of this regex ()
+var re = /[-+]?\d*\.?\d+/g; // find all matches of this regex (/.../g)
 var textMatch = text.match(re);
 console.log(text);
 console.log(textMatch);

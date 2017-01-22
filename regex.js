@@ -1,3 +1,5 @@
+// terminal command: node regex.js
+
 var sentenceToParse = "Hi my name is Bob."
 console.log('sentenceToParse = ' + sentenceToParse);
 

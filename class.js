@@ -1,6 +1,8 @@
 // (see my prototype code for another example)
 // Terminal: node class.js
 
+// Here's one way to make a class in JS:
+// Remember to add 'this.' before function names too!!!
 function myClass(myVar) { // function className(initVars)
     this.myVar = myVar; // this.varName
     this.get = function() { // this.funcName = function(params)

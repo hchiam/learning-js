@@ -1,7 +1,7 @@
 var sentenceToParse = "Hi my name is Bob."
 console.log('sentenceToParse = ' + sentenceToParse);
 
-var myRegex = /name is (.+)[.]/; // match should get name
+var myRegex = /name is (.+)\./; // match should get name
 console.log('myRegex = ' + myRegex);
 
 var found = sentenceToParse.match(myRegex);

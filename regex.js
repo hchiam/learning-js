@@ -1,9 +1,11 @@
 // terminal command: node regex.js
 
-var sentenceToParse = "Hi my name is Bob."
+//var sentenceToParse = "Hi my name is Bob."
+var sentenceToParse = "Hi my name is Bob. Your name is Carla."
 console.log('sentenceToParse = ' + sentenceToParse);
 
-var myRegex = /name is (.+)\./; // match should get name
+//var myRegex = /name is (.+)\./; // match should get name
+var myRegex = /name is (.+)\./g; // [1] match should get name
 console.log('myRegex = ' + myRegex);
 
 var found = sentenceToParse.match(myRegex);

@@ -12,14 +12,14 @@ function addTextBasedOnHttpOrHttps() {
         // create text to add
     	let addedText = document.createElement('p');
         addedText.id = 'addTextBasedOnHttpOrHttps';
-      	addedText.appendChild(document.createTextNode('Is this page or app not working? Maybe try '));
+      	addedText.appendChild(document.createTextNode('This page/app not working? Try '));
         // add link to that text
         let aLink = document.createElement('a');
         aLink.href = urlAsHttpNotHttps;
         aLink.innerHTML = 'http';
         aLink.target = '_blank';
         addedText.appendChild(aLink);
-        addedText.appendChild(document.createTextNode(' instead of https?'));
+        addedText.appendChild(document.createTextNode(' instead of https.'));
       	document.body.insertBefore(addedText, document.body.firstChild);
         // center the added text
         addedText.setAttribute('align','center');

@@ -9,6 +9,7 @@ function addTextBasedOnHttpOrHttps() {
 	if (thisUrl.includes('https')) {
         // get http link
     	let urlAsHttpNotHttps = thisUrl.substring(0,4) + thisUrl.substring(5);
+        alert(urlAsHttpNotHttps);
         // create text to add
     	let addedText = document.createElement('p');
         addedText.id = 'addTextBasedOnHttpOrHttps';

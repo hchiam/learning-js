@@ -1,4 +1,7 @@
 // I expect to import this code into my projects and have it run right away.
+// Import it like this:
+//<script src='https://rawgit.com/hchiam/javascriptSandbox/master/addTextBasedOnHttpOrHttps.js'></script>
+
 addTextBasedOnHttpOrHttps();
 
 function addTextBasedOnHttpOrHttps() {

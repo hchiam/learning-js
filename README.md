@@ -1,6 +1,6 @@
-# javascriptSandbox
+# Learning JavaScript
 
-My JavaScript sandbox. 
+Miscellaneous practice code in JS.
 
 # How to Run .js Files Using Terminal/CommandLine:
 

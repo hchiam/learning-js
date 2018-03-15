@@ -1,3 +1,5 @@
+// example: https://codepen.io/hchiam/pen/QmNvdG
+
 // BST node:
 function BSTN (v) {
   this.v = v

@@ -26,3 +26,18 @@ function myClassDef(initVar) {
 
 myInstance = new myClassDef("Alex");
 console.log(myInstance.myFun("hi"));
+
+
+// another (new) way to make classes:
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+// note: hoisting does NOT work on classes
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+}
+
+let r = new Rectangle(1,2);
+
+alert(r.height);

@@ -1,0 +1,17 @@
+// IIFE for public and private methods in JS.
+// https://stackoverflow.com/questions/38758981/javascript-how-to-access-properties-and-method-of-iife
+
+let app = (function () {
+  function app() {
+    let name = 'Howard'; // IMPORTANT: local property -> "private"
+    this.sayHi = function() { // IMPORTANT: this (not let) -> "public"
+      alert('hi, my name is ' + name);
+    }
+  }
+  
+  return app;
+}());
+
+var a = new app();
+a.sayHi();
+alert('The private local property "name" should be undefined: ' + (typeof a.name == 'undefined'));

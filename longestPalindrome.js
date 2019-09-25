@@ -89,7 +89,9 @@ console.log(longestPalindrome('abcdcabbacdcxy') === 'cdcabbacdc');
 console.log(longestPalindrome('aabcdcabbacdcxya') === 'cdcabbacdc');
 console.log(longestPalindrome('') === '');
 console.log(longestPalindrome([]) === '');
-console.log(longestPalindrome('aababaaaaabobaaaaababaa') === 'aababaaaaabobaaaaababaa');
+console.log(longestPalindrome('aababaaaaabobaaaaababaa') ===
+  'aababaaaaabobaaaaababaa'
+);
 console.log(longestPalindrome('aababaaaaabobaaaaaababaa') === 'aaaaabobaaaaa');
 console.log(longestPalindrome('ac') === 'a');
 console.log(longestPalindrome('abcdefghijklmnoqrstuvwxyz') === 'a');

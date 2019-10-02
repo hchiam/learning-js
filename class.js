@@ -1,7 +1,22 @@
 // (see my prototype code for another example)
 // Terminal: node class.js
 
-// Here's one way to make a class in JS:
+// Preferred way to make a class in JS: https://stackoverflow.com/questions/6169938/javascript-classes-prototype-vs-internal-function-declaration-vs-etc
+// (Also, arrow functions may not always be what you want for the "this" keyword.)
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
+  // this.doSomethingElse = function() {
+  //   console.log('this function would get re-declared every object');
+  // };
+}
+ListNode.prototype.doSomething = function() { // this way does NOT get re-declared every object
+  console.log('hi');
+};
+const a = new ListNode(1);
+a.doSomething();
+
+// Here's another way to make a class in JS:
 // Remember to add 'this.' before function names too!!!
 function myClass(myVar) { // function className(initVars)
     this.myVar = myVar; // this.varName
@@ -28,7 +43,7 @@ myInstance = new myClassDef("Alex");
 console.log(myInstance.myFun("hi"));
 
 
-// another (new) way to make classes:
+// yet another (new) way to make classes:
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
 // note: hoisting does NOT work on classes
 class Rectangle {

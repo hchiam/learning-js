@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/maximal-square/submissions/
 
+// Brute force solution. Note even better solutions in: https://leetcode.com/problems/maximal-square/solution/
+
 // Runtime: 68 ms, faster than 84.15% of JS submissions as of today
 // Memory Usage: 39.6 MB, less than 100.00% of JS submissions as of today
 

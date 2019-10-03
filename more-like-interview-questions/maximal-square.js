@@ -1,17 +1,43 @@
 // https://leetcode.com/problems/maximal-square/submissions/
 
-// Brute force solution. Note even better solutions in: https://leetcode.com/problems/maximal-square/solution/
-
-// Runtime: 68 ms, faster than 84.15% of JS submissions as of today
-// Memory Usage: 39.6 MB, less than 100.00% of JS submissions as of today
-
 /* eslint-disable require-jsdoc */
 
 /**
  * @param {(character[])[]} matrix
  * @return {number}
  */
+
+// THIS ONE IS THE APPARENTLY "BETTER" SOLUTION: IT USES DYNAMIC PROGRAMMING:
+// https://leetcode.com/problems/maximal-square/solution/
 const maximalSquare = function(matrix) {
+  // empty array or array of empty array
+  if (!matrix.length || !matrix[0].length) {
+    return 0;
+  }
+  const memo = matrix.slice(); // clone matrix into a "memo matrix"
+  let max = Math.max(...matrix[0]); // check 1st row for any 1
+  for (let i = 0; i < matrix.length; i++) {
+    max = Math.max(matrix[i][0], max); // check 1st column for any 1
+  } // now max is 1 if any cell in 1st row / 1st column has 1
+  for (let i = 1; i < matrix.length; i++) {
+    for (let j = 1; j < matrix[0].length; j++) {
+      if (matrix[i][j] == '0') {
+        continue;
+      }
+      // otherwise
+      const minOfPrev = Math.min(memo[i-1][j], memo[i][j-1], memo[i-1][j-1]);
+      memo[i][j] = minOfPrev + 1; // +1 since this cell is '1'
+      if (memo[i][j] > max) {
+        max = memo[i][j];
+      }
+    }
+  }
+  return max ** 2; // sides^2 = cells in square
+};
+
+// Brute force solution. Note "better" solutions in: https://leetcode.com/problems/maximal-square/solution/
+// eslint-disable-next-line no-unused-vars
+const maximalSquareBruteForce = function(matrix) {
   let maxCount = 0;
   for (let i=0; i<matrix.length; i++) {
     for (let j = 0; j < matrix[0].length; j++) {

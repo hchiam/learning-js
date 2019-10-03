@@ -6,7 +6,7 @@ const occurrences_linearTime =(arr, target)=> {
     if (arr[i] == target) count++;
   }
   return count;
-}
+};
 
 // assumes arr is sorted (ascending)
 const occurrences_logarithmicTime =(arr, target)=> {

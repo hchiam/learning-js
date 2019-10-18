@@ -1,3 +1,5 @@
+// another example: https://github.com/hchiam/hchiam.github.io/blob/master/sound.js
+
 const audioCtx = new AudioContext();
 // multiple oscillators can use this one context
 

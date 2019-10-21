@@ -11,95 +11,46 @@ const isSymmetric = (root) => {
   if (root.left === null) return false;
   if (root.right === null) return false;
 
-  return isSymmetric_recursive(root.left, root.right);
-  // return isSymmetric_iterative(root);
+  const useRecursive = true;
+  if (useRecursive) {
+    return isSymmetricRecursive(root.left, root.right);
+  } else {
+    return isSymmetricIterative(root);
+  }
 };
 
-const isSymmetric_recursive = (left, right) => {
+const isSymmetricRecursive = (left, right) => {
   // DFS
   if (left === null && right === null) return true;
   if (left === null) return false;
   if (right === null) return false;
   if (left.val != right.val) return false;
-  const goodOuter = isSymmetric_recursive(left.left, right.right);
-  const goodInner = isSymmetric_recursive(left.right, right.left);
+  const goodOuter = isSymmetricRecursive(left.left, right.right);
+  const goodInner = isSymmetricRecursive(left.right, right.left);
   return goodOuter && goodInner;
 };
 
-const isSymmetric_iterative = (root) => {
-  // BFS (queue)
-  const q = [
-    {
-      node: root,
-      depth: 1,
-    },
-  ];
-  let currentDepth = 1;
-  let levelLooks = [];
+const isSymmetricIterative = (root) => {
+  // BFS (queue) except you process pairs (dequeue/queue/compare)
+  const q = [];
+  q.push(root.left);
+  q.push(root.right);
   while (q.length > 0) {
-    const e = q.shift();
-    if (e.depth !== currentDepth) {
-      // check if is palindrome
-      if (!isPalindromeArray(levelLooks)) return false;
-      if (isAllNullArray(levelLooks)) {
-        // got to bottom
-        return true;
-      }
-      levelLooks = e.node ? [e.node.val] : [];
-      currentDepth++;
-    } else {
-      // "concatenate string" of current level
-      levelLooks.push(e.node ? e.node.val : null);
-    }
-    if (e.node && e.node.left) {
-      q.push(
-          {
-            node: e.node.left,
-            depth: currentDepth + 1,
-          },
-      );
-    } else {
-      q.push(
-          {
-            node: new TreeNode(null),
-            depth: currentDepth + 1,
-          },
-      );
-    }
-    if (e.node && e.node.right) {
-      q.push(
-          {
-            node: e.node.right,
-            depth: currentDepth + 1,
-          },
-      );
-    } else {
-      q.push(
-          {
-            node: new TreeNode(null),
-            depth: currentDepth + 1,
-          },
-      );
-    }
+    const left = q.shift();
+    const right = q.shift();
+    if (left == null && right == null) continue;
+    if (left == null) return false;
+    if (right == null) return false;
+    if (left.val !== right.val) return false;
+    // otherwise ok so far,
+    // so add left/right nodes in "mirror pairs" for later comparison
+    q.push(left.left);
+    q.push(right.right);
+    q.push(left.right);
+    q.push(right.left);
   }
-  // otherwise
+  // otherwise no errors found
   return true;
-};
-
-const isPalindromeArray = (arr) => {
-  let left = 0;
-  let right = arr.length-1;
-  while (left < right) {
-    if (arr[left] !== arr[right]) return false;
-    left++;
-    right--;
-  }
-  return true;
-};
-
-const isAllNullArray = (arr) => {
-  if (arr.length < 1) return false;
-  return arr.every((e) => e === null);
 };
 
 function TreeNode(val) {

@@ -11,7 +11,7 @@ const isSymmetric = (root) => {
   if (root.left === null) return false;
   if (root.right === null) return false;
 
-  const useRecursive = true;
+  const useRecursive = false;
   if (useRecursive) {
     return isSymmetricRecursive(root.left, root.right);
   } else {

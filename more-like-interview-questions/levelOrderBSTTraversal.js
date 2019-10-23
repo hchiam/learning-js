@@ -3,28 +3,25 @@
 const levelOrder = (node) => {
   if (node == null) return [];
   const output = [];
-  let level = 1;
   const q = [];
   let currentLevel = [];
-  q.push({node, level});
+  q.push(node);
   while (q.length > 0) {
-    const currentNode = q.shift();
-    if (currentNode.level !== level) {
-      output.push(currentLevel);
-      currentLevel = [currentNode.node.val];
-      level++;
-    } else {
-      currentLevel.push(currentNode.node.val);
+    // get level size now, since any nodes added to the queue are later levels
+    const levelSize = q.length;
+    // instead of storing level numbers, you can use the level size:
+    for (let i = 0; i < levelSize; i++) {
+      const currentNode = q.shift();
+      currentLevel.push(currentNode.val);
+      if (currentNode.left) {
+        q.push(currentNode.left);
+      }
+      if (currentNode.right) {
+        q.push(currentNode.right);
+      }
     }
-    if (currentNode.node.left) {
-      q.push({node: currentNode.node.left, level: currentNode.level + 1});
-    }
-    if (currentNode.node.right) {
-      q.push({node: currentNode.node.right, level: currentNode.level + 1});
-    }
-  }
-  if (currentLevel.length > 0) {
     output.push(currentLevel);
+    currentLevel = [];
   }
   return output;
 };
@@ -35,9 +32,9 @@ function TreeNode(val) {
 }
 
 function check(a, b) {
-  for (let i = 0; i < a.length; i++) {
-    for (let j = 0; j < a[i].length; j++) {
-      if (a[i][j] != b[i][j]) {
+  for (let i = 0; i < b.length; i++) {
+    for (let j = 0; j < b[i].length; j++) {
+      if (a[i] == null || a[i][j] != b[i][j]) {
         return false;
       }
     }

@@ -13,3 +13,7 @@ Make sure to include console.log("output text here");
 ## Learn about Modern ES6 JS Features
 
 https://stackoverflow.blog/2019/09/12/practical-ways-to-write-better-javascript/
+
+## Bonus
+
+To automatically re-run a .js file and the test cases in it whenever you edit that file, copy the .js code into `index.js` in my [ESLint repo](https://github.com/hchiam/learning-eslint-google) and do the setup so you can run this command just once: `nodemon -x 'npm run lint; node index.js'`

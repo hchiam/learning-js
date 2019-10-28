@@ -8,7 +8,7 @@
  * recursively add middle of array to tree
  */
 const sortedArrayToBST = (nums) => {
-  const invalidOrEmptyInput = (nums == null || !nums.length);
+  const invalidOrEmptyInput = (nums == null || nums.length === 0);
   if (invalidOrEmptyInput) return null;
   const mid = Math.floor(nums.length / 2);
   const node = new TreeNode(nums[mid]);

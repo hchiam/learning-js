@@ -3,57 +3,20 @@
 /* eslint-disable require-jsdoc */
 
 /**
- * @param {number[]} numbers (assumed sorted in ascending order)
+ * @param {number[]} nums (assumed sorted in ascending order)
  * @return {TreeNode} (height-balanced BST)
  * recursively add middle of array to tree
  */
-const sortedArrayToBST = (numbers) => {
-  // handle empty input
-  if (numbers.length === 0) {
-    return null; // return empty tree
-  }
-  let outputTree = null;
-  const recursivelyGetMiddle = (numbers, left, right) => {
-    // 2 base cases:
-    const oneElement = (left === right);
-    const shouldStop = (left > right);
-    if (oneElement) {
-      placeNode(numbers[left]);
-    } else if (shouldStop) {
-      return;
-    }
-    const middle = Math.floor((left + right) / 2);
-    const number = numbers[middle];
-    placeNode(number);
-    // recursion:
-    recursivelyGetMiddle(numbers, middle + 1, right);
-    recursivelyGetMiddle(numbers, left, middle - 1);
-  };
-  const placeNode = (number, node) => {
-    const newNode = new TreeNode(number);
-    if (outputTree === null || outputTree.val === null) {
-      outputTree = newNode;
-      return;
-    }
-    const pointer = node || outputTree;
-    if (number < pointer.val) {
-      if (pointer.left === null) {
-        pointer.left = newNode;
-      } else {
-        placeNode(number, pointer.left);
-      }
-    } else if (pointer.val < number) {
-      if (pointer.right === null) {
-        pointer.right = newNode;
-      } else {
-        placeNode(number, pointer.right);
-      }
-    }
-  };
-  const left = 0;
-  const right = numbers.length;
-  recursivelyGetMiddle(numbers, left, right);
-  return outputTree;
+const sortedArrayToBST = (nums) => {
+  const invalidOrEmptyInput = (nums == null || !nums.length);
+  if (invalidOrEmptyInput) return null;
+  const mid = Math.floor(nums.length / 2);
+  const node = new TreeNode(nums[mid]);
+  const leftArray = nums.slice(0, mid);
+  const rightArray = nums.slice(mid + 1, nums.length);
+  node.left = sortedArrayToBST(leftArray);
+  node.right = sortedArrayToBST(rightArray);
+  return node;
 };
 
 function TreeNode(val) {

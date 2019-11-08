@@ -4,12 +4,12 @@
  * @param {[string]} strings
  * @return {[[string]]}
  */
-const groupAnagrams = (strings) => { // O(N s^2 log s)
+const groupAnagrams = (strings) => { // O(N s log s)
   if (strings.length === 0) return [[]];
   let output = [];
   const ht = new HT();
-  // O(s^2 log s)
-  for (let i = 0; i < strings.length; i++) { // O(s)
+  // O(N s log s)
+  for (let i = 0; i < strings.length; i++) { // O(N)
     ht.add(strings[i]); // O(s log s)
   }
   for (const key in ht.ht) { // O(N)

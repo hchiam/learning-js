@@ -86,6 +86,8 @@ const check = (strings, correctAnswer) => {
 };
 
 
+const start = new Date().getTime();
+
 check(string=[], correctAnswer=[[]]);
 check(string=['a'], correctAnswer=[['a']]);
 check(string=['a', 'b'], correctAnswer=[['a'], ['b']]);
@@ -103,3 +105,7 @@ check(string=['eat', 'tea', 'tan', 'ate', 'nat', 'bat', 'tee', 'ete'],
       ['bat'],
       ['tee', 'ete'],
     ]);
+
+const stop = new Date().getTime();
+
+console.log(stop - start);

@@ -4,13 +4,13 @@
  * @param {[string]} strings
  * @return {[[string]]}
  */
-const groupAnagrams = (strings) => { // O(N s log s)
+const groupAnagrams = (strings) => { // O(N s)
   if (strings.length === 0) return [[]];
   let output = [];
   const ht = new HT();
-  // O(N s log s)
+  // O(N s)
   for (let i = 0; i < strings.length; i++) { // O(N)
-    ht.add(strings[i]); // O(s log s)
+    ht.add(strings[i]); // O(s)
   }
   for (const key in ht.ht) { // O(N)
     if (key in ht.ht) { // O(1)
@@ -30,8 +30,8 @@ class HT {
     this.ht = {};
   }
 
-  add(string) { // O(s log s)
-    const hashKey = this.getHashKey(string); // O(s log s)
+  add(string) { // O(s)
+    const hashKey = this.getHashKey(string); // O(s)
     if (this.hasHashKey(hashKey)) { // O(1)
       this.ht[hashKey].push(string);
     } else {
@@ -43,22 +43,47 @@ class HT {
     return hashKey in this.ht;
   }
 
-  getHashKey(string) { // O(s log s)
-    const letterCounts = {};
-    for (let i = 0; i < string.length; i++) {
+  getHashKey(string) { // O(s)
+    const letterCounts = {
+      'a': 0,
+      'b': 0,
+      'c': 0,
+      'd': 0,
+      'e': 0,
+      'f': 0,
+      'g': 0,
+      'h': 0,
+      'i': 0,
+      'j': 0,
+      'k': 0,
+      'l': 0,
+      'm': 0,
+      'n': 0,
+      'o': 0,
+      'p': 0,
+      'q': 0,
+      'r': 0,
+      's': 0,
+      't': 0,
+      'u': 0,
+      'v': 0,
+      'w': 0,
+      'x': 0,
+      'y': 0,
+      'z': 0,
+    };
+    for (let i = 0; i < string.length; i++) { // O(s)
       const letter = string[i];
-      if (letter in letterCounts) { // O(1)
-        letterCounts[letter]++;
-      } else {
-        letterCounts[letter] = 1;
-      }
+      letterCounts[letter]++;
     }
-    const keys = Object.keys(letterCounts).sort(); // O(s log s)
+    const keys = Object.keys(letterCounts);// O(1) (no sort O(s log s))
     let hashKey = '';
-    for (let i = 0; i < keys.length; i++) { // O(s)
+    for (let i = 0; i < keys.length; i++) { // O(1) = O(26)
       const letter = keys[i];
       const count = letterCounts[letter];
-      hashKey += letter + count.toString();
+      if (count > 0) {
+        hashKey += letter + count.toString();
+      }
     }
     return hashKey;
   }

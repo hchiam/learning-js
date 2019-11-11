@@ -32,7 +32,7 @@ const longestPalindrome = (s) => {
 };
 
 const growMaxPalindromeFromSeed = (s, begin, end) => {
-  while (isWithinRange(begin, end) && isStillPalindrome(s, begin, end)) {
+  while (isWithinRange(s, begin, end) && isStillPalindrome(s, begin, end)) {
     begin--;
     end++;
   }
@@ -42,7 +42,7 @@ const growMaxPalindromeFromSeed = (s, begin, end) => {
   return s.substring(begin + 1, end);
 };
 
-const isWithinRange = (begin, end) => {
+const isWithinRange = (s, begin, end) => {
   return begin >= 0 && end < s.length;
 };
 

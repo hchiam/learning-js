@@ -62,28 +62,30 @@ const check = (string, correctAnswer) => {
   }
 };
 
-const start = new Date().getTime();
+// const start = new Date().getTime();
 
-check(string=null, correctAnswer='');
-check(string='', correctAnswer='');
-check(string='a', correctAnswer='a');
-check(string='ab', correctAnswer='a');
-check(string='aa', correctAnswer='aa');
-check(string='aaa', correctAnswer='aaa');
-check(string='abc', correctAnswer='a');
-check(string='babad', correctAnswer='bab');
-check(string='cbbd', correctAnswer='bb');
-check(string='aaaa', correctAnswer='aaaa');
-check(string='aaaaa', correctAnswer='aaaaa');
-check(string='abcde', correctAnswer='a');
-check(string='abcdedcdcdedcxy', correctAnswer='cdedcdcdedc');
-check(string='aaaaaaaaaaaaaaaaaaaaaaaaaaa',
-    correctAnswer='aaaaaaaaaaaaaaaaaaaaaaaaaaa');
-check(string='aaaaaaaaaaaaaaaaaaaaaaaaaaab',
-    correctAnswer='aaaaaaaaaaaaaaaaaaaaaaaaaaa');
-check(string='baaaaaaaaaaaaaaaaaaaaaaaaaaa',
-    correctAnswer='aaaaaaaaaaaaaaaaaaaaaaaaaaa');
+// check(string=null, correctAnswer='');
+// check(string='', correctAnswer='');
+// check(string='a', correctAnswer='a');
+// check(string='ab', correctAnswer='a');
+// check(string='aa', correctAnswer='aa');
+// check(string='aaa', correctAnswer='aaa');
+// check(string='abc', correctAnswer='a');
+// check(string='babad', correctAnswer='bab');
+// check(string='cbbd', correctAnswer='bb');
+// check(string='aaaa', correctAnswer='aaaa');
+// check(string='aaaaa', correctAnswer='aaaaa');
+// check(string='abcde', correctAnswer='a');
+// check(string='abcdedcdcdedcxy', correctAnswer='cdedcdcdedc');
+// check(string='aaaaaaaaaaaaaaaaaaaaaaaaaaa',
+//     correctAnswer='aaaaaaaaaaaaaaaaaaaaaaaaaaa');
+// check(string='aaaaaaaaaaaaaaaaaaaaaaaaaaab',
+//     correctAnswer='aaaaaaaaaaaaaaaaaaaaaaaaaaa');
+// check(string='baaaaaaaaaaaaaaaaaaaaaaaaaaa',
+//     correctAnswer='aaaaaaaaaaaaaaaaaaaaaaaaaaa');
 
-const stop = new Date().getTime();
+// const stop = new Date().getTime();
 
-console.log(stop - start);
+// console.log(stop - start);
+
+module.exports = {longestPalindrome};

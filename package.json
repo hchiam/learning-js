@@ -1,0 +1,14 @@
+{
+  "name": "learning-js",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "devDependencies": {
+    "eslint": "^6.4.0",
+    "eslint-config-google": "^0.14.0",
+    "jest-cli": "^24.9.0"
+  }
+}

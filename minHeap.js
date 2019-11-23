@@ -9,6 +9,8 @@
 const MinHeap = function() {
   const heap = [null];
 
+  this.print = () => heap;
+
   this.insert = function(num) {
     heap.push(num);
     // bubble up:

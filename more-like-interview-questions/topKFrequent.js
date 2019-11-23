@@ -1,7 +1,7 @@
 /* eslint-disable require-jsdoc */
 
 function topKFrequent(words, k) {
-  // // O(n log k) (but seems slower on leetcode):
+  // // O(n log k) with max heap (but seems slower on leetcode):
 
   // const answer = [];
   // const ht = {};

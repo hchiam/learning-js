@@ -1,6 +1,6 @@
 /* eslint-disable require-jsdoc */
 
-const {topKFrequent} = require('./topKFrequent.js');
+const {topKFrequent} = require('./index.js');
 
 describe('index', () => {
   it('works', () => {
@@ -40,8 +40,16 @@ describe('index', () => {
       'sfvkdqf',
     ],
     k);
-    // not ["jnoqzdute"]
+    // not ['jnoqzdute']
     expect(a).toEqual(['fvvdtpnzx']);
+    expect(a.length).toBe(k);
+    k = 1;
+    a = topKFrequent(['i', 'love', 'leetcode', 'i', 'love', 'coding'], k);
+    expect(a).toEqual(['i']); // not 'love' because i is before l
+    expect(a.length).toBe(k);
+    k = 3;
+    a = topKFrequent(['i', 'love', 'leetcode', 'i', 'love', 'coding'], k);
+    expect(a).toEqual(['i', 'love', 'coding']);
     expect(a.length).toBe(k);
   });
 });

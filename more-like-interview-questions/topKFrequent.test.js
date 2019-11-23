@@ -6,17 +6,17 @@ describe('index', () => {
   it('works', () => {
     let k = 2;
     let a = topKFrequent(['i', 'love', 'leetcode', 'i', 'love', 'coding'], k);
-    expect(a).toEqual(expect.arrayContaining(['i', 'love']));
+    expect(a).toEqual(['i', 'love']);
     expect(a.length).toBe(k);
     k = 4;
     a = topKFrequent([
       'the', 'day', 'is', 'sunny', 'the', 'the', 'the', 'sunny', 'is', 'is',
     ], k);
-    expect(a).toEqual(expect.arrayContaining(['the', 'is', 'sunny', 'day']));
+    expect(a).toEqual(['the', 'is', 'sunny', 'day']);
     expect(a.length).toBe(k);
     k = 2;
     a = topKFrequent(['love', 'love', 'i', 'leetcode', 'i', 'coding'], k);
-    expect(a).toEqual(expect.arrayContaining(['i', 'love']));
+    expect(a).toEqual(['i', 'love']);
     expect(a.length).toBe(k);
     k = 1;
     a = topKFrequent([
@@ -41,7 +41,7 @@ describe('index', () => {
     ],
     k);
     // not ["jnoqzdute"]
-    expect(a).toEqual(expect.arrayContaining(['fvvdtpnzx']));
+    expect(a).toEqual(['fvvdtpnzx']);
     expect(a.length).toBe(k);
   });
 });

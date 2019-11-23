@@ -1,6 +1,6 @@
 /* eslint-disable require-jsdoc */
 
-const {topKFrequent} = require('./index.js');
+const {topKFrequent} = require('./topKFrequent.js');
 
 describe('index', () => {
   it('works', () => {

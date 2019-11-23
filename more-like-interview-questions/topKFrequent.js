@@ -1,19 +1,21 @@
 /* eslint-disable require-jsdoc */
 
 function topKFrequent(words, k) {
+  // O(n log n):
+
   const sortedWords = words.sort();
-  const ht = {};
+  const ht = new Map(); // can be used instead of {}
   for (const word of sortedWords) {
-    if (word in ht) {
-      ht[word]++;
+    if (ht.get(word)) {
+      ht.set(word, ht.get(word) + 1);
     } else {
-      ht[word] = 1;
+      ht.set(word, 1);
     }
   }
-  const keys = Object.keys(ht);
+  const keys = ht.keys();
   const arrayOfObjects = [];
   for (const key of keys) {
-    arrayOfObjects.push({word: key, count: ht[key]});
+    arrayOfObjects.push({word: key, count: ht.get(key)});
   }
   const topK = arrayOfObjects.sort((a, b) => {
     if (a.count === b.count) {

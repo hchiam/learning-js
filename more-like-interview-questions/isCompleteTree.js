@@ -2,18 +2,16 @@
 
 function isCompleteTree(root) {
   if (!root || (!root.left && !root.right)) return true;
-  // BFS but check length
+  // BFS but stop at first null and check length
   let seen = 0;
   const q = [];
   q.push({node: root, order: 1});
   while (q.length > 0) {
     const n = q.shift();
     seen++;
-    if (!n.node.left && n.node.right && q.length > 0) return false;
-    if (n.node.left) {
+    if (!n.node && seen !== n.order) return false;
+    if (n.node) {
       q.push({node: n.node.left, order: n.order * 2});
-    }
-    if (n.node.right) {
       q.push({node: n.node.right, order: n.order * 2 + 1});
     }
     if (q.length === 0) {

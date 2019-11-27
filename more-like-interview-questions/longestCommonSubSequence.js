@@ -1,5 +1,7 @@
 /* eslint-disable require-jsdoc */
 
+// based off of an interviewing.io video: https://www.youtube.com/watch?v=10WnvBk9sZc
+
 const longestCommonSubSequence = (a, b) => {
   const results = [];
   for (let s = 0; s < a.length; s++) {

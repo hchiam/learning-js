@@ -50,3 +50,18 @@ plato -r -d report index.js
 ```
 
 Similar to how I use [`radon`](https://github.com/hchiam/learning-python/#maintainability-index-mi-score) for Python code.
+
+### Minify code
+
+Install `minify`:
+
+```bash
+npm i minify -g
+minify -v
+```
+
+Use `minify`:
+
+```bash
+minify minify-this-script.js > minified-script.js
+```

@@ -2,6 +2,8 @@
 
 // great explanation: https://leetcode.com/explore/interview/card/top-interview-questions-medium/111/dynamic-programming/809/discuss/77385/DP-AC-JAVA-Solution-18ms-Beating-95
 
+// dynamic programming DP tabulation example
+
 const coinChange = (coins, amount) => {
   if (amount === 0) return 0;
   if ((coins.length < 1 && amount > 0) || amount < 0) return -1;

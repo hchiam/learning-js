@@ -1,6 +1,11 @@
 /* eslint-disable require-jsdoc */
 
-const lengthOfLIS = (numbers) => {
+// https://leetcode.com/problems/longest-increasing-subsequence/
+
+// The solution below uses dynamic programming tabulation.
+// There's a faster solution O(n log n) with binary search.
+
+const lengthOfLIS = (numbers) => { // O(n^2)
   if (numbers.length < 2) return numbers.length;
   // fill DP table: O(n)
   const dpTable = new Array(numbers.length).fill(1);

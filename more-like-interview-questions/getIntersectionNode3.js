@@ -38,11 +38,11 @@ const getIntersectionNode = (headA, headB) => {
     pHeadB = pHeadB.next;
   }
   while (pHeadA !== null && pHeadB !== null) {
-    pHeadA = pHeadA.next;
-    pHeadB = pHeadB.next;
     if (pHeadA === pHeadB) {
       return pHeadA;
     }
+    pHeadA = pHeadA.next;
+    pHeadB = pHeadB.next;
   }
   // otherwise no intersection
   return null;

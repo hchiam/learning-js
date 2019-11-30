@@ -38,6 +38,13 @@ describe('case 3', () => {
   it('works', () => expect(solutionWrapper(a, b)).toBe(null));
 });
 
+describe('case 4', () => {
+  const a = new ListNode(3);
+  const b = new ListNode(2);
+  b.next = a;
+  it('works', () => expect(solutionWrapper(a, b)).toBe(a));
+});
+
 function ListNode(val) {
   this.val = val;
   this.next = null;

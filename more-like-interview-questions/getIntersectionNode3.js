@@ -18,6 +18,8 @@
  * @param {ListNode} headA
  * @param {ListNode} headB
  * @return {ListNode}
+ * 
+ * This solution uses O(a + b) time and O(1) space:
  */
 const getIntersectionNode = (headA, headB) => {
   if (headA === headB) return headA;

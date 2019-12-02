@@ -21,7 +21,7 @@ const inorderTraversal = (node) => { // T O(n); S O(n)
   return output;
 };
 
-// const inorderTraversalRecursive = (node) => {
+// const inorderTraversalRecursive = (node) => { // T O(n); S O(log n) avg O(n) worst
 //   if (!node || !node.val) return [];
 //   const output = [];
 //   const recursiveCall = (node) => {

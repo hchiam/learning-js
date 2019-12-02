@@ -21,6 +21,18 @@ const inorderTraversal = (node) => { // T O(n); S O(n)
   return output;
 };
 
+// const inorderTraversalRecursive = (node) => {
+//   if (!node || !node.val) return [];
+//   const output = [];
+//   const recursiveCall = (node) => {
+//     if (node.left) recursiveCall(node.left);
+//     output.push(node.val);
+//     if (node.right) recursiveCall(node.right);
+//   };
+//   recursiveCall(node);
+//   return output;
+// };
+
 function solutionWrapper(node) {
   return inorderTraversal(node);
 }

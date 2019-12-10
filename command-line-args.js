@@ -16,3 +16,13 @@ console.log('arrayOfArguments:', arrayOfArguments);
 process.argv.slice(2).forEach(function (rawArgumentString) {
   console.log(rawArgumentString + ' (' + typeof rawArgumentString + ')');
 });
+
+// node command-line-args.js hi
+
+function printHi() {
+  console.log('\nHi! You found me :)\n');
+}
+
+if (arrayOfArguments[2] === 'hi') {
+  printHi();
+}

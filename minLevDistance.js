@@ -15,9 +15,9 @@ function minLevDistance(s1, s2) {
 // use recursion to get the answer from the min of earlier cells:
 function levenshteinDist(s1, s1Index, s2, s2Index, dpTable) {
   if (s1Index < 0) {
-    return s2Index + 1; // If s1 is "", it is all insertions to get s1 to s2
+    return s2Index + 1; // s1 === "" -> s1 insert all characters in s2 === s2
   } else if (s2Index < 0) {
-    return s1Index + 1; // If s2 is "", it is all deletions to get s1 to s2
+    return s1Index + 1; // s2 === "" -> s1 delete all characters in s1 === s2
   }
 
   const alreadyHaveMinDistance = (dpTable[s1Index][s2Index] !== -1);

@@ -3,6 +3,7 @@
 
 // Preferred way to make a class in JS: https://stackoverflow.com/questions/6169938/javascript-classes-prototype-vs-internal-function-declaration-vs-etc
 // (Also, arrow functions may not always be what you want for the "this" keyword.)
+// Also, using prototypes is also preferred (faster/shared/less-memory) to inner functions: https://code.tutsplus.com/tutorials/stop-nesting-functions-but-not-all-of-them--net-22315
 function ListNode(val) {
   this.val = val;
   this.next = null;

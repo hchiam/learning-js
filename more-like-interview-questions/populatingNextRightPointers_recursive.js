@@ -11,7 +11,7 @@
  * @param {Node} root
  * @return {Node}
  */
-var connect = function(root) { // recursive, DFS
+const connect = (root) => { // recursive, DFS
     const noMoreLevelsInPerfectBinaryTree = (root === null || root.left === null);
     if (noMoreLevelsInPerfectBinaryTree) return root;
     root.left.next = root.right;

@@ -11,7 +11,7 @@
  * @param {Node} root
  * @return {Node}
  */
-var connect = function(root) { // iterative, BFS
+const connect = (root) => { // iterative, BFS
     const noMoreLevels = (root === null || root.left === null);
     if (noMoreLevels) return root;
     const q = [root];

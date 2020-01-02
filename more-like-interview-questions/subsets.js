@@ -13,7 +13,9 @@ const subsets = (nums) => { // faster solution
     // append an element to the right = guaranteed unique:
     for (let i=startIndex; i<nums.length; i++) {
       // also do the same for each new set:
-      recurse(set.concat(nums[i]), i + 1);
+      const newSet = set.slice();
+      newSet.push(nums[i]);
+      recurse(newSet, i + 1);
     }
   };
   recurse(set=[], startIndex=0);

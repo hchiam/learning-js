@@ -10,7 +10,7 @@ const permute = (nums) => {
   const output = new Set();
 
   const recursivelyGetPermutations = (nums, combo=[]) => {
-    if (nums.length === 1) {
+    if (nums.length === 1) { // base case / stop condition: will use up last number
       combo.push(nums[0]);
       output.add(combo);
       return;
@@ -18,8 +18,8 @@ const permute = (nums) => {
     for (let i = 0; i < nums.length; i++) {
       const newNums = nums.slice(); // avoid affecting original
       const useThis = newNums.splice(i, 1)[0];
-      const isNewCombo = (combo.indexOf(useThis) === -1);
-      if (isNewCombo) {
+      const isValid = (combo.indexOf(useThis) === -1); // avoid repeating same number
+      if (isValid) {
         const newCombo = combo.slice(); // avoid affecting original
         newCombo.push(useThis);
         recursivelyGetPermutations(newNums, newCombo);

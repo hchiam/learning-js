@@ -10,11 +10,13 @@ const subsets = (nums) => { // faster solution
   const output = [];
   const recurse = (set=[], startIndex=0) => {
     output.push(set);
-    // append an element to the right = guaranteed unique:
+    // (appending an element to the right guarantees uniqueness)
     for (let i=startIndex; i<nums.length; i++) {
-      // also do the same for each new set:
+      // (clone to avoid affecting the original set array)
       const newSet = set.slice();
+      // append element to create new set
       newSet.push(nums[i]);
+      // also do the same for each new set:
       recurse(newSet, i + 1);
     }
   };

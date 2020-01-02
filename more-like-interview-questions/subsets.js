@@ -4,7 +4,27 @@
  * @param {number[]} nums
  * @return {[number[]]}
  */
-const subsets = (nums) => {
+const subsets = (nums) => { // faster solution
+  if (!nums || nums.length < 1) return [[]];
+  if (nums.length === 1) return [[], nums];
+  const output = [];
+  const recurse = (set=[], startIndex=0) => {
+    output.push(set);
+    // append an element to the right = guaranteed unique:
+    for (let i=startIndex; i<nums.length; i++) {
+      // also do the same for each new set:
+      recurse(set.concat(nums[i]), i + 1);
+    }
+  };
+  recurse(set=[], startIndex=0);
+  return output;
+};
+
+/**
+ * @param {number[]} nums
+ * @return {[number[]]}
+ */
+const subsets_slow = (nums) => {
   if (!nums || nums.length < 1) return [[]];
   if (nums.length === 1) return [[], nums];
   // get the first ones set up first:

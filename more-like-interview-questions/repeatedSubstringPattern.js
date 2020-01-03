@@ -9,11 +9,12 @@
 const repeatedSubstringPattern = (s) => {
   if (s.length < 2) return false;
   if (new Set(s).size === 1) return true;
-  // try different lengths
+  // try different lengths (<=/2: if 7 -> stop at && use 3; else invalid index)
   for (let length = 2; length <= Math.floor(s.length / 2); length++) {
     if (s.length % length !== 0) continue;
     const firstSlice = s.slice(0, length);
     let foundLengthThatWorks = true;
+    // <= length because using slice
     for (let i = length; i + length <= s.length; i += length) {
       if (s.slice(i, i + length) !== firstSlice) {
         foundLengthThatWorks = false;

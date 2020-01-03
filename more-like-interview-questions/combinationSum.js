@@ -20,7 +20,10 @@ const combinationSum = (candidates, target) => {
     } else if (sum < target) {
       for (let i = startingIndex; i < candidates.length; i++) {
         // only starting at startingIndex means you don't duplicate work
-        checkCombo(i, combo.concat(candidates[i]));
+        combo.push(candidates[i]);
+        checkCombo(i, combo);
+        combo.pop();
+        // ASIDE: push/pop is apparently faster than combo.concat(candidates[i])
       }
     }
   };

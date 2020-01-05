@@ -1,6 +1,6 @@
 /* eslint-disable require-jsdoc */
 
-const {solutionWrapper} = require('./index.js');
+const {solutionWrapper} = require('./canJump.js');
 
 describe('the solution', () => {
   it('works', () => {

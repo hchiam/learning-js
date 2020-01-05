@@ -1,5 +1,24 @@
 /* eslint-disable require-jsdoc */
 
+/**
+ * (even simpler solution)
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+const canJump = (nums) => {
+  if (nums.length < 2) return true;
+  let stepsNeeded = 1;
+  // check starting one index before the end:
+  for (let i = nums.length - 2; i >= 0; i--) {
+    if (nums[i] < stepsNeeded) {
+      stepsNeeded++;
+    } else {
+      stepsNeeded = 1;
+    }
+  }
+  return (nums[0] >= stepsNeeded);
+};
+
 // eslint-disable-next-line no-unused-vars
 const canJumpDirectlyDP = (numbers = []) => { // T: O(n v); S: O(n)
   if (numbers.length < 2) return true;
@@ -16,6 +35,7 @@ const canJumpDirectlyDP = (numbers = []) => { // T: O(n v); S: O(n)
   return dp[dp.length - 1] === true;
 };
 
+// eslint-disable-next-line no-unused-vars
 const canJumpGreedySolution = (numbers = []) => { // T: O(n); S: O(1)
   if (numbers.length < 2) return true;
   if (numbers[0] === 0) return false;
@@ -30,8 +50,8 @@ const canJumpGreedySolution = (numbers = []) => { // T: O(n); S: O(1)
   return iTo === 0; // whether hit start
 };
 
-function solutionWrapper(input) {
-  return canJumpGreedySolution(input);
+function solutionWrapper(...parameters) {
+  return canJump(...parameters);
 }
 
 module.exports = {

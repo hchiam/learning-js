@@ -35,15 +35,6 @@ function solutionWrapper(params) {
   return permute(params);
 }
 
-// function ListNode(val) {
-//   this.val = val;
-//   this.next = null;
-// }
-
-// function TreeNode(val) {
-//   this.val = val;
-//   this.left = this.right = null;
-// }
 
 module.exports = {
   solutionWrapper,

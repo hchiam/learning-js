@@ -48,16 +48,6 @@ function solutionWrapper(s1, s2) {
   return minLevDistance(s1, s2);
 }
 
-// function ListNode(val) {
-//   this.val = val;
-//   this.next = null;
-// }
-
-// function TreeNode(val) {
-//   this.val = val;
-//   this.left = this.right = null;
-// }
-
 module.exports = {
   solutionWrapper,
 };

@@ -23,12 +23,3 @@ describe('the solution', () => {
         [1, 2, 3, 4]]));
 });
 
-// function ListNode(val) {
-//   this.val = val;
-//   this.next = null;
-// }
-
-// function TreeNode(val) {
-//   this.val = val;
-//   this.left = this.right = null;
-// }

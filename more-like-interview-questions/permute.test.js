@@ -17,12 +17,3 @@ describe('the solution', () => {
         [2, 3, 1], [3, 1, 2], [3, 2, 1]]));
 });
 
-// function ListNode(val) {
-//   this.val = val;
-//   this.next = null;
-// }
-
-// function TreeNode(val) {
-//   this.val = val;
-//   this.left = this.right = null;
-// }

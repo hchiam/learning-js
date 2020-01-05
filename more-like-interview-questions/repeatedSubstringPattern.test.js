@@ -37,12 +37,3 @@ describe('the solution', () => {
       .toStrictEqual(false));
 });
 
-// function ListNode(val) {
-//   this.val = val;
-//   this.next = null;
-// }
-
-// function TreeNode(val) {
-//   this.val = val;
-//   this.left = this.right = null;
-// }

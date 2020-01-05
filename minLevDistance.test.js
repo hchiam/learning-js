@@ -12,13 +12,3 @@ describe('the solution', () => {
   it('works', () => expect(solutionWrapper('b', 'a')).toStrictEqual(1));
   it('works', () => expect(solutionWrapper('abc', 'abc')).toStrictEqual(0));
 });
-
-// function ListNode(val) {
-//   this.val = val;
-//   this.next = null;
-// }
-
-// function TreeNode(val) {
-//   this.val = val;
-//   this.left = this.right = null;
-// }

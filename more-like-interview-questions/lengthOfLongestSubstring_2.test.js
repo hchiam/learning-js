@@ -17,12 +17,3 @@ describe('the solution', () => {
       .toStrictEqual(5));
 });
 
-// function ListNode(val) {
-//   this.val = val;
-//   this.next = null;
-// }
-
-// function TreeNode(val) {
-//   this.val = val;
-//   this.left = this.right = null;
-// }

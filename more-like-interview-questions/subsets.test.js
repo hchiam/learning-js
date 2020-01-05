@@ -10,16 +10,15 @@ describe('the solution handles silly input', () => {
 });
 
 describe('the solution', () => {
-  it('works with 2', () => expect(solutionWrapper([1, 2]))
-      .toStrictEqual([[], [1], [2], [1, 2]]));
-  it('works with 3', () => expect(solutionWrapper([1, 2, 3]))
-      .toStrictEqual([[], [1], [2], [3],
+  it('works with 2', () => expect(new Set(solutionWrapper([1, 2]).sort()))
+      .toStrictEqual(new Set([[], [1], [2], [1, 2]].sort())));
+  it('works with 3', () => expect(new Set(solutionWrapper([1, 2, 3]).sort()))
+      .toStrictEqual(new Set([[], [1], [2], [3],
         [1, 2], [1, 3], [2, 3],
-        [1, 2, 3]]));
-  it('works with 4', () => expect(solutionWrapper([1, 2, 3, 4]))
-      .toStrictEqual([[], [1], [2], [3], [4],
+        [1, 2, 3]].sort())));
+  it('works with 4', () => expect(new Set(solutionWrapper([1, 2, 3, 4]).sort()))
+      .toStrictEqual(new Set([[], [1], [2], [3], [4],
         [1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4],
         [1, 2, 3], [1, 2, 4], [1, 3, 4], [2, 3, 4],
-        [1, 2, 3, 4]]));
+        [1, 2, 3, 4]].sort())));
 });
-

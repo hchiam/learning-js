@@ -1,9 +1,20 @@
 /* eslint-disable require-jsdoc */
 
-const {solutionWrapper} = require('./canJump.js');
-// const {add} = require('./index.js');
+const {solutionWrapper} = require('./index.js');
 
-describe('index', () => {
+describe('the solution', () => {
+  it('works', () => {
+    expect(solutionWrapper([2, 3, 1, 1, 4]))
+        .toStrictEqual(true);
+  });
+  it('works', () => {
+    expect(solutionWrapper([3, 2, 1, 0, 4]))
+        .toStrictEqual(false);
+  });
+  it('works', () => {
+    expect(solutionWrapper([4, 2, 1, 0, 4]))
+        .toStrictEqual(true);
+  });
   it('works', () => expect(solutionWrapper([0])).toBe(true));
   it('works', () => expect(solutionWrapper([1])).toBe(true));
   it('works', () => expect(solutionWrapper([1, 0])).toBe(true));

@@ -15,11 +15,11 @@ function solutionWrapper(...parameters) {
  */
 const backspaceCompare_using_generator = (S, T) => {
   let done = false;
-  const sIterator = getNext(S); // NOT getNextS().next();
-  const tIterator = getNext(T); // NOT getNextT().next();
+  const sIterator = getNext(S); // NOT getNext(S).next();
+  const tIterator = getNext(T); // NOT getNext(T).next();
   while (!done) {
-    const s = sIterator.next(); // NOT getNextS().next();
-    const t = tIterator.next(); // NOT getNextT().next();
+    const s = sIterator.next(); // NOT getNext(S).next();
+    const t = tIterator.next(); // NOT getNext(T).next();
     done = s.done || t.done;
     if (s.value !== t.value) return false;
   }

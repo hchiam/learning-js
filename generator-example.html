@@ -7,11 +7,14 @@
   }
 
   let gen = counter()
-  
+
   alert('You should see 1.\n\nThen 2.\n\nThen 3.\n\nAll given to you by the same call to gen.next().value')
   alert(gen.next().value) //1
   alert(gen.next().value) //2
   alert(gen.next().value) //3
   //...
+
+  // you can see a more involved generator here:
+  // https://github.com/hchiam/learning-js/blob/master/more-like-interview-questions/backspaceCompare.js
 </script>
 <!--see https://codepen.io/hchiam/pen/mxPwBW-->

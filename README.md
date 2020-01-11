@@ -20,9 +20,9 @@ Make sure to include console.log("output text here");
 
 To automatically re-run a [.js file](https://github.com/hchiam/learning-js/tree/master/more-like-interview-questions) and the test cases in it whenever you edit that file, copy the .js code into [`index.js`](https://github.com/hchiam/learning-eslint-google/blob/master/index.js) in my [ESLint repo](https://github.com/hchiam/learning-eslint-google) and do the setup so you can run this command just once:
 
-    ```bash
-    nodemon -x 'npm run lint; node index.js'
-    ```
+```bash
+nodemon -x 'npm run lint; node index.js'
+```
 
 ***Or*** `nodemon -x 'npm run lint; npm run test; node index.js'`
 
@@ -32,10 +32,10 @@ This works just like [`rerun` for Python](https://github.com/hchiam/learning-pyt
 
 To set up [eslint and jest](https://github.com/hchiam/eslint-and-jest) locally inside this learning-js folder:
 
-    ```bash
-    npm install # eslint and jest-cli are already listed in package.json for you
-    npm test # runs scripts test command listed in package.json
-    ```
+```bash
+npm install # eslint and jest-cli are already listed in package.json for you
+npm test # runs scripts test command listed in package.json
+```
 
 ***Or*** just run this: [`jest`](https://github.com/hchiam/learning-jest).
 
@@ -45,9 +45,9 @@ To set up [eslint and jest](https://github.com/hchiam/eslint-and-jest) locally i
 
 The MI combines lines of code, cyclomatic complexity, and the Halstead volume metric (i.e. number of variables, operations, decision paths, and lines of code). After you [`npm install -g plato`](https://github.com/es-analysis/plato), you can get the MI score of your code:
 
-    ```bash
-    plato -r -d report index.js
-    ```
+```bash
+plato -r -d report index.js
+```
 
 Similar to how I use [`radon`](https://github.com/hchiam/learning-python/#maintainability-index-mi-score) for Python code.
 
@@ -55,13 +55,13 @@ Similar to how I use [`radon`](https://github.com/hchiam/learning-python/#mainta
 
 Install `minify`:
 
-    ```bash
-    npm i minify -g
-    minify -v
-    ```
+```bash
+npm i minify -g
+minify -v
+```
 
 Use `minify`:
 
-    ```bash
-    minify minify-this-script.js > minified-script.js
-    ```
+```bash
+minify minify-this-script.js > minified-script.js
+```

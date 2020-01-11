@@ -43,7 +43,7 @@ npm test # runs scripts test command listed in package.json
 
 ### Get code Maintainability Index (MI score)
 
-The MI combines lines of code, cyclomatic complexity, and the Halstead volume metric (i.e. number of variables, operations, decision paths, and lines of code). After you [`npm install -g plato`](https://github.com/es-analysis/plato), you can get the MI score of your code:
+The MI combines lines of code, cyclomatic complexity, and the Halstead volume metric (i.e. number of variables, operations, decision paths, and lines of code). After you [`npm install -g plato` or `yarn global add plato`](https://github.com/es-analysis/plato), you can get the MI score of your code:
 
 ```bash
 plato -r -d report index.js
@@ -56,7 +56,7 @@ Similar to how I use [`radon`](https://github.com/hchiam/learning-python/#mainta
 Install `minify`:
 
 ```bash
-npm i minify -g
+npm i minify -g # or: yarn global add minify
 minify -v
 ```
 
@@ -64,4 +64,17 @@ Use `minify`:
 
 ```bash
 minify minify-this-script.js > minified-script.js
+```
+
+### Using [`yarn`](https://github.com/hchiam/learning-yarn) instead of `npm`
+
+```bash
+yarn # instead of npm install or npm run install
+yarn test # instead of npm test
+```
+
+Instead of `nodemon -x 'npm run test; node index.js'`, you can do:
+
+```bash
+nodemon -x 'yarn test; node index.js'
 ```

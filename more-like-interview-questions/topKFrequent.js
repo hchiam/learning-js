@@ -1,145 +1,135 @@
 /* eslint-disable require-jsdoc */
 
-function topKFrequent(words, k) {
-  // // O(n log k) with max heap (but seems slower on leetcode):
+// https://leetcode.com/problems/top-k-frequent-elements/
 
-  // const answer = [];
-  // const ht = {};
-  // const heap = new MaxHeap();
+// this solution uses a slightly modified version of heap from
+// https://gist.github.com/tpae/54ec7371f947505967a2036b9c002428
 
-  // for (const word of words) {
-  //   if (word in ht) {
-  //     ht[word]++;
-  //   } else {
-  //     ht[word] = 1;
-  //   }
-  // }
+/**
+ * tricky bits:
+ *  - clone to avoid object reference problems
+ *  - check if this.data[someIndex] exists before compare .freq
+ */
 
-  // for (const key of Object.keys(ht)) {
-  //   if (!ht.hasOwnProperty(key)) continue;
-  //   const num = ht[key];
-  //   const val = key;
-  //   heap.insert({num, val});
-  // }
-
-  // for (let i = 0; i < k; i++) {
-  //   answer.push(heap.remove());
-  // }
-
-  // return answer.sort((a, b) => {
-  //   if (a.num !== b.num) {
-  //     return b.num - a.num;
-  //   }
-  //   return a.val.localeCompare(b.val);
-  // }).map((x) => x.val);
-
-  // O(n log n):
-
-  const sortedWords = words.sort();
-  const ht = new Map(); // can be used instead of {}
-  for (const word of sortedWords) {
-    if (ht.get(word)) {
-      ht.set(word, ht.get(word) + 1);
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+const topKFrequent = function(nums, k) {
+  // assumes k is valid
+  if (nums.length === 1) return [nums[0]];
+  const ht = {};
+  const heap = new MinHeap();
+  for (const num of nums) {
+    if (num in ht) {
+      ht[num]++;
     } else {
-      ht.set(word, 1);
+      ht[num] = 1;
     }
   }
-  const keys = ht.keys();
-  const arrayOfObjects = [];
-  for (const key of keys) {
-    arrayOfObjects.push({word: key, count: ht.get(key)});
-  }
-  const topK = arrayOfObjects.sort((a, b) => {
-    if (a.count === b.count) {
-      return a.word.localeCompare(b.word);
+  // eslint-disable-next-line guard-for-in
+  for (const [num, freq] of Object.entries(ht)) {
+    if (ht.hasOwnProperty(num)) {
+      heap.insert(parseInt(num), parseInt(freq));
+      if (heap.size() > k) heap.pop();
     }
-    return b.count - a.count;
-  }).slice(0, k);
-  const output = topK.map((x) => x.word);
+  }
+  const output = [];
+  for (let i = 0; i < k; i++) {
+    output.push(heap.extractMin().num);
+  }
   return output;
+};
+
+function clone(obj) {
+  return JSON.parse(JSON.stringify(obj));
 }
 
-// function MaxHeap() {
-//   const heap = [null];
+function MinHeap() {
+  this.data = [];
+}
 
-//   this.print = function() {
-//     return heap;
-//   };
+MinHeap.prototype.size = function() {
+  return this.data.length;
+};
 
-//   this.getLength = function() {
-//     return heap.length;
-//   };
+MinHeap.prototype.insert = function(num, freq) {
+  this.data.push({num, freq});
+  this.bubbleUp(this.data.length-1);
+};
 
-//   this.insert = function({num, val}) {
-//     heap.push({num, val});
-//     // bubble up:
-//     if (heap.length > 2) {
-//       let idx = heap.length - 1;
-//       while (heap[idx].num > heap[Math.floor(idx/2)].num ||
-//       (heap[idx].num === heap[Math.floor(idx/2)].num &&
-//       heap[idx].val < heap[Math.floor(idx/2)].val)) {
-//         if (idx >= 1) {
-//           [heap[Math.floor(idx/2)], heap[idx]] =
-//             [heap[idx], heap[Math.floor(idx/2)]];
-//           if (Math.floor(idx/2) > 1) {
-//             idx = Math.floor(idx/2);
-//           } else {
-//             break;
-//           }
-//         }
-//       }
-//     }
-//   };
+MinHeap.prototype.bubbleUp = function(index) {
+  while (index > 0) {
+  // get the parent
+    const parent = Math.floor((index + 1) / 2) - 1;
 
-//   this.remove = function() {
-//     const smallest = heap[1];
-//     if (heap.length < 2) { // last one
-//       return null;
-//     } else if (heap.length == 2) { // keep one more
-//       heap.splice(1, 1);
-//       return smallest;
-//     } else if (heap.length > 2) {
-//       // move last to top:
-//       heap[1] = heap[heap.length - 1];
-//       heap.splice(heap.length - 1);
-//       // trivial case:
-//       if (heap.length == 3) {
-//         if (heap[1].num < heap[2].num ||
-//         (heap[1].num === heap[2].num && heap[1].val > heap[2].val)) {
-//           [heap[1], heap[2]] = [heap[2], heap[1]];
-//         }
-//         return smallest;
-//       }
-//       // bubble down:
-//       let i = 1;
-//       let left = 2 * i;
-//       let right = 2 * i + 1;
-//       while ((heap[i] && heap[left] && heap[i].num < heap[left].num ||
-//       (heap[i] && heap[left] && heap[i].num === heap[left].num &&
-//       heap[i].val > heap[left].val)) ||
-//       (heap[i] && heap[right] && heap[i].num < heap[right].num) ||
-//       (heap[i] && heap[right] && heap[i].num === heap[right].num &&
-//       heap[i].val > heap[right].val)) {
-//         if (heap[left].num > heap[right].num ||
-//         (heap[left].num === heap[right].num &&
-//         heap[left].val < heap[right].val)) {
-//           [heap[i], heap[left]] = [heap[left], heap[i]];
-//           i = 2 * i;
-//         } else {
-//           [heap[i], heap[right]] = [heap[right], heap[i]];
-//           i = 2 * i + 1;
-//         }
-//         left = 2 * i;
-//         right = 2 * i + 1;
-//         if (heap[left] == undefined || heap[right] == undefined) {
-//           break;
-//         }
-//       }
-//       return smallest;
-//     }
-//   };
-// };
+    // if parent is greater than child
+    if (this.data[parent] && this.data[index] &&
+      this.data[parent].freq > this.data[index].freq) {
+      // swap
+      const temp = clone(this.data[parent]);
+      this.data[parent] = clone(this.data[index]);
+      this.data[index] = clone(temp);
+    }
+
+    index = parent;
+  }
+};
+MinHeap.prototype.extractMin = function() {
+  const min = this.data[0];
+
+  // set first element to last element
+  this.data[0] = clone(this.data.pop());
+
+  // call bubble down
+  this.bubbleDown(0);
+
+  return min;
+};
+
+MinHeap.prototype.pop = function() {
+  return this.extractMin();
+};
+
+MinHeap.prototype.bubbleDown = function(index) {
+  while (true) {
+    const child = (index+1)*2;
+    const sibling = child - 1;
+    let toSwap = null;
+
+    // if current is greater than child
+    if (this.data[index] && this.data[child] &&
+      this.data[index].freq > this.data[child].freq) {
+      toSwap = child;
+    }
+
+    // if sibling is smaller than child, but also smaller than current
+    if (this.data[index] && this.data[sibling] &&
+      this.data[index].freq > this.data[sibling].freq &&
+      (this.data[child] == null || (this.data[child] !== null &&
+        this.data[sibling] &&
+        this.data[sibling].freq < this.data[child].freq))) {
+      toSwap = sibling;
+    }
+
+    // if we don't need to swap, then break.
+    if (toSwap == null) {
+      break;
+    }
+
+    const temp = clone(this.data[toSwap]);
+    this.data[toSwap] = clone(this.data[index]);
+    this.data[index] = clone(temp);
+
+    index = toSwap;
+  }
+};
+
+function solutionWrapper(...parameters) {
+  return topKFrequent(...parameters).sort();
+}
 
 module.exports = {
-  topKFrequent,
+  solutionWrapper,
 };

@@ -1,4 +1,4 @@
-const {solutionWrapper} = require('./index.js');
+const {solutionWrapper} = require('./searchMatrix.js');
 
 const matrix = [
   [1, 4, 7, 11, 15],

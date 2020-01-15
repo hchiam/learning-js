@@ -2,6 +2,8 @@
 
 // question: https://leetcode.com/problems/search-a-2d-matrix-ii/
 
+// even better solution would be kinda using 2 binary searches (think of CtCI solution)
+
 /**
  * @param {[number[]]} matrix
  * @param {number} target

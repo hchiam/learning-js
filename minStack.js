@@ -1,7 +1,7 @@
 /**
  * https://leetcode.com/explore/interview/card/top-interview-questions-easy/98/design/562/
  * Stack that supports push/pop/top(peek) but also min in constant time.
- * Hint: NO NEED FOR A MIN HEAP!
+ * Hint: NO NEED FOR A MIN HEAP! Can you store the min on the current element?
  */
 
 /**

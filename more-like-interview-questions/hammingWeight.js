@@ -7,28 +7,28 @@
  * @return {number}
  */
 const hammingWeight = (n) => {
-  const r = (n).toString(2);
-  let count = 0;
-  // NOTE: this loop won't work on leetcode in js with let r = n:
-  // while (r > 0) {
-  //     const lastDigit = r & 1;
-  //     count += (lastDigit === 1) ? 1 : 0;
-  //     r = r >> 1;
-  // }
-  for (let i = 0; i < r.length; i++) {
-    count += (r[i] === '1') ? 1 : 0;
+  // faster with bit trick that n & (n-1) = rightmost 1 becomes a 0
+  if (n === 0) return 0;
+  let count1s = 0;
+  while (n !== 0) {
+      n = n & (n-1);
+      count1s++;
   }
-  return count;
+  return count1s;
 };
 
-// function solutionWrapper(node) {
-//   return hammingWeight(node);
-// }
-
-// module.exports = {
-//   solutionWrapper,
+// const hammingWeight_moreReadable = (n) => {
+//   return Array.from(n.toString(2)).filter(c => c === '1').length;
 // };
 
-console.log(3 === hammingWeight(00000000000000000000000000001011));
-console.log(1 === hammingWeight(00000000000000000000000010000000));
-console.log(hammingWeight(11111111111111111111111111111101)); // 31 on leetcode
+function solutionWrapper(node) {
+  return hammingWeight(node);
+}
+
+module.exports = {
+  solutionWrapper,
+};
+
+// console.log(3 === hammingWeight(0b00000000000000000000000000001011));
+// console.log(1 === hammingWeight(0b00000000000000000000000010000000));
+// console.log(31 === hammingWeight(0b11111111111111111111111111111101));

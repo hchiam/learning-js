@@ -38,3 +38,36 @@ function range(start=1, end=10, step=1) {
         }
     };
 }
+
+/*
+ * imitate Python's range function (I got some ideas from https://javascript.info/iterable#symbol-iterator)
+ */
+function range(from, to) {
+  if (typeof to === 'undefined') {
+    to = from;
+    from = 0;
+  }
+	var range = {};
+  range[Symbol.iterator] = function() {
+    return {
+      current: from,
+      last: to,
+      next() {
+        if (this.current < this.last) {
+          return { done: false, value: this.current++ };
+        } else {
+          return { done: true };
+        }
+      }
+    };
+  };
+	return range;
+}
+
+for (let number of range(1, 5)) {
+  console.log(number);
+}
+
+for (let number of range(5)) {
+  console.log(number);
+}

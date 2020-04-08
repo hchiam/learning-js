@@ -1,3 +1,5 @@
+// NOTE: number of yield calls === number of next calls PLUS ONE!!!
+
 function *myGenerator() {
   while (true) {
     const x = yield;

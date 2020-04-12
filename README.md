@@ -78,3 +78,7 @@ Instead of `nodemon -x 'npm run test; node index.js'`, you can do:
 ```bash
 nodemon -x 'yarn test; node index.js'
 ```
+
+### Service Workers
+
+Learning about them: <https://github.com/hchiam/learning-service-workers>

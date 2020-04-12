@@ -1,6 +1,10 @@
 /* This creates an interactive console log that you can view without opening the actual web dev tools console log. */
 
+// see most up-to-date demo here: https://codepen.io/hchiam/pen/ZEbYgQG?editors=0010
+
 (function() { // use an IIFE to isolate variables
+
+  var lastInput = '';
 
   var darkMode = 'background: #333; color: lime;';
   var defaultStyle = darkMode + 'padding: 0.3rem !important; border: none !important;';
@@ -19,6 +23,8 @@
   inputBox.onkeyup = function(event) {
     if (event.key === 'Enter' || event.keyCode === 13) {
       triggerInputToConsole();
+    } else if (event.key === 'ArrowUp' || event.keyCode === 38) {
+      enterLastInput();
     }
   };
   inputBox.onmouseenter = function() {
@@ -82,6 +88,7 @@
   }
 
   function inputToConsole(stringInput) {
+    lastInput = stringInput;
     // ignore empty input:
     if (stringInput === '') return;
     // handle clear():
@@ -119,8 +126,12 @@
     consoleOutput.scrollTop = consoleOutput.scrollHeight;
   }
 
+  function enterLastInput() {
+    inputBox.value = lastInput;
+  }
+
   function clearInput() {
-    document.getElementById('input').value = '';
+    inputBox.value = '';
   }
 
 })();

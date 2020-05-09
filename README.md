@@ -82,3 +82,7 @@ nodemon -x 'yarn test; node index.js'
 ### Service Workers
 
 Learning about them: <https://github.com/hchiam/learning-service-workers>
+
+### A list of useful one-liner utilities
+
+<https://1loc.dev/>

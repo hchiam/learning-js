@@ -6,10 +6,10 @@ function makeElementDraggable(element) {
   element.style.position = "absolute";
 
   function dragOnMouseDown(event) {
-    const event = event || window.event;
-    event.preventDefault();
-    x = event.clientX;
-    y = event.clientY;
+    let e = event || window.event;
+    e.preventDefault();
+    x = e.clientX;
+    y = e.clientY;
     document.onmouseup = stopDragging;
     document.onmousemove = dragElement;
   }
@@ -20,12 +20,12 @@ function makeElementDraggable(element) {
   }
 
   function dragElement(event) {
-    const event = event || window.event;
-    event.preventDefault();
-    const xChange = event.clientX - x;
-    const yChange = event.clientY - y;
-    x = event.clientX;
-    y = event.clientY;
+    let e = event || window.event;
+    e.preventDefault();
+    const xChange = e.clientX - x;
+    const yChange = e.clientY - y;
+    x = e.clientX;
+    y = e.clientY;
     element.style.left = element.offsetLeft + xChange + "px";
     element.style.top = element.offsetTop + yChange + "px";
   }

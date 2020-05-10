@@ -16,6 +16,12 @@ Make sure to include console.log("output text here");
 
 ## Bonus
 
+### Automatically format your code upon save
+
+In VSCode: use the [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) extension, and then in VSCode > Code > Preferences > Settings > search for "Format on save" > turn it on with the checkbox
+
+Now it'll automatically format your code, just like the built-in stuff for [Golang](https://github.com/hchiam/learning-golang).
+
 ### Get immediate feedback on code errors and style
 
 To automatically re-run a [.js file](https://github.com/hchiam/learning-js/tree/master/more-like-interview-questions) and the test cases in it whenever you edit that file, copy the .js code into [`index.js`](https://github.com/hchiam/learning-eslint-google/blob/master/index.js) in my [ESLint repo](https://github.com/hchiam/learning-eslint-google) and do the setup so you can run this command just once:

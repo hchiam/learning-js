@@ -1,4 +1,4 @@
-function makeElementDraggable(element) {
+function makeElementDraggable(element, dragStopCallback) {
   let x = 0;
   let y = 0;
   element.onmousedown = dragOnMouseDown;
@@ -17,6 +17,7 @@ function makeElementDraggable(element) {
   function stopDragging() {
     document.onmouseup = null;
     document.onmousemove = null;
+    if (dragStopCallback) dragStopCallback(element.id);
   }
 
   function dragElement(event) {

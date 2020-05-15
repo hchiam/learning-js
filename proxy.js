@@ -1,5 +1,9 @@
 // a Proxy can be used to let you detect when someone tries to get/set/delete an object's properties (via get/set/deleteProperty).
 
+// more reading for proxies in JS: https://2ality.com/2014/12/es6-proxies.html
+
+// proxies also work on function calls: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/apply
+
 // the following code is based off of: https://gomakethings.com/how-vanilla-js-proxies-work/
 
 /**

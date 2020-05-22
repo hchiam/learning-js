@@ -14,6 +14,8 @@ Make sure to include console.log("output text here");
 
 <https://stackoverflow.blog/2019/09/12/practical-ways-to-write-better-javascript>
 
+Also note the stuff around the default values for function arguments here: <https://devhints.io/es6?ref=devawesome.io>
+
 ## Bonus
 
 ### Automatically format your code upon save

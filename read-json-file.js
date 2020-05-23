@@ -1,3 +1,3 @@
-fetch("data.json", { mode: "no-cors" })
+fetch("data.json")
   .then((response) => response.json())
   .then((jsonResponse) => console.log(jsonResponse));

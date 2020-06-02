@@ -9,7 +9,9 @@ function printHanoiTowersSolution(n, src, dest, other) {
   // a disk on top needs to finally also go to the destination:
   printHanoiTowersSolution(n - 1, other, dest, src);
 }
-const src = 'a', dest = 'c', other = 'b';
+const src = "a",
+  dest = "c",
+  other = "b";
 printHanoiTowersSolution(3, src, dest, other);
 /**
  * 1 a -> c
@@ -19,5 +21,4 @@ printHanoiTowersSolution(3, src, dest, other);
  * 1 b -> a
  * 2 b -> c
  * 1 a -> c
- * /
- 
+ */

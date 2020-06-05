@@ -3,3 +3,6 @@ Promise.all(items.map(async (item) => {
   // do async stuff here
   console.log(item);
 }));
+
+// more info on using Promise/await/async (a)synchronously/sequentially/parallel-ly: 
+// https://medium.com/@patarkf/synchronize-your-asynchronous-code-using-javascripts-async-await-5f3fa5b1366d

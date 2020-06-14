@@ -6,3 +6,5 @@ Promise.all(items.map(async (item) => {
 
 // more info on using Promise/await/async (a)synchronously/sequentially/parallel-ly: 
 // https://medium.com/@patarkf/synchronize-your-asynchronous-code-using-javascripts-async-await-5f3fa5b1366d
+
+// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await

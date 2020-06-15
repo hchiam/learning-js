@@ -12,3 +12,9 @@ var missingNumber = function(nums) {
 };
 
 // https://leetcode.com/articles/missing-number
+
+console.log(missingNumber([0]) === 1);
+console.log(missingNumber([1]) === 0);
+console.log(missingNumber([0,1]) === 2);
+console.log(missingNumber([0,2]) === 1);
+console.log(missingNumber([3,0,1]) === 2);

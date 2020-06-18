@@ -94,3 +94,9 @@ Learning about them: <https://github.com/hchiam/learning-service-workers>
 ### A list of useful one-liner utilities
 
 <https://1loc.dev/>
+
+### Interesting [a11y](https://github.com/hchiam/web-accessibility-course-notes)-related JS code
+
+<https://github.com/hchiam/keyboard-focus-trap>
+
+<https://github.com/hchiam/flying-focus>

@@ -9,3 +9,5 @@ function isValidCode(codeString) {
 
 // isValidCode('a = 1'); // true
 // isValidCode('a =; 1'); // false
+
+// more info on "new Function": https://javascript.info/new-function

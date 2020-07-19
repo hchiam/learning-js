@@ -4,7 +4,7 @@ function onKonamiCode() {
   alert("Konami code detected!");
 }
 
-(function () {
+(function detectKonamiCode() {
   if (window.addEventListener) {
     var seq = [];
     var konamiAsciiSequence = "38,38,40,40,37,39,37,39,66,65";

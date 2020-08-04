@@ -1,3 +1,5 @@
+// interactive demo: https://codepen.io/hchiam/pen/oNxvMJB?editors=0010
+
 let arr = [1, 2, 3, 4, 5, 6, 7];
 console.log(`Before: \n${arr}`);
 sortValleyPeak(arr);

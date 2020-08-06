@@ -58,3 +58,5 @@ drawChart({
   coords: {x: 18, y: 30},
   radius: 30,
 }); // big {x: 18, y: 30} 30
+
+// more: https://github.com/hchiam/learning-js/blob/master/spread-operator.js

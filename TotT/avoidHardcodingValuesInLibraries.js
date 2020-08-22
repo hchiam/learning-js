@@ -23,4 +23,12 @@ function DemoImageObject(image, size) {
   this.size = size;
 }
 
-// alert(JSON.stringify(goodExample('a')))
+console.log(
+  "advanced users can set customizations:\n",
+  JSON.stringify(goodExample("a", [128, 700, 1200, 5240]))
+);
+
+console.log(
+  "but defaults require no extra typing:\n",
+  JSON.stringify(goodExample("a"))
+);

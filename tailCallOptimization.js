@@ -1,3 +1,4 @@
+"use strict";
 // https://medium.com/javascript-in-plain-english/javascript-optimizations-tail-call-optimization-tco-471b4f8e4f37
 function factorial(n, total = 1) {
   console.trace();

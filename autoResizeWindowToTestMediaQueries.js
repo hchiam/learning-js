@@ -19,7 +19,7 @@ var test = (function () {
     popup = window.open(
       location.href,
       "_blank",
-      "width=100"
+      "width=100, top=0, left=0"
     ); /* , height=100"); */
   }
   function wider() {

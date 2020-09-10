@@ -2,7 +2,7 @@
 
 localStorage.setItem('getShelvesetComment', `function getShelvesetComment() {
   var storyIdText = $('#parent_issue_summary').text();
-  var start = storyIdText ? storyIdMatch.match(/^CD-\\d+/)[0] + ' / ' : '';
+  var start = storyIdText ? storyIdText.match(/^CD-\\d+/)[0] + ' / ' : '';
   var comment = start + $('#key-val').text() + ' : ' + $('#summary-val').text();
   // alert(comment);
   console.log(comment);

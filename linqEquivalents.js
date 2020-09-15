@@ -12,7 +12,7 @@ const average = numbers.reduce((acc, n) => acc + n, 0) / numbers.length;
 
 // Distinct:
 const initialArray = [];
-const distinct = numbers.reduce((unique, n) => [...unique, n], initialArray);
+const distinct = [...new Set(numbers)];
 
 const moreNumbers = [8, 9, 10];
 const concatenatedNumbers = [...numbers, ...moreNumbers];

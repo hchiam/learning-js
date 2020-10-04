@@ -1,6 +1,6 @@
 /*eslint-disable require-jsdoc */
 
-const { solutionWrapper } = require("./zig-zag-binary-tree-traversal.js");
+const { zigzag, zigzagFaster } = require("./zig-zag-binary-tree-traversal.js");
 
 function TreeNode(val, left, right) {
   this.val = val === undefined ? 0 : val;
@@ -17,7 +17,9 @@ describe("perfect binary tree", () => {
   n.right.left = new TreeNode(6);
   n.right.right = new TreeNode(7);
   it("works", () =>
-    expect(solutionWrapper(n)).toStrictEqual([[1], [3, 2], [4, 5, 6, 7]]));
+    expect(zigzag(n)).toStrictEqual([[1], [3, 2], [4, 5, 6, 7]]));
+  it("works", () =>
+    expect(zigzagFaster(n)).toStrictEqual([[1], [3, 2], [4, 5, 6, 7]]));
 });
 
 describe("complete binary tree", () => {
@@ -26,8 +28,9 @@ describe("complete binary tree", () => {
   n.left.left = new TreeNode(4);
   n.left.right = new TreeNode(5);
   n.right = new TreeNode(3);
+  it("works", () => expect(zigzag(n)).toStrictEqual([[1], [3, 2], [4, 5]]));
   it("works", () =>
-    expect(solutionWrapper(n)).toStrictEqual([[1], [3, 2], [4, 5]]));
+    expect(zigzagFaster(n)).toStrictEqual([[1], [3, 2], [4, 5]]));
 });
 
 describe("NON-complete binary tree", () => {
@@ -36,8 +39,9 @@ describe("NON-complete binary tree", () => {
   n.right = new TreeNode(3);
   n.right.left = new TreeNode(4);
   n.right.right = new TreeNode(5);
+  it("works", () => expect(zigzag(n)).toStrictEqual([[1], [3, 2], [4, 5]]));
   it("works", () =>
-    expect(solutionWrapper(n)).toStrictEqual([[1], [3, 2], [4, 5]]));
+    expect(zigzagFaster(n)).toStrictEqual([[1], [3, 2], [4, 5]]));
 });
 
 describe("NON-FULL binary tree", () => {
@@ -46,6 +50,7 @@ describe("NON-FULL binary tree", () => {
   n.left.left = new TreeNode(4);
   n.right = new TreeNode(3);
   n.right.right = new TreeNode(5);
+  it("works", () => expect(zigzag(n)).toStrictEqual([[1], [3, 2], [4, 5]]));
   it("works", () =>
-    expect(solutionWrapper(n)).toStrictEqual([[1], [3, 2], [4, 5]]));
+    expect(zigzagFaster(n)).toStrictEqual([[1], [3, 2], [4, 5]]));
 });

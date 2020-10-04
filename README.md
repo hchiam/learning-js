@@ -32,7 +32,7 @@ To automatically re-run a [.js file](https://github.com/hchiam/learning-js/tree/
 nodemon -x 'npm run lint; node index.js'
 ```
 
-***Or*** `nodemon -x 'npm run lint; npm run test; node index.js'`
+**_Or_** `nodemon -x 'npm run lint; npm run test; node index.js'`
 
 This works just like [`rerun` for Python](https://github.com/hchiam/learning-python/blob/master/README.md#run-code-linter).
 
@@ -45,9 +45,9 @@ npm install # eslint and jest-cli are already listed in package.json for you
 npm test # runs scripts test command listed in package.json
 ```
 
-***Or*** just run this: [`jest`](https://github.com/hchiam/learning-jest).
+**_Or_** just run this: [`jest`](https://github.com/hchiam/learning-jest).
 
-***Or*** to run just a-specific.test.js, run this: `jest a-specific.test.js`.
+**_Or_** to run just a-specific.test.js, run this: `jest a-specific.test.js`.
 
 ### Get code Maintainability Index (MI score)
 

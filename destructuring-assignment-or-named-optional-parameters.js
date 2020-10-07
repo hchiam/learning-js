@@ -64,3 +64,9 @@ drawChart({
 }); // big {x: 18, y: 30} 30
 
 // more: https://github.com/hchiam/learning-js/blob/master/spread-operator.js
+
+const [message, status] = user
+  ? ["Push Token updated", 200]
+  : ["User not found", 404];
+
+console.log({ message }); // -> { message: 'Push Token updated' }

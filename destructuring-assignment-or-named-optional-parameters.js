@@ -2,10 +2,10 @@
 
 const user = {
   id: 42,
-  displayName: 'jdoe',
+  displayName: "jdoe",
   fullName: {
-    firstName: 'John',
-    lastName: 'Doe',
+    firstName: "John",
+    lastName: "Doe",
   },
 };
 
@@ -14,7 +14,7 @@ const user = {
  * @param {object} id
  * @return {number} id
  */
-function userId({id}) {
+function userId({ id }) {
   return id;
 }
 
@@ -23,7 +23,7 @@ function userId({id}) {
  * @param {object} parameters
  * @return {string}
  */
-function whois({displayName, fullName: {firstName: name}}) {
+function whois({ displayName, fullName: { firstName: name } }) {
   // instead of whois(user.displayName, user.fullName.firstName)
   // or return `${user.displayName} is ${user.fullName.firstName}`
   return `${displayName} is ${name}`; // (fullName.firstName won't work here)
@@ -34,7 +34,7 @@ function whois({displayName, fullName: {firstName: name}}) {
  * @param {object} parameters
  * @return {string}
  */
-function whois2({displayName, fullName: {firstName}}) {
+function whois2({ displayName, fullName: { firstName } }) {
   return `${displayName} is ${firstName}`;
 }
 
@@ -49,13 +49,17 @@ console.log(whois2(user)); // "jdoe is John"
  * = {} lets it work even with no input parameters
  * @param {object} parameters
  */
-function drawChart({size = 'big', coords = {x: 0, y: 0}, radius = 25} = {}) {
+function drawChart({
+  size = "big",
+  coords = { x: 0, y: 0 },
+  radius = 25,
+} = {}) {
   console.log(size, coords, radius);
   // do some chart drawing
 }
 
 drawChart({
-  coords: {x: 18, y: 30},
+  coords: { x: 18, y: 30 },
   radius: 30,
 }); // big {x: 18, y: 30} 30
 

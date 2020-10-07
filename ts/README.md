@@ -1,4 +1,4 @@
-# TypeScript files
+# [TypeScript](https://github.com/hchiam/learning-typescript) files
 
 Example: to run `boggle.ts`:
 
@@ -13,3 +13,5 @@ npm run try --name=boggle
 ```
 
 (^ that won't work with `yarn`)
+
+Learn more about TypeScript here: <https://github.com/hchiam/learning-typescript>

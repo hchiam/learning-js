@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/video-stitching/
 function videoStitching(clips, T) {
     if (T === 0)
         return 1;

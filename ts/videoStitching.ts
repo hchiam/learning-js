@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/video-stitching/
+
 function videoStitching(clips: number[][], T: number): number {
   if (T === 0) return 1;
   clips.sort((a, b) => a[0] - b[0]);

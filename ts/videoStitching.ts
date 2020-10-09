@@ -63,7 +63,7 @@ export function videoStitching_v2(clips: number[][], T: number): number {
   let previousMax: number = 0;
   let count: number = 0;
 
-  // NOTE: this loop counts PREVIOUS clips for usage, and the LAST clip that completes the coverage:
+  // NOTE: this loop counts PREVIOUS clips for usage, and counts the LAST clip that completes the coverage:
   for (let c = 0; c < clips.length; c++) {
     const clip: number[] = clips[c];
     const start: number = clip[0];

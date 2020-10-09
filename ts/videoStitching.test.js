@@ -1,8 +1,8 @@
 /* eslint-disable require-jsdoc */
 
-const { videoStitching } = require("./videoStitching.js");
+const { videoStitching, videoStitching_v2 } = require("./videoStitching.js");
 
-describe("the solution", () => {
+describe("the solution (both versions)", () => {
   it("works", () => {
     const clips = [
       [0, 2],
@@ -14,6 +14,7 @@ describe("the solution", () => {
     ];
     const timeRange = 10;
     expect(videoStitching(clips, timeRange)).toEqual(3);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(3);
   });
 
   it("works", () => {
@@ -23,6 +24,7 @@ describe("the solution", () => {
     ];
     const timeRange = 5;
     expect(videoStitching(clips, timeRange)).toEqual(-1);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(-1);
   });
 
   it("works", () => {
@@ -46,6 +48,7 @@ describe("the solution", () => {
     ];
     const timeRange = 9;
     expect(videoStitching(clips, timeRange)).toEqual(3);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(3);
   });
 
   it("works", () => {
@@ -55,30 +58,35 @@ describe("the solution", () => {
     ];
     const timeRange = 5;
     expect(videoStitching(clips, timeRange)).toEqual(2);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(2);
   });
 
   it("works", () => {
     const clips = [[0, 0]];
     const timeRange = 5;
     expect(videoStitching(clips, timeRange)).toEqual(-1);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(-1);
   });
 
   it("works", () => {
     const clips = [[0, 4]];
     const timeRange = 5;
     expect(videoStitching(clips, timeRange)).toEqual(-1);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(-1);
   });
 
   it("works", () => {
     const clips = [[1, 5]];
     const timeRange = 5;
     expect(videoStitching(clips, timeRange)).toEqual(-1);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(-1);
   });
 
   it("works", () => {
     const clips = [[0, 5]];
     const timeRange = 5;
     expect(videoStitching(clips, timeRange)).toEqual(1);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(1);
   });
 
   it("works", () => {
@@ -88,6 +96,7 @@ describe("the solution", () => {
     ];
     const timeRange = 5;
     expect(videoStitching(clips, timeRange)).toEqual(1);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(1);
   });
 
   it("works", () => {
@@ -97,6 +106,7 @@ describe("the solution", () => {
     ];
     const timeRange = 5;
     expect(videoStitching(clips, timeRange)).toEqual(1);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(1);
   });
 
   it("works", () => {
@@ -112,5 +122,40 @@ describe("the solution", () => {
     ];
     const timeRange = 5;
     expect(videoStitching(clips, timeRange)).toEqual(1);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(1);
+  });
+
+  it("works", () => {
+    const clips = [[0, 0]];
+    const timeRange = 0;
+    expect(videoStitching(clips, timeRange)).toEqual(1);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(1);
+  });
+
+  it("works", () => {
+    const clips = [[0, 1]];
+    const timeRange = 0;
+    expect(videoStitching(clips, timeRange)).toEqual(1);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(1);
+  });
+
+  it("works", () => {
+    const clips = [
+      [0, 1],
+      [6, 8],
+      [0, 2],
+      [5, 6],
+      [0, 4],
+      [0, 3],
+      [6, 7],
+      [4, 7],
+      [3, 4],
+      [4, 5],
+      [5, 7],
+      [6, 9],
+    ];
+    const timeRange = 9;
+    expect(videoStitching(clips, timeRange)).toEqual(3);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(3);
   });
 });

@@ -4,7 +4,7 @@
   "description": "Example:",
   "main": "boggle.js",
   "scripts": {
-    "try": "tsc $npm_config_name.ts --lib es6,dom && node $npm_config_name.js",
+    "try": "tsc $npm_config_name.ts --lib es6,dom && node $npm_config_name.js && jest $npm_config_name",
     "demo": "echo \"HELLO $npm_config_file_name.ts GOODBYE\""
   },
   "author": "",

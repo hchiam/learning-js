@@ -1,4 +1,6 @@
+"use strict";
 // https://leetcode.com/problems/video-stitching/
+exports.__esModule = true;
 function videoStitching(clips, T) {
     if (T === 0)
         return 1;
@@ -39,81 +41,86 @@ function videoStitching(clips, T) {
     // console.log(dp);
     return answer;
 }
-var clips = [
-    [0, 2],
-    [4, 6],
-    [8, 10],
-    [1, 9],
-    [1, 5],
-    [5, 9],
-];
-var timeRange = 10;
-console.log(3 === videoStitching(clips, timeRange));
-clips = [
-    [0, 1],
-    [1, 2],
-];
-timeRange = 5;
-console.log(-1 === videoStitching(clips, timeRange));
-clips = [
-    [0, 1],
-    [6, 8],
-    [0, 2],
-    [5, 6],
-    [0, 4],
-    [0, 3],
-    [6, 7],
-    [1, 3],
-    [4, 7],
-    [1, 4],
-    [2, 5],
-    [2, 6],
-    [3, 4],
-    [4, 5],
-    [5, 7],
-    [6, 9],
-];
-timeRange = 9;
-console.log(3 === videoStitching(clips, timeRange));
-clips = [
-    [0, 4],
-    [2, 8],
-];
-timeRange = 5;
-console.log(2 === videoStitching(clips, timeRange));
-clips = [[0, 0]];
-timeRange = 5;
-console.log(-1 === videoStitching(clips, timeRange));
-clips = [[0, 4]];
-timeRange = 5;
-console.log(-1 === videoStitching(clips, timeRange));
-clips = [[1, 5]];
-timeRange = 5;
-console.log(-1 === videoStitching(clips, timeRange));
-clips = [[0, 5]];
-timeRange = 5;
-console.log(1 === videoStitching(clips, timeRange));
-clips = [
-    [0, 5],
-    [0, 7],
-];
-timeRange = 5;
-console.log(1 === videoStitching(clips, timeRange));
-clips = [
-    [0, 5],
-    [0, 5],
-];
-timeRange = 5;
-console.log(1 === videoStitching(clips, timeRange));
-clips = [
-    [5, 7],
-    [1, 8],
-    [0, 0],
-    [2, 3],
-    [4, 5],
-    [0, 6],
-    [5, 10],
-    [7, 10],
-];
-timeRange = 5;
-console.log(1 === videoStitching(clips, timeRange));
+exports.videoStitching = videoStitching;
+// uncomment the next line and run node videoStitching.js:
+// manuallyTest();
+function manuallyTest() {
+    var clips = [
+        [0, 2],
+        [4, 6],
+        [8, 10],
+        [1, 9],
+        [1, 5],
+        [5, 9],
+    ];
+    var timeRange = 10;
+    console.log(3 === videoStitching(clips, timeRange));
+    clips = [
+        [0, 1],
+        [1, 2],
+    ];
+    timeRange = 5;
+    console.log(-1 === videoStitching(clips, timeRange));
+    clips = [
+        [0, 1],
+        [6, 8],
+        [0, 2],
+        [5, 6],
+        [0, 4],
+        [0, 3],
+        [6, 7],
+        [1, 3],
+        [4, 7],
+        [1, 4],
+        [2, 5],
+        [2, 6],
+        [3, 4],
+        [4, 5],
+        [5, 7],
+        [6, 9],
+    ];
+    timeRange = 9;
+    console.log(3 === videoStitching(clips, timeRange));
+    clips = [
+        [0, 4],
+        [2, 8],
+    ];
+    timeRange = 5;
+    console.log(2 === videoStitching(clips, timeRange));
+    clips = [[0, 0]];
+    timeRange = 5;
+    console.log(-1 === videoStitching(clips, timeRange));
+    clips = [[0, 4]];
+    timeRange = 5;
+    console.log(-1 === videoStitching(clips, timeRange));
+    clips = [[1, 5]];
+    timeRange = 5;
+    console.log(-1 === videoStitching(clips, timeRange));
+    clips = [[0, 5]];
+    timeRange = 5;
+    console.log(1 === videoStitching(clips, timeRange));
+    clips = [
+        [0, 5],
+        [0, 7],
+    ];
+    timeRange = 5;
+    console.log(1 === videoStitching(clips, timeRange));
+    clips = [
+        [0, 5],
+        [0, 5],
+    ];
+    timeRange = 5;
+    console.log(1 === videoStitching(clips, timeRange));
+    clips = [
+        [5, 7],
+        [1, 8],
+        [0, 0],
+        [2, 3],
+        [4, 5],
+        [0, 6],
+        [5, 10],
+        [7, 10],
+    ];
+    timeRange = 5;
+    console.log(1 === videoStitching(clips, timeRange));
+}

@@ -1,9 +1,15 @@
-var numbers = [1, 2, 3, 4, 6];
-testTheIsCorrectFunction();
-console.log(isCorrect(sortArrayByParity_2passes(numbers)));
-console.log(isCorrect(sortArrayByParity_inPlace(numbers)));
-console.log(isCorrect(sortArrayByParity_inPlaceButCleverer(numbers)));
-console.log(isCorrect(sortArrayByParity_smartSortCallback(numbers)));
+"use strict";
+exports.__esModule = true;
+// uncomment this next line and run node sortArrayByParity.js:
+// manualTest();
+function manualTest() {
+    var numbers = [1, 2, 3, 4, 6];
+    testTheIsCorrectFunction();
+    console.log(isCorrect(sortArrayByParity_2passes(numbers)));
+    console.log(isCorrect(sortArrayByParity_inPlace(numbers)));
+    console.log(isCorrect(sortArrayByParity_inPlaceButCleverer(numbers)));
+    console.log(isCorrect(sortArrayByParity_smartSortCallback(numbers)));
+}
 function sortArrayByParity_2passes(A) {
     // time O(n), space O(n)
     var iEven = 0;
@@ -26,6 +32,7 @@ function sortArrayByParity_2passes(A) {
     }
     return output;
 }
+exports.sortArrayByParity_2passes = sortArrayByParity_2passes;
 function sortArrayByParity_inPlace(A) {
     var _a;
     // time O(n), space O(1)
@@ -50,6 +57,7 @@ function sortArrayByParity_inPlace(A) {
     }
     return A;
 }
+exports.sortArrayByParity_inPlace = sortArrayByParity_inPlace;
 function sortArrayByParity_inPlaceButCleverer(A) {
     var _a;
     // time O(n) space O(1)
@@ -74,6 +82,7 @@ function sortArrayByParity_inPlaceButCleverer(A) {
     }
     return A;
 }
+exports.sortArrayByParity_inPlaceButCleverer = sortArrayByParity_inPlaceButCleverer;
 function sortArrayByParity_smartSortCallback(A) {
     // time O(n log n), space O(log n)
     if (A.length < 2)
@@ -83,6 +92,7 @@ function sortArrayByParity_smartSortCallback(A) {
         return num % 2 === 0 ? -1 : +1;
     });
 }
+exports.sortArrayByParity_smartSortCallback = sortArrayByParity_smartSortCallback;
 function isCorrect(arr) {
     if (arr.length < 2)
         return true;
@@ -101,6 +111,7 @@ function isCorrect(arr) {
     }
     return true;
 }
+exports.isCorrect = isCorrect;
 function testTheIsCorrectFunction() {
     var goodSoFar = true;
     goodSoFar = goodSoFar && isCorrect([2, 4, 6, 1, 3]);

@@ -1,18 +1,6 @@
 // tsc boggle.ts --lib es6,dom && node boggle.js
 
-const board = [
-  ["A", "B", "C", "E"],
-  ["S", "F", "C", "S"],
-  ["A", "D", "E", "E"],
-];
-console.log(exist(board, "ABCCED") === true);
-console.log(exist(board, "B") === true);
-console.log(exist(board, "SEE") === true);
-console.log(exist(board, "ABCB") === false);
-console.log(exist(board, "X") === false);
-console.log(exist(board, "CCC") === false);
-
-function exist(board: string[][], word: string): boolean {
+export function exist(board: string[][], word: string): boolean {
   for (let r = 0; r < board.length; r++) {
     for (let c = 0; c < board[0].length; c++) {
       if (board[r][c] === word[0]) {

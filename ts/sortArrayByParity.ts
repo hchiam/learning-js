@@ -1,12 +1,15 @@
-const numbers = [1, 2, 3, 4, 6];
+// uncomment this next line and run node sortArrayByParity.js:
+// manualTest();
+function manualTest() {
+  const numbers = [1, 2, 3, 4, 6];
+  testTheIsCorrectFunction();
+  console.log(isCorrect(sortArrayByParity_2passes(numbers)));
+  console.log(isCorrect(sortArrayByParity_inPlace(numbers)));
+  console.log(isCorrect(sortArrayByParity_inPlaceButCleverer(numbers)));
+  console.log(isCorrect(sortArrayByParity_smartSortCallback(numbers)));
+}
 
-testTheIsCorrectFunction();
-console.log(isCorrect(sortArrayByParity_2passes(numbers)));
-console.log(isCorrect(sortArrayByParity_inPlace(numbers)));
-console.log(isCorrect(sortArrayByParity_inPlaceButCleverer(numbers)));
-console.log(isCorrect(sortArrayByParity_smartSortCallback(numbers)));
-
-function sortArrayByParity_2passes(A: number[]): number[] {
+export function sortArrayByParity_2passes(A: number[]): number[] {
   // time O(n), space O(n)
   let iEven: number = 0;
   let iOdd: number = 0;
@@ -28,7 +31,7 @@ function sortArrayByParity_2passes(A: number[]): number[] {
   return output;
 }
 
-function sortArrayByParity_inPlace(A: number[]): number[] {
+export function sortArrayByParity_inPlace(A: number[]): number[] {
   // time O(n), space O(1)
   if (A.length < 2) return A;
   let iEven: number = 0;
@@ -51,7 +54,7 @@ function sortArrayByParity_inPlace(A: number[]): number[] {
   return A;
 }
 
-function sortArrayByParity_inPlaceButCleverer(A: number[]): number[] {
+export function sortArrayByParity_inPlaceButCleverer(A: number[]): number[] {
   // time O(n) space O(1)
   if (A.length < 2) return A;
   let iEven: number = 0;
@@ -75,7 +78,7 @@ function sortArrayByParity_inPlaceButCleverer(A: number[]): number[] {
   return A;
 }
 
-function sortArrayByParity_smartSortCallback(A: number[]): number[] {
+export function sortArrayByParity_smartSortCallback(A: number[]): number[] {
   // time O(n log n), space O(log n)
   if (A.length < 2) return A;
   return A.sort((num) => {
@@ -84,7 +87,7 @@ function sortArrayByParity_smartSortCallback(A: number[]): number[] {
   });
 }
 
-function isCorrect(arr: number[]): boolean {
+export function isCorrect(arr: number[]): boolean {
   if (arr.length < 2) return true;
   let seenEven = false;
   let seenOdd = false;

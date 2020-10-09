@@ -1,15 +1,6 @@
+"use strict";
 // tsc boggle.ts --lib es6,dom && node boggle.js
-var board = [
-    ["A", "B", "C", "E"],
-    ["S", "F", "C", "S"],
-    ["A", "D", "E", "E"],
-];
-console.log(exist(board, "ABCCED") === true);
-console.log(exist(board, "B") === true);
-console.log(exist(board, "SEE") === true);
-console.log(exist(board, "ABCB") === false);
-console.log(exist(board, "X") === false);
-console.log(exist(board, "CCC") === false);
+exports.__esModule = true;
 function exist(board, word) {
     for (var r = 0; r < board.length; r++) {
         for (var c = 0; c < board[0].length; c++) {
@@ -36,6 +27,7 @@ function exist(board, word) {
     }
     return false;
 }
+exports.exist = exist;
 function chain(_a) {
     var board = _a.board, visited = _a.visited, _b = _a.position, row = _b.row, col = _b.col, wordRemainder = _a.wordRemainder;
     // base case:

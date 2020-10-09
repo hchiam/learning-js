@@ -61,7 +61,7 @@ function videoStitching_v2(clips, T) {
     var currentMax = 0;
     var previousMax = 0;
     var count = 0;
-    // NOTE: this loop counts PREVIOUS clips for usage, and the LAST clip that completes the coverage:
+    // NOTE: this loop counts PREVIOUS clips for usage, and counts the LAST clip that completes the coverage:
     for (var c = 0; c < clips.length; c++) {
         var clip = clips[c];
         var start = clip[0];

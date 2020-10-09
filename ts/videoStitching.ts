@@ -226,4 +226,25 @@ function manuallyTest(): void {
   timeRange = 9;
   console.log(3 === videoStitching(clips, timeRange));
   console.log(3 === videoStitching_v2(clips, timeRange));
+
+  clips = [
+    [0, 4],
+    [2, 6],
+    [4, 7],
+    [6, 9],
+  ];
+  timeRange = 9;
+  console.log(3 === videoStitching(clips, timeRange));
+  console.log(3 === videoStitching_v2(clips, timeRange));
+
+  clips = [
+    [0, 4],
+    [2, 5],
+    [5, 6],
+    [4, 7],
+    [6, 9],
+  ];
+  timeRange = 9;
+  console.log(3 === videoStitching(clips, timeRange));
+  console.log(3 === videoStitching_v2(clips, timeRange));
 }

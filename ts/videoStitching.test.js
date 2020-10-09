@@ -48,6 +48,7 @@ describe("the solution (both versions)", () => {
     ];
     const timeRange = 9;
     expect(videoStitching(clips, timeRange)).toEqual(3);
+    console.log(clips);
     expect(videoStitching_v2(clips, timeRange)).toEqual(3);
   });
 
@@ -152,6 +153,31 @@ describe("the solution (both versions)", () => {
       [3, 4],
       [4, 5],
       [5, 7],
+      [6, 9],
+    ];
+    const timeRange = 9;
+    expect(videoStitching(clips, timeRange)).toEqual(3);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(3);
+  });
+
+  it("works", () => {
+    const clips = [
+      [0, 4],
+      [2, 6],
+      [4, 7],
+      [6, 9],
+    ];
+    const timeRange = 9;
+    expect(videoStitching(clips, timeRange)).toEqual(3);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(3);
+  });
+
+  it("works", () => {
+    const clips = [
+      [0, 4],
+      [2, 5],
+      [5, 6],
+      [4, 7],
       [6, 9],
     ];
     const timeRange = 9;

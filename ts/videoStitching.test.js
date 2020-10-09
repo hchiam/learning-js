@@ -184,4 +184,30 @@ describe("the solution (both versions)", () => {
     expect(videoStitching(clips, timeRange)).toEqual(3);
     expect(videoStitching_v2(clips, timeRange)).toEqual(3);
   });
+
+  it("works", () => {
+    const clips = [
+      [0, 4],
+      [2, 5],
+      [3, 6],
+      [4, 7],
+      [6, 9],
+    ];
+    const timeRange = 9;
+    expect(videoStitching(clips, timeRange)).toEqual(3);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(3);
+  });
+
+  it("works", () => {
+    const clips = [
+      [0, 1],
+      [1, 2],
+      [2, 3],
+      [3, 4],
+      [4, 9],
+    ];
+    const timeRange = 9;
+    expect(videoStitching(clips, timeRange)).toEqual(5);
+    expect(videoStitching_v2(clips, timeRange)).toEqual(5);
+  });
 });

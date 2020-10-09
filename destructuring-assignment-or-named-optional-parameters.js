@@ -70,3 +70,8 @@ const [message, status] = user
   : ["User not found", 404];
 
 console.log({ message }); // -> { message: 'Push Token updated' }
+
+// you can also rename destructured elements:
+const c = { a: "some value", b: 2 };
+const { a: renamedItem } = c;
+console.log(renamedItem); // 'some value'

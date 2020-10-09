@@ -76,9 +76,9 @@ function videoStitching_v2(clips, T) {
         if (start > previousMax) {
             // the current clip safely contributes to the current max, but starts after the previous max,
             // (example: [ [0,4], [0,9], [5,10] ])
-            // so the PREVIOUS clip needs to be used:
+            // so the PREVIOUS clip needs to be used: (in the example: use [0,9], with previousMax was 4 and currentMax was 9)
             count++;
-            // (it's also safe to update the previous max now)
+            // (it's also safe to update the previous max now) (in the example: previousMax will be 9, currentMax will be 10)
             previousMax = currentMax;
         }
         if (end >= T) {

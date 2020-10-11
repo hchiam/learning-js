@@ -14,9 +14,17 @@ function ListNode(val) {
 ListNode.prototype.doSomething = function () {
   // this way does NOT get re-declared every object
   console.log("hi");
+  console.log(this.prototypeVariable);
 };
+ListNode.staticFunction = function () {
+  console.log("static function");
+};
+ListNode.prototype.prototypeVariable = "prototype var val";
 const a = new ListNode(1);
 a.doSomething();
+console.log(a.prototypeVariable);
+a.prototypeVariable = "some new value";
+console.log(a.prototypeVariable);
 
 // Here's another way to make a class in JS:
 // Remember to add 'this.' before function names too!!!
@@ -59,4 +67,4 @@ class Rectangle {
 
 let r = new Rectangle(1, 2);
 
-alert(r.height);
+console.log(r.height);

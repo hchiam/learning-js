@@ -50,6 +50,7 @@ console.log(myInstance.myFun("hi"));
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
 // note: hoisting does NOT work on classes
 class Rectangle {
+  // note: can be misleading since it's just actually just a prototype
   constructor(height, width) {
     this.height = height;
     this.width = width;

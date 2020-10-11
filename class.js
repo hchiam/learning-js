@@ -11,40 +11,42 @@ function ListNode(val) {
   //   console.log('this function would get re-declared every object');
   // };
 }
-ListNode.prototype.doSomething = function() { // this way does NOT get re-declared every object
-  console.log('hi');
+ListNode.prototype.doSomething = function () {
+  // this way does NOT get re-declared every object
+  console.log("hi");
 };
 const a = new ListNode(1);
 a.doSomething();
 
 // Here's another way to make a class in JS:
 // Remember to add 'this.' before function names too!!!
-function myClass(myVar) { // function className(initVars)
-    this.myVar = myVar; // this.varName
-    this.get = function() { // this.funcName = function(params)
-        return this.myVar; // return this.varName
-    };
+function myClass(myVar) {
+  // function className(initVars)
+  this.myVar = myVar; // this.varName
+  this.get = function () {
+    // this.funcName = function(params)
+    return this.myVar; // return this.varName
+  };
 }
 
 test = new myClass(2); // new className(initVars)
-console.log('test = new myClass(2);');
-console.log('test.get() = ' + test.get());
+console.log("test = new myClass(2);");
+console.log("test.get() = " + test.get());
 
-console.log('\nAnother example:');
+console.log("\nAnother example:");
 
 function myClassDef(initVar) {
-	this.var = initVar;
-	this.myFun = function(param) {
-		this.var = param + " " + this.var;
-		return this.var;
-	};
+  this.var = initVar;
+  this.myFun = function (param) {
+    this.var = param + " " + this.var;
+    return this.var;
+  };
 }
 
 myInstance = new myClassDef("Alex");
 console.log(myInstance.myFun("hi"));
 
-
-// yet another (new) way to make classes:
+// yet another (new) way to make "classes":
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
 // note: hoisting does NOT work on classes
 class Rectangle {
@@ -54,6 +56,6 @@ class Rectangle {
   }
 }
 
-let r = new Rectangle(1,2);
+let r = new Rectangle(1, 2);
 
 alert(r.height);

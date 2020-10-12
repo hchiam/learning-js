@@ -101,6 +101,14 @@ Learning about them: <https://github.com/hchiam/learning-service-workers>
 
 <https://github.com/hchiam/flying-focus>
 
+### More data structures/algorithms
+
+<https://github.com/hchiam/learning-splay-tree>
+
+<https://github.com/hchiam/learning-b-tree>
+
+<https://github.com/hchiam/learning-skip-list>
+
 ### Chrome dev tools tricks for more productive debugging
 
 <https://blog.bitsrc.io/10-tips-to-improve-productivity-using-chrome-dev-tools-7918fc8203f3>

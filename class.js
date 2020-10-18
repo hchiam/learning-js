@@ -7,6 +7,7 @@
 function ListNode(val) {
   this.val = val;
   this.next = null;
+  this.ownProp = "different from prototype prop, is copied";
   // this.doSomethingElse = function() {
   //   console.log('this function would get re-declared every object');
   // };
@@ -17,14 +18,19 @@ ListNode.prototype.doSomething = function () {
   console.log(this.prototypeVariable);
 };
 ListNode.staticFunction = function () {
-  console.log("static function");
+  console.log("'static' function");
 };
 ListNode.prototype.prototypeVariable = "prototype var val";
 const a = new ListNode(1);
 a.doSomething();
 console.log(a.prototypeVariable);
 a.prototypeVariable = "some new value";
-console.log(a.prototypeVariable);
+console.log(`${a.prototypeVariable} - changed since added own prop`);
+console.log(
+  `${ListNode.prototype.prototypeVariable} - same since you only added an own prop`
+);
+ListNode.prototype.prototypeVariable = "edited prototype var val";
+console.log(`${ListNode.prototype.prototypeVariable}`);
 
 // Here's another way to make a class in JS:
 // Remember to add 'this.' before function names too!!!

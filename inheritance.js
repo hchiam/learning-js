@@ -17,3 +17,15 @@ Animal.prototype = {
 let dog = Object.create(Animal.prototype);
 let bird = Object.create(Animal.prototype);
 // (these inherit from Animal)
+
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/object-oriented-programming/set-the-childs-prototype-to-an-instance-of-the-parent
+
+// and to create other "classes" (not instance objects):
+
+function Dog() {}
+
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+let doug = new Dog();
+doug.eat();

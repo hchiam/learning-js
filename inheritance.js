@@ -25,7 +25,12 @@ let bird = Object.create(Animal.prototype);
 function Dog() {}
 
 Dog.prototype = Object.create(Animal.prototype);
-Dog.prototype.constructor = Dog;
+Dog.prototype.constructor = Dog; // otherwise constructor incorrectly points to Animal
+Dog.prototype.bark = function () {
+  console.log("woof");
+};
 
 let doug = new Dog();
+console.log(doug.constructor);
 doug.eat();
+doug.bark();

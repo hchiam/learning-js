@@ -1,3 +1,5 @@
+// latest version: https://github.com/hchiam/clipboard
+
 function copyToClipboard(text) {
   try {
     var temp = document.createElement("input");

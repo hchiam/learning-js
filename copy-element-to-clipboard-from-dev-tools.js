@@ -2,6 +2,8 @@
 copy(document.body);
 
 // You can also copy JS objects to your clipboard:
-copy({ my: 'object' });
+copy({ my: "object" });
 
 // https://umaar.com/dev-tips/225-copy-html-element-clipboard
+
+// also see this: https://github.com/hchiam/clipboard

@@ -1,4 +1,4 @@
-// https://hackernoon.com/currying-in-js-d9ddc64f162e
+// reference: https://hackernoon.com/currying-in-js-d9ddc64f162e
 // run this file: node curry.js
 
 const log1 = curry((x) => console.log(x));
@@ -7,6 +7,10 @@ const log3 = curry((x, y, z) => console.log(x, y, z));
 log1(10); // 10
 log2(10)(20); // 10 20
 log3(10)(20)(30); // 10 20 30
+log3(10, 20)(30); // won't run because didn't cover variadic currying
+log3(10)(20, 30); // won't run because didn't cover variadic currying
+
+// the next two curry functions cover variadic currying: (variable number of parameters)
 
 const log4 = curryWithVariableArity((x, y, z, a) => console.log(x, y, z, a));
 log4(10)(20)(30)(40); // 10 20 30 40
@@ -14,20 +18,25 @@ log4(10, 20)(30)(40); // 10 20 30 40
 log4(10, 20, 30)(40); // 10 20 30 40
 log4(10)(20, 30)(40); // 10 20 30 40
 log4(10, 20, 30, 40); // 10 20 30 40
+log4(10, 20)(30, 40); // 10 20 30 40
 
 const log5 = curryWithBind((x, y, z, a, b) => console.log(x, y, z, a, b));
 log5(10)(20)(30)(40)(50); // 10 20 30 40 50
+log5(10, 20)(30)(40)(50); // 10 20 30 40 50
 
 function curry(fn) {
-  if (fn.length === 0) return fn;
+  if (fn.length === 0) return fn; // guard clause
 
-  return nest(fn.length, []);
+  const numberOfParametersNeeded = fn.length;
+  return nest(numberOfParametersNeeded, []);
+
   function nest(arity, args) {
-    return (argument) => {
-      if (arity - 1 === 0) {
-        return fn(...args, argument);
+    return (nextArg) => {
+      const atLastArgument = arity - 1 === 0;
+      if (atLastArgument) {
+        return fn(...args, nextArg);
       } else {
-        return nest(arity - 1, [...args, argument]);
+        return nest(arity - 1, [...args, nextArg]);
       }
     };
   }
@@ -35,13 +44,16 @@ function curry(fn) {
 
 function curryWithVariableArity(fn) {
   // returns a variadic curried function
-  return nest(fn.length, []);
-  function nest(arity, args) {
-    return (...xs) => {
-      if (arity - xs.length === 0) {
-        return fn(...args, ...xs);
+  const numberOfParametersNeeded = fn.length;
+  return nest(numberOfParametersNeeded, []);
+
+  function nest(fnArity, args) {
+    return (...argsLeft) => {
+      const usedRequiredArity = fnArity - argsLeft.length === 0;
+      if (usedRequiredArity) {
+        return fn(...args, ...argsLeft);
       } else {
-        return nest(arity - xs.length, [...args, ...xs]);
+        return nest(fnArity - argsLeft.length, [...args, ...argsLeft]);
       }
     };
   }
@@ -49,9 +61,11 @@ function curryWithVariableArity(fn) {
 
 function curryWithBind(fn) {
   return (...args) => {
-    if (args.length >= fn.length) {
+    const usedRequiredArity = args.length >= fn.length;
+    if (usedRequiredArity) {
       return fn(...args);
     } else {
+      // pass in function with arguments partially applied already:
       return curryWithBind(fn.bind(null, ...args));
     }
   };

@@ -26,8 +26,8 @@ SomeClass.prototype.publicPrototypeFunction = function () {
 const obj = new SomeClass();
 const obj2 = new SomeClass();
 
-console.log(obj.privateVariable);
-// obj.privateFunction();
+console.log(obj.privateVariable); // undefined
+// obj.privateFunction(); // error
 
 console.log(obj.publicVariable);
 obj.publicFunction();

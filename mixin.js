@@ -2,7 +2,8 @@
 
 // sometimes inheritance doesn't make sense for unrelated objects (e.g. bird and airplane)
 
-const flyMixin = function (obj) {
+// this is the mixin function: it lets you "mix in" abilities:
+const giveThePowerOfFlight = function (obj) {
   obj.fly = function () {
     console.log("Flying, wooosh!");
   };
@@ -17,8 +18,8 @@ const airplane = {
   passengerCount: 1000,
 };
 
-flyMixin(bird);
-flyMixin(airplane);
+giveThePowerOfFlight(bird);
+giveThePowerOfFlight(airplane);
 
 console.log("both bird and airplane can fly");
 console.log(typeof bird.fly !== "undefined");

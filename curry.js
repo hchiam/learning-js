@@ -47,13 +47,13 @@ function curryWithVariableArity(fn) {
   const numberOfParametersNeeded = fn.length;
   return nest(numberOfParametersNeeded, []);
 
-  function nest(fnArity, args) {
-    return (...argsLeft) => {
-      const usedRequiredArity = fnArity - argsLeft.length === 0;
-      if (usedRequiredArity) {
-        return fn(...args, ...argsLeft);
+  function nest(arity, args) {
+    return (...nextArgs) => {
+      const atLastArguments = arity - nextArgs.length === 0;
+      if (atLastArguments) {
+        return fn(...args, ...nextArgs);
       } else {
-        return nest(fnArity - argsLeft.length, [...args, ...argsLeft]);
+        return nest(arity - nextArgs.length, [...args, ...nextArgs]);
       }
     };
   }
@@ -61,8 +61,9 @@ function curryWithVariableArity(fn) {
 
 function curryWithBind(fn) {
   return (...args) => {
-    const usedRequiredArity = args.length >= fn.length;
-    if (usedRequiredArity) {
+    const arity = fn.length;
+    const atLastArguments = arity <= args.length;
+    if (atLastArguments) {
       return fn(...args);
     } else {
       // pass in function with arguments partially applied already:

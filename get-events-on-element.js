@@ -1,17 +1,16 @@
-getEventsOnElement("#some_selector");
-
 function getEventsOnElement(selector) {
-  var haveJQuery = $() && $().jquery;
+  var haveJQuery = typeof jQuery !== "undefined";
   if (haveJQuery) {
-    clear();
     var element = $(selector);
     if (element) {
       var eventsObject = $._data(element[0], "events"); // this line requires jQuery
+      if (!eventsObject) return;
       console.log("vvv click to expand vvv");
       Object.keys(eventsObject).forEach(function (eventName) {
         console.groupCollapsed(
-          "%cEvent Name:%c" + eventName,
-          "color: lime; background: black;"
+          "%cEvent:%c " + eventName,
+          "color: lime; background: black;",
+          ""
         );
         var subscribedEvents = eventsObject[eventName];
         subscribedEvents.forEach(function (event) {
@@ -22,3 +21,18 @@ function getEventsOnElement(selector) {
     }
   }
 }
+
+// try it out on https://api.jquery.com
+
+var selector = ".ds-input";
+
+$(selector).click(() => {
+  alert("hi");
+});
+
+$(selector).click(() => {
+  // another registered event
+  alert("hi");
+});
+
+getEventsOnElement(selector);

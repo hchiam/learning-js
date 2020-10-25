@@ -22,7 +22,9 @@ let bird = Object.create(Animal.prototype);
 
 // and to create other "classes" (not instance objects):
 
-function Dog() {}
+function Dog(tag) {
+  this.tag = tag;
+}
 
 Dog.prototype = Object.create(Animal.prototype);
 Dog.prototype.constructor = Dog; // otherwise constructor incorrectly points to Animal
@@ -30,7 +32,8 @@ Dog.prototype.bark = function () {
   console.log("woof");
 };
 
-let doug = new Dog();
+let doug = new Dog(123);
 console.log(doug.constructor);
 doug.eat();
 doug.bark();
+console.log(doug.tag);

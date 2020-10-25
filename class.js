@@ -1,4 +1,5 @@
 // (see my prototype code for another example)
+// (see another example in https://github.com/hchiam/learning-js/blob/master/inheritance.js)
 // Terminal: node class.js
 
 // Preferred way to make a class in JS: https://stackoverflow.com/questions/6169938/javascript-classes-prototype-vs-internal-function-declaration-vs-etc

@@ -1,4 +1,6 @@
-// node delay-without-nesting.js
+// node sleep.js
+
+// delay without nesting!
 
 // https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
 

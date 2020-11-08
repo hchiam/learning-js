@@ -1,3 +1,5 @@
+// https://codepen.io/hchiam/pen/OJXoqaj
+
 function makeElementDraggableAndEditable(element, disableStyleReset) {
   var mouseX = 0;
   var mouseY = 0;

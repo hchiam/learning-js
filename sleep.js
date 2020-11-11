@@ -20,7 +20,7 @@ async function sleep(milliseconds) {
 
 test();
 function s(selector) {
-  const result = $(selector);
+  const result = $ ? $(selector) : document.querySelector(selector);
   if (result.is(":visible:not(:disabled)")) return result;
 }
 async function test() {

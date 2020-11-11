@@ -16,22 +16,22 @@ async function sleep(milliseconds) {
   console.log("run 2nd thing after 2 seconds");
 })();
 
-// or:
+// or in the browser:
 
-test();
-function s(selector) {
-  const result = $ ? $(selector) : document.querySelector(selector);
-  if (result.is(":visible:not(:disabled)")) return result;
-}
-async function test() {
-  s("#button_1").click();
-  await sleep();
-  s("#input_2").val(123);
-  s("#button_3").click();
-  await sleep(2000);
-  s("#button_4").click();
-  alert("done");
-}
+// test();
+// function s(selector) {
+//   const result = $ ? $(selector) : document.querySelector(selector);
+//   if (result.is(":visible:not(:disabled)")) return result;
+// }
+// async function test() {
+//   s("#button_1").click();
+//   await sleep();
+//   s("#input_2").val(123);
+//   s("#button_3").click();
+//   await sleep(2000);
+//   s("#button_4").click();
+//   alert("done");
+// }
 
 // https://stackoverflow.com/questions/17574571/nested-settimeout-alternative
 

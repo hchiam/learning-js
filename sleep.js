@@ -5,7 +5,7 @@
 // https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
 
 async function sleep(milliseconds) {
-  await new Promise((r) => setTimeout(r, milliseconds));
+  await new Promise((r) => setTimeout(r, milliseconds || 1000));
 }
 
 (async function () {

@@ -115,6 +115,10 @@ Learning about them: <https://github.com/hchiam/learning-service-workers>
 
 <https://blog.bitsrc.io/10-tips-to-improve-productivity-using-chrome-dev-tools-7918fc8203f3>
 
+and tips like this: <https://umaar.com/dev-tips/15-dollar-zero>
+
+`$0` = node selected in Elements panel
+
 ### Edit any website (temporarily on the client side)
 
 Enter this into the console log in dev tools: `document.designMode='on'`

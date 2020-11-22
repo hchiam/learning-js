@@ -1,5 +1,7 @@
 // https://leetcode.com/explore/interview/card/top-interview-questions-medium/108/trees-and-graphs/788/
 
+// 2 solutions: one iterative, one recursive
+
 /**
  * main strategy:
  * 1) use pre-order array as order of nodes to insert

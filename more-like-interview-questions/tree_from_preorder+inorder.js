@@ -1,20 +1,5 @@
 // https://leetcode.com/explore/interview/card/top-interview-questions-medium/108/trees-and-graphs/788/
 
-function TreeNode(val, left, right) {
-  this.val = val === undefined ? 0 : val;
-  this.left = left === undefined ? null : left;
-  this.right = right === undefined ? null : right;
-}
-
-var output = buildTree([3, 9, 20, 15, 7], [9, 3, 15, 20, 7]);
-console.log(JSON.stringify(output, null, 2));
-
-output = buildTree([], []);
-console.log(JSON.stringify(output, null, 2)); // should return null
-
-output = buildTree([1, 2, 3], [1, 3, 2]);
-console.log(JSON.stringify(output, null, 2));
-
 /**
  * main strategy:
  * 1) use pre-order array as order of nodes to insert
@@ -93,3 +78,60 @@ function buildTree(
   // final answer is in the in-order array edited in-place to hold nodes:
   return inOrder[indexOfRootAndSolution];
 }
+
+/**
+ * main strategy:
+ * 1) use pre-order array as order of nodes to insert
+ * 2) use in-order array to determine where to insert by checking indices
+ * 3) check left and right sides for children by using left and right indices
+ */
+function buildTreeFaster(
+  preOrder /* : number[] reading tree from top to bottom, like BFS */,
+  inOrder /* : number[] reading tree left-to-right */
+) /* : TreeNode | null */ {
+  return buildTreeRecursively(0, inOrder.length - 1);
+
+  function buildTreeRecursively(left, right) {
+    const inOrderRangeHasChild = left <= right;
+    if (!inOrderRangeHasChild) {
+      return null;
+    }
+
+    const valueToAdd = preOrder.shift();
+    const inOrderIndex = inOrder.indexOf(valueToAdd);
+    const nodeToAdd = new TreeNode(valueToAdd);
+
+    // look for children to the left of the node in the in-order index:
+    nodeToAdd.left = buildTreeRecursively(left, inOrderIndex - 1);
+    // look for children to the right of the node in the in-order index:
+    nodeToAdd.right = buildTreeRecursively(inOrderIndex + 1, right);
+
+    return nodeToAdd;
+  }
+}
+
+function TreeNode(val, left, right) {
+  this.val = val === undefined ? 0 : val;
+  this.left = left === undefined ? null : left;
+  this.right = right === undefined ? null : right;
+}
+
+var output = buildTree([3, 9, 20, 15, 7], [9, 3, 15, 20, 7]);
+console.log(JSON.stringify(output, null, 2));
+output = buildTreeFaster([3, 9, 20, 15, 7], [9, 3, 15, 20, 7]);
+console.log(JSON.stringify(output, null, 2));
+
+output = buildTree([], []);
+console.log(JSON.stringify(output, null, 2)); // should return null
+output = buildTreeFaster([], []);
+console.log(JSON.stringify(output, null, 2)); // should return null
+
+output = buildTree([1, 2, 3], [1, 3, 2]);
+console.log(JSON.stringify(output, null, 2));
+output = buildTreeFaster([1, 2, 3], [1, 3, 2]);
+console.log(JSON.stringify(output, null, 2));
+
+output = buildTree([1, 2, 3], [2, 3, 1]);
+console.log(JSON.stringify(output, null, 2));
+output = buildTreeFaster([1, 2, 3], [2, 3, 1]);
+console.log(JSON.stringify(output, null, 2));

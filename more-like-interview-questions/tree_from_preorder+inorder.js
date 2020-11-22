@@ -15,52 +15,81 @@ console.log(JSON.stringify(output, null, 2)); // should return null
 output = buildTree([1, 2, 3], [1, 3, 2]);
 console.log(JSON.stringify(output, null, 2));
 
+/**
+ * main strategy:
+ * 1) use pre-order array as order of nodes to insert
+ * 2) use in-order array to determine where to insert
+ * 3) add notes in-place into in-order array
+ * 4) check which closest left/right neighbour has a "spot" available to add a node (except root)
+ */
 function buildTree(
-  preorder /*: number[]*/,
-  inorder /*: number[]*/
-) /*: TreeNode | null*/ {
-  if (inorder.length === 0 || preorder.length === 0) return null;
-  const ht = {};
-  inorder.forEach((value, index) => {
-    ht[value] = index;
+  preOrder /* : number[] reading tree from top to bottom, like BFS */,
+  inOrder /* : number[] reading tree left-to-right */
+) /* : TreeNode | null */ {
+  // guard check:
+  const nothingToCheck = inOrder.length === 0 || preOrder.length === 0;
+  if (nothingToCheck) return null;
+
+  // set up hash table:
+  const hashTableToFindInOrderNodeFaster = {};
+  inOrder.forEach((value, index) => {
+    hashTableToFindInOrderNodeFaster[value] = index;
   });
+
+  // helper variables:
   let gotRoot = false;
-  let rootIndex = null;
-  preorder.forEach((p) => {
-    const v = p;
-    const i = ht[v];
+  let indexOfRootAndSolution = null;
+
+  // use pre-order array as order of nodes to insert:
+  preOrder.forEach((value) => {
+    const inOrderIndexOfNodeToInsert = hashTableToFindInOrderNodeFaster[value];
     if (!gotRoot) {
-      inorder[i] = new TreeNode(v);
+      // initialize root node:
+      inOrder[inOrderIndexOfNodeToInsert] = new TreeNode(value);
       gotRoot = true;
-      rootIndex = i;
-      return;
+      indexOfRootAndSolution = inOrderIndexOfNodeToInsert;
+      return; // don't bother check left/right for root node
     }
+
+    // use in-order array to determine where to insert:
+
     // check left:
-    let left = i - 1 || 0;
-    while (left >= 0 && inorder[left] instanceof TreeNode === false) {
-      left--;
+    let left = inOrderIndexOfNodeToInsert - 1 || 0;
+    while (left >= 0 && inOrder[left] instanceof TreeNode === false) {
+      left--; // find nearest index on the left holding a node
     }
-    const foundLeftNeighbour =
-      inorder[left] instanceof TreeNode && inorder[left].right === null;
-    if (foundLeftNeighbour) {
-      inorder[i] = new TreeNode(inorder[i]);
-      inorder[left].right = inorder[i];
-      return; // don't check right
+    const foundLeftNeighbourWithFreeSpot =
+      inOrder[left] instanceof TreeNode && inOrder[left].right === null;
+    if (foundLeftNeighbourWithFreeSpot) {
+      // beforehand, place current node by editing in-order array in-place
+      inOrder[inOrderIndexOfNodeToInsert] = new TreeNode(
+        inOrder[inOrderIndexOfNodeToInsert]
+      );
+      // then actually add current node as child of that neighbour
+      inOrder[left].right = inOrder[inOrderIndexOfNodeToInsert];
+      return; // don't check right (already found valid neighbour)
     }
+
     // check right:
-    let right = Math.min(i + 1, inorder.length - 1);
+    let right = Math.min(inOrderIndexOfNodeToInsert + 1, inOrder.length - 1);
     while (
-      right < inorder.length &&
-      inorder[right] instanceof TreeNode === false
+      right < inOrder.length &&
+      inOrder[right] instanceof TreeNode === false
     ) {
-      right++;
+      right++; // find nearest index on the right holding a node
     }
-    const foundRightNeighbour =
-      inorder[right] instanceof TreeNode && inorder[right].left === null;
-    if (foundRightNeighbour) {
-      inorder[i] = new TreeNode(inorder[i]);
-      inorder[right].left = inorder[i];
+    const foundRightNeighbourWithFreeSpot =
+      inOrder[right] instanceof TreeNode && inOrder[right].left === null;
+    if (foundRightNeighbourWithFreeSpot) {
+      // beforehand, place current node by editing in-order array in-place
+      inOrder[inOrderIndexOfNodeToInsert] = new TreeNode(
+        inOrder[inOrderIndexOfNodeToInsert]
+      );
+      // then actually add current node as child of that neighbour
+      inOrder[right].left = inOrder[inOrderIndexOfNodeToInsert];
     }
   });
-  return inorder[rootIndex];
+
+  // final answer is in the in-order array edited in-place to hold nodes:
+  return inOrder[indexOfRootAndSolution];
 }

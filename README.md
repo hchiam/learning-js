@@ -119,6 +119,14 @@ and tips like this: <https://umaar.com/dev-tips/15-dollar-zero>
 
 `$0` = node selected in Elements panel
 
+`$('some_selector')` = shortform for `document.querySelector('some_selector')`
+
+`$$('some_selector')` = shortform for `document.querySelectorAll('some_selector')`
+
+`copy()` = copies to clipboard any value/object/element inside it.
+
+`inspect($('some_selector')[0]);` jumps to Elements panel (jQuery not required for that `$`).
+
 ### Edit any website (temporarily on the client side)
 
 Enter this into the console log in dev tools: `document.designMode='on'`

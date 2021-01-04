@@ -125,7 +125,7 @@ and tips like this: <https://umaar.com/dev-tips/15-dollar-zero>
 
 `copy()` = copies to clipboard any value/object/element inside it.
 
-`inspect($('some_selector')[0]);` jumps to Elements panel (jQuery not required for that `$`).
+`inspect($('some_selector')[0]);` jumps to Elements panel (jQuery not required for that `$`). Works in Firefox too.
 
 ### Edit any website (temporarily on the client side)
 

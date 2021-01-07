@@ -133,6 +133,8 @@ Enter this into the console log in dev tools: `document.designMode='on'`
 
 ### Read a file
 
-In the browser: https://github.com/hchiam/learning-js/blob/master/read-text-file.js or https://github.com/hchiam/learning-js/blob/master/read-json-file.js
+In the browser: 
+ - https://github.com/hchiam/learning-js/blob/master/read-text-file.js or 
+ - https://github.com/hchiam/learning-js/blob/master/read-json-file.js
 
 In the console terminal CLI: https://github.com/hchiam/learning-nodejs/blob/master/README.md#read-a-local-file-via-console-cli

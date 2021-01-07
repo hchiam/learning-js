@@ -127,6 +127,8 @@ and tips like this: <https://umaar.com/dev-tips/15-dollar-zero>
 
 `inspect($('some_selector')[0]);` jumps to Elements panel (jQuery not required for that `$`). Works in Firefox too.
 
+More: https://developers.google.com/web/tools/chrome-devtools/console/utilities#geteventlisteners
+
 ### Edit any website (temporarily on the client side)
 
 Enter this into the console log in dev tools: `document.designMode='on'`

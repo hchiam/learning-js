@@ -143,3 +143,12 @@ In the browser:
 In the console terminal CLI:
 
 - https://github.com/hchiam/learning-nodejs/blob/master/README.md#read-a-local-file-via-console-cli
+
+### Support modern browsers and older browsers (like IE11) at the same time
+
+```html
+<!-- No need for special server setup or user agent sniffing! -->
+<script type="module" src="modern.js"></script>
+<script nomodule src="legacy.js"></script>
+<!-- https://www.youtube.com/watch?v=cLxNdLK--yI -->
+```

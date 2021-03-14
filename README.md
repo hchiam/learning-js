@@ -144,6 +144,10 @@ In the console terminal CLI:
 
 - https://github.com/hchiam/learning-nodejs/blob/master/README.md#read-a-local-file-via-console-cli
 
+### Get a lot of the functions and jQuery event listeners in a script string:
+
+https://github.com/hchiam/getFunctions
+
 ### Support modern browsers and older browsers (like IE11) at the same time
 
 ```html

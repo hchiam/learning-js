@@ -4,14 +4,14 @@
 
 var actions = []; // [{selector, value}];
 
-$("*").on("change", listenToChangesInAnyElement);
+$("*").on("change", handleChangesInAnyElement);
 
-function listenToChangesInAnyElement(e) {
+function handleChangesInAnyElement(e) {
   var isUserGenerated = e.originalEvent;
   if (!isUserGenerated) return;
 
-  var wasTriggerdOnThisElement = e.target == this;
-  if (!wasTriggerdOnThisElement) return;
+  var wasTriggeredOnThisElement = e.target == this;
+  if (!wasTriggeredOnThisElement) return;
 
   var elementThatChanged = $(this);
 

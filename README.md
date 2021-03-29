@@ -156,3 +156,9 @@ https://github.com/hchiam/getFunctions
 <script nomodule src="legacy.js"></script>
 <!-- https://www.youtube.com/watch?v=cLxNdLK--yI -->
 ```
+
+### Bookmarklets
+
+Only use them after you read and understand the contents of each bookmarklet!
+
+https://en.wikipedia.org/wiki/Bookmarklet

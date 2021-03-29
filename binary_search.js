@@ -27,12 +27,17 @@ function exists1(target, array) {
 }
 
 function exists2(target, array) {
-  let i = 0;
-  let jump = Math.floor(array.length / 2);
+  let i = -1;
+  let jump = array.length;
   for (; jump >= 1; jump = Math.floor(jump / 2)) {
-    while (i + jump < array.length && array[i + jump] <= target) {
+    while (isOk({ array, i: i + jump, target })) {
       i += jump;
     }
   }
-  return array[i] === target;
+  return array[i + 1] === target;
+}
+
+function isOk({ array, i, target }) {
+  // this can be be easily adjusted for first match or max peak search
+  return i < array.length && array[i] < target;
 }

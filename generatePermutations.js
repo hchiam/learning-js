@@ -4,23 +4,24 @@ console.timeEnd();
 
 function generatePermutations(array) {
   const permutations = [];
-  const chosen = {};
+  const currentlyChosen = {};
 
+  // use recursion:
   function gp(array, permutation = []) {
-    const usedAllItems = permutation.length === array.length;
+    const usedAllItems = permutation.length === array.length; // stop condition
     if (usedAllItems) {
       permutations.push([...permutation]);
     } else {
       for (let v of array) {
-        if (chosen[v]) continue;
+        if (currentlyChosen[v]) continue;
 
         // use v next:
-        chosen[v] = true;
+        currentlyChosen[v] = true;
         permutation.push(v);
         gp(array, permutation);
 
-        // use something else next:
-        chosen[v] = false;
+        // use something else next (before recurse to finish the permutation):
+        currentlyChosen[v] = false;
         permutation.pop();
       }
     }

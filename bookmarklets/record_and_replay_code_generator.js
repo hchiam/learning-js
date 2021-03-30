@@ -1,13 +1,13 @@
-// (Code generated from actions array assumes jQuery available.)
-
 javascript: (function () {
+  console.log("Code generated from actions array assumes jQuery available.");
+
   window.actions = [];
 
   Array.from(document.querySelectorAll("*")).forEach((e) =>
-    e.addEventListener("change", listenToChangesInAnyElement)
+    e.addEventListener("change", handleChangesInAnyElement)
   );
 
-  function listenToChangesInAnyElement(e) {
+  function handleChangesInAnyElement(e) {
     var isUserGenerated = e.isTrusted;
     if (!isUserGenerated) return;
 
@@ -73,8 +73,8 @@ javascript: (function () {
   }
 
   window.convertActionsToCode = convertActionsToCode;
-
   function convertActionsToCode(actions) {
+    console.log("Code generated from actions array assumes jQuery available.");
     return actions
       .map((x) => `$('${x.selector}').click().val('${x.value}').change()`)
       .join(";");

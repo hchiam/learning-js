@@ -2,53 +2,97 @@
 
 // requires jQuery:
 
-var actions = []; // [{selector, value}];
+(function () {
+  console.log("Code generated from actions array assumes jQuery available.");
 
-$("*").on("change", handleChangesInAnyElement);
+  window.actions = []; // [{selector, value}];
 
-function handleChangesInAnyElement(e) {
-  var isUserGenerated = e.originalEvent;
-  if (!isUserGenerated) return;
+  Array.from(document.querySelectorAll("*")).forEach((e) =>
+    e.addEventListener("change", handleChangesInAnyElement)
+  );
 
-  var wasTriggeredOnThisElement = e.target == this;
-  if (!wasTriggeredOnThisElement) return;
+  function handleChangesInAnyElement(e) {
+    var isUserGenerated = e.isTrusted;
+    if (!isUserGenerated) return;
 
-  var elementThatChanged = $(this);
+    var wasTriggeredOnThisElement = e.target === this;
+    if (!wasTriggeredOnThisElement) return;
 
-  var isHidden = elementThatChanged.is(":hidden");
-  if (isHidden) return;
+    var elementThatChanged = this;
 
-  var el = elementThatChanged;
+    var isHidden =
+      elementThatChanged.style.visibility === "hidden" ||
+      elementThatChanged.style.display === "none";
+    if (isHidden) return;
 
-  var thisSelector =
-    el.prop("tagName") +
-    (el.prop("id") ? "#" + el.prop("id") : "") +
-    (el.prop("class") ? "." + el.prop("class").split(" ").join(".") : "");
+    var el = elementThatChanged;
+    var tagName = el.getAttribute("tagName");
 
-  selector =
-    Array.from(elementThatChanged.parents())
-      .map(
-        (x) =>
-          x.tagName +
-          (x.id ? "#" + x.id : "") +
-          (x.className ? "." + x.className.split(" ").join(".") : "")
-      )
-      .reverse()
-      .join(">") +
-    ">" +
-    thisSelector;
+    var thisSelector =
+      (tagName ? tagName : "") +
+      (el.getAttribute("id") ? "#" + el.getAttribute("id") : "") +
+      (el.getAttribute("class")
+        ? "." + el.getAttribute("class").split(" ").join(".")
+        : "");
 
-  var value = elementThatChanged.val();
+    var selector =
+      Array.from(getParents(elementThatChanged))
+        .map(
+          (x) =>
+            x.tagName +
+            (x.id ? "#" + x.id : "") +
+            (x.className.trim()
+              ? "." + x.className.trim().split(" ").join(".")
+              : "")
+        )
+        .reverse()
+        .join(">") +
+      ">" +
+      thisSelector;
 
-  if (!selector) return;
+    if (!selector) return;
 
-  var action = { selector, value };
-  console.log(action);
-  actions.push(action);
-}
+    var value = elementThatChanged.value;
+    var action = { selector, value };
+    console.log(action);
+    window.actions.push(action);
+  }
 
-function convertActionsToCode(actions) {
-  return actions
-    .map((x) => `$('${x.selector}').click().val('${x.value}').change()`)
-    .join(";");
-}
+  function getParents(el, parentSelectorStopAt) {
+    if (parentSelectorStopAt === undefined) {
+      parentSelectorStopAt = document.body;
+    }
+
+    var parents = [];
+    var p = el.parentNode;
+
+    while (p !== parentSelectorStopAt) {
+      var o = p;
+      parents.push(o);
+      p = o.parentNode;
+    }
+
+    if (parentSelectorStopAt) parents.push(parentSelectorStopAt);
+    return parents;
+  }
+
+  window.convertActionsToCode = convertActionsToCode;
+  function convertActionsToCode(actions) {
+    console.log("Code generated from actions array assumes jQuery available.");
+    return actions
+      .map((x) => `$('${x.selector}').click().val('${x.value}').change()`)
+      .join(";");
+  }
+
+  console.log(
+    `%25cChanges to visible inputs will now be recorded in the %25cactions%25c array.
+You can copy runnable code to clipboard by running
+%25ccopy(convertActionsToCode(actions));%25c
+in the browser console.`,
+    "",
+    "color: lime; background: black;",
+    "",
+    "color: lime; background: black;",
+    ""
+  );
+})();

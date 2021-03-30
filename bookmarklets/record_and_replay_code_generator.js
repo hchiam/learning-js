@@ -1,1 +1,94 @@
-javascript:(function(){var actions=[];function listenToChangesInAnyElement(o){if(o.originalEvent&&o.target===this){if(!this.is(":hidden")){var n=this,e=n.prop("tagName")+(n.prop("id")?"#"+n.prop("id"):"")+(n.prop("class")?"."+n.prop("class").split("%20").join("."):""),i=Array.from(this.parents()).map(o=>o.tagName+(o.id?"#"+o.id:"")+(o.className?"."+o.className.split("%20").join("."):"")).reverse().join(">")+">"+e,a=this.val();if(i){var%20c={selector:i,value:a};console.log(c),actions.push(c)}}}}function%20convertActionsToCode(o){return%20o.map(o=>`$('${o.selector}').click().val('${o.value}').change()`).join(";")}Array.from(document.querySelectorAll("*")).forEach(o=>o.addEventListener("change",listenToChangesInAnyElement)),console.log("%25cChanges%20to%20visible%20inputs%20will%20now%20be%20recorded%20in%20the%20%25cactions%25c%20array.%20\n\nYou%20can%20copy%20runnable%20code%20to%20clipboard%20by%20running%20\n%25ccopy(convertActionsToCode(actions));%25c%20\nin%20the%20browser%20console.","","color:%20lime;%20background:%20black;","","color:%20lime;%20background:%20black;","");})();
+// (Code generated from actions array assumes jQuery available.)
+
+javascript: (function () {
+  window.actions = [];
+
+  Array.from(document.querySelectorAll("*")).forEach((e) =>
+    e.addEventListener("change", listenToChangesInAnyElement)
+  );
+
+  function listenToChangesInAnyElement(e) {
+    var isUserGenerated = e.isTrusted;
+    if (!isUserGenerated) return;
+
+    var wasTriggeredOnThisElement = e.target === this;
+    if (!wasTriggeredOnThisElement) return;
+
+    var elementThatChanged = this;
+
+    var isHidden =
+      elementThatChanged.style.visibility === "hidden" ||
+      elementThatChanged.style.display === "none";
+    if (isHidden) return;
+
+    var el = elementThatChanged;
+    var tagName = el.getAttribute("tagName");
+
+    var thisSelector =
+      (tagName ? tagName : "") +
+      (el.getAttribute("id") ? "#" + el.getAttribute("id") : "") +
+      (el.getAttribute("class")
+        ? "." + el.getAttribute("class").split(" ").join(".")
+        : "");
+
+    var selector =
+      Array.from(getParents(elementThatChanged))
+        .map(
+          (x) =>
+            x.tagName +
+            (x.id ? "#" + x.id : "") +
+            (x.className.trim()
+              ? "." + x.className.trim().split(" ").join(".")
+              : "")
+        )
+        .reverse()
+        .join(">") +
+      ">" +
+      thisSelector;
+
+    if (!selector) return;
+
+    var value = elementThatChanged.value;
+    var action = { selector, value };
+    console.log(action);
+    window.actions.push(action);
+  }
+
+  function getParents(el, parentSelectorStopAt) {
+    if (parentSelectorStopAt === undefined) {
+      parentSelectorStopAt = document.body;
+    }
+
+    var parents = [];
+    var p = el.parentNode;
+
+    while (p !== parentSelectorStopAt) {
+      var o = p;
+      parents.push(o);
+      p = o.parentNode;
+    }
+
+    if (parentSelectorStopAt) parents.push(parentSelectorStopAt);
+    return parents;
+  }
+
+  window.convertActionsToCode = convertActionsToCode;
+
+  function convertActionsToCode(actions) {
+    return actions
+      .map((x) => `$('${x.selector}').click().val('${x.value}').change()`)
+      .join(";");
+  }
+
+  console.log(
+    `%25cChanges to visible inputs will now be recorded in the %25cactions%25c array.
+You can copy runnable code to clipboard by running
+%25ccopy(convertActionsToCode(actions));%25c
+in the browser console.`,
+    "",
+    "color: lime; background: black;",
+    "",
+    "color: lime; background: black;",
+    ""
+  );
+})();

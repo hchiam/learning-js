@@ -63,19 +63,19 @@ function generatePermutations(array) {
     const usedAllItems = permutation.length === array.length; // stop condition
     if (usedAllItems) {
       permutations.push([...permutation]);
-    } else {
-      for (let v of array) {
-        if (currentlyChosen[v]) continue;
+      return;
+    }
+    for (let v of array) {
+      if (currentlyChosen[v]) continue;
 
-        // use v next:
-        currentlyChosen[v] = true;
-        permutation.push(v);
-        gp(permutation);
+      // use v next:
+      currentlyChosen[v] = true;
+      permutation.push(v);
+      gp(permutation);
 
-        // use something else next (before recurse to finish the permutation):
-        currentlyChosen[v] = false;
-        permutation.pop();
-      }
+      // use something else next (before recurse to finish the permutation):
+      currentlyChosen[v] = false;
+      permutation.pop();
     }
   }
 

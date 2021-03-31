@@ -1,5 +1,6 @@
 console.time();
-console.log(generatePermutations([1, 2, 3]));
+// console.log(generatePermutations([1, 2, 3]));
+generatePermutations([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 console.timeEnd();
 
 function generatePermutations(array) {
@@ -7,7 +8,7 @@ function generatePermutations(array) {
   const currentlyChosen = {};
 
   // use recursion:
-  function gp(array, permutation = []) {
+  function gp(permutation = []) {
     const usedAllItems = permutation.length === array.length; // stop condition
     if (usedAllItems) {
       permutations.push([...permutation]);
@@ -18,7 +19,7 @@ function generatePermutations(array) {
         // use v next:
         currentlyChosen[v] = true;
         permutation.push(v);
-        gp(array, permutation);
+        gp(permutation);
 
         // use something else next (before recurse to finish the permutation):
         currentlyChosen[v] = false;
@@ -27,6 +28,6 @@ function generatePermutations(array) {
     }
   }
 
-  gp(array, []);
+  gp();
   return permutations;
 }

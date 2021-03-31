@@ -60,11 +60,13 @@ function generatePermutations(array) {
 
   // use recursion:
   function gp(permutation = []) {
-    const usedAllItems = permutation.length === array.length; // stop condition
+    // stop condition:
+    const usedAllItems = permutation.length === array.length;
     if (usedAllItems) {
       permutations.push([...permutation]);
       return;
     }
+
     for (let v of array) {
       if (currentlyChosen[v]) continue;
 

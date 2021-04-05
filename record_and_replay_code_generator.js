@@ -52,6 +52,10 @@
 
     if (!selector) return;
 
+    if (!isUnique(selector)) {
+      console.warn("Non-unique selector! " + selector);
+    }
+
     var value = elementThatChanged.value;
     var action = { selector, value };
     console.log(action);
@@ -74,6 +78,11 @@
 
     if (parentSelectorStopAt) parents.push(parentSelectorStopAt);
     return parents;
+  }
+
+  function isUnique(selector) {
+    var results = document.querySelectorAll(selector);
+    return results && results.length < 2;
   }
 
   window.convertActionsToCode = convertActionsToCode;

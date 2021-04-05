@@ -22,7 +22,7 @@ javascript: (function () {
     if (isHidden) return;
 
     var el = elementThatChanged;
-    var tagName = el.getAttribute("tagName");
+    var tagName = el.tagName || el.getAttribute("tagName");
 
     var thisSelector =
       (tagName ? tagName : "") +
@@ -48,12 +48,11 @@ javascript: (function () {
 
     if (!selector) return;
 
-    if (!isUnique(selector)) {
-      console.warn("Non-unique selector! " + selector);
-    }
-
+    var { selector, index } = getActiveOneOnly(selector, elementThatChanged);
     var value = elementThatChanged.value;
     var action = { selector, value };
+    if (index !== undefined) action.index = index;
+
     console.log(action);
     window.actions.push(action);
   }
@@ -76,16 +75,34 @@ javascript: (function () {
     return parents;
   }
 
-  function isUnique(selector) {
+  function getActiveOneOnly(selector, elementThatChanged) {
+    var index = 0;
+
     var results = document.querySelectorAll(selector);
-    return results && results.length < 2;
+    var isUnique = results && results.length < 2;
+    if (isUnique) return { selector };
+
+    Array.from(results).filter((x, i) => {
+      var isActiveElement = x === elementThatChanged;
+      if (isActiveElement) {
+        index = i;
+      }
+      return isActiveElement;
+    });
+
+    return { selector, index };
   }
 
   window.convertActionsToCode = convertActionsToCode;
   function convertActionsToCode(actions) {
     console.log("Code generated from actions array assumes jQuery available.");
     return actions
-      .map((x) => `$('${x.selector}').click().val('${x.value}').change()`)
+      .map(
+        (x) =>
+          `$('${x.selector}')${
+            x.index ? ".get(" + (x.index + 1) + ")" : ""
+          }.click().val('${x.value}').change()`
+      )
       .join(";");
   }
 

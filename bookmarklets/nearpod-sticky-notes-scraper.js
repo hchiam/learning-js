@@ -7,7 +7,7 @@
 // );
 
 /**
- * but you can run this as a snippet instead:
+ * but you can run this as a Chrome snippet instead:
  *
  *    $$('[class^="card-wrapper"] [class^="content"]').map((x) => x.innerText.trim());
  */

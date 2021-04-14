@@ -5,3 +5,9 @@
 //     document.querySelectorAll('[class^="card-wrapper"] [class^="content"]')
 //   ).map((x) => x.innerText.trim())
 // );
+
+/**
+ * but you can run this as a snippet instead:
+ *
+ *    $$('[class^="card-wrapper"] [class^="content"]').map((x) => x.innerText.trim());
+ */

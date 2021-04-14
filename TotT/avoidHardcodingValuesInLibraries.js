@@ -8,7 +8,7 @@ function badExample(image) {
 }
 
 function goodExample(image, sizes = publicApi.defaultSizes) {
-  // optional fallback values so user don't have to type anything,
+  // optional fallback values so users don't have to type anything,
   // but advanced users can set their own customizations
   return sizes.map((s) => new DemoImageObject(image, s));
 }

@@ -1,6 +1,6 @@
 # Test flakiness
 
-https://testing.googleblog.com/2021/03/test-flakiness-one-of-main-challenges.html?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+blogspot%2FHbbgQ+%28Google+Testing+Blog%29
+https://testing.googleblog.com/2021/03/test-flakiness-one-of-main-challenges.html
 
 ## Four test flakiness sources
 

@@ -12,7 +12,7 @@ Missing arguments. Try something like this:
 
 \x1b[36m node run.js image.png \x1b[0m
 
-Or something like this: 
+Or this: 
 
 \x1b[36m node run.js image.png template_folder new_folder \x1b[0m
 `

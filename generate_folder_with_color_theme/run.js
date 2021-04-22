@@ -29,15 +29,20 @@ const fs = require("fs");
 const path = require("path");
 const PNG = require("./png-node");
 
-fs.readFile(imageFileName, async function (err, data) {
-  if (err) return console.log(err);
-  processFileText(data);
-});
+processImageFile();
 
-function processFileText(data) {
-  copyFolder(templateFolder, newFolder);
-  console.log(data);
-  getColors(data);
+function processImageFile() {
+  readImageFile(imageFileName, (data) => {
+    copyFolder(templateFolder, newFolder);
+    getColors(data);
+  });
+}
+
+function readImageFile(imageFileName, callback) {
+  fs.readFile(imageFileName, async function (err, data) {
+    if (err) return console.log(err);
+    if (callback) callback(data);
+  });
 }
 
 async function copyFolder(src, dest) {
@@ -69,7 +74,7 @@ function getColors(data) {
   // image.src = base64Image;
   // console.log(base64Image);
 
-  PNG.decode(imageFileName, function (pixels) {
+  PNG.decode(imageFileName, (pixels) => {
     const rgbaArray = [];
     for (let i = 0; i < pixels.length - 4; i++) {
       rgbaArray[i] = `rgba(${pixels[i]}, ${pixels[i + 1]}, ${pixels[i + 2]}, ${
@@ -77,7 +82,7 @@ function getColors(data) {
       })`;
     }
     const topTwoColors = getTopTwoColors(rgbaArray);
-    console.log("topTwoColors", topTwoColors);
+    console.log("\nTop two colors:", topTwoColors, "\n");
   });
 }
 

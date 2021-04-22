@@ -7,53 +7,53 @@
 /**
  * initialize your data structure here.
  */
-const MinStack = function() {
+const MinStack = function () {
   this.stack = []; // format: [{value, minUpToMe}, ...]
 };
 
 /**
-* @param {number} x
-* @return {void}
-*/
-MinStack.prototype.push = function(x) {
+ * @param {number} x
+ * @return {void}
+ */
+MinStack.prototype.push = function (x) {
   if (this.stack.length === 0) {
-    this.stack.push({value: x, minUpToMe: x});
+    this.stack.push({ value: x, minUpToMe: x });
   } else {
     const previousMin = this.stack[this.stack.length - 1].minUpToMe;
     const minUpToMe = Math.min(previousMin, x);
-    this.stack.push({value: x, minUpToMe: minUpToMe});
+    this.stack.push({ value: x, minUpToMe: minUpToMe });
   }
 };
 
 /**
-* @return {void}
-*/
-MinStack.prototype.pop = function() {
+ * @return {void}
+ */
+MinStack.prototype.pop = function () {
   return this.stack.pop().value;
 };
 
 /**
-* @return {number}
-*/
-MinStack.prototype.top = function() {
+ * @return {number}
+ */
+MinStack.prototype.top = function () {
   return this.stack[this.stack.length - 1].value;
 };
 
 /**
-* @return {number}
-*/
-MinStack.prototype.getMin = function() {
+ * @return {number}
+ */
+MinStack.prototype.getMin = function () {
   return this.stack[this.stack.length - 1].minUpToMe;
 };
 
 /**
-* Your MinStack object will be instantiated and called as such:
-* var obj = new MinStack()
-* obj.push(x)
-* obj.pop()
-* var param_3 = obj.top()
-* var param_4 = obj.getMin()
-*/
+ * Your MinStack object will be instantiated and called as such:
+ * var obj = new MinStack()
+ * obj.push(x)
+ * obj.pop()
+ * var param_3 = obj.top()
+ * var param_4 = obj.getMin()
+ */
 
 module.exports = {
   MinStack,

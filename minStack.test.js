@@ -1,10 +1,11 @@
 /* eslint-disable require-jsdoc */
 
-const { MinStack } = require("./minStack.js");
+const { MinStack, BetterMinStack } = require("./minStack.js");
 
 describe("the solution", () => {
   it("works", () => {
-    const minStack = new MinStack();
+    // const minStack = new MinStack();
+    const minStack = new BetterMinStack();
     minStack.push(-2);
     minStack.push(0);
     minStack.push(-3);

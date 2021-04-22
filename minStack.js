@@ -46,6 +46,34 @@ MinStack.prototype.getMin = function () {
   return this.stack[this.stack.length - 1].minUpToMe;
 };
 
+class BetterMinStack {
+  constructor() {
+    this.s = [];
+    this.minStack = [];
+  }
+  push(n) {
+    var len = this.minStack.length;
+    if (len === 0 || n < this.minStack[len - 1]) {
+      this.minStack.push(n);
+    }
+    this.s.push(n);
+  }
+  pop() {
+    var output = this.s.pop();
+    if (output === this.minStack[this.minStack.length - 1]) {
+      this.minStack.pop();
+    }
+    return output;
+  }
+  top() {
+    return this.s[this.s.length - 1];
+  }
+  getMin() {
+    if (this.s.length === 0) return Infinity;
+    return this.minStack[this.minStack.length - 1];
+  }
+}
+
 /**
  * Your MinStack object will be instantiated and called as such:
  * var obj = new MinStack()
@@ -57,4 +85,5 @@ MinStack.prototype.getMin = function () {
 
 module.exports = {
   MinStack,
+  BetterMinStack,
 };

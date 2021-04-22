@@ -6,6 +6,8 @@
 node run.js
 ```
 
+Files you need: `run.js`, `png-node.js`, an image, and a template folder.
+
 ## Notes to self: two options
 
 1. website (libraries acceptable, since no need to manually install)

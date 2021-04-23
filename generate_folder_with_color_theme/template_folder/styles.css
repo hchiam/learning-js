@@ -1,4 +1,9 @@
-.something {
-  background: #fff;
-  color: #000;
+:root {
+  --main-color: red;
+  --secondary-color: #000;
+}
+
+body {
+  background: var(--main-color);
+  color: var(--secondary-color);
 }

@@ -1,5 +1,9 @@
 # Copy template folder with color theme from selected image
 
+```bash
+node run.js
+```
+
 ## TL;DR
 
 ```bash

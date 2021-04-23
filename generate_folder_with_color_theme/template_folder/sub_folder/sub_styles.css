@@ -19,7 +19,8 @@ button {
 }
 
 button:hover,
-main:hover {
+h1:hover,
+p:hover {
   background-color: var(--secondary-color);
   color: var(--main-color);
 }

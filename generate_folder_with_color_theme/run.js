@@ -85,7 +85,7 @@ function getTopTwoColors(colors) {
   let secondCount = 0;
   let secondColor = "transparent";
   colors.forEach((color) => {
-    if (isTransparentRgbaString(color)) {
+    if (isWhiteRgbaString(color) || isTransparentRgbaString(color)) {
       return; // ignore transparent colors
     }
     if (color in ht) {
@@ -105,6 +105,10 @@ function getTopTwoColors(colors) {
     secondColor = getContrastingColor(firstColor);
   }
   return { firstColor, secondColor };
+}
+
+function isWhiteRgbaString(rgbaString) {
+  return rgbaString.startsWith("rgba(255, 255, 255,");
 }
 
 function isTransparentRgbaString(rgbaString) {

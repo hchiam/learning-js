@@ -34,7 +34,7 @@ processImageFile();
 function processImageFile() {
   readImageFile(imageFileName, (data) => {
     copyFolder(templateFolder, newFolder);
-    getColors(data);
+    getColors(imageFileName);
   });
 }
 
@@ -59,21 +59,7 @@ async function copyFolder(src, dest) {
   }
 }
 
-function getColors(data) {
-  // const imageBuffer = fs.readFileSync(imageFileName);
-  // const imageHex = imageBuffer.toString("hex");
-  // const colors = imageHex.match(/.{1,6}/g);
-  // const { firstColor, secondColor } = getTopTwoColors(colors);
-  // console.log(firstColor, secondColor);
-  // console.log(imageHex.length % 6);
-  // console.log(imageHex.length % 8);
-
-  // let base64Image = new Buffer.from(data, "binary").toString("base64");
-  // console.log(base64Image);
-  // const image = new Image();
-  // image.src = base64Image;
-  // console.log(base64Image);
-
+function getColors(imageFileName) {
   PNG.decode(imageFileName, (pixels) => {
     const rgbaArray = [];
     for (let i = 0; i < pixels.length - 4; i++) {

@@ -1,4 +1,4 @@
-# Read Me
+# Generate folder with color theme from selected image
 
 ## TL;DR
 

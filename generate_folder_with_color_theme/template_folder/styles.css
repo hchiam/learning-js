@@ -7,3 +7,7 @@ body {
   background: var(--main-color);
   color: var(--secondary-color);
 }
+
+* {
+  box-sizing: border-box;
+}

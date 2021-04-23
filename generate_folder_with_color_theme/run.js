@@ -101,11 +101,27 @@ function getTopTwoColors(colors) {
       secondColor = color;
     }
   });
+  if (firstColor !== "transparent" && secondColor === "transparent") {
+    secondColor = getContrastingColor(firstColor);
+  }
   return { firstColor, secondColor };
 }
 
 function isTransparentRgbaString(rgbaString) {
   return rgbaString.endsWith(", 0)");
+}
+
+function getContrastingColor(rgbaString) {
+  const matches = rgbaString.match(/rgba\((.+?), (.+?), (.+?), (.+?)\)/);
+  const r = matches[1];
+  const g = matches[2];
+  const b = matches[3];
+  const a = matches[4];
+  const output = `rgba(${255 - Number(r)}, ${255 - Number(g)}, ${
+    255 - Number(b)
+  }, ${255 - Number(a)})`;
+  console.log("output", output);
+  return output;
 }
 
 function replaceRootColors(topTwoColors) {

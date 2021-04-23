@@ -1,4 +1,4 @@
-# Generate folder with color theme from selected image
+# Copy template folder with color theme from selected image
 
 ## TL;DR
 

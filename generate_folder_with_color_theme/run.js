@@ -24,6 +24,9 @@ const imageFileName = cliArgs[0];
 
 const templateFolder = cliArgs[1] || "./template_folder";
 const newFolder = cliArgs[2] || "./new_folder";
+const rootStylesheet = cliArgs[3] || newFolder + "/styles.css";
+const mainColorRegex = cliArgs[4] || "(--main-color: )(.+?)(;)"; // `$1${firstColor}$3`
+const secondaryColorRegex = cliArgs[5] || "(--secondary-color: )(.+?)(;)"; // `$1${secondColor}$3`
 
 const fs = require("fs");
 const path = require("path");
@@ -34,7 +37,7 @@ processImageFile();
 function processImageFile() {
   readImageFile(imageFileName, (data) => {
     copyFolder(templateFolder, newFolder);
-    getColors(imageFileName);
+    getColors(imageFileName, replaceRootColors);
   });
 }
 
@@ -59,7 +62,7 @@ async function copyFolder(src, dest) {
   }
 }
 
-function getColors(imageFileName) {
+function getColors(imageFileName, callback) {
   PNG.decode(imageFileName, (pixels) => {
     const rgbaArray = [];
     for (let i = 0; i < pixels.length - 4; i++) {
@@ -69,6 +72,7 @@ function getColors(imageFileName) {
     }
     const topTwoColors = getTopTwoColors(rgbaArray);
     console.log("\nTop two colors:", topTwoColors, "\n");
+    if (callback) callback(topTwoColors);
   });
 }
 
@@ -93,4 +97,23 @@ function getTopTwoColors(colors) {
     }
   });
   return { firstColor, secondColor };
+}
+
+function replaceRootColors(topTwoColors) {
+  const { firstColor, secondColor } = topTwoColors;
+  fs.readFile(rootStylesheet, "utf8", async function (err, rootStylesheetText) {
+    if (err) return console.log(err);
+
+    const rootStylesheetTextEdited = rootStylesheetText
+      .replace(new RegExp(mainColorRegex), `$1${firstColor}$3`)
+      .replace(new RegExp(secondaryColorRegex), `$1${secondColor}$3`);
+
+    fs.writeFile(
+      rootStylesheet,
+      rootStylesheetTextEdited,
+      async function (err, data) {
+        if (err) return console.log(err);
+      }
+    );
+  });
 }

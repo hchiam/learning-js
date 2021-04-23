@@ -66,9 +66,11 @@ function getColors(imageFileName, callback) {
   PNG.decode(imageFileName, (pixels) => {
     const rgbaArray = [];
     for (let i = 0; i < pixels.length - 4; i++) {
-      rgbaArray[i] = `rgba(${pixels[i]}, ${pixels[i + 1]}, ${pixels[i + 2]}, ${
-        pixels[i + 3]
-      })`;
+      const r = pixels[i];
+      const g = pixels[i + 1];
+      const b = pixels[i + 2];
+      const a = Math.round((Number(pixels[i + 3]) / 255) * 1000) / 1000;
+      rgbaArray[i] = `rgba(${r}, ${g}, ${b}, ${a})`;
     }
     const topTwoColors = getTopTwoColors(rgbaArray);
     console.log("\nTop two colors:", topTwoColors, "\n");
@@ -83,6 +85,9 @@ function getTopTwoColors(colors) {
   let secondCount = 0;
   let secondColor = "transparent";
   colors.forEach((color) => {
+    if (isTransparentRgbaString(color)) {
+      return; // ignore transparent colors
+    }
     if (color in ht) {
       ht[color]++;
     } else {
@@ -97,6 +102,10 @@ function getTopTwoColors(colors) {
     }
   });
   return { firstColor, secondColor };
+}
+
+function isTransparentRgbaString(rgbaString) {
+  return rgbaString.endsWith(", 0)");
 }
 
 function replaceRootColors(topTwoColors) {

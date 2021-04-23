@@ -130,8 +130,8 @@ function replaceRootColors(topTwoColors) {
     if (err) return console.log(err);
 
     const rootStylesheetTextEdited = rootStylesheetText
-      .replace(new RegExp(mainColorRegex), `$1${firstColor}$3`)
-      .replace(new RegExp(secondaryColorRegex), `$1${secondColor}$3`);
+      .replace(new RegExp(mainColorRegex, "g"), `$1${firstColor}$3`)
+      .replace(new RegExp(secondaryColorRegex, "g"), `$1${secondColor}$3`);
 
     fs.writeFile(
       rootStylesheet,

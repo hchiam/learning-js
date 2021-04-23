@@ -3,7 +3,7 @@
 ## TL;DR
 
 ```bash
-node run.js
+node run.js image.png template_folder new_folder
 ```
 
 Files you need: `run.js`, `png-node.js`, an image, and a template folder.

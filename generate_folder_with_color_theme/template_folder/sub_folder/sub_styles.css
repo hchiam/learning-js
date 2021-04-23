@@ -24,3 +24,17 @@ p:hover {
   background-color: var(--secondary-color);
   color: var(--main-color);
 }
+
+main {
+  position: relative;
+  animation: swoop-in 0.7s forwards;
+}
+
+@keyframes swoop-in {
+  0% {
+    top: -100vh;
+  }
+  100% {
+    top: 0;
+  }
+}

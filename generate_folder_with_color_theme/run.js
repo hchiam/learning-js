@@ -3,9 +3,9 @@ rm -rf new_folder
 node run.js
 */
 
-const cliArgs = process.argv.slice(2);
+const args = process.argv.slice(2);
 
-if (!cliArgs || cliArgs.length < 1) {
+if (!args || args.length < 1) {
   console.log(
     `
 Missing arguments. Try something like this: 
@@ -20,13 +20,13 @@ Or this:
   return;
 }
 
-const imageFileName = cliArgs[0];
+const imageFileName = args[0];
 
-const templateFolder = cliArgs[1] || "./template_folder";
-const newFolder = cliArgs[2] || "./new_folder";
-const rootStylesheet = cliArgs[3] || newFolder + "/styles.css";
-const mainColorRegex = cliArgs[4] || "(--main-color: )(.+?)(;)"; // `$1${firstColor}$3`
-const secondaryColorRegex = cliArgs[5] || "(--secondary-color: )(.+?)(;)"; // `$1${secondColor}$3`
+const templateFolder = args[1] || "./template_folder";
+const newFolder = args[2] || "./new_folder";
+const rootStylesheet = args[3] || newFolder + "/styles.css";
+const mainColorRegex = args[4] || "(--main-color: )(.+?)(;)"; // `$1${firstColor}$3`
+const secondaryColorRegex = args[5] || "(--secondary-color: )(.+?)(;)"; // `$1${secondColor}$3`
 
 const fs = require("fs");
 const path = require("path");

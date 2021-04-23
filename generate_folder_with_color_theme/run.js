@@ -126,19 +126,25 @@ function getContrastingColor(rgbaString) {
 
 function replaceRootColors(topTwoColors) {
   const { firstColor, secondColor } = topTwoColors;
-  fs.readFile(rootStylesheet, "utf8", async function (err, rootStylesheetText) {
-    if (err) return console.log(err);
-
-    const rootStylesheetTextEdited = rootStylesheetText
-      .replace(new RegExp(mainColorRegex, "g"), `$1${firstColor}$3`)
-      .replace(new RegExp(secondaryColorRegex, "g"), `$1${secondColor}$3`);
-
-    fs.writeFile(
+  setTimeout(() => {
+    fs.readFile(
       rootStylesheet,
-      rootStylesheetTextEdited,
-      async function (err, data) {
+      "utf8",
+      async function (err, rootStylesheetText) {
         if (err) return console.log(err);
+
+        const rootStylesheetTextEdited = rootStylesheetText
+          .replace(new RegExp(mainColorRegex, "g"), `$1${firstColor}$3`)
+          .replace(new RegExp(secondaryColorRegex, "g"), `$1${secondColor}$3`);
+
+        fs.writeFile(
+          rootStylesheet,
+          rootStylesheetTextEdited,
+          async function (err, data) {
+            if (err) return console.log(err);
+          }
+        );
       }
     );
-  });
+  }, 1000);
 }

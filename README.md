@@ -164,3 +164,15 @@ Only use them after you read and understand the contents of each bookmarklet!
 https://en.wikipedia.org/wiki/Bookmarklet
 
 https://github.com/hchiam/learning-js/tree/master/bookmarklets#bookmarklets
+
+### CJS vs MJS/ESM/ES6M vs all the other types of JavaScript modules syntax
+
+Read later:
+
+https://www.sitepoint.com/understanding-es6-modules
+
+https://stackoverflow.com/a/46677972
+
+https://dev.to/iggredible/what-the-heck-are-cjs-amd-umd-and-esm-ikm
+
+https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/

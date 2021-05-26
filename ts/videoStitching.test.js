@@ -48,7 +48,7 @@ describe("the solution (both versions)", () => {
     ];
     const timeRange = 9;
     expect(videoStitching(clips, timeRange)).toEqual(3);
-    console.log(clips);
+    // console.log(clips);
     expect(videoStitching_v2(clips, timeRange)).toEqual(3);
   });
 

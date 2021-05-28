@@ -8,7 +8,7 @@ var majorityElement = function (nums) {
   if (!nums || !nums.length) return null;
 
   /**
-   * Boyer-Moore Voting Algorithm:
+   * Boyer-Moore Voting Algorithm: O(n) time, O(1) space.
    * How: Current candidate, + if =, - if !=, new candidate after 0.
    * Why: All non-majority will be canceled out with majority,
    * and won't cancel out all the majority.

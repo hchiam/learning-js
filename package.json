@@ -9,8 +9,7 @@
   "devDependencies": {
     "eslint": "^6.4.0",
     "eslint-config-google": "^0.14.0",
-    "husky": "^4.2.3",
-    "jest-cli": "^24.9.0"
+    "husky": "^4.2.3"
   },
   "husky": {
     "hooks": {

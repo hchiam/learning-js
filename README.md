@@ -41,7 +41,8 @@ This works just like [`rerun` for Python](https://github.com/hchiam/learning-pyt
 To set up [eslint and jest](https://github.com/hchiam/eslint-and-jest) locally inside this learning-js folder:
 
 ```bash
-npm install # eslint and jest-cli are already listed in package.json for you
+npm install jest --global
+npm install # eslint is already listed in package.json for you
 npm test # runs scripts test command listed in package.json
 ```
 

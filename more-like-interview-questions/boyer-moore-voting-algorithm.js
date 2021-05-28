@@ -14,18 +14,14 @@ var majorityElement = function (nums) {
    * and won't cancel out all the majority.
    */
 
-  let currentCandidate = nums[0];
+  let currentCandidate = null;
   let currentCount = 0;
 
   nums.forEach((num) => {
     if (currentCount === 0) {
       currentCandidate = num;
     }
-    if (num === currentCandidate) {
-      currentCount++;
-    } else {
-      currentCount--;
-    }
+    currentCount += num === currentCandidate ? 1 : -1;
   });
 
   return currentCandidate;

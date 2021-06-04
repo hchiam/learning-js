@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Clean Code Tip</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/hchiam/css-boilerplate@4.0.0/style.css"
+      integrity="sha384-qc0k+tOBosoa6B0ldBRt61gn5QHyQvObH1vChSIsYn9UyP1i4XmrTEDOHXuKi8UH"
+      crossorigin="anonymous"
+    />
+    <style>
+      section {
+        margin: 3rem 0;
+      }
+      [id^="tip_heading_goes_here"]:after {
+        content: " (click to expand/collapse)";
+        font-style: italic;
+        font-size: 0.85em;
+        color: lime;
+      }
+      summary {
+        padding: 1rem;
+      }
+      summary:hover {
+        background: lime;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Random Clean Code Tip and Code Review Tip</h1>
+    <p>
+      <i
+        >Dynamically generated from
+        <a
+          href="https://github.com/ryanmcdermott/clean-code-javascript"
+          target="_blank"
+          >ryanmcdermott/clean-code-javascript</a
+        >
+        and
+        <a
+          href="https://github.com/ryanmcdermott/code-review-tips"
+          target="_blank"
+          >ryanmcdermott/code-review-tips</a
+        >.</i
+      >
+    </p>
+    <main>
+      <section>
+        <h2>Random Clean Code Tip:</h2>
+        <details>
+          <summary id="tip_heading_goes_here_1"></summary>
+          <p id="tip_details_go_here_1"></p>
+        </details>
+      </section>
+      <section>
+        <h2>Random Code Review Tip:</h2>
+        <details>
+          <summary id="tip_heading_goes_here_2"></summary>
+          <p id="tip_details_go_here_2"></p>
+        </details>
+      </section>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+    <script>
+      class Fetcher {
+        constructor() {
+          this.text = "";
+          this.headings = [];
+          this.heading = "";
+          this.details = "";
+        }
+
+        async getMarkdownFileText(url) {
+          const response = await fetch(url);
+          this.text = await response.text();
+          return this;
+        }
+
+        getAllHeadings(text = this.text) {
+          const headingRegex = /### (.+)/g;
+          const matches = [...text.matchAll(headingRegex)];
+          this.headings = matches.map((m) => m[1]);
+          return this;
+        }
+
+        getDetails(heading) {
+          this.heading = heading;
+          if (!heading) {
+            const randomIndex = getRandomInteger(0, this.headings.length - 1);
+            this.heading = this.headings[randomIndex];
+          }
+          const escapedHeading = escapeSpecialRegexCharacters(this.heading);
+          const detailsRegex = new RegExp(
+            `(### ${escapedHeading}(.|[\r\n])+?)###?`,
+            "g"
+          );
+          const details = [...this.text.matchAll(detailsRegex)][0].join("");
+          this.details = details.replace(
+            new RegExp("### " + this.heading + "\n?"),
+            ""
+          );
+          return this;
+        }
+      }
+
+      function getRandomInteger(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+
+      function escapeSpecialRegexCharacters(string) {
+        const regex = /([!@#$%^&*(){}/\\+=|._-])/g;
+        return string.replace(regex, "\\$1");
+      }
+
+      async function fetchTipFromUrl(fetcher, url) {
+        const text = await fetcher.getMarkdownFileText(url);
+        fetcher.getAllHeadings().getDetails();
+
+        console.log("Click the following to expand/collapse it:");
+
+        console.groupCollapsed(fetcher.heading);
+        console.log(fetcher.details);
+        console.groupEnd();
+        return { heading: fetcher.heading, details: fetcher.details };
+      }
+
+      (async function run() {
+        const fetcher = new Fetcher();
+
+        const url1 =
+          "https://raw.githubusercontent.com/ryanmcdermott/clean-code-javascript/master/README.md";
+        const url2 =
+          "https://raw.githubusercontent.com/ryanmcdermott/code-review-tips/master/README.md";
+
+        const { heading: heading1, details: details1 } = await fetchTipFromUrl(
+          fetcher,
+          url1
+        );
+
+        const { heading: heading2, details: details2 } = await fetchTipFromUrl(
+          fetcher,
+          url2
+        );
+
+        document.querySelector("#tip_heading_goes_here_1").innerText = heading1;
+        document.querySelector("#tip_details_go_here_1").innerHTML =
+          marked(details1);
+
+        document.querySelector("#tip_heading_goes_here_2").innerText = heading2;
+        document.querySelector("#tip_details_go_here_2").innerHTML =
+          marked(details2);
+      })();
+    </script>
+  </body>
+</html>
+<!-- surge . https://random-code-tips.surge.sh -->

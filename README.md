@@ -50,6 +50,8 @@ npm test # runs scripts test command listed in package.json
 
 **_Or_** to run just a-specific.test.js, run this: `jest a-specific.test.js`.
 
+You can also automatically include code style fixes in your commits with [`lint-staged`](https://github.com/hchiam/learning-lint-staged) set up with `husky`.
+
 ### Get code Maintainability Index (MI score)
 
 The MI combines lines of code, cyclomatic complexity, and the Halstead volume metric (i.e. number of variables, operations, decision paths, and lines of code). After you [`npm install -g plato` or `yarn global add plato`](https://github.com/es-analysis/plato), you can get the MI score of your code:

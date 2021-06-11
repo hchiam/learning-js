@@ -8,7 +8,7 @@ const coinChange = (coins, amount) => {
   if (amount === 0) return 0;
   if ((coins.length < 1 && amount > 0) || amount < 0) return -1;
   if (coins.length === 1) {
-    return (amount % coins[0] === 0) ? amount/coins[0] : -1;
+    return amount % coins[0] === 0 ? amount / coins[0] : -1;
   }
   coins = coins.filter((c) => c <= amount);
   coins.sort((a, b) => b - a); // biggest first

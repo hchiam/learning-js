@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "jest",
+    "test": "jest --bail --findRelatedTests",
     "lint": "prettier --write *.js"
   },
-  "author": "",
   "devDependencies": {
     "eslint": "^6.4.0",
     "eslint-config-google": "^0.14.0",

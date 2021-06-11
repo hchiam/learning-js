@@ -20,6 +20,6 @@
     "**/*.js": [
       "jest --bail --findRelatedTests"
     ],
-    "*.{js,css,scss,json,md,ts,tsx}": "prettier --write"
+    "*.{js,css,html,scss,json,md,ts,tsx}": "prettier --write"
   }
 }

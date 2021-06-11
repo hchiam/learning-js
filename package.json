@@ -4,8 +4,10 @@
   "description": "",
   "scripts": {
     "test": "jest --bail --findRelatedTests",
-    "lint": "prettier --write *.js"
+    "lint": "prettier --write *.{js,css,scss,json,md,ts,tsx}",
+    "prepare": "husky install"
   },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^6.4.0",
     "eslint-config-google": "^0.14.0",

@@ -16,6 +16,8 @@ Make sure to include console.log("output text here");
 
 Also note the stuff around the default values for function arguments here: <https://devhints.io/es6?ref=devawesome.io>
 
+[Support Both Legacy JS and Modern JS Without Slowing All Browsers](https://codepen.io/hchiam/pen/mdWGLNE)
+
 ## Bonus
 
 ### Automatically format your code upon save

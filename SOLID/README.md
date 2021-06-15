@@ -4,6 +4,12 @@ My summaries and pseudocode.
 
 Reference: <https://github.com/ryanmcdermott/clean-code-javascript#solid>
 
+## TL;DR:
+
+- Use a _**handler param/object**_ to decouple/detach from possible sources of change. = SRP, OCP, DIP
+- Inherit from abstractions so swapping classes behave same. = LSP
+- Settings object params mostly optional. = ISP
+
 1. S = SRP = Single Responsibility Principle
 2. O = OCP = Open/Closed Principle
 3. L = LSP = Liskov Substitution Principle

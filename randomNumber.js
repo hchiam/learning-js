@@ -1,3 +1,4 @@
-function getRandomNumber(min, max) {
-  return Math.random() * (max - min) + min;
+function getRandomNumber(min, maxExclusive) {
+  var delta = maxExclusive - min;
+  return Math.random() * delta + min;
 }

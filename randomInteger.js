@@ -1,5 +1,6 @@
-function getRandomInteger(min, max) {
+function getRandomInteger(min, maxExclusive) {
   min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
+  maxExclusive = Math.floor(maxExclusive);
+  var delta = maxExclusive - min;
+  return Math.floor(Math.random() * delta) + min;
 }

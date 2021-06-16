@@ -1,13 +1,30 @@
 // https://leetcode.com/explore/interview/card/top-interview-questions-medium/112/design/813/
 
-// more efficient would be to avoid Object.keys: https://leetcode.com/explore/interview/card/top-interview-questions-medium/112/design/813/discuss/532747/JavaScript
-
 /**
+ * This file contains 2 solutions:  RandomizedSet and RandomizedSet2:
+ *
  * RandomizedSet simply uses one hash table,
  *
- * but RandomizedSet2 really pushes time complexity to O(1)
- * by avoiding using Object.keys and the "in" keyword,
- * but this requires extra memory space to store and update an array.
+ * but RandomizedSet2 (based off of https://leetcode.com/explore/interview/card/top-interview-questions-medium/112/design/813/discuss/532747/JavaScript)
+ * really pushes the time complexity to O(1)
+ * by avoiding using Object.keys and the "in" keyword, to avoid inherent looping by using an array,
+ * but this approach requires extra memory space and code to store and update that array.
+ *
+ * The array helps, because you might as well store indices for the values in the hash table (key:value, value=?),
+ * so store array indices in the hash table that match up with the array.
+ * And then the only surprising logic is when the item you're removing
+ * just happens to not be the last one in the array (as detected by comparing with the array's last element),
+ * in which case a "gap" is created in the array where you removed an item,
+ * which breaks the usefulness of the array,
+ * so to fix that, you can "fill" that gap in the array with the last item in the array,
+ * and update the hash table (which maps values to the array's indices) to match the updated array.
+ *
+ * For example:
+ *
+ * {0:0, 1:1, 2:2, 3:3} [0,1,2,3] remove 1
+ * {0:0, 2:2, 3:3} [0,1,2,_] (need to update/correct the array)
+ * indexOfRemoved = 1, lastValueAdded = 3
+ * {0:0, 2:2, 3:1} [0,3,2] (fix the array, update hash table to match array)
  */
 
 /**
@@ -66,7 +83,7 @@ function getRandomInteger(min, maxExclusive) {
  * var param_3 = obj.getRandom()
  */
 
-// more efficient would be to avoid Object.keys: https://leetcode.com/explore/interview/card/top-interview-questions-medium/112/design/813/discuss/532747/JavaScript
+// avoid Object.keys: https://leetcode.com/explore/interview/card/top-interview-questions-medium/112/design/813/discuss/532747/JavaScript
 
 var RandomizedSet2 = function () {
   this.set = {};
@@ -88,23 +105,26 @@ RandomizedSet2.prototype.remove = function (val) {
   if (hadAlready) {
     delete this.set[val];
     const lastValueAdded = this.values.pop();
-    const wasLastValueAdded = this.values.length === indexOfRemoved;
-    if (!wasLastValueAdded) {
+    const wasLastItemInTheArray = this.values.length === indexOfRemoved;
+    if (!wasLastItemInTheArray) {
+      // you need to handle the case when the item you removed isn't the last one in the array:
+
       /**
-       * example:
+       * For example:
        *
-       * {0:0, 1:1, 2:2} [0,1,2] remove 1
-       * {0:0, 2:2} [0,1]
-       * indexOfRemoved = 1, lastValueAdded = 2
-       * {0:0, 2:1} [0,2]
+       * {0:0, 1:1, 2:2, 3:3} [0,1,2,3] remove 1
+       * {0:0, 2:2, 3:3} [0,1,2,_] (need to update/correct the array)
+       * indexOfRemoved = 1, lastValueAdded = 3
+       * {0:0, 2:2, 3:1} [0,3,2] (fix the array, update hash table to match array)
        */
 
       // make use of the now-unused index:
 
-      // update "= index" of last value added to make use of the unused index
-      this.set[lastValueAdded] = indexOfRemoved;
       // update "[index]" of last value added to make use of the unused index
-      this.values[indexOfRemoved] = lastValueAdded;
+      this.values[indexOfRemoved] = lastValueAdded; // array "gap" filled
+
+      // update "= index" of last value added to make use of the unused index
+      this.set[lastValueAdded] = indexOfRemoved; // hash table updated to match array
     }
   }
 

@@ -58,6 +58,22 @@ describe("RandomizedSet", () => {
     expect(param_3).toBe(null);
   });
 
+  it("works on another example", () => {
+    const obj = new RandomizedSet();
+    const param_1 = obj.remove(0);
+    const param_2 = obj.remove(0);
+    const param_3 = obj.insert(0);
+    const param_4 = obj.getRandom();
+    const param_5 = obj.remove(0);
+    const param_6 = obj.insert(0);
+    expect(param_1).toBe(false);
+    expect(param_2).toBe(false);
+    expect(param_3).toBe(true);
+    expect(param_4).toBe(0);
+    expect(param_5).toBe(true);
+    expect(param_6).toBe(true);
+  });
+
   it("works on a bigger example", () => {
     const rs = new RandomizedSet();
     const output = [];
@@ -137,6 +153,22 @@ describe("RandomizedSet2", () => {
     expect(param_1).toBe(null);
     expect(param_2).toBe(null);
     expect(param_3).toBe(null);
+  });
+
+  it.only("works on another example", () => {
+    const obj = new RandomizedSet2();
+    const param_1 = obj.remove(0);
+    const param_2 = obj.remove(0);
+    const param_3 = obj.insert(0);
+    const param_4 = obj.getRandom();
+    const param_5 = obj.remove(0);
+    const param_6 = obj.insert(0);
+    expect(param_1).toBe(false);
+    expect(param_2).toBe(false);
+    expect(param_3).toBe(true);
+    expect(param_4).toBe(0);
+    expect(param_5).toBe(true);
+    expect(param_6).toBe(true);
   });
 
   it("works on a bigger example", () => {

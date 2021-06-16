@@ -77,10 +77,10 @@ RandomizedSet2.prototype.insert = function (val) {
 RandomizedSet2.prototype.remove = function (val) {
   const hadAlready = val in this.set;
   const indexOfRemoved = this.set[val];
-  const wasLastValueAdded = this.values.length === indexOfRemoved;
   if (hadAlready) {
     delete this.set[val];
     const lastValueAdded = this.values.pop();
+    const wasLastValueAdded = this.values.length === indexOfRemoved;
     if (!wasLastValueAdded) {
       /**
        * example:
@@ -99,7 +99,8 @@ RandomizedSet2.prototype.remove = function (val) {
       this.values[indexOfRemoved] = lastValueAdded;
     }
   }
-  return hadAlready || wasLastValueAdded;
+
+  return hadAlready;
 };
 
 RandomizedSet2.prototype.getRandom = function () {

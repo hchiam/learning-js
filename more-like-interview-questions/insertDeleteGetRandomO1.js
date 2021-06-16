@@ -96,7 +96,8 @@ var RandomizedSet2 = function () {
 RandomizedSet2.prototype.insert = function (val) {
   const hadAlready = this.set[val] !== undefined;
   if (!hadAlready) {
-    this.set[val] = this.values.length;
+    const indexInArrayCorrespondingToHashTableValue = this.values.length;
+    this.set[val] = indexInArrayCorrespondingToHashTableValue;
     this.values.push(val);
   }
   return !hadAlready;

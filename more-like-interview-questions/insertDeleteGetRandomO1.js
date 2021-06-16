@@ -3,6 +3,14 @@
 // more efficient would be to avoid Object.keys: https://leetcode.com/explore/interview/card/top-interview-questions-medium/112/design/813/discuss/532747/JavaScript
 
 /**
+ * RandomizedSet simply uses one hash table,
+ *
+ * but RandomizedSet2 really pushes time complexity to O(1)
+ * by avoiding using Object.keys,
+ * but this requires extra memory space to store and update an array.
+ */
+
+/**
  * Initialize your data structure here.
  */
 var RandomizedSet = function () {

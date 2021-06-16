@@ -16,11 +16,11 @@
  *
  * And then the only surprising logic is when the item you're removing
  * just happens to not be the last one in the array (as detected by comparing with the array's last element),
- * in which case a "gap" is created in the array where you removed an item,
+ * in which case a "gap" is would be created in the array where you removed an item,
  * which breaks the usefulness of the array,
- * so to fix that, you can "fill" that gap in the array with the last item in the array,
- * and make use of the index stored in the hash table for the index of the array that is now a "gap",
- * and update the hash table (which maps values to the array's indices) to match the updated array.
+ * so to instead of creating a "gap", you can "fill" that position in the array with the last item in the array,
+ * and make use of the index stored in the hash table for the index of the array that would correspond to the "gap".
+ * And then update the hash table (which maps values to the array's indices) to match the updated array.
  *
  * For example:
  *

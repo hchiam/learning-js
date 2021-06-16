@@ -58,7 +58,57 @@ function getRandomInteger(min, maxExclusive) {
  * var param_3 = obj.getRandom()
  */
 
+// more efficient would be to avoid Object.keys: https://leetcode.com/explore/interview/card/top-interview-questions-medium/112/design/813/discuss/532747/JavaScript
+
+var RandomizedSet2 = function () {
+  this.set = {};
+  this.values = [];
+};
+
+RandomizedSet2.prototype.insert = function (val) {
+  const hadAlready = val in this.set;
+  if (!hadAlready) {
+    this.set[val] = this.values.length;
+    this.values.push(val);
+  }
+  return !hadAlready;
+};
+
+RandomizedSet2.prototype.remove = function (val) {
+  const hadAlready = val in this.set;
+  const indexOfRemoved = this.set[val];
+  const wasLastValueAdded = this.values.length === indexOfRemoved;
+  if (hadAlready) {
+    delete this.set[val];
+    const lastValueAdded = this.values.pop();
+    if (!wasLastValueAdded) {
+      /**
+       * example:
+       *
+       * {0:0, 1:1, 2:2} [0,1,2] remove 1
+       * {0:0, 2:2} [0,1]
+       * indexOfRemoved = 1, lastValueAdded = 2
+       * {0:0, 2:1} [0,2]
+       */
+
+      // make use of the now-unused index:
+
+      // update "= index" of last value added to make use of the unused index
+      this.set[lastValueAdded] = indexOfRemoved;
+      // update "[index]" of last value added to make use of the unused index
+      this.values[indexOfRemoved] = lastValueAdded;
+    }
+  }
+  return hadAlready || wasLastValueAdded;
+};
+
+RandomizedSet2.prototype.getRandom = function () {
+  if (this.values.length === 0) return null;
+  return this.values[Math.floor(Math.random() * this.values.length)];
+};
+
 module.exports = {
   RandomizedSet,
+  RandomizedSet2,
   getRandomInteger,
 };

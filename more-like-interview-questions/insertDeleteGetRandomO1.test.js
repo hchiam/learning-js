@@ -155,7 +155,7 @@ describe("RandomizedSet2", () => {
     expect(param_3).toBe(null);
   });
 
-  it.only("works on another example", () => {
+  it("works on another example", () => {
     const obj = new RandomizedSet2();
     const param_1 = obj.remove(0);
     const param_2 = obj.remove(0);

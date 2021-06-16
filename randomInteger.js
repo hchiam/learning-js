@@ -4,3 +4,7 @@ function getRandomInteger(min, maxExclusive) {
   var delta = maxExclusive - min;
   return Math.floor(Math.random() * delta) + min;
 }
+
+module.exports = {
+  getRandomInteger,
+};

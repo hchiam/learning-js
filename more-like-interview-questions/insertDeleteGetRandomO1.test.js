@@ -1,6 +1,32 @@
-const { RandomizedSet } = require("./insertDeleteGetRandomO1.js");
+const {
+  RandomizedSet,
+  getRandomInteger,
+} = require("./insertDeleteGetRandomO1.js");
 
-describe("the solution", () => {
+describe("getRandomInteger", () => {
+  it("works", () => {
+    const a = { 1: true, 2: true, 3: true, 4: true, 5: true };
+    const keys = Object.keys(a);
+    expect(keys.length).toBe(5);
+    let randomInteger = getRandomInteger(0, keys.length);
+    expect(randomInteger).toBeGreaterThanOrEqual(0);
+    expect(randomInteger).toBeLessThan(5);
+    randomInteger = getRandomInteger(0, keys.length);
+    expect(randomInteger).toBeGreaterThanOrEqual(0);
+    expect(randomInteger).toBeLessThan(5);
+    randomInteger = getRandomInteger(0, keys.length);
+    expect(randomInteger).toBeGreaterThanOrEqual(0);
+    expect(randomInteger).toBeLessThan(5);
+    randomInteger = getRandomInteger(0, keys.length);
+    expect(randomInteger).toBeGreaterThanOrEqual(0);
+    expect(randomInteger).toBeLessThan(5);
+    randomInteger = getRandomInteger(0, keys.length);
+    expect(randomInteger).toBeGreaterThanOrEqual(0);
+    expect(randomInteger).toBeLessThan(5);
+  });
+});
+
+describe("RandomizedSet", () => {
   it("works on a simple example", () => {
     const obj = new RandomizedSet();
     const param_1 = obj.insert(1);

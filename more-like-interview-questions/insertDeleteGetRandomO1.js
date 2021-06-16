@@ -36,7 +36,7 @@ RandomizedSet.prototype.remove = function (val) {
 RandomizedSet.prototype.getRandom = function () {
   const keys = Object.keys(this.set);
   if (keys.length < 1) return null;
-  const randomNumber = getRandomInteger(0, keys.length - 1);
+  const randomNumber = getRandomInteger(0, keys.length);
   const key = keys[randomNumber];
   return Number(key);
 };
@@ -58,4 +58,5 @@ function getRandomInteger(min, maxExclusive) {
 
 module.exports = {
   RandomizedSet,
+  getRandomInteger,
 };

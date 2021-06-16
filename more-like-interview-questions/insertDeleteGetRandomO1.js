@@ -25,7 +25,7 @@
  * For example:
  *
  * {0:0, 1:1, 2:2, 3:3} [0,1,2,3] remove 1
- * {0:0, 2:2, 3:3} [0,1,2,_] (need to update/correct the array, to remove 1)
+ * {0:0, 2:2, 3:3} [0,1,2,3] (need to update/correct the array, to remove 1)
  * indexOfRemoved = 1, lastValueAdded = 3
  * {0:0, 2:2, 3:1} [0,3,2] (fix the array, update hash table to match array)
  */
@@ -117,7 +117,7 @@ RandomizedSet2.prototype.remove = function (val) {
        * For example:
        *
        * {0:0, 1:1, 2:2, 3:3} [0,1,2,3] remove 1
-       * {0:0, 2:2, 3:3} [0,1,2,_] (need to update/correct the array, to remove 1)
+       * {0:0, 2:2, 3:3} [0,1,2,3] (need to update/correct the array, to remove 1)
        * indexOfRemoved = 1, lastValueAdded = 3
        * {0:0, 2:2, 3:1} [0,3,2] (fix the array, update hash table to match array)
        */

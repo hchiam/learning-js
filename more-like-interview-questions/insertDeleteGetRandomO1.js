@@ -35,6 +35,7 @@ RandomizedSet.prototype.remove = function (val) {
  */
 RandomizedSet.prototype.getRandom = function () {
   const keys = Object.keys(this.set);
+  if (keys.length < 1) return null;
   const randomNumber = getRandomInteger(0, keys.length - 1);
   const key = keys[randomNumber];
   return Number(key);

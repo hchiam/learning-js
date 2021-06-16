@@ -11,6 +11,26 @@ describe("the solution", () => {
     expect([1, 2].includes(param_3)).toBe(true);
   });
 
+  it("works if only run removes", () => {
+    const obj = new RandomizedSet();
+    const param_1 = obj.remove(1);
+    const param_2 = obj.remove(2);
+    const param_3 = obj.remove(3);
+    expect(param_1).toBe(false);
+    expect(param_2).toBe(false);
+    expect(param_3).toBe(false);
+  });
+
+  it("works if only run getRandom", () => {
+    const obj = new RandomizedSet();
+    const param_1 = obj.getRandom();
+    const param_2 = obj.getRandom();
+    const param_3 = obj.getRandom();
+    expect(param_1).toBe(null);
+    expect(param_2).toBe(null);
+    expect(param_3).toBe(null);
+  });
+
   it("works on a bigger example", () => {
     const rs = new RandomizedSet();
     const output = [];

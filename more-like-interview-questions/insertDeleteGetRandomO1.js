@@ -6,7 +6,7 @@
  * RandomizedSet simply uses one hash table,
  *
  * but RandomizedSet2 really pushes time complexity to O(1)
- * by avoiding using Object.keys,
+ * by avoiding using Object.keys and the "in" keyword,
  * but this requires extra memory space to store and update an array.
  */
 
@@ -74,7 +74,7 @@ var RandomizedSet2 = function () {
 };
 
 RandomizedSet2.prototype.insert = function (val) {
-  const hadAlready = val in this.set;
+  const hadAlready = this.set[val] !== undefined;
   if (!hadAlready) {
     this.set[val] = this.values.length;
     this.values.push(val);
@@ -83,7 +83,7 @@ RandomizedSet2.prototype.insert = function (val) {
 };
 
 RandomizedSet2.prototype.remove = function (val) {
-  const hadAlready = val in this.set;
+  const hadAlready = this.set[val] !== undefined;
   const indexOfRemoved = this.set[val];
   if (hadAlready) {
     delete this.set[val];

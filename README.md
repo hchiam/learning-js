@@ -172,6 +172,11 @@ https://github.com/hchiam/learning-js/tree/master/bookmarklets#bookmarklets
 
 ### CJS vs MJS/ESM/ES6M vs all the other types of JavaScript modules syntax
 
+- ESM = `import` and `export`. Simplest, async, tree-shakeable, but not universally compatible.
+- UMD = works everywhere, is more of a pattern of fallbacks, usually the fallback when ESM fails.
+- CJS = `require` and `module.exports`, sync, good for BE, commonly seen for node stuff.
+- AMD = `define`, async, good for FE, confusing compared to CJS.
+
 Read later:
 
 https://www.sitepoint.com/understanding-es6-modules

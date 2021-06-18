@@ -4,4 +4,6 @@ const obj = {
   1: { calvinAndHobbes: "transmogrifier" },
 };
 
-Object.entries(obj).forEach(([k, v]) => console.log(k, v));
+Object.entries(obj).forEach(([k, v]) => {
+  console.log(k, v);
+});

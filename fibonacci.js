@@ -17,9 +17,10 @@ function fibonacci_memo(n) {
 
 function fibonacci_direct(n) {
   if (n < 1) return 0;
-  const left = (1 + Math.sqrt(5)) / 2;
-  const right = (1 - Math.sqrt(5)) / 2;
-  const approx = (left ** n - right ** n) / Math.sqrt(5);
+  const sqrt5 = Math.sqrt(5);
+  const left = (1 + sqrt5) / 2;
+  const right = (1 - sqrt5) / 2;
+  const approx = (left ** n - right ** n) / sqrt5;
   return Math.round(approx);
 }
 

@@ -33,6 +33,16 @@
     "body": ["abcdefghijklmnopqrstuvwxyz"],
     "description": "abc"
   },
+  "numbers 0-9": {
+    "prefix": "n0123",
+    "body": ["0123456789"],
+    "description": "numbers from 0 to 9"
+  },
+  "numbers 1-9 then 0": {
+    "prefix": "n123",
+    "body": ["1234567890"],
+    "description": "numbers from 1 to 9 and then 0"
+  },
   "it": {
     "prefix": "it",
     "body": ["it('$1', () => {\n  $2\n});"],

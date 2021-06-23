@@ -6,22 +6,24 @@
 // right child: i * 2 + 1
 // parent: i / 2
 
-const MaxHeap = function() {
+const MaxHeap = function () {
   const heap = [null];
 
   this.print = () => heap;
 
-  this.insert = function(num) {
+  this.insert = function (num) {
     heap.push(num);
     // bubble up:
     if (heap.length > 2) {
       let idx = heap.length - 1;
-      while (heap[idx] >= heap[Math.floor(idx/2)]) {
+      while (heap[idx] >= heap[Math.floor(idx / 2)]) {
         if (idx >= 1) {
-          [heap[Math.floor(idx/2)], heap[idx]] =
-            [heap[idx], heap[Math.floor(idx/2)]];
-          if (Math.floor(idx/2) > 1) {
-            idx = Math.floor(idx/2);
+          [heap[Math.floor(idx / 2)], heap[idx]] = [
+            heap[idx],
+            heap[Math.floor(idx / 2)],
+          ];
+          if (Math.floor(idx / 2) > 1) {
+            idx = Math.floor(idx / 2);
           } else {
             break;
           }
@@ -30,11 +32,13 @@ const MaxHeap = function() {
     }
   };
 
-  this.remove = function() {
+  this.remove = function () {
     const smallest = heap[1];
-    if (heap.length < 2) { // last one
+    if (heap.length < 2) {
+      // last one
       return null;
-    } else if (heap.length == 2) { // keep one more
+    } else if (heap.length == 2) {
+      // keep one more
       heap.splice(1, 1);
       return smallest;
     } else if (heap.length > 2) {

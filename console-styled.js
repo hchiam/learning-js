@@ -1,1 +1,4 @@
-console.log(`some %cfancy%c text`, 'font-size: 15px; background: green; color: white;');
+console.log(
+  `some %cfancy%c text`,
+  "font-size: 15px; background: green; color: white;"
+);

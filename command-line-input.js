@@ -16,14 +16,14 @@ Enter something:`);
 hi();
 
 const stdin = process.openStdin();
-stdin.addListener('data', (data) => {
+stdin.addListener("data", (data) => {
   const line = data.toString().trim(); // remove newline at end
   const userSaidBye = line.match(/[good ?]?bye/i);
   console.log(`\n You entered: ${line}\n`);
   if (!userSaidBye) {
-    console.log('Say something again:');
+    console.log("Say something again:");
   } else {
-    console.log('Bye!\n');
+    console.log("Bye!\n");
     process.exit();
   }
 });

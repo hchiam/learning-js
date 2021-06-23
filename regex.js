@@ -1,20 +1,20 @@
 // terminal command: node regex.js
 
 //var sentenceToParse = "Hi my name is Bob."
-var sentenceToParse = "Hi my name is Bob. Your name is Carla."
-console.log('sentenceToParse = ' + sentenceToParse);
+var sentenceToParse = "Hi my name is Bob. Your name is Carla.";
+console.log("sentenceToParse = " + sentenceToParse);
 
 //var myRegex = /name is (.+)\./; // match should get name
 var myRegex = /name is (.+)\./g; // [1] match should get name
-console.log('myRegex = ' + myRegex);
+console.log("myRegex = " + myRegex);
 
 var found = sentenceToParse.match(myRegex);
-console.log('found = ' + found);
+console.log("found = " + found);
 
 if (found !== null) {
-    for(var i=0; i<found.length; i++) {
-        console.log('found[' + i + '] = ' + found[i]);
-    }
+  for (var i = 0; i < found.length; i++) {
+    console.log("found[" + i + "] = " + found[i]);
+  }
 }
 
 // another example

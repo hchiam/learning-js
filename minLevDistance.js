@@ -9,7 +9,7 @@ function minLevDistance(s1, s2) {
     }
   }
   // get the last cell in the DP table to get the final answer:
-  return levenshteinDist(s1, s1.length-1, s2, s2.length-1, dpTable);
+  return levenshteinDist(s1, s1.length - 1, s2, s2.length - 1, dpTable);
 }
 
 // use recursion to get the answer from the min of earlier cells:
@@ -20,25 +20,34 @@ function levenshteinDist(s1, s1Index, s2, s2Index, dpTable) {
     return s1Index + 1; // s2 === "" -> s1 delete all characters in s1 === s2
   }
 
-  const alreadyHaveMinDistance = (dpTable[s1Index][s2Index] !== -1);
+  const alreadyHaveMinDistance = dpTable[s1Index][s2Index] !== -1;
   if (alreadyHaveMinDistance) {
     return dpTable[s1Index][s2Index];
   }
 
-  const charactersMatch = (s1.charAt(s1Index) === s2.charAt(s2Index));
+  const charactersMatch = s1.charAt(s1Index) === s2.charAt(s2Index);
   if (charactersMatch) {
-    dpTable[s1Index][s2Index] = 0 + // no extra change to make
-        levenshteinDist(s1, s1Index-1, s2, s2Index-1, dpTable);
-  } else { // character mismatch
+    dpTable[s1Index][s2Index] =
+      0 + // no extra change to make
+      levenshteinDist(s1, s1Index - 1, s2, s2Index - 1, dpTable);
+  } else {
+    // character mismatch
     // Delete = use previous letter in s1:
-    const doDelete = levenshteinDist(s1, s1Index-1, s2, s2Index, dpTable);
+    const doDelete = levenshteinDist(s1, s1Index - 1, s2, s2Index, dpTable);
     // Insert = use letter from s2:
-    const insert = levenshteinDist(s1, s1Index, s2, s2Index-1, dpTable);
+    const insert = levenshteinDist(s1, s1Index, s2, s2Index - 1, dpTable);
     // Substitute = combine delete s1 & insert s2:
-    const substitute = levenshteinDist(s1, s1Index-1, s2, s2Index-1, dpTable);
+    const substitute = levenshteinDist(
+      s1,
+      s1Index - 1,
+      s2,
+      s2Index - 1,
+      dpTable
+    );
     // get min of these 3 options:
-    dpTable[s1Index][s2Index] = 1 + // add 1 for performing a change
-        Math.min(doDelete, insert, substitute); // get min
+    dpTable[s1Index][s2Index] =
+      1 + // add 1 for performing a change
+      Math.min(doDelete, insert, substitute); // get min
   }
 
   return dpTable[s1Index][s2Index];

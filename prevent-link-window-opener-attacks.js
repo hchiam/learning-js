@@ -1,6 +1,6 @@
 // https://cdn.jsdelivr.net/gh/hchiam/learning-js@master/prevent-link-window-opener-attacks.js
 
-;(function () {
+(function () {
   var linksThatOpenNewWindow = Array.from(
     document.querySelectorAll('a[target="_blank"]')
   );

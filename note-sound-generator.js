@@ -12,7 +12,7 @@ function playNote(e) {
   volumeSetup.connect(audioCtx.destination);
   volumeSetup.gain.value = volume;
   const oscillator = audioCtx.createOscillator();
-  oscillator.type = 'sine';
+  oscillator.type = "sine";
   oscillator.frequency.value = frequency;
   oscillator.connect(volumeSetup);
   // instead of oscillator.connect(audioCtx.destination);
@@ -26,9 +26,7 @@ function getFrequencyFromX(e) {
   const x = e.clientX;
   const minComfyFreq = 100;
   const maxComfyFreq = 400;
-  const frequency = normalize(x, 
-                              0,screenWidth, 
-                              minComfyFreq,maxComfyFreq);
+  const frequency = normalize(x, 0, screenWidth, minComfyFreq, maxComfyFreq);
   return frequency;
 }
 
@@ -38,13 +36,11 @@ function getVolumeFromY(e) {
   const y = e.clientY;
   const minComfyVolume = 0;
   const maxComfyVolume = 0.5;
-  const volume = normalize(y, 
-                           0,screenHeight, 
-                           minComfyVolume,maxComfyVolume);
+  const volume = normalize(y, 0, screenHeight, minComfyVolume, maxComfyVolume);
   return volume;
 }
 
-function normalize(value, inMin,inMax, outMin,outMax) {
+function normalize(value, inMin, inMax, outMin, outMax) {
   const inputBias = value - inMin;
   const ratioAdjustment = (outMax - outMin) / (inMax - inMin);
   const outputBias = outMin;

@@ -1,5 +1,5 @@
 function windowBlurEvent(callback) {
-  window.addEventListener('blur', function() {
+  window.addEventListener("blur", function () {
     callback();
-  })
+  });
 }

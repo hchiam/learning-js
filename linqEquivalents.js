@@ -17,7 +17,8 @@ const distinct = [...new Set(numbers)];
 const moreNumbers = [8, 9, 10];
 const concatenatedNumbers = [...numbers, ...moreNumbers];
 
-const labelledParity = numbers.map((n) => ({ // (just some setup for GroupBy)
+const labelledParity = numbers.map((n) => ({
+  // (just some setup for GroupBy)
   isEven: String(n % 2 === 0),
   number: n,
 }));

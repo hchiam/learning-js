@@ -5,12 +5,12 @@ function getComputedStyles(element) {
   for (let i = 0; i < computedStylesMap.length; i++) {
     const property = computedStylesMap.item(i);
     const propertyValue = computedStylesMap.getPropertyValue(property);
-    let camelCaseProperty = '';
+    let camelCaseProperty = "";
     for (let j = 0; j < property.length; j++) {
-      if (property[j] === '-' && j === 0) {
+      if (property[j] === "-" && j === 0) {
         j++;
         camelCaseProperty += property[j];
-      } else if (property[j] === '-' && j > 0) {
+      } else if (property[j] === "-" && j > 0) {
         j++;
         camelCaseProperty += property[j].toUpperCase();
       } else {

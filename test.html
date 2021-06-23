@@ -1,69 +1,77 @@
 <!DOCTYPE html>
 <html>
   <body>
-    
     <button type="button" onclick="myFunction();">Try it</button>
-    
+
     <script>
-    function Node(val=null,next=null) {
-      this.val = val;
-      this.next = next;
-      this.setVal = function(val){
+      function Node(val = null, next = null) {
         this.val = val;
-      };
-      this.getVal = function(){
-        return this.val;
-      };
-      this.setNext = function(next){
         this.next = next;
-      };
-      this.getNext = function(){
-        return this.next;
-      };
-      this.getNextVal = function(){
-        if (this.getNext() !== null) {
-          return this.getNext().getVal();
-        } else {
-          return null;
-        }
-      };
-    }
-    function reverseSLL(sLL) {
-      var p = new Node();
-      alert('p'+p.getVal());
-      var c = new Node(sLL.getVal(),sLL);
-      alert('c'+c.getVal());
-      var n = new Node(c.getNextVal(),c.getNext());
-      alert('n'+n.getVal());
-      while (c.getNext()) {
-        n.getNext().setNext(c);
-        p.setNext(c);
-        c.setNext(n);
+        this.setVal = function (val) {
+          this.val = val;
+        };
+        this.getVal = function () {
+          return this.val;
+        };
+        this.setNext = function (next) {
+          this.next = next;
+        };
+        this.getNext = function () {
+          return this.next;
+        };
+        this.getNextVal = function () {
+          if (this.getNext() !== null) {
+            return this.getNext().getVal();
+          } else {
+            return null;
+          }
+        };
       }
-      sLL.setNext(n);
-      return sLL;
-    }
-    function myFunction(){
-      alert('start');
-      
-      // set up singly-linked list
-      var a = new Node('a');
-      var b = new Node('b',a);
-      var c = new Node('c',b);
-      alert(c.getVal()+" -> "+c.getNextVal());
-      alert(b.getVal()+" -> "+b.getNextVal());
-      alert(a.getVal()+" -> "+a.getNextVal());
-      var head = c;
-      
-      // reverse singly-linked list
-      head = reverseSLL(head);
-      alert('should be a'+head.getVal() + " --> " + head.getNextVal());
-      alert('should be b'+head.getNext().getVal() + " --> " + head.getNext().getNextVal());
-      alert('should be c'+head.getNext().getNext().getVal() + " --> " + head.getNext().getNext().getNextVal());
-      
-      alert('end');
-    }
+      function reverseSLL(sLL) {
+        var p = new Node();
+        alert("p" + p.getVal());
+        var c = new Node(sLL.getVal(), sLL);
+        alert("c" + c.getVal());
+        var n = new Node(c.getNextVal(), c.getNext());
+        alert("n" + n.getVal());
+        while (c.getNext()) {
+          n.getNext().setNext(c);
+          p.setNext(c);
+          c.setNext(n);
+        }
+        sLL.setNext(n);
+        return sLL;
+      }
+      function myFunction() {
+        alert("start");
+
+        // set up singly-linked list
+        var a = new Node("a");
+        var b = new Node("b", a);
+        var c = new Node("c", b);
+        alert(c.getVal() + " -> " + c.getNextVal());
+        alert(b.getVal() + " -> " + b.getNextVal());
+        alert(a.getVal() + " -> " + a.getNextVal());
+        var head = c;
+
+        // reverse singly-linked list
+        head = reverseSLL(head);
+        alert("should be a" + head.getVal() + " --> " + head.getNextVal());
+        alert(
+          "should be b" +
+            head.getNext().getVal() +
+            " --> " +
+            head.getNext().getNextVal()
+        );
+        alert(
+          "should be c" +
+            head.getNext().getNext().getVal() +
+            " --> " +
+            head.getNext().getNext().getNextVal()
+        );
+
+        alert("end");
+      }
     </script>
-    
   </body>
 </html>

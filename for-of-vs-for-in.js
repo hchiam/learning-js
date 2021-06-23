@@ -1,5 +1,5 @@
-const arr = [1,2,3];
-Array.prototype.propThatShouldNotBeReadable = 'whoops!';
+const arr = [1, 2, 3];
+Array.prototype.propThatShouldNotBeReadable = "whoops!";
 
 // for...in incorrectly prints 'whoops!':
 for (let i in arr) {

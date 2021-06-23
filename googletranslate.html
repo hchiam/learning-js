@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html>
-    <body>
-        <!--These are the essentials: (page with TEXT, element ID for where to generate select box, JS code to create select box, SCRIPT src= google API call to create element)-->
-        <p>All text on this page will automatically translate with the selection in the selection box generated from Google's "translation API".</p>
-        <div id="myDivIDMakeIntoSelectBox">This element with id="myDivIDMakeIntoSelectBox" will turn into a selection box.</div>
-        <script type="text/javascript">
-            // This code is needed to generate the selection box:
-            function googleTranslateElementInit() { // this function name will be recognized by the API
-                new google.translate.TranslateElement({pageLanguage: 'en'}, 'myDivIDMakeIntoSelectBox');
-            }
-        </script>
-        <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-        
-        <!--extra stuff just to show on the page:-->
-        <p>
-            // This code is needed to generate the selection box:
-            <br>function <b>googleTranslateElementInit</b>() { // this function name will be recognized by the API
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;google.translate.TranslateElement({pageLanguage: 'en'}, '<b>myDivIDMakeIntoSelectBox</b>');
-            <br>}
-        </p>
-        <p>
-            &lt;script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"&gt;&lt;/script&gt;
-        </p>
-    </body>
+  <body>
+    <!--These are the essentials: (page with TEXT, element ID for where to generate select box, JS code to create select box, SCRIPT src= google API call to create element)-->
+    <p>
+      All text on this page will automatically translate with the selection in
+      the selection box generated from Google's "translation API".
+    </p>
+    <div id="myDivIDMakeIntoSelectBox">
+      This element with id="myDivIDMakeIntoSelectBox" will turn into a selection
+      box.
+    </div>
+    <script type="text/javascript">
+      // This code is needed to generate the selection box:
+      function googleTranslateElementInit() {
+        // this function name will be recognized by the API
+        new google.translate.TranslateElement(
+          { pageLanguage: "en" },
+          "myDivIDMakeIntoSelectBox"
+        );
+      }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!--extra stuff just to show on the page:-->
+    <p>
+      // This code is needed to generate the selection box:
+      <br />function <b>googleTranslateElementInit</b>() { // this function name
+      will be recognized by the API
+      <br />&nbsp;&nbsp;&nbsp;&nbsp;google.translate.TranslateElement({pageLanguage:
+      'en'}, '<b>myDivIDMakeIntoSelectBox</b>'); <br />}
+    </p>
+    <p>
+      &lt;script
+      src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"&gt;&lt;/script&gt;
+    </p>
+  </body>
 </html>

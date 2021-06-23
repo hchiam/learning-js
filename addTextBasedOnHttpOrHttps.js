@@ -5,23 +5,25 @@
 addTextBasedOnHttpOrHttps();
 
 function addTextBasedOnHttpOrHttps() {
-    let thisUrl = document.URL;
-	if (thisUrl.includes('https')) {
-        // get http link
-    	let urlAsHttpNotHttps = thisUrl.substring(0,4) + thisUrl.substring(5);
-        // create text to add
-    	let addedText = document.createElement('p');
-        addedText.id = 'addTextBasedOnHttpOrHttps';
-      	addedText.appendChild(document.createTextNode('This page/app not working? Try '));
-        // add link to that text
-        let aLink = document.createElement('a');
-        aLink.href = urlAsHttpNotHttps;
-        aLink.innerHTML = 'http';
-        aLink.target = '_blank';
-        addedText.appendChild(aLink);
-        addedText.appendChild(document.createTextNode(' instead of https.'));
-      	document.body.insertBefore(addedText, document.body.firstChild);
-        // center the added text
-        addedText.setAttribute('align','center');
-    }
+  let thisUrl = document.URL;
+  if (thisUrl.includes("https")) {
+    // get http link
+    let urlAsHttpNotHttps = thisUrl.substring(0, 4) + thisUrl.substring(5);
+    // create text to add
+    let addedText = document.createElement("p");
+    addedText.id = "addTextBasedOnHttpOrHttps";
+    addedText.appendChild(
+      document.createTextNode("This page/app not working? Try ")
+    );
+    // add link to that text
+    let aLink = document.createElement("a");
+    aLink.href = urlAsHttpNotHttps;
+    aLink.innerHTML = "http";
+    aLink.target = "_blank";
+    addedText.appendChild(aLink);
+    addedText.appendChild(document.createTextNode(" instead of https."));
+    document.body.insertBefore(addedText, document.body.firstChild);
+    // center the added text
+    addedText.setAttribute("align", "center");
+  }
 }

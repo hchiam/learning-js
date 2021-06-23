@@ -1,4 +1,4 @@
-function *generator1() {
+function* generator1() {
   yield 1;
   yield 2;
   return 4;
@@ -8,11 +8,11 @@ function normalFunctionReturningAnIterable() {
   return [5, 6, 7];
 }
 
-function *generator2() {
-  const val = yield *generator1(); // <- here be yield delegation to another generator
+function* generator2() {
+  const val = yield* generator1(); // <- here be yield delegation to another generator
   yield 3;
   yield val;
-  yield *normalFunctionReturningAnIterable(); // <- here be yield delegation to an iterator
+  yield* normalFunctionReturningAnIterable(); // <- here be yield delegation to an iterator
 }
 
 const it = generator2();

@@ -1,17 +1,22 @@
-<p>I needed to include polyfill for this to work: https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.9.1/polyfill.min.js</p>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.9.1/polyfill.min.js'></script>
+<p>
+  I needed to include polyfill for this to work:
+  https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.9.1/polyfill.min.js
+</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.9.1/polyfill.min.js"></script>
 <script>
   function* counter() {
-    var i = 1
-    while (true) yield i++
+    var i = 1;
+    while (true) yield i++;
   }
 
-  let gen = counter()
+  let gen = counter();
 
-  alert('You should see 1.\n\nThen 2.\n\nThen 3.\n\nAll given to you by the same call to gen.next().value')
-  alert(gen.next().value) //1
-  alert(gen.next().value) //2
-  alert(gen.next().value) //3
+  alert(
+    "You should see 1.\n\nThen 2.\n\nThen 3.\n\nAll given to you by the same call to gen.next().value"
+  );
+  alert(gen.next().value); //1
+  alert(gen.next().value); //2
+  alert(gen.next().value); //3
   //...
 
   // you can see a more involved generator here:

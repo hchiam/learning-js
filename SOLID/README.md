@@ -14,7 +14,7 @@ Reference: <https://github.com/ryanmcdermott/clean-code-javascript#solid>
 2. O = OCP = Open/Closed Principle
 3. L = LSP = Liskov Substitution Principle
 4. I = ISP = Interface Segregation Principle
-5. D = DIP = Dependency Injection Principle
+5. D = DIP = Dependency Inversion Principle
 
 ## 1. S = SRP = Single Responsibility Principle
 
@@ -65,7 +65,7 @@ Replace parent with child, should behave same (backwards compatibility).
 
 Make most settings optional in the interface = good DX.
 
-## 5. D = DIP = Dependency Injection Principle
+## 5. D = DIP = Dependency Inversion Principle
 
 ### Bad:
 

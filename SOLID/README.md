@@ -67,6 +67,8 @@ Make most settings optional in the interface = good DX.
 
 ## 5. D = DIP = Dependency Inversion Principle
 
+Both high-level and low-level should share interfaces instead of directly depending = the high-level has better reusability due to lower coupling.
+
 ### Bad:
 
 ```js

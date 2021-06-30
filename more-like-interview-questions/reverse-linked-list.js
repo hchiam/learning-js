@@ -34,26 +34,21 @@ const iteratively = (head) => {
 };
 
 const recursively = (head) => {
-  if (head == null || head.next == null) {
-    return head;
-  } else {
-    const prev = head;
-    let curr = head.next;
-    curr = recursivelySolve(prev, curr);
-    head.next = null;
-    return curr;
-  }
-};
+  if (!head || !head.next) return head;
+  const left = head;
+  const middle = head.next;
+  const newHead = solveRecursively(left, middle);
+  head.next = null;
+  return newHead;
 
-const recursivelySolve = (prev, curr) => {
-  if (prev == null || curr == null) {
-    return prev;
-  } else {
-    const next = curr.next;
-    curr.next = prev;
-    prev = curr;
-    curr = next;
-    return recursivelySolve(prev, curr);
+  function solveRecursively(left, middle) {
+    if (!middle) return left;
+
+    const right = middle.next;
+    middle.next = left;
+    left = middle;
+    middle = right;
+    return solveRecursively(left, middle);
   }
 };
 

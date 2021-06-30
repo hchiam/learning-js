@@ -21,16 +21,16 @@ const reverseList = function (head) {
 };
 
 const iteratively = (head) => {
-  let prev = null;
-  let curr = head;
-  while (curr) {
-    const next = head.next; // instead of next.next, which doesn't always work
-    curr.next = prev;
-    prev = curr;
-    curr = next;
-    // next.next, won't always work, unless you do if (!next) break;
+  let left = null;
+  let middle = head;
+  while (middle) {
+    const right = middle.next; // do this...
+    middle.next = left;
+    left = middle;
+    middle = right;
+    // ...since right = right.next; won't always work, unless you do if (!right) break;
   }
-  return prev; // since curr = next, which will be null
+  return left; // since middle = right, which will be null
 };
 
 const recursively = (head) => {
@@ -62,15 +62,20 @@ function ListNode(val) {
   this.next = null;
 }
 
-const head = new ListNode(1);
-head.next = new ListNode(2);
-head.next.next = new ListNode(3);
-head.next.next.next = new ListNode(4);
-head.next.next.next.next = new ListNode(5);
+// const head = new ListNode(1);
+// head.next = new ListNode(2);
+// head.next.next = new ListNode(3);
+// head.next.next.next = new ListNode(4);
+// head.next.next.next.next = new ListNode(5);
 
-const result = reverseList(head);
-console.log(result.val == 5);
-console.log(result.next.val == 4);
-console.log(result.next.next.val == 3);
-console.log(result.next.next.next.val == 2);
-console.log(result.next.next.next.next.val == 1);
+// const result = reverseList(head);
+// console.log(result.val == 5);
+// console.log(result.next.val == 4);
+// console.log(result.next.next.val == 3);
+// console.log(result.next.next.next.val == 2);
+// console.log(result.next.next.next.next.val == 1);
+
+module.exports = {
+  reverseList,
+  ListNode,
+};

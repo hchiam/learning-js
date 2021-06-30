@@ -11,7 +11,7 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-const reverseList = function(head) {
+const reverseList = function (head) {
   const solveIteratively = true;
   if (solveIteratively) {
     return iteratively(head);
@@ -20,7 +20,7 @@ const reverseList = function(head) {
   }
 };
 
-const iteratively =(head)=> {
+const iteratively = (head) => {
   if (head == null || head.next == null) return head;
   let prev = null;
   let curr = head;
@@ -35,7 +35,7 @@ const iteratively =(head)=> {
   return curr;
 };
 
-const recursively =(head)=> {
+const recursively = (head) => {
   if (head == null || head.next == null) {
     return head;
   } else {
@@ -47,7 +47,7 @@ const recursively =(head)=> {
   }
 };
 
-const recursivelySolve =(prev, curr)=> {
+const recursivelySolve = (prev, curr) => {
   if (prev == null || curr == null) {
     return prev;
   } else {

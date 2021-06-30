@@ -1,12 +1,10 @@
 // https://leetcode.com/problems/merge-two-sorted-lists
 
-/**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
+
 /**
  * @param {ListNode} a, one sorted linked list
  * @param {ListNode} b, another sorted linked list
@@ -53,4 +51,5 @@ const mergeTwoSortedLists = function (a, b) {
 
 module.exports = {
   mergeTwoSortedLists,
+  ListNode,
 };

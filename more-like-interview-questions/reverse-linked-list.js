@@ -21,18 +21,16 @@ const reverseList = function (head) {
 };
 
 const iteratively = (head) => {
-  if (head == null || head.next == null) return head;
   let prev = null;
   let curr = head;
-  let next = head.next;
-  head.next = null;
-  while (next != null) {
+  while (curr) {
+    const next = head.next; // instead of next.next, which doesn't always work
+    curr.next = prev;
     prev = curr;
     curr = next;
-    next = next.next;
-    curr.next = prev;
+    // next.next, won't always work, unless you do if (!next) break;
   }
-  return curr;
+  return prev; // since curr = next, which will be null
 };
 
 const recursively = (head) => {

@@ -4,6 +4,8 @@ Miscellaneous practice code in JS.
 
 Just one of the things I'm learning. <https://github.com/hchiam/learning>
 
+<https://random-code-tips.surge.sh>
+
 ## How to Run .js Files Using Terminal/CommandLine:
 
 Make sure to include console.log("output text here");

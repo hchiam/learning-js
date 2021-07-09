@@ -16,4 +16,9 @@ describe("Dynamic Programming table for max length common subarray", () => {
     const expected = 3;
     expect(actual).toBe(expected);
   });
+  it("works with different-sized arrays", () => {
+    const actual = findLength([1, 2, 3, 2, 1], [3, 2, 1, 4]);
+    const expected = 3;
+    expect(actual).toBe(expected);
+  });
 });

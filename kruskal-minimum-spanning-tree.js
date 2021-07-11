@@ -7,8 +7,8 @@ function kruskal(graph) {
   const getMinimumSpanningTree = true;
   const sortedEdges = getSortedEdges(graph, getMinimumSpanningTree);
   const spanningTree = initializeSpanningTree(graph);
-  linkUpForest(sortedEdges, spanningTree);
-  return spanningTree;
+  const spanningTreeEntries = linkUpForest(sortedEdges, spanningTree);
+  return spanningTreeEntries;
 
   function initializeSpanningTree(graph) {
     const spanningTree = {};
@@ -49,6 +49,7 @@ function kruskal(graph) {
   }
 
   function linkUpForest(edges, spanningTree) {
+    const spanningTreeEntries = [];
     edges.forEach((edge) => {
       const [A, B] = edge.edgeName.split("->");
       const groupA = spanningTree[A].getNameOfSetImIn();
@@ -60,8 +61,10 @@ function kruskal(graph) {
         // const groupA_after = spanningTree[A].getNameOfSetImIn();
         // const groupB_after = spanningTree[B].getNameOfSetImIn();
         // console.log(edge.edgeName, groupA_after, groupB_after);
+        spanningTreeEntries.push({ from: A, to: B, distance: edge.distance });
       }
     });
+    return spanningTreeEntries;
   }
 }
 
@@ -118,15 +121,16 @@ function exampleUsage() {
     },
   };
 
-  const minimumSpanningTree = kruskal(graph);
+  const spanningTreeEntries = kruskal(graph);
+  const totalDistance = getTotalDistance(spanningTreeEntries);
+  console.log(spanningTreeEntries);
+  console.log("total spanning tree distance: " + totalDistance);
 
-  console.log(minimumSpanningTree);
+  console.log(totalDistance === 20 ? "(correct)" : "Something went wrong!");
+}
 
-  console.log(
-    JSON.stringify(minimumSpanningTree) === '{"A":0,"B":5,"C":7,"D":3,"E":1}'
-      ? "(correct)"
-      : "Something went wrong!"
-  );
+function getTotalDistance(spanningTreeEntries) {
+  return spanningTreeEntries.reduce((sum, x) => sum + x.distance, 0);
 }
 
 module.exports = {

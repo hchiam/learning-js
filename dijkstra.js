@@ -4,7 +4,7 @@ function dijkstra(originNodeName, graph) {
   const processed = {}; // decoupled memo object just for convenience
   initializeDistances();
   initializeQueue();
-  bfsTraversalAndUpdates();
+  bfsTraversalAndUpdateProcessedAndDistances();
   return distances;
 
   function initializeDistances() {
@@ -21,7 +21,7 @@ function dijkstra(originNodeName, graph) {
     });
   }
 
-  function bfsTraversalAndUpdates() {
+  function bfsTraversalAndUpdateProcessedAndDistances() {
     // Dijkstra = BFS, but edge distances can be != 1
     // (BFS can be used to find min number of edges between nodes, unweighted)
     while (q.length > 0) {
@@ -36,8 +36,8 @@ function dijkstra(originNodeName, graph) {
         const B = toNode.nodeName;
         const edgeWeight = toNode.distance;
         const distanceFromAToB = distances[A] + edgeWeight;
-        const memoizedDistanceToB = distances[B];
-        if (distanceFromAToB < memoizedDistanceToB) {
+        const smallestDistanceToBSoFar = distances[B];
+        if (distanceFromAToB < smallestDistanceToBSoFar) {
           distances[B] = distanceFromAToB;
           q.push({
             nodeName: B,

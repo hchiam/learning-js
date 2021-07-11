@@ -1,7 +1,7 @@
 function dijkstra(originNodeName, graph) {
+  const distances = {}; // will return this
   const q = []; // --> TODO: as priority queue
-  const processed = {};
-  const distances = {};
+  const processed = {}; // decoupled memo object just for convenience
   initializeDistances();
   initializeQueue();
   bfsTraversalAndUpdates();
@@ -36,8 +36,8 @@ function dijkstra(originNodeName, graph) {
         const B = toNode.nodeName;
         const edgeWeight = toNode.distance;
         const distanceFromAToB = distances[A] + edgeWeight;
-        const previousDistanceToB = distances[B];
-        if (distanceFromAToB < previousDistanceToB) {
+        const memoizedDistanceToB = distances[B];
+        if (distanceFromAToB < memoizedDistanceToB) {
           distances[B] = distanceFromAToB;
           q.push({
             nodeName: B,
@@ -49,7 +49,7 @@ function dijkstra(originNodeName, graph) {
   }
 }
 
-exampleUsage();
+// exampleUsage();
 
 function exampleUsage() {
   const graph = {
@@ -78,7 +78,7 @@ function exampleUsage() {
     ],
   };
 
-  const origin = "A"; // node 0
+  const origin = "A";
 
   const distances = dijkstra(origin, graph);
 
@@ -90,3 +90,7 @@ function exampleUsage() {
       : "Something went wrong!"
   );
 }
+
+module.exports = {
+  dijkstra,
+};

@@ -1,6 +1,8 @@
 // relies on union-find data structure and path compression: https://github.com/hchiam/learning-union-find
 const { SetNode } = require("./union-find-data-structure.js");
 
+// (Prim's algorithm also can get min/max spanning tree, but works like Dijkstra)
+
 function kruskal(graph) {
   const getMinimumSpanningTree = true;
   const sortedEdges = getSortedEdges(graph, getMinimumSpanningTree);

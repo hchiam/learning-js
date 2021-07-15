@@ -35,9 +35,9 @@ console.log(`
 BEFORE:
 ${target.getSpeed()}
 ${target.getSize()}
-${target.wings ?? "(no wings)"}
+${target.useWings?.() ?? "(no wings)"}
 ${target2.getSpeed()}
-${target2.wings ?? "(no wings)"}
+${target2.useWings?.() ?? "(no wings)"}
 `);
 
 console.log(`
@@ -54,9 +54,9 @@ console.log(`
 AFTER:
 ${target.getSpeed()}
 ${target.getSize()}
-${target.wings ?? "(no wings)"}
+${target.useWings?.() ?? "(no wings)"}
 ${target2.getSpeed()}
-${target2.wings ?? "(no wings)"}
+${target2.useWings?.() ?? "(no wings)"}
 `);
 
 function SomeObject(name, speed, size) {
@@ -98,5 +98,9 @@ function EnlargeVisitor() {
 function AddWingsVisitor() {
   this.applyVisitor = function (object) {
     object.wings = "Rocket jet packs!!! :D";
+    object.useWings = () => {
+      const wings = object.wings;
+      return `Flying with ${wings[0].toLowerCase() + wings.slice(1)}`;
+    };
   };
 }

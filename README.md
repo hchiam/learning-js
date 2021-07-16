@@ -172,6 +172,12 @@ https://en.wikipedia.org/wiki/Bookmarklet
 
 https://github.com/hchiam/learning-js/tree/master/bookmarklets#bookmarklets
 
+### `this` keyword in old-school functions vs the newer arrow functions
+
+`this` in `function()` = caller. Useful if you want `this` to change to whatever calls your one function.
+
+`this` in `() => {}` = owner. Useful if you want `this` to always be the creator of the function. I think _nested_ arrow functions also pass along `this`, which you might like.
+
 ### CJS vs MJS/ESM/ES6M vs all the other types of JavaScript modules syntax
 
 - ESM = `import` and `export`. Simplest, async, tree-shakeable, but not universally compatible.

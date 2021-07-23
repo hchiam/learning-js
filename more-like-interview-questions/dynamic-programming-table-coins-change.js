@@ -7,11 +7,10 @@
  */
 var coinChange = function (coins, amount) {
   // assumes coins are 1 or greater and are able to be reused / in infinite supply
-  const t = [];
-  for (let i = 0; i < coins.length + 1; i++) t[i] = [];
+  const t = new Array(coins.length + 1)
+    .fill(null)
+    .map((row) => new Array(amount + 1).fill(0));
   for (let i = 1; i < amount + 1; i++) t[0][i] = Infinity;
-  for (let i = 1; i < coins.length + 1; i++) t[i][0] = 0;
-  t[0][0] = 0;
   for (let r = 1; r < coins.length + 1; r++) {
     const coinAmount = coins[r - 1]; // 1-1 = first coin
     for (let c = 1; c < amount + 1; c++) {

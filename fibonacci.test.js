@@ -1,6 +1,7 @@
 const {
   fibonacci_recursive,
   fibonacci_memo,
+  fibonacci_iterative,
   fibonacci_direct,
 } = require("./fibonacci.js");
 
@@ -49,6 +50,30 @@ describe("memo fibonacci solution", () => {
     expect(fibonacci_memo(6)).toBe(8);
     expect(fibonacci_memo(7)).toBe(13);
     expect(fibonacci_memo(8)).toBe(21);
+  });
+});
+
+describe("iterative fibonacci solution", () => {
+  it("works on trivial 1", () => {
+    expect(fibonacci_iterative(1)).toBe(1);
+  });
+  it("works on trivial 2", () => {
+    expect(fibonacci_iterative(2)).toBe(1);
+  });
+  it("works on 0 edge case", () => {
+    expect(fibonacci_iterative(2)).toBe(1);
+  });
+  it("works on invalid negative numbers", () => {
+    expect(fibonacci_iterative(-1)).toBe(0);
+    expect(fibonacci_iterative(-2)).toBe(0);
+  });
+  it("works on bigger numbers", () => {
+    expect(fibonacci_iterative(3)).toBe(2);
+    expect(fibonacci_iterative(4)).toBe(3);
+    expect(fibonacci_iterative(5)).toBe(5);
+    expect(fibonacci_iterative(6)).toBe(8);
+    expect(fibonacci_iterative(7)).toBe(13);
+    expect(fibonacci_iterative(8)).toBe(21);
   });
 });
 

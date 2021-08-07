@@ -26,32 +26,36 @@ KthLargest.prototype.add = function (val) {
   return this.pqAsHeap.front().element; // top of heap = front of priority queue
 };
 
-let test = new KthLargest(3, [4, 5, 8, 2]);
-let tests = [
-  { given: 3, expect: 4 },
-  { given: 5, expect: 5 },
-  { given: 10, expect: 5 },
-  { given: 9, expect: 8 },
-  { given: 4, expect: 8 },
-];
-tests.forEach((t) => console.log(test.add(t.given) === t.expect));
+module.exports = {
+  KthLargest,
+};
 
-test = new KthLargest(3, [5, -1]);
-tests = [
-  { given: 2, expect: -1 },
-  { given: 1, expect: 1 },
-  { given: -1, expect: 1 },
-  { given: 3, expect: 2 },
-  { given: 4, expect: 3 },
-];
-tests.forEach((t) => console.log(test.add(t.given) === t.expect));
+// let test = new KthLargest(3, [4, 5, 8, 2]);
+// let tests = [
+//   { given: 3, expect: 4 },
+//   { given: 5, expect: 5 },
+//   { given: 10, expect: 5 },
+//   { given: 9, expect: 8 },
+//   { given: 4, expect: 8 },
+// ];
+// tests.forEach((t) => console.log(test.add(t.given) === t.expect));
 
-test = new KthLargest(1, []);
-tests = [
-  { given: -3, expect: -3 },
-  { given: -2, expect: -2 },
-  { given: -4, expect: -2 },
-  { given: 0, expect: 0 },
-  { given: 4, expect: 4 },
-];
-tests.forEach((t) => console.log(test.add(t.given) === t.expect));
+// test = new KthLargest(3, [5, -1]);
+// tests = [
+//   { given: 2, expect: -1 },
+//   { given: 1, expect: 1 },
+//   { given: -1, expect: 1 },
+//   { given: 3, expect: 2 },
+//   { given: 4, expect: 3 },
+// ];
+// tests.forEach((t) => console.log(test.add(t.given) === t.expect));
+
+// test = new KthLargest(1, []);
+// tests = [
+//   { given: -3, expect: -3 },
+//   { given: -2, expect: -2 },
+//   { given: -4, expect: -2 },
+//   { given: 0, expect: 0 },
+//   { given: 4, expect: 4 },
+// ];
+// tests.forEach((t) => console.log(test.add(t.given) === t.expect));

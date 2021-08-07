@@ -6,7 +6,9 @@
     "test": "jest --bail --findRelatedTests **/*.js",
     "lint": "prettier --write *.{js,css,html,scss,json,md,ts,tsx}"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@datastructures-js/priority-queue": "^5.1.1"
+  },
   "devDependencies": {
     "eslint": "^6.4.0",
     "eslint-config-google": "^0.14.0",

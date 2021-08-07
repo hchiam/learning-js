@@ -7,23 +7,29 @@
 // parent: i / 2
 
 const MinHeap = function () {
-  const heap = [null];
+  const heap = [null]; // start indices at 1 instead of at 0, for simpler math
 
   this.print = () => heap;
 
   this.insert = function (num) {
+    // add to last index and bubble up (left)
+
     heap.push(num);
     // bubble up:
     if (heap.length > 2) {
-      let idx = heap.length - 1;
-      while (heap[idx] <= heap[Math.floor(idx / 2)]) {
-        if (idx >= 1) {
-          [heap[Math.floor(idx / 2)], heap[idx]] = [
-            heap[idx],
-            heap[Math.floor(idx / 2)],
+      let i = heap.length - 1;
+      // while child < parent:
+      while (heap[i] < heap[Math.floor(i / 2)]) {
+        // continue until and including if child of top of heap:
+        if (i > 1) {
+          // swap parent and child:
+          [heap[Math.floor(i / 2)], heap[i]] = [
+            heap[i],
+            heap[Math.floor(i / 2)],
           ];
-          if (Math.floor(idx / 2) > 1) {
-            idx = Math.floor(idx / 2);
+          // update next i to check as long as the swapped parent wasn't already the top of the heap:
+          if (Math.floor(i / 2) > 1) {
+            i = Math.floor(i / 2);
           } else {
             break;
           }
@@ -33,9 +39,11 @@ const MinHeap = function () {
   };
 
   this.remove = function () {
+    // move last index the top and bubble down (right)
+
     const smallest = heap[1];
     if (heap.length < 2) {
-      // last one
+      // last one since index 0 = null
       return null;
     } else if (heap.length == 2) {
       // keep one more

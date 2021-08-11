@@ -28,8 +28,7 @@ function exists1(target, array) {
 
 function exists2(target, array) {
   let i = -1;
-  let jump = array.length;
-  for (; jump >= 1; jump = Math.floor(jump / 2)) {
+  for (let jump = array.length; jump >= 1; jump = Math.floor(jump / 2)) {
     while (isOk({ array, i: i + jump, target })) {
       i += jump;
     }

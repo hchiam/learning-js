@@ -194,3 +194,25 @@ https://stackoverflow.com/a/46677972
 https://dev.to/iggredible/what-the-heck-are-cjs-amd-umd-and-esm-ikm
 
 https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/
+
+### [Priority queue](https://github.com/datastructures-js/priority-queue) which can be used as a min heap or max heap
+
+```js
+// in CJS syntax:
+const {
+  MinPriorityQueue,
+  MaxPriorityQueue,
+} = require("@datastructures-js/priority-queue");
+```
+
+or
+
+```js
+// in ESM syntax:
+import {
+  MinPriorityQueue,
+  MaxPriorityQueue,
+  PriorityQueueOptions, // queue options interface
+  PriorityQueueItem, // queue item interface
+} from "@datastructures-js/priority-queue";
+```

@@ -216,3 +216,13 @@ import {
   PriorityQueueItem, // queue item interface
 } from "@datastructures-js/priority-queue";
 ```
+
+API usage example:
+
+```js
+const pqAsHeap = new MinPriorityQueue();
+pqAsHeap.enqueue(num);
+pqAsHeap.dequeue();
+pqAsHeap.size();
+pqAsHeap.front().element;
+```

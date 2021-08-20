@@ -6,9 +6,8 @@ function getRandomInteger(min, maxExclusive) {
 }
 
 function getRandomInteger_Inclusive(minInclusive, maxInclusive) {
-  const offSet1IfMin0 = minInclusive === 0 ? 1 : 0;
   const delta = maxInclusive - minInclusive;
-  return Math.floor(Math.random() * (delta + offSet1IfMin0)) + minInclusive;
+  return Math.floor(Math.random() * (delta + 1)) + minInclusive;
 }
 
 module.exports = {

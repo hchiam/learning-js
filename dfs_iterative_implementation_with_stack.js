@@ -14,7 +14,7 @@ function Node(value) {
   this.id = "_" + generateNextNumber();
 }
 
-function dfs_iter(node, callback) {
+function dfs_iter_post_order(node, callback) {
   const stack = [];
   const processed = {};
   stack.push(node);
@@ -34,26 +34,31 @@ function dfs_iter(node, callback) {
   }
 }
 
-const a = new Node("a");
-const b = new Node("b");
-const c = new Node("c");
-const d = new Node("d");
-const e = new Node("e");
-const f = new Node("f");
-const g = new Node("g");
-const h = new Node("h");
-a.left = b;
-a.right = c;
-b.left = d;
-b.right = e;
-c.right = f;
-f.left = g;
-f.right = h;
+// const a = new Node("a");
+// const b = new Node("b");
+// const c = new Node("c");
+// const d = new Node("d");
+// const e = new Node("e");
+// const f = new Node("f");
+// const g = new Node("g");
+// const h = new Node("h");
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+// f.left = g;
+// f.right = h;
 
-const expect = "debghfca";
-let actual = "";
-dfs_iter(a, (n) => {
-  actual += n.value;
-});
+// const expect = "debghfca";
+// let actual = "";
+// dfs_iter_post_order(a, (n) => {
+//   actual += n.value;
+// });
 
-console.log(actual === expect);
+// console.log(actual === expect);
+
+module.exports = {
+  dfs_iter_post_order,
+  Node,
+};

@@ -15,6 +15,10 @@ function Node(value) {
 }
 
 function dfs_iter_post_order(node, callback) {
+  if (!node) {
+    callback(node);
+    return;
+  }
   const stack = [];
   const processed = {};
   stack.push(node);

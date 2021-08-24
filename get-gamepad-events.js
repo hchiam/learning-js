@@ -26,12 +26,13 @@ window.addEventListener("gamepadconnected", (event) => {
     vibrationActuator: GamepadHapticActuator {type: "dual-rumble"}
   */
   gamepad = event.gamepad;
-  console.log("gamepad", gamepad);
   buttons = event.gamepad.buttons;
+  listenForButtons();
+
   const axes = event.gamepad.axes;
+  console.log("gamepad", gamepad);
   console.log(`${buttons.length} buttons`);
   console.log(`${axes.length} axes`);
-  listenForButtons();
 });
 
 let previousAxes = [];

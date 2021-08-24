@@ -2,6 +2,9 @@
 // https://web.dev/hid
 // https://web.dev/devices-introduction/#discover
 
+// you can also see a listing on this page in Chrome:
+// about://device-log
+
 // works in Chrome:
 console.log(getHID());
 

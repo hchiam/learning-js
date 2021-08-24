@@ -6,6 +6,8 @@
 makeMacKeyboardFlash();
 
 async function makeMacKeyboardFlash() {
+  console.log("this works in Chrome");
+
   const device = await getMacKeyboard();
 
   // await HID connection to open:

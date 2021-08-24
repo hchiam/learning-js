@@ -1,4 +1,6 @@
-// for more info: https://web.dev/devices-introduction/
+// for more info:
+// https://web.dev/devices-introduction/
+// https://developer.chrome.com/docs/devtools/device-mode/#geolocation
 
 navigator.geolocation.getCurrentPosition(
   (position) => {

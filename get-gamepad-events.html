@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gamepad Demo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/hchiam/css-boilerplate@5.2.0/style.css"
+      integrity="sha384-loTINSLDN8xR8dwKbkqZiVb6sjqQUImsVl+y9tVEgZpyTgtLCIdmxC4O5Q+fspdT"
+      crossorigin="anonymous"
+    />
+    <style>
+      #axes {
+        display: flex;
+        text-align: right;
+      }
+      .hide {
+        visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Press any key on your gamepad to start.</p>
+    <p class="hide">Buttons on: <span id="buttons_on">...</span></p>
+    <p class="hide">
+      Axes (directional buttons): <br /><span id="axes">...</span>
+    </p>
+    <p id="data"></p>
+
+    <!-- <script src="get-gamepad-events.js"></script> -->
+
+    <script>
+      // more info:
+      // https://web.dev/gamepad/
+      // https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API
+      // https://luser.github.io/gamepadtest
+      // https://github.com/luser/gamepadtest
+
+      let gamepad, buttons; /*axes*/
+      let buttonListener;
+
+      window.addEventListener("gamepaddisconnected", (event) => {
+        console.log("🎮❌ A gamepad was disconnected:", event);
+        clearInterval(buttonListener);
+      });
+
+      window.addEventListener("gamepadconnected", (event) => {
+        console.log("🎮✅ A gamepad was connected:", event);
+        gamepad = event.gamepad;
+        console.log("gamepad", gamepad);
+        buttons = event.gamepad.buttons;
+        const axes = event.gamepad.axes;
+        console.log(`${buttons.length} buttons`);
+        console.log(`${axes.length} axes`);
+        document.querySelector("#data").innerText = `gamepad ${
+          gamepad.id
+        }: ${JSON.stringify(gamepad)}
+${axes.length} axes (for directional buttons)
+${buttons.length} buttons: ${JSON.stringify(buttons)}`;
+        document
+          .querySelectorAll(".hide")
+          .forEach((h) => h.classList.remove("hide"));
+        listenForButtons();
+      });
+
+      let previousAxes = [];
+      function listenForButtons() {
+        clearInterval(buttonListener);
+        buttonListener = setInterval(() => {
+          const axes = gamepad.axes.map((a) => Math.round(a * 100) / 100);
+          const buttonsOn = buttons
+            .map((b, i) => {
+              return { i: i, on: b.pressed || b.touched };
+            })
+            .filter((b) => b.on)
+            .map((b) => b.i);
+          if (buttonsOn.length) {
+            console.log("Buttons on:", buttonsOn);
+          }
+          document.querySelector("#buttons_on").innerText =
+            JSON.stringify(buttonsOn);
+
+          const didAxesChange =
+            previousAxes.length === 0 ||
+            previousAxes.filter((pa, i) => {
+              return pa !== axes[i];
+            }).length;
+          if (didAxesChange) {
+            console.log("Axes:", axes);
+            previousAxes = axes;
+            document.querySelector("#axes").innerHTML = axes
+              .map((a) => `<meter value="${a}" min="-1" max="1"></meter>`)
+              .join("<br/>");
+          }
+        }, 100);
+      }
+    </script>
+  </body>
+</html>

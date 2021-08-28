@@ -17,4 +17,4 @@ let result = pwRegex.test(sampleWord);
 
 // for example:
 "Code Camp".replace(/(\w+)\s(\w+)/, "$2 $1");
-// Returns "Camp Code" becuase group $1 and $2 are swapped in the replaceWith parameter string
+// Returns "Camp Code" because group $1 and $2 are swapped in the replaceWith parameter string

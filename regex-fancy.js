@@ -25,3 +25,9 @@ let result = pwRegex.test(sampleWord);
   /("|')[^"'\s]*\1/g,
   ""
 ); // replaces "..." and '...' but ignores "...' and '..."
+
+// there's also named capture groups:
+const [all, year, month, day] =
+  /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/.exec("2020-03-04");
+console.log(all, year, month, day);
+// more to learn: https://www.smashingmagazine.com/2019/02/regexp-features-regular-expressions/

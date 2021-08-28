@@ -30,4 +30,12 @@ let result = pwRegex.test(sampleWord);
 const [all, year, month, day] =
   /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/.exec("2020-03-04");
 console.log(all, year, month, day);
+
+// and you can backreference named capture groups with numbers:
+// just remember (?<name>) and \k<name>
+`"This_has_matching_brackets" 'This_also_has_matching_brackets' "not_this' 'not_this_either"`.replace(
+  /(?<quote>"|')[^"'\s]*\k<quote>/g,
+  ""
+);
+
 // more to learn: https://www.smashingmagazine.com/2019/02/regexp-features-regular-expressions/

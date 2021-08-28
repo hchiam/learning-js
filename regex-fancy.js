@@ -18,3 +18,10 @@ let result = pwRegex.test(sampleWord);
 // for example:
 "Code Camp".replace(/(\w+)\s(\w+)/, "$2 $1");
 // Returns "Camp Code" because group $1 and $2 are swapped in the replaceWith parameter string
+
+// backreference with \1 \2 \3 etc: (different from replacement $1 $2 $3 etc)
+// https://javascript.info/regexp-backreferences
+`"This_has_matching_brackets" 'This_also_has_matching_brackets' "not_this' 'not_this_either"`.replace(
+  /("|')[^"'\s]*\1/g,
+  ""
+); // replaces "..." and '...' but ignores "...' and '..."

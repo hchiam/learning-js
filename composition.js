@@ -21,3 +21,10 @@ function create() {
   mix.bark();
   mix.meow();
 }
+
+// note on when to use object composition vs class inheritance:
+// https://stackoverflow.com/questions/49002/prefer-composition-over-inheritance
+// class inheritance: biplane needs all parts of plane
+// object composition: bird only shares some stuff with plane
+
+// object composition can use dependency injection

@@ -9,6 +9,10 @@ targets.map((target, i) => {
   console.log(solution1 === answer && solution2 === answer ? "OK" : "ERROR");
 });
 
+// (note: left <= right, floor, L=M+1, R=M-1)
+// we need while <= and not simply < because it could be at left/right indices
+// we need floor to get integer indices, but also to resolve to either left/right when you only have 2 items left
+// we need L=M+1 or R=M-1 because we already eliminated M as the target, and our L <= R condition will handle if L/R is the target
 function middleMethod(target, array) {
   let left = 0;
   let right = array.length - 1;

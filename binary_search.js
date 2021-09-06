@@ -3,13 +3,13 @@ const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const answers = 0b00111111111101;
 
 targets.map((target, i) => {
-  const solution1 = exists1(target, array);
-  const solution2 = exists2(target, array);
+  const solution1 = middleMethod(target, array);
+  const solution2 = binaryJumpsMethod(target, array);
   const answer = answers & (1 << i) ? true : false;
   console.log(solution1 === answer && solution2 === answer ? "OK" : "ERROR");
 });
 
-function exists1(target, array) {
+function middleMethod(target, array) {
   let left = 0;
   let right = array.length - 1;
   while (left <= right) {
@@ -26,7 +26,11 @@ function exists1(target, array) {
   return false;
 }
 
-function exists2(target, array) {
+// (note: start = -1, loop while i+jump < target, final = i+1)
+// we need -1 so we can jump to 0
+// we need inner loop while i+jump < target since we can jump 2x
+// we need final = i+1 since our condition is < target
+function binaryJumpsMethod(target, array) {
   let i = -1;
   for (let jump = array.length; jump >= 1; jump = Math.floor(jump / 2)) {
     while (isOk({ array, i: i + jump, target })) {

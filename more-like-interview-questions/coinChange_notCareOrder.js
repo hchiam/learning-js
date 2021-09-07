@@ -1,6 +1,6 @@
 // FIXED with respect to coinChange_careOrder.js:
 // - SWAP THE 2 FOR LOOPS --> why? coin order doesn't matter!
-// - DP table = new Array and .fill because = [] causes NaN+1 = NaN (because not initialized to 0)
+// - DP table = new Array and .fill because = [] can have NaNs in the middle
 
 // 1+5 = 5+1:
 // 11111, 15(=51)

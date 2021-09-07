@@ -70,6 +70,9 @@ function BST(value) {
 
     if (!toDelete) return this;
 
+    // lots of cases!
+    // cases if is root (0,1,2 children sub-cases)
+    // or if not root (same 0,1,2 children sub-cases, but handled a little differently)
     if (parent.value === "dummy variable") {
       // toDelete is at root
       if (!toDelete.left && !toDelete.right) {

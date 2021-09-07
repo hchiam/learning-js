@@ -1,13 +1,13 @@
 // nodemon -x 'node bst.js'
 
-class BST {
-  constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
-  }
+runTestCases();
 
-  insert(value) {
+function BST(value) {
+  this.value = value;
+  this.left = null;
+  this.right = null;
+
+  this.insert = function (value) {
     // O(log n)-O(n) time, O(n) space (or O(1) additional besides the BST itself)
     let pointer = this;
     while (true) {
@@ -29,9 +29,9 @@ class BST {
     }
 
     return this;
-  }
+  };
 
-  contains(value) {
+  this.contains = function (value) {
     // O(log n)-O(n) time, O(1) space
     let pointer = this;
     while (pointer) {
@@ -43,9 +43,9 @@ class BST {
       }
     }
     return false;
-  }
+  };
 
-  remove(value) {
+  this.remove = function (value) {
     // O(log n)-O(n) time, O(1) space
     // can't remove if single-node tree
     // simply remove if is leaf and is not root
@@ -142,54 +142,56 @@ class BST {
     }
 
     return this;
-  }
+  };
 }
 
-const a = new BST(10);
-a.left = new BST(5);
-a.left.left = new BST(2);
-a.left.left.left = new BST(1);
-a.left.right = new BST(5);
-a.right = new BST(15);
-a.right.left = new BST(13);
-a.right.left.right = new BST(14);
-a.right.right = new BST(22);
+function runTestCases() {
+  const a = new BST(10);
+  a.left = new BST(5);
+  a.left.left = new BST(2);
+  a.left.left.left = new BST(1);
+  a.left.right = new BST(5);
+  a.right = new BST(15);
+  a.right.left = new BST(13);
+  a.right.left.right = new BST(14);
+  a.right.right = new BST(22);
 
-a.insert(12);
-console.log(a.right.left.left.value === 12);
+  a.insert(12);
+  console.log(a.right.left.left.value === 12);
 
-a.remove(10);
-console.log(a.contains(10) === false);
-console.log(a.value === 12);
+  a.remove(10);
+  console.log(a.contains(10) === false);
+  console.log(a.value === 12);
 
-console.log(a.contains(15) === true);
+  console.log(a.contains(15) === true);
 
-const b = new BST(10);
-b.insert(5);
-b.insert(15);
-b.remove(5);
-b.remove(15);
-b.remove(10);
-console.log(b.contains(10) === true);
-console.log(b.contains(5) === false);
-console.log(b.contains(15) === false);
+  const b = new BST(10);
+  b.insert(5);
+  b.insert(15);
+  b.remove(5);
+  b.remove(15);
+  b.remove(10);
+  console.log(b.contains(10) === true);
+  console.log(b.contains(5) === false);
+  console.log(b.contains(15) === false);
 
-const c = new BST(1);
-c.insert(2);
-c.insert(3);
-c.insert(4);
-c.remove(1);
-console.log(c.contains(1) === false);
-console.log(c.contains(2) === true);
-console.log(c.contains(3) === true);
-console.log(c.contains(4) === true);
+  const c = new BST(1);
+  c.insert(2);
+  c.insert(3);
+  c.insert(4);
+  c.remove(1);
+  console.log(c.contains(1) === false);
+  console.log(c.contains(2) === true);
+  console.log(c.contains(3) === true);
+  console.log(c.contains(4) === true);
 
-const d = new BST(10);
-d.insert(5);
-d.remove(10);
-console.log(d.contains(5) === true);
-console.log(d.contains(10) === false);
-console.log(d.contains(15) === false);
-console.log(d.value === 5);
-console.log(d.left === null);
-console.log(d.right === null);
+  const d = new BST(10);
+  d.insert(5);
+  d.remove(10);
+  console.log(d.contains(5) === true);
+  console.log(d.contains(10) === false);
+  console.log(d.contains(15) === false);
+  console.log(d.value === 5);
+  console.log(d.left === null);
+  console.log(d.right === null);
+}

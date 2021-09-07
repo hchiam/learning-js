@@ -22,5 +22,6 @@ function coinChange_notCareOrder(target, denoms) {
       }
     }
   }
-  return ways.slice(-1)[0];
+  // return ways.slice(-1)[0];
+  return ways[target];
 }

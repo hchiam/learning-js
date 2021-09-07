@@ -7,18 +7,18 @@
 console.log(coinChange_careOrder(6, [1, 5]) === 3);
 
 function coinChange_careOrder(target, denoms) {
-  const dp = [1]; // there's one way to make 0, and 1 way to make 1
+  const ways = [1]; // there's one way to make 0, and 1 way to make 1
   for (let i = 1; i <= target; i++) {
     // making coins the inner loop makes it care about coin order
     for (let coin of denoms) {
       if (i - coin >= 0) {
-        if (dp[i]) {
-          dp[i] += dp[i - coin];
+        if (ways[i]) {
+          ways[i] += ways[i - coin];
         } else {
-          dp[i] = dp[i - coin];
+          ways[i] = ways[i - coin];
         }
       }
     }
   }
-  return dp.slice(-1)[0];
+  return ways.slice(-1)[0];
 }

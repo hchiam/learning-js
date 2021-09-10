@@ -4,10 +4,10 @@
 const { minLevDistance: older } = require("./minLevDistance.js");
 
 const {
-  // O(nm) time, O(m) space
-  minLevenshteinDistance_evenBetter: evenBetter,
   // O(nm) time, O(nm) space
   minLevenshteinDistance_better: better,
+  // O(nm) time, O(min(n,m))) space
+  minLevenshteinDistance_evenBetter: evenBetter,
 } = require("./minLevenshteinDistance_better.js");
 
 describe("the older solution with O(3^(nm)) time, O(nm) space", () => {
@@ -34,7 +34,7 @@ describe("the better solution with O(nm) time, O(n) space", () => {
   it("works", () => expect(better("abc", "abc")).toStrictEqual(0));
 });
 
-describe("the even better solution with O(nm) time, O(m) space", () => {
+describe("the even better solution with O(nm) time, O(min(n,m))) space", () => {
   it("works", () => expect(evenBetter("", "")).toStrictEqual(0));
   it("works", () => expect(evenBetter("abc", "abd")).toStrictEqual(1));
   it("works", () => expect(evenBetter("abcd", "abd")).toStrictEqual(1));

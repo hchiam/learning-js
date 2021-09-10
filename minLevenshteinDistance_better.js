@@ -41,10 +41,10 @@ but can we do better?
 additional observation:
 we only really need to access 2 rows at a time!
 
-O(nm) time, O(m) space!!!
+O(nm) time, O(min(n,m)) space!!!
 */
 
-// O(nm) time, O(m) space
+// O(nm) time, O(min(n,m)) space
 function minLevenshteinDistance_evenBetter(str1, str2) {
   if (!str1) return str2.length;
   if (!str2) return str1.length;

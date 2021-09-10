@@ -7,11 +7,25 @@ row = substring of the 2nd string
 1st row = empty string
 column = substring of the 1st string
 1st column = empty string
-   		''		y		ya		yab		yabd
-'' 		0 		1		2 		3  		4
-a  		1 		1		1 		2  		3
-ab 		2 		2		2 		1  		2
-abc		3 		3		3 		2  		2 = add y, swap c with d
+
+table of min accumulative edits/changes per cell:
+  	''	y	a	b	d
+''	0 	1	2	3	4
+a 	1 	1	1	2	3
+b 	2 	2	2	1	2
+c  	3 	3	3	2	2 = add y, swap c with d
+
+table with example choices (3 per cell):
+''     y      a      b      d 
+''	abc    yabc   yaabc  yaabbc yaabbcd
+a 	bc     ybc    yabc   yabc   yabc
+b 	c      yc     yac    yabc   yabcd
+c 	''     y      y      yac    yabd
+
+3 choices:
+1) diagonally = swap (1, or 0 if same)
+2) rightwards = add character from 2nd string
+3) downwards = remove character from 1st string
 */
 
 // O(nm) time, O(nm) space

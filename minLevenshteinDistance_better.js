@@ -1,5 +1,6 @@
 // nodemon -x 'node minLevenshteinDistance_better.js'
-console.log(minLevenshteinDistance_better("abc", "yabd"));
+// nodemon -x 'jest minLevDistance.test.js'
+console.log(minLevenshteinDistance_evenBetter("abc", "yabd"));
 
 /*
 DP table:
@@ -33,7 +34,44 @@ for example, for row "b":
 1) diagonally = swap (1, or 0 if same)
 2) rightwards = add character from 2nd string
 3) downwards = remove character from 1st string
+
+O(nm) time, O(nm) space
+
+but can we do better?
+additional observation:
+we only really need to access 2 rows at a time!
 */
+
+// O(nm) time, O(m) space
+function minLevenshteinDistance_evenBetter(str1, str2) {
+  if (!str1) return str2.length;
+  if (!str2) return str1.length;
+
+  const useShorterStr1ForBLength = str1.length < str2.length;
+  const a = useShorterStr1ForBLength ? str2 : str1;
+  const b = useShorterStr1ForBLength ? str1 : str2;
+
+  let previousRow = new Array(b.length + 1).fill(Infinity);
+  for (let i = 0; i < b.length + 1; i++) {
+    previousRow[i] = i;
+  }
+
+  let currentRow = new Array(b.length + 1).fill(Infinity);
+
+  for (let i = 1; i < a.length + 1; i++) {
+    currentRow[0] = i; // first column in row
+    for (let j = 1; j < b.length + 1; j++) {
+      const swap = (a[i - 1] === b[j - 1] ? 0 : 1) + previousRow[j - 1];
+      const insertB = currentRow[j - 1] + 1;
+      const removeA = previousRow[j] + 1;
+      currentRow[j] = Math.min(swap, insertB, removeA);
+    }
+    previousRow = [...currentRow];
+  }
+
+  const lastCell = currentRow.slice(-1)[0];
+  return lastCell;
+}
 
 // O(nm) time, O(nm) space
 function minLevenshteinDistance_better(str1, str2) {
@@ -65,4 +103,5 @@ function minLevenshteinDistance_better(str1, str2) {
 
 module.exports = {
   minLevenshteinDistance_better,
+  minLevenshteinDistance_evenBetter,
 };

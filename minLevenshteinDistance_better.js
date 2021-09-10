@@ -51,7 +51,6 @@ function minLevenshteinDistance_better(str1, str2) {
   return lastCell;
 }
 
-// Do not edit the line below.
 module.exports = {
   minLevenshteinDistance_better,
 };

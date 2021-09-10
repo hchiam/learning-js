@@ -2,6 +2,19 @@
 
 testThatItWorks();
 
+/*
+
+Why does this work?
+Start with top-left: you still have 2 choices for increasing.
+Start with top-right, 2 choices: left = decrease, down = increase.
+(Same idea for bottom-left.)
+
+How would you think of this from scratch?
+Instead of somewhere the middle or right at the middle,
+try an edge or corner and see if you can deduce the next spot to go to.
+
+*/
+
 // O(rows + columns) time
 function searchInSorted2DMatrix(matrix, target) {
   // assuming sorted in ascending order right and down,

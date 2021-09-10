@@ -30,15 +30,19 @@ c 	''     y      y      yac    yabd
 
 // O(nm) time, O(nm) space
 function minLevenshteinDistance_better(str1, str2) {
+  // have to .fill and then .map to avoid accidentally modifying all rows at the same time (de-dupe references):
   const dp = new Array(str1.length + 1)
     .fill(null)
     .map(() => new Array(str2.length + 1).fill(Infinity));
-  for (let i = 0; i < str1.length + 1; i++) {
-    dp[i][0] = i;
-  }
+  // first row:
   for (let j = 0; j < str2.length + 1; j++) {
     dp[0][j] = j;
   }
+  // first column:
+  for (let i = 0; i < str1.length + 1; i++) {
+    dp[i][0] = i;
+  }
+
   for (let i = 1; i < str1.length + 1; i++) {
     for (let j = 1; j < str2.length + 1; j++) {
       const swap = (str1[i - 1] === str2[j - 1] ? 0 : 1) + dp[i - 1][j - 1];
@@ -47,6 +51,7 @@ function minLevenshteinDistance_better(str1, str2) {
       dp[i][j] = Math.min(swap, insertB, removeA);
     }
   }
+
   const lastCell = dp.slice(-1)[0].slice(-1)[0];
   return lastCell;
 }

@@ -1,5 +1,6 @@
 /* eslint-disable require-jsdoc */
 
+// O(3^(nm)) time, O(nm) space
 function minLevDistance(s1, s2) {
   const dpTable = [[]]; // s1.length x s2.length
   for (let row = 0; row < s1.length; row++) {
@@ -53,10 +54,6 @@ function levenshteinDist(s1, s1Index, s2, s2Index, dpTable) {
   return dpTable[s1Index][s2Index];
 }
 
-function solutionWrapper(s1, s2) {
-  return minLevDistance(s1, s2);
-}
-
 module.exports = {
-  solutionWrapper,
+  minLevDistance,
 };

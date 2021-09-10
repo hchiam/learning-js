@@ -14,6 +14,7 @@ b		2 		2		2 		1  		2
 c		3 		3		3 		2  		2 = add y, swap c with d
 */
 
+// O(nm) time, O(nm) space
 function minLevenshteinDistance_better(str1, str2) {
   const dp = new Array(str1.length + 1)
     .fill(null)

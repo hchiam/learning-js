@@ -40,6 +40,8 @@ O(nm) time, O(nm) space
 but can we do better?
 additional observation:
 we only really need to access 2 rows at a time!
+
+O(nm) time, O(m) space!!!
 */
 
 // O(nm) time, O(m) space

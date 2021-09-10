@@ -3,7 +3,7 @@
 console.log(minLevenshteinDistance_evenBetter("abc", "yabd"));
 
 /*
-DP table:
+Dynamic Programming (DP) table:
 row = substring of the 2nd string
 1st row = empty string
 column = substring of the 1st string

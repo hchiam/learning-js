@@ -7,11 +7,11 @@ row = substring of the 2nd string
 1st row = empty string
 column = substring of the 1st string
 1st column = empty string
-		''		y		ya		yab		yabd
-''	0 		1		2 		3  		4
-a		1 		1		1 		2  		3
-b		2 		2		2 		1  		2
-c		3 		3		3 		2  		2 = add y, swap c with d
+  	  ''		y		ya		yab		yabd
+''	  0 		1		2 		3  		4
+a 		1 		1		1 		2  		3
+b 		2 		2		2 		1  		2
+c 		3 		3		3 		2  		2 = add y, swap c with d
 */
 
 // O(nm) time, O(nm) space

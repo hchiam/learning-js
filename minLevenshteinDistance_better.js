@@ -22,6 +22,13 @@ a 	bc     ybc    yabc   yabc   yabc
 b 	c      yc     yac    yabc   yabcd
 c 	''     y      y      yac    yabd
 
+for example, for row "b":
+- turn "ab" into ""
+- turn "ab" into "y"
+- turn "ab" into "ya"
+- turn "ab" into "yab"
+- turn "ab" into "yabd"
+
 3 choices:
 1) diagonally = swap (1, or 0 if same)
 2) rightwards = add character from 2nd string

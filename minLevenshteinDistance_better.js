@@ -16,7 +16,7 @@ b 	2 	2	2	1	2
 c  	3 	3	3	2	2 = add y, swap c with d
 
 table with example choices (3 per cell):
-''     y      a      b      d 
+    ''     y      a      b      d 
 ''	abc    yabc   yaabc  yaabbc yaabbcd
 a 	bc     ybc    yabc   yabc   yabc
 b 	c      yc     yac    yabc   yabcd

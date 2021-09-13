@@ -61,7 +61,7 @@ function generateSubsets_appendToExistingWay(array) {
   const subsets = [[]]; // initialize with [] set
 
   for (let item of array) {
-    const lengthBeforePushAnother = subsets.length;
+    const lengthBeforePushAnother = subsets.length; // to avoid infinite loop
     for (let i = 0; i < lengthBeforePushAnother; i++) {
       const subset = subsets[i];
       subsets.push([...subset, item]);

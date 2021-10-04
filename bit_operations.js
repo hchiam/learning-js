@@ -37,9 +37,21 @@ function clrBitIToLsb(n, i) {
   return n & (-1 << (i + 1));
 }
 
-// function log() {
-//   console.log(...arguments);
-// }
+function getBitsAsString(n) {
+  if (typeof n === "boolean") {
+    return n ? "1" : "0";
+  }
+  return n.toString(2);
+}
+
+function printBits(n) {
+  console.log(getBitsAsString(n));
+}
+
+function log() {
+  console.log(...arguments);
+}
+
 // log(getBitI(5, 0) === true);
 // log(getBitI(5, 1) === false);
 // log(getBitI(5, 2) === true);
@@ -60,4 +72,7 @@ module.exports = {
   updateBitI,
   clrMsbToBitI,
   clrBitIToLsb,
+  getBitsAsString,
+  printBits,
+  log,
 };

@@ -55,6 +55,17 @@ javascript: (function () {
 
     console.log(action);
     window.actions.push(action);
+    console.log(
+      `%25cChanges to visible inputs are being recorded in the %25cactions%25c array.
+You can copy runnable code to clipboard by running
+%25ccopy(convertActionsToCode(actions));%25c
+in the browser console.`,
+      "",
+      "color: lime; background: black;",
+      "",
+      "color: lime; background: black;",
+      ""
+    );
   }
 
   function getParents(el, parentSelectorStopAt) {

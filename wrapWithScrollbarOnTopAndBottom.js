@@ -1,6 +1,6 @@
 // // example use:
 // wrapWithScrollbarOnTopAndBottom(
-//   $("#dont_select_div_but_select_this_table_instead")
+//   $("#target_element")
 // );
 
 const defaultOptions = { stickyTop: false };
@@ -10,6 +10,7 @@ const defaultOptions = { stickyTop: false };
  * Live demo: https://codepen.io/hchiam/pen/XWRLWNo
  */
 function wrapWithScrollbarOnTopAndBottom(element, options = defaultOptions) {
+  element = $(element);
   const { stickyTop, connectedElement } = options;
   const width = element.css("width");
 
@@ -20,11 +21,12 @@ function wrapWithScrollbarOnTopAndBottom(element, options = defaultOptions) {
 
   // insert a top scrollbar wrapper before the bottom scrollbar wrapper:
   const topWrapperID = `top_scrollbar_wrapper_${Date.now()}`;
-  const topWrapper = $(`<div id="${topWrapperID}" style="overflow:auto;${
+  const wrapperStyle = `overflow:auto;${
     stickyTop ? "position:sticky;top:0;" : ""
-  }">
-  <div style="height:5px;width:${width};"></div>
-</div>`);
+  }`;
+  const topWrapper = $(`<div id="${topWrapperID}" style="${wrapperStyle}">
+                          <div style="height:5px;width:${width};"></div>
+                        </div>`);
   topWrapper.insertBefore(`#${bottomWrapperID}`);
 
   const otherWrapperID = `other_scrollbar_wrapper_${Date.now()}`;

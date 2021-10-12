@@ -13,7 +13,7 @@ function minJumps(array) {
 
     const hitEndOfCurrentReach = i === currentReach;
     if (hitEndOfCurrentReach) {
-      currentReach = nextReach; // update to current reach
+      currentReach = nextReach; // update current reach
       jumps++; // jump into current reach
 
       const jumpedIntoReachContainingEnd = currentReach >= array.length - 1;

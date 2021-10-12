@@ -17,3 +17,12 @@ console.log(
   "array2d_BAD is bad because editing one row edits all rows due to referencing:"
 );
 console.log(array2d_BAD);
+
+var arrayFilledWithObject_BAD = new Array(cols).fill({ data: "unique to me?" });
+var arrayFilledWithObject = Array.from({ length: cols }, () => ({
+  data: "unchanged?",
+}));
+arrayFilledWithObject_BAD[1].data = "ALL changed :(";
+arrayFilledWithObject[1].data = "ONLY 1 changed :)";
+console.log(arrayFilledWithObject_BAD);
+console.log(arrayFilledWithObject);

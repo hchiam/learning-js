@@ -61,7 +61,9 @@ function boxStacking(boxes) {
   const maxHeights = boxes.map((d) => d[2]);
 
   // 3. set up DP array for best next box index over base
-  const indexOfBestNextOverBase = new Array(boxes.length).fill(-1);
+  const indexOfBestNextOverBase = new Array(boxes.length).fill(
+    "cannot stack on me - no index found"
+  );
   // indexOfBestNextOverBase breadcrumbs let you stack > 2 items
 
   for (let i = 1; i < boxes.length; i++) {
@@ -96,7 +98,7 @@ function boxStacking(boxes) {
   // 7. build stack by following breadcrumbs (indexOfBestNextOverBase)
   let i = indexOfMaxHeight;
   const stack = [];
-  while (i > -1) {
+  while (i !== "cannot stack on me - no index found") {
     stack.push(boxes[i]);
     i = indexOfBestNextOverBase[i];
   }

@@ -43,20 +43,21 @@ function longestCommonSubsequence_better(str1, str2) {
   );
   for (let i = 1; i < str1.length + 1; i++) {
     for (let j = 1; j < str2.length + 1; j++) {
+      const cell = dp[i][j];
       const haveSameCharacter = str1[i - 1] === str2[j - 1];
       if (haveSameCharacter) {
-        dp[i][j].previousI = i - 1;
-        dp[i][j].previousJ = j - 1;
-        dp[i][j].character = str2[j - 1]; // since dp has extra column for ''
-        dp[i][j].length = dp[i - 1][j - 1].length + 1;
+        cell.previousI = i - 1;
+        cell.previousJ = j - 1;
+        cell.character = str2[j - 1]; // since dp has extra column for ''
+        cell.length = dp[i - 1][j - 1].length + 1;
       } else {
         const left = dp[i][j - 1];
         const up = dp[i - 1][j];
         const useLeft = left.length > up.length;
-        dp[i][j].previousI = useLeft ? left.previousI : up.previousI;
-        dp[i][j].previousJ = useLeft ? left.previousJ : up.previousJ;
-        dp[i][j].character = useLeft ? left.character : up.character;
-        dp[i][j].length = useLeft ? left.length : up.length;
+        cell.previousI = useLeft ? left.previousI : up.previousI;
+        cell.previousJ = useLeft ? left.previousJ : up.previousJ;
+        cell.character = useLeft ? left.character : up.character;
+        cell.length = useLeft ? left.length : up.length;
       }
     }
   }

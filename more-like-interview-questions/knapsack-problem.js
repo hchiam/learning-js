@@ -19,6 +19,11 @@ ideas:
 2) DP table: w possible weights (0-capacity) vs n items: Ot(w n)
 	but to get the items used, need to keep the entire DP table:
 	at each cell: store cell came from + what was used to get to cell.
+
+TODO: simplify the DP table: just store max values,
+	and you can still figure out which items were used,
+	and/because you can simplify the recursive choices to 2 options:
+	use / not use the current item (fromAbove xor diagonal).
 */
 
 function knapsackProblem(items, capacity) {

@@ -111,6 +111,3 @@ function followBreadcrumbs(dp, items) {
 
   return { total, usedIndices };
 }
-
-// Do not edit the line below.
-exports.knapsackProblem = knapsackProblem;

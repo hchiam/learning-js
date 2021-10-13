@@ -1,16 +1,15 @@
-const testOutput = knapsackProblem(
-  [
-    [1, 2],
-    [4, 3],
-    [5, 6],
-    [6, 7],
-  ],
-  10
-);
-
 console.log(
-  JSON.stringify(testOutput) === JSON.stringify([10, [3, 1]]),
-  testOutput
+  JSON.stringify(
+    knapsackProblem(
+      [
+        [1, 2],
+        [4, 3],
+        [5, 6],
+        [6, 7],
+      ],
+      10
+    )
+  ) === JSON.stringify([10, [3, 1]])
 );
 
 /*
@@ -19,11 +18,6 @@ ideas:
 2) DP table: w possible weights (0-capacity) vs n items: Ot(w n)
 	but to get the items used, need to keep the entire DP table:
 	at each cell: store cell came from + what was used to get to cell.
-
-TODO: simplify the DP table: just store max values,
-	and you can still figure out which items were used,
-	and/because you can simplify the recursive choices to 2 options:
-	use / not use the current item (fromAbove xor diagonal).
 */
 
 function knapsackProblem(items, capacity) {
@@ -61,31 +55,29 @@ function maxHelper(dp, i, w, items) {
   const diagonal =
     w >= itemWeight ? itemValue + dp[i - 1][w - itemWeight].value : 0;
   const fromAbove = dp[i - 1][w].value;
-  // const fromLeft = dp[i][w - 1].value;
+  const fromLeft = dp[i][w - 1].value;
 
   // outputs:
   const from = { i: -1, w: -1 };
   let usedItemIndex = -1;
   let value = 0;
 
-  if (diagonal >= fromAbove) {
-    // if (diagonal >= fromAbove && diagonal >= fromLeft) {
+  if (diagonal >= fromAbove && diagonal >= fromLeft) {
     from.i = i - 1;
     from.w = w - itemWeight;
     usedItemIndex = i - 1;
     value = diagonal;
-  } else {
-    // } else if (fromAbove >= diagonal && fromAbove >= fromLeft) {
+  } else if (fromAbove >= diagonal && fromAbove >= fromLeft) {
     from.i = i - 1;
     from.w = w;
     usedItemIndex = i - 1 - 1;
     value = fromAbove;
-    // } else {
-    //   // } else if (fromLeft >= diagonal && fromLeft >= fromAbove) {
-    //   from.i = i;
-    //   from.w = w - 1;
-    //   usedItemIndex = i - 1;
-    //   value = fromLeft;
+  } else {
+    // } else if (fromLeft >= diagonal && fromLeft >= fromAbove) {
+    from.i = i;
+    from.w = w - 1;
+    usedItemIndex = i - 1;
+    value = fromLeft;
   }
   return {
     from,
@@ -95,59 +87,26 @@ function maxHelper(dp, i, w, items) {
 }
 
 function followBreadcrumbs(dp, items) {
-  return followBreadcrumbs_better(dp, items);
-
-  //   let total = 0;
-  //   let usedIndices = []; // e.g. used item indices [0, 1, 2, ...]
-
-  //   let i = dp.length - 1;
-  //   let w = dp[0].length - 1;
-
-  //   while (dp[i][w].value > 0) {
-  //     const cell = dp[i][w];
-
-  //     // const wasFromLeft = cell.from.i === i;
-  //     // const wasFromAbove = cell.from.i === i - 1 && cell.from.w === w;
-  //     const wasFromDiagonal = cell.from.i === i - 1 && cell.from.w < w;
-  //     if (wasFromDiagonal) {
-  //       total += items[cell.usedItemIndex][0];
-  //       usedIndices.push(cell.usedItemIndex);
-  //     }
-
-  //     // to get next cell to check:
-  //     i = cell.from.i;
-  //     w = cell.from.w;
-  //   }
-
-  //   return { total, usedIndices };
-}
-
-/**
-key insight: there were only 2 choices,
-so we could've just stored the max values in the DP table
-*/
-function followBreadcrumbs_better(dp, items) {
   let total = 0;
   let usedIndices = []; // e.g. used item indices [0, 1, 2, ...]
 
   let i = dp.length - 1;
   let w = dp[0].length - 1;
 
-  // there were only 2 choices: fromAbove or diagonal:
   while (dp[i][w].value > 0) {
-    const simplyCopiedFromPreviousMax = dp[i - 1][w].value === dp[i][w].value;
-    if (simplyCopiedFromPreviousMax) {
-      i--;
-    } else {
-      const [itemValue, itemWeight] = items[i - 1]; // -1 because first row is "use none"
-      const itemIndex = i - 1;
+    const cell = dp[i][w];
 
-      total += itemValue;
-      usedIndices.push(itemIndex);
-
-      i--;
-      w = Math.max(0, w - itemWeight);
+    // const wasFromLeft = cell.from.i === i;
+    // const wasFromAbove = cell.from.i === i - 1 && cell.from.w === w;
+    const wasFromDiagonal = cell.from.i === i - 1 && cell.from.w < w;
+    if (wasFromDiagonal) {
+      total += items[cell.usedItemIndex][0];
+      usedIndices.push(cell.usedItemIndex);
     }
+
+    // to get next cell to check:
+    i = cell.from.i;
+    w = cell.from.w;
   }
 
   return { total, usedIndices };

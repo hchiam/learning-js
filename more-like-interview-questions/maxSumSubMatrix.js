@@ -87,11 +87,13 @@ function getHelperSumsMatrix(matrix) {
 
   for (let i = 1; i < sums.length; i++) {
     for (let j = 1; j < sums[0].length; j++) {
-      sums[i][j] =
-        sums[i - 1][j] +
-        sums[i][j - 1] -
-        sums[i - 1][j - 1] + // cancel out 1 duplicate
-        matrix[i][j]; // include value of current cell
+      const top = sums[i - 1][j];
+      const left = sums[i][j - 1];
+      const topLeft = sums[i - 1][j - 1];
+      const me = matrix[i][j];
+      sums[i][j] = top + left - topLeft + me;
+      // -topLeft to cancel out 1 duplicate
+      // +me to include value of current cell
     }
   }
 

@@ -63,6 +63,8 @@ We can now much more quickly do the
 		and add back the top-left as needed)
   sum = me - top - left + top-left
 */
+
+// Ot(w h), Os(w h)
 function maxSumSubMatrix(matrix, size) {
   const sums = getHelperSumsMatrix(matrix);
   return getMax(sums, size);

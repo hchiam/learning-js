@@ -13,11 +13,16 @@ const output = numbersInPi(pi, numbers);
 console.log(pi, "\n", numbers, "\nanswer:", output, "\n", output === 2);
 
 /*
-n = digits of pi given, m = numbers given
+Minimum number of breaks/spaces to split up given pi digits into numbers that exist in numbers array. 
 
-key insight: prefixes and memo
+Key insight: prefixes+suffixes and memo. 
+The prefixes + suffixes approach works with recursive checks. 
+Save all in the numbers array in memo as having 0 spaces = base cases. 
+Then add (sub)-solutions to the memo, building up from those base cases. 
+The memo saves us from re-computing a ton of options. 
 
 ideas:
+(n = digits of pi given, m = numbers given)
 1) brute force: add 1 to n spaces, and loop and verify
 		Ot(n^n m), Os(n)
 2) BCR = Ot(n m), Os(1) (somehow one pass, with just a count of spaces)
@@ -44,7 +49,8 @@ function numbersInPi(pi, numbers) {
 }
 
 function recursivelyCheckPrefixes(memo, pi) {
-  if (pi in memo) return memo[pi];
+  // the pi param here may simply be a suffix!
+  if (pi in memo) return memo[pi]; // base case
 
   for (let p = 0; p < pi.length; p++) {
     for (let q = p + 1; q < pi.length; q++) {

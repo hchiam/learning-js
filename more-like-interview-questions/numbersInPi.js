@@ -16,10 +16,17 @@ console.log(pi, "\n", numbers, "\nanswer:", output, "\n", output === 2);
 Minimum number of breaks/spaces to split up given pi digits into numbers that exist in numbers array. 
 
 Key insight: prefixes+suffixes and memo. 
-The prefixes + suffixes approach works with recursive checks. 
+The prefixes + suffixes approach works with recursive checks, 
+where the prefixes can start anywhere inside the (sub)string. 
 Save all in the numbers array in memo as having 0 spaces = base cases. 
-Then add (sub)-solutions to the memo, building up from those base cases. 
+Then add the prefixes AND suffixes as (sub)-solutions to the memo, building up from those base cases. 
 The memo saves us from re-computing a ton of options. 
+
+Ot(n^3 + m) because you loop thru all prefix start positions (but just once each because of the memo), 
+            and process a suffix per prefix, (there are n^2 prefixes) 
+            and also slicing the string (Ot(n)), 
+            + set up pre-processing. 
+Os(n + m) because of the memo storing answers for each prefix and each number in the given numbers array. 
 
 ideas:
 (n = digits of pi given, m = numbers given)

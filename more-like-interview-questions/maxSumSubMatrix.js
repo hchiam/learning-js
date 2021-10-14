@@ -61,6 +61,7 @@ We can now much more quickly do the
 	(just subtract the pre-calc value at position-size up/left
 		and account for valid indices up/left
 		and add back the top-left as needed)
+  sum = me - top - left + top-left
 */
 function maxSumSubMatrix(matrix, size) {
   const sums = getHelperSumsMatrix(matrix);

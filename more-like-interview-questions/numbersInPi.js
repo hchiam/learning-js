@@ -14,6 +14,9 @@ console.log(pi, "\n", numbers, "\nanswer:", output, "\n", output === 2);
 
 /*
 n = digits of pi given, m = numbers given
+
+key insight: prefixes and memo
+
 ideas:
 1) brute force: add 1 to n spaces, and loop and verify
 		Ot(n^n m), Os(n)
@@ -31,24 +34,23 @@ observations:
 - what if we put each number into a hashtable Ot(m) + 
 - and check every prefix (starting anywhere) of pi? Ot(n^2) * Ot(n)
 */
+
 function numbersInPi(pi, numbers) {
-  let numberOfSpaces = Infinity;
   const memo = {};
-  for (let number of numbers) {
-    memo[number] = 0;
-  }
-  numberOfSpaces = recursivelyCheckPrefixes(memo, pi, 0, memo);
-  console.log("\nmemo:", memo, "\n");
-  return numberOfSpaces === Infinity ? -1 : numberOfSpaces;
+  for (let number of numbers) memo[number] = 0;
+
+  const minSpaces = recursivelyCheckPrefixes(memo, pi, 0, memo);
+  return minSpaces === Infinity ? -1 : minSpaces;
 }
+
 function recursivelyCheckPrefixes(memo, pi) {
-  if (pi in memo) {
-    return memo[pi];
-  }
+  if (pi in memo) return memo[pi];
+
   for (let p = 0; p < pi.length; p++) {
     for (let q = p + 1; q < pi.length; q++) {
       const prefix = pi.slice(p, q);
       const suffix = pi.slice(q, pi.length);
+
       if (prefix in memo) {
         const s = recursivelyCheckPrefixes(memo, suffix);
         const pPlusS = memo[prefix] + 1 + s;
@@ -57,5 +59,6 @@ function recursivelyCheckPrefixes(memo, pi) {
       }
     }
   }
+
   return pi in memo ? memo[pi] : Infinity;
 }

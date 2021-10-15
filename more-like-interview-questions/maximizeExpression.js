@@ -2,6 +2,7 @@ const input = [3, 6, 1, -3, 2, 7];
 const expected = 4;
 const output1 = maximizeExpression(input);
 const output2 = maximizeExpression_cleaner(input);
+console.log(input);
 console.log(output1, output1 === expected);
 console.log(output2, output2 === expected);
 

@@ -44,13 +44,13 @@ using key insight:
 make use of the running max +ve Ot(n) pass data in the -ve pass:
    0   1   2   3   4   5 (=indices)
 [  3,  6,  1, -3,  2,  7]
-   3   6   6   6   6   7 running max for +ve Ot(n)
+   3   6   6   6   6   7 running max for +ve Ot(n): max a
 	   \ | \ | \ | \ | \ |
-	    -3   5   9   9   9 running max for -ve AFTER the +ve pass
+	    -3   5   9   9   9 running max for -ve AFTER the +ve pass: max a-b
 			   \ | \ | \ | \ |
-				  -2  -2  11  16 running for +ve AFTER that -ve pass
+				  -2  -2  11  16 running for +ve AFTER that -ve pass: max a-b+c
              \ | \ | \ |
-						   1   1   4 running for -ve AFTER that +ve pass
+						   1   1   4 running for -ve AFTER that +ve pass: max a-b+c-d
 							         4 is the answer!
 this works since each pass is a running max for the next term.
 this could be stored in Os(n) space, with just 2 rows (prev/curr).
@@ -71,7 +71,7 @@ function maximizeExpression(array) {
   for (let i = 1; i < array.length; i++) {
     // just getting the running max on this first pass:
     const skip = prev[i - 1];
-    const use = prev[i];
+    const use = array[i];
     prev[i] = Math.max(skip, use);
   }
 

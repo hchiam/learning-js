@@ -65,7 +65,7 @@ function maximizeExpression(array) {
 
   const len = array.length;
   let prev = [...array];
-  let curr = new Array(len).fill(0);
+  let curr = new Array(len).fill(-Infinity);
   // prev: +  -  +
   // curr:  -  +  - => + - + -
 

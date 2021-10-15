@@ -9,7 +9,8 @@ console.log(output2, output2 === expected);
 Get max of a-b+c-d with locations a<b<c<d in array of integers.
 Ot(n) Os(n).
 
-BCR: Ot(n) Os(1) - key insight: try get max prev of a only.
+BCR: Ot(n) Os(1) - key insight: try get max prev of a only. The recursive relation 
+of the dynamic programming solution is max(skip, use), since you either use or not use. 
 ideas:
 1) brute force: each combo: Ot(n^4), Os(1)
 can we do Ot(n^2) with some pre-processing or extra storage?

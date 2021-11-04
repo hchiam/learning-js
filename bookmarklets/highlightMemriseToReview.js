@@ -38,5 +38,6 @@ javascript: (function () {
 
   setTimeout(() => {
     alert(`${toReview.length} to review! :)`);
+    document.head.querySelector("#highlight_memrise_to_review")?.remove();
   }, 2000);
 })();

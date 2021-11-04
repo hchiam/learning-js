@@ -6,6 +6,7 @@ javascript: (function () {
     )
   );
   toReview.map((x) => {
+    x.style.background = "red";
     x.style.setProperty("--original-top", x.getBoundingClientRect().top + "px");
     x.style.setProperty(
       "--original-left",

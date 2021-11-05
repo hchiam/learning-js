@@ -1,5 +1,7 @@
 // Code based on: https://codepen.io/beaucarnes/pen/JNvENQ?editors=0010
 
+// this is not completely correct logic - see continuousMedianHandler.js
+
 /* eslint-disable no-unused-vars */
 
 // left child: i * 2
@@ -75,6 +77,7 @@ const MaxHeap = function () {
         left = 2 * i;
         right = 2 * i + 1;
         if (heap[left] == undefined || heap[right] == undefined) {
+          // this is not completely correct logic - see continuousMedianHandler.js
           break;
         }
       }

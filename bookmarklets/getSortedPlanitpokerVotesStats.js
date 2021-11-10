@@ -25,14 +25,18 @@ javascript: (function () {
     }
   }
 
-  var mode = votes[0];
+  var mode = [];
   var maxCount = 0;
   for (var value of Object.keys(counts)) {
     var count = counts[value];
     console.log(value, count);
     if (count > maxCount) {
-      mode = Number(value);
       maxCount = count;
+    }
+  }
+  for (var key of Object.keys(counts)) {
+    if (counts[key] === maxCount) {
+      mode.push(Number(key));
     }
   }
   console.log("mode", mode);

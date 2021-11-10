@@ -42,15 +42,16 @@ javascript: (function () {
   console.log("mode", mode);
 
   var clipboardText =
-    "Votes: [" +
-    String(votes) +
-    "]" +
+    "Votes: [ " +
+    votes.join(", ") +
+    " ]" +
     " \nMean: " +
     mean +
     " \nMedian: " +
     median +
-    " \nMode: " +
-    mode;
+    " \nMode(s): [ " +
+    mode.join(", ") +
+    " ]";
 
   var textarea = document.createElement("textarea");
   selection = document.getSelection();

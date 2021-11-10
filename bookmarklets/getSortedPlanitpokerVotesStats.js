@@ -16,6 +16,7 @@ javascript: (function () {
     median = (votes[middleIndex - 0.5] + votes[middleIndex + 0.5]) / 2;
   console.log("median", median);
 
+  var mode = [];
   var counts = {};
   for (var i = 0; i < votes.length; i++) {
     var voteOption = votes[i];
@@ -25,7 +26,6 @@ javascript: (function () {
       counts[voteOption] = 1;
     }
   }
-  var mode = [];
   var maxCount = 0;
   for (var value of Object.keys(counts)) {
     var count = counts[value];

@@ -25,7 +25,6 @@ javascript: (function () {
       counts[voteOption] = 1;
     }
   }
-
   var mode = [];
   var maxCount = 0;
   for (var value of Object.keys(counts)) {

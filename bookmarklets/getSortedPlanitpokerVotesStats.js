@@ -1,7 +1,8 @@
 javascript: (function () {
   var votes = Array.from($(".voting"))
     .map((x) => $(x).text().trim())
-    .filter((x) => x !== "")
+    .map((x) => (x === "½" ? 0.5 : x))
+    .filter((x) => x !== "" && !isNaN(x))
     .map((x) => Number(x))
     .sort((a, b) => a - b);
   console.log(votes);
@@ -42,7 +43,7 @@ javascript: (function () {
   console.log("mode", mode);
 
   var clipboardText =
-    "Votes: [ " +
+    "Vote numbers: [ " +
     votes.join(", ") +
     " ]" +
     " \nMean: " +

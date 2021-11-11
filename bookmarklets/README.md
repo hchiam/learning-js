@@ -6,7 +6,7 @@ More info: https://en.wikipedia.org/wiki/Bookmarklet
 
 ![example bookmarks](ExampleBookmarks.png)
 
-An alternative to bookmarklet are [Chrome Snippets](https://developer.chrome.com/docs/devtools/javascript/snippets/).
+An alternative to bookmarklets are [Chrome Snippets](https://developer.chrome.com/docs/devtools/javascript/snippets/).
 
 ## Tips for converting from normal JS to bookmarklet
 

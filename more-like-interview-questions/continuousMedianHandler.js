@@ -1,5 +1,7 @@
 // nodemon -x 'node continuousMedianHandler.js'
 
+const { Heap: CleanerHeap } = require("../minMaxHeap.js");
+
 /*
 BCR Ot(1), Os(1) seems possible, if you only need to read the median.
 Just have at most 3 values stored:
@@ -28,8 +30,8 @@ class ContinuousMedianHandler {
   constructor() {
     // Os(n)
     this.median = null;
-    this.maxHeap = new Heap("max"); // left side
-    this.minHeap = new Heap("min"); // right side
+    this.maxHeap = new CleanerHeap("max"); // left side
+    this.minHeap = new CleanerHeap("min"); // right side
   }
 
   insert(number) {
@@ -276,17 +278,21 @@ console.log(
   "-------\n"
 );
 
-// m = new Heap("min");
+// m = new CleanerHeap("min");
 // // [51, 200, 52, 10000, 100, 1000, 10001]
 // [100, 200, 51, 52, 1000, 10000, 10001].forEach((x) => {
 //   m.add(x);
 // });
 
 // console.log(m);
+// console.log(m.pop());
+// console.log(m);
+// console.log(m.pop());
+// console.log(m);
 
 console.log("Checking that the min heaps are correctly updated:");
 
-m = new Heap("min");
+m = new CleanerHeap("min");
 [10, 100, 200].forEach((x) => {
   m.add(x);
 });

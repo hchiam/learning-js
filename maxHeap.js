@@ -1,3 +1,9 @@
+/**
+ *
+ * SEE minMaxHeap.js INSTEAD
+ *
+ */
+
 // Code based on: https://codepen.io/beaucarnes/pen/JNvENQ?editors=0010
 
 // this is not completely correct logic for bubble down - see continuousMedianHandler.js

@@ -78,6 +78,7 @@ const MaxHeap = function () {
         right = 2 * i + 1;
         if (heap[left] == undefined || heap[right] == undefined) {
           // this is not completely correct logic - see continuousMedianHandler.js
+          // you need to possibly swap with the child with a value
           break;
         }
       }

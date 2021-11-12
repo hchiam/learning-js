@@ -1,6 +1,7 @@
 // Code based on: https://codepen.io/beaucarnes/pen/JNvENQ?editors=0010
 
-// this is not completely correct logic - see continuousMedianHandler.js
+// this is not completely correct logic for bubble down - see continuousMedianHandler.js
+// to pass more test cases
 
 /* eslint-disable no-unused-vars */
 

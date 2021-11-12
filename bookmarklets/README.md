@@ -14,6 +14,8 @@ An alternative to bookmarklets are [Chrome Snippets](https://developer.chrome.co
 - encode `%` as `%25`, so console.log `%c` becomes `%25c`
 - remove comments that use `//`
 
+Or just use https://bookmarklet-generator.surge.sh
+
 ## Minimizing diffs between the JS version and bookmarklet version
 
 - you can keep the wrapping `javascript:(function(){` … `})();` in the JS (still works in browser console)

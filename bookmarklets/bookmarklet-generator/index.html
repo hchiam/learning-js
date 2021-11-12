@@ -1,0 +1,61 @@
+<!--
+To use this file, you can run:
+parcel bookmarklet-generator/index.html
+and open:
+http://localhost:1234
+
+Or, just go to:
+https://bookmarklet-generator.surge.sh
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookmarklet Generator</title>
+    <style>
+      * {
+        background: #333;
+        color: white;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      textarea {
+        width: 50vw;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h2>input</h2>
+      <textarea id="input" rows="10"></textarea>
+      <h2>output</h2>
+      <textarea id="output" rows="10"></textarea>
+    </main>
+    <script>
+      const input = document.querySelector("#input");
+      const output = document.querySelector("#output");
+      input.addEventListener("keyup", () => {
+        let code = input.value;
+        code = removeOneLineComments(code);
+        code = encodePercent(code);
+        code = wrapInJavascriptIIFE(code);
+        output.value = code;
+      });
+      function wrapInJavascriptIIFE(code) {
+        return `javascript:(function(){\n${code}\n})();`;
+      }
+      function encodePercent(code) {
+        return code.replaceAll("%", "%25");
+      }
+      function removeOneLineComments(code) {
+        return code.replaceAll(/\/\/.*?(\n|$)/g, "$1");
+      }
+    </script>
+  </body>
+</html>

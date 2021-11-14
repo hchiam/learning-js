@@ -11,3 +11,15 @@
  *
  *    $$('[class^="card-wrapper"] [class^="content"]').map((x) => x.innerText.trim());
  */
+
+javascript: (function () {
+  console.log(
+    `You might have to run %25c$$('[class^="card-wrapper"] [class^="content"]').map((x) => x.innerText.trim());`,
+    "font-family:monospace;background:black;color:lime;"
+  );
+  console.log(
+    Array.from(
+      document.querySelectorAll('[class^="card-wrapper"] [class^="content"]')
+    ).map((x) => x.innerText.trim())
+  );
+})();

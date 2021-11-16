@@ -69,21 +69,19 @@ Heap.prototype.bubbleDown = function () {
     const haveLeft = this.h[leftChildIndex] !== undefined;
     const haveRight = this.h[rightChildIndex] !== undefined;
 
-    const haveLeftSmaller =
-      (haveLeft && !haveRight) ||
-      this.needToHeapify(rightChildIndex, leftChildIndex);
-    // this.h[leftChildIndex] <= this.h[rightChildIndex];
-
-    const haveRightSmaller =
-      (!haveLeft && haveRight) ||
-      this.needToHeapify(leftChildIndex, rightChildIndex);
-    // this.h[rightChildIndex] <= this.h[leftChildIndex];
-
-    if (haveLeftSmaller) {
+    if (!haveLeft && !haveRight) {
+      break;
+    } else if (haveLeft && haveRight) {
+      indexToSwapWith = this.needToHeapify(leftChildIndex, rightChildIndex)
+        ? rightChildIndex
+        : leftChildIndex;
+    } else if (haveLeft) {
       indexToSwapWith = leftChildIndex;
-    } else if (haveRightSmaller) {
+    } else if (haveRight) {
       indexToSwapWith = rightChildIndex;
-    } else {
+    }
+
+    if (!this.needToHeapify(i, indexToSwapWith)) {
       break;
     }
 

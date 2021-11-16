@@ -1,5 +1,5 @@
 /**
- * Ot(n b log b)
+ * Ot(n b log b)? but apparently can be Ot(n)
  *
  * But apparently it's more like Ot(n log n) worst case
  * and Ot(n + n^2 / b + b) on average,

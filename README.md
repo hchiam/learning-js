@@ -232,3 +232,11 @@ pqAsHeap.dequeue();
 pqAsHeap.size();
 pqAsHeap.front().element;
 ```
+
+### add type checking even in JS files, no config necessary (in VSCode):
+
+Just add this comment to the top of your JS file:
+
+```js
+// @ts-check
+```

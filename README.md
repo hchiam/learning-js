@@ -233,7 +233,7 @@ pqAsHeap.size();
 pqAsHeap.front().element;
 ```
 
-### add type checking even in JS files, no config necessary (in VSCode):
+### add [type checking even in JS files](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript), no config necessary (in VSCode):
 
 Just add this comment to the top of your JS file:
 

@@ -42,6 +42,7 @@ javascript: (function () {
   console.log("mode", mode);
 
   var clipboardText =
+    "Scraped from planITpoker: \n\n" +
     "Vote numbers: [ " +
     votes.join(", ") +
     " ]" +

@@ -29,7 +29,6 @@ javascript: (function () {
   var maxCount = 0;
   for (var value of Object.keys(counts)) {
     var count = counts[value];
-    console.log(value, count);
     if (count > maxCount) {
       maxCount = count;
     }

@@ -53,6 +53,8 @@ javascript: (function () {
     mode.join(", ") +
     " ]";
 
+  alert(clipboardText);
+
   var textarea = document.createElement("textarea");
   selection = document.getSelection();
   textarea.textContent = clipboardText;

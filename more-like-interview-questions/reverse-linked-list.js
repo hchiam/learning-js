@@ -21,6 +21,30 @@ const reverseList = function (head) {
 };
 
 const iteratively = (head) => {
+  if (!head || !head.next) return head; // if only 1 node
+
+  // if you draw this out, the rest of the code also covers the case of only 2 nodes
+
+  let left = head;
+  let right = head.next;
+
+  left.next = null;
+
+  while (right) {
+    const third = right.next;
+
+    // swap:
+    right.next = left;
+
+    // advance:
+    left = right;
+    right = third;
+  }
+
+  return left; // not right, which will be null to escape while loop
+};
+
+const iteratively_OLD = (head) => {
   let left = null;
   let middle = head;
   while (middle) {

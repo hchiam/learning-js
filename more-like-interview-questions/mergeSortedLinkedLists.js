@@ -1,7 +1,12 @@
 /**
  * If you aren't allowed to create a new LL for some reason,
  * and both input linked lists are sorted:
- * Ot(n + m), Os(1)
+ * Ot(n + m), Os(1).
+ *
+ * Also consider edge cases:
+ * - head
+ * - tail
+ * - still have nodes in the p1/p2 list
  */
 function mergeSortedLinkedLists(headOne, headTwo) {
   const isHeadOneLower = headOne.value <= headTwo.value;

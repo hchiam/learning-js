@@ -21,22 +21,21 @@ const reverseList = function (head) {
 };
 
 const iteratively = (head) => {
-  if (!head || !head.next) return head; // if only 1 node
+  // NOT NEEDED:
+  // if (!head || !head.next) return head; // if only 1 node
 
-  // if you draw this out, the rest of the code also covers the case of only 2 nodes
+  // the code below already covers 0, 1, 2, and 3+ nodes already:
 
-  let left = head;
-  let right = head.next;
-
-  left.next = null;
+  let left = null;
+  let right = head;
 
   while (right) {
     const third = right.next;
 
-    // swap:
+    // swap "arrows":
     right.next = left;
 
-    // advance:
+    // advance without losing references:
     left = right;
     right = third;
   }

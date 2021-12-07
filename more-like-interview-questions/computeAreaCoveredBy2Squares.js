@@ -1,5 +1,16 @@
 // https://leetcode.com/problems/rectangle-area/discuss/1615902/JavaScript-Solution-Simple-Fast-and-Explained-Without-a-bunch-of-ifelsecases
 
+// Shorter but harder-to-decipher JS solution:
+function computeAreaCoveredBy2Squares_short(a, b, c, d, e, f, g, h) {
+  return (
+    (c - a) * (d - b) +
+    (g - e) * (h - f) -
+    Math.max(0, Math.min(c, g) - Math.max(a, e)) *
+      Math.max(0, Math.min(d, h) - Math.max(b, f))
+  );
+}
+
+// Conceptually simpler-to-understand solution:
 function computeAreaCoveredBy2Squares(
   left1,
   bottom1,

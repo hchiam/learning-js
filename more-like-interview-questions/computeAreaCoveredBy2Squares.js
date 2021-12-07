@@ -13,8 +13,38 @@ function computeAreaCoveredBy2Squares(
 ) {
   const area1 = getArea(right1 - left1, top1 - bottom1);
   const area2 = getArea(right2 - left2, top2 - bottom2);
-  let combinedArea = area1 + area2; // minus overlap
+  const combinedArea = area1 + area2; // includes overlap
 
+  const overlapArea = getOverlapArea(
+    left1,
+    bottom1,
+    right1,
+    top1,
+
+    left2,
+    bottom2,
+    right2,
+    top2
+  );
+
+  return combinedArea - overlapArea;
+}
+
+function getArea(width, height) {
+  return width * height;
+}
+
+function getOverlapArea(
+  left1,
+  bottom1,
+  right1,
+  top1,
+
+  left2,
+  bottom2,
+  right2,
+  top2
+) {
   /**
    * 5 cases for horizontal overlap:    And 1 case for NO overlap:
    *
@@ -38,10 +68,5 @@ function computeAreaCoveredBy2Squares(
   const overlapArea = getArea(overlapHorizontal, overlapVertical);
   // (Note: a 2D area is 0 if either dimension is 0)
 
-  combinedArea -= overlapArea;
-  return combinedArea;
-}
-
-function getArea(width, height) {
-  return width * height;
+  return overlapArea;
 }

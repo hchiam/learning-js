@@ -10,9 +10,29 @@ KEY INSIGHT: find deepest subtree that contains both!
 KEY STRUGGLE: also check if the current node is a target, not just children!
 
 TODO: extend it to more than 3 reports people: use counts instead of booleans!
-TODO: escape early!
 */
 function getLowestCommonManager(topManager, reportOne, reportTwo) {
+  function dfs(person) {
+    // returns {lcm, reportsCount}
+    let reportsCount = 0;
+    if (person === reportOne || person === reportTwo) reportsCount++; // "only" increment reportsCount here.
+    for (let directReport of person.directReports) {
+      const subtree = dfs(directReport);
+      if (subtree.lcm) return subtree; // this works because subtree hits it before supertree.
+      // if (directReport === reportOne || directReport === reportTwo) reportsCount++; // doesn't work.
+      reportsCount += subtree.reportsCount; // use recursion on the children instead.
+    }
+    let lcm = null;
+    if (reportsCount === 2) lcm = person;
+    return { lcm, reportsCount };
+  }
+
+  const LCMSubtree = dfs(topManager); // returns {lcm, reportsCount}
+  const lowestCommonManager = LCMSubtree.lcm;
+  return lowestCommonManager;
+}
+
+function getLowestCommonManager_OLD(topManager, reportOne, reportTwo) {
   if (reportOne === topManager) return topManager;
   if (reportTwo === topManager) return topManager;
 

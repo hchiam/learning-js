@@ -4,6 +4,35 @@ const {
 } = require("./getLowestCommonManager.js");
 
 describe("getLowestCommonManager", () => {
+  it("works with direct children of root", () => {
+    const abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const org = {};
+    for (let letter of abc) {
+      org[letter.toLowerCase()] = new OrgChartNode(letter);
+    }
+
+    org.a.directReports = [org.b, org.c];
+
+    const answer = getLowestCommonManager(org.a, org.b, org.c);
+
+    expect(answer).toBe(org.a);
+  });
+
+  it("works with direct children", () => {
+    const abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const org = {};
+    for (let letter of abc) {
+      org[letter.toLowerCase()] = new OrgChartNode(letter);
+    }
+
+    org.a.directReports = [org.b, org.c];
+    org.b.directReports = [org.d, org.e];
+
+    const answer = getLowestCommonManager(org.a, org.d, org.e);
+
+    expect(answer).toBe(org.b);
+  });
+
   it("works when not direct children", () => {
     const abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const org = {};
@@ -20,6 +49,7 @@ describe("getLowestCommonManager", () => {
 
     expect(answer).toBe(org.b);
   });
+
   it("works when current node is a target", () => {
     const abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const org = {};

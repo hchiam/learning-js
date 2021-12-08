@@ -8,14 +8,12 @@ Gotta keep track of the path breadcrumbs, so can't do any better.
 
 KEY INSIGHT: find deepest subtree that contains both!
 KEY STRUGGLE: also check if the current node is a target, not just children!
-
-TODO: extend it to more than 3 reports people: use counts instead of booleans!
 */
-function getLowestCommonManager(topManager, reportOne, reportTwo) {
+function getLowestCommonManager(topManager, ...reporters) {
   function dfs(person) {
     // returns {lcm, reportsCount}
     let reportsCount = 0;
-    if (person === reportOne || person === reportTwo) reportsCount++; // "only" increment reportsCount here.
+    if (reporters.some((reporter) => reporter === person)) reportsCount++; // "only" increment reportsCount here.
     for (let directReport of person.directReports) {
       const subtree = dfs(directReport); // recursion
       if (subtree.lcm) return subtree; // this works because subtree hits it before supertree.

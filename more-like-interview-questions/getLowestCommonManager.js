@@ -17,9 +17,9 @@ function getLowestCommonManager(topManager, reportOne, reportTwo) {
     let reportsCount = 0;
     if (person === reportOne || person === reportTwo) reportsCount++; // "only" increment reportsCount here.
     for (let directReport of person.directReports) {
-      const subtree = dfs(directReport);
+      const subtree = dfs(directReport); // recursion
       if (subtree.lcm) return subtree; // this works because subtree hits it before supertree.
-      // if (directReport === reportOne || directReport === reportTwo) reportsCount++; // doesn't work.
+      // if (directReport === reportOne || directReport === reportTwo) reportsCount++; // doesn't work (misses/double-counts subtree counts).
       reportsCount += subtree.reportsCount; // use recursion on the children instead.
     }
     let lcm = null;

@@ -8,6 +8,8 @@ Gotta keep track of the path breadcrumbs, so can't do any better.
 
 KEY INSIGHT: find deepest subtree that contains both!
 KEY STRUGGLE: also check if the current node is a target, not just children!
+
+TODO: extend it to more than 3 reports people: use counts instead of booleans!
 */
 function getLowestCommonManager(topManager, reportOne, reportTwo) {
   if (reportOne === topManager) return topManager;

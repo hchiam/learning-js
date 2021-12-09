@@ -1,3 +1,5 @@
+// compare with the newer ../topologicalSort.js
+
 console.log(
   topologicalSort(
     [1, 2, 3, 4],

@@ -1,22 +1,28 @@
 // compare with topologicalSort.js in /more-like-interview-questions
 
 // console.log(findOrder(2, [[0, 1]]).join(",") === "1,0");
-// console.log(
-//   findOrder(4, [
-//     [1, 0],
-//     [2, 0],
-//     [3, 1],
-//     [3, 2],
-//   ]).join(",") === "0,1,2,3"
-// );
+// const complexCase = findOrder(4, [
+//   [1, 0],
+//   [2, 0],
+//   [3, 1],
+//   [3, 2],
+// ]).join(",");
+// console.log(complexCase === "0,1,2,3" || complexCase === "0,2,1,3");
 // console.log(findOrder(1, []).join(",") === "0");
+// console.log(
+//   findOrder(3, [
+//     [1, 0],
+//     [1, 2],
+//     [0, 1],
+//   ]).join(",") === ""
+// );
 
 /**
  * @param {number} numCourses
  * @param {number[][]} prerequisites
  * @return {number[]}
 
-topological sort
+topological sort of courses with prereqs:
 
 e.g.: [0,1] means 1->0: toGet = 0; need = 1:
        0 needs 1
@@ -54,42 +60,38 @@ function findOrder(numCourses, prerequisites) {
       */
   });
 
-  let stillToTake = Object.keys(ht);
-  while (stillToTake.length) {
-    // Ot(n)
+  // put independent courses into queue:
+  const q = [];
+  Object.keys(ht).filter((course) => {
+    if (ht[course].needs.length === 0) q.push(course);
+  });
 
-    const countBeforeTriedProcessing = stillToTake.length;
+  // try processing independent courses: Ot(n)
+  while (q.length) {
+    const indepCourse = q.pop(); // shift vs pop doesn't matter in this case, and shift would slow it to Ot(n^2) anyways
+    order.push(Number(indepCourse));
 
-    // try processing: Ot(p)
-    stillToTake.forEach((canTake) => {
-      const hasNoPrereqs = ht[canTake].needs.length === 0;
-      if (hasNoPrereqs) {
-        order.push(Number(canTake));
-
-        // update courses it helps:
-        Object.keys(ht[canTake].helps).forEach((courseToUpdate) => {
-          // Ot(p)
-          if (courseToUpdate === "length") return;
-          if (ht[courseToUpdate].needs[canTake]) {
-            delete ht[courseToUpdate].needs[canTake];
-            ht[courseToUpdate].needs.length--;
-          }
-        });
-
-        // finally, remove these courses:
-        delete ht[canTake];
+    // try processing courses it helps: Ot(p)
+    Object.keys(ht[indepCourse].helps).forEach((courseToUpdate) => {
+      if (courseToUpdate === "length") return;
+      if (ht[courseToUpdate].needs[indepCourse]) {
+        delete ht[courseToUpdate].needs[indepCourse];
+        delete ht[indepCourse].helps[courseToUpdate];
+        ht[courseToUpdate].needs.length--;
+        ht[indepCourse].helps.length--;
+      }
+      if (ht[courseToUpdate].needs.length === 0) {
+        q.push(courseToUpdate);
       }
     });
 
-    stillToTake = Object.keys(ht); // Ot(n)
-
-    const stuck =
-      stillToTake.length > 0 &&
-      stillToTake.length === countBeforeTriedProcessing;
-    if (stuck) return [];
+    if (ht[indepCourse].helps.length === 0) {
+      delete ht[indepCourse];
+    }
   }
 
-  return order;
+  const stuck = q.length > 0 || Object.keys(ht).length > 0;
+  return stuck ? [] : order;
 }
 
 module.exports = {

@@ -26,7 +26,7 @@ array for order, check if length === number of courses to take (otherwise send e
 
 HT for tracking and reading deps fast
 
-Ot(n + p) Os(n), where n = number of courses, and p = number of prerequisite links
+Ot(n + p) Os(n + p), where n = number of courses, and p = number of prerequisite links
 basically Ot(edges + vertices) in DFS or BFS
 
  */

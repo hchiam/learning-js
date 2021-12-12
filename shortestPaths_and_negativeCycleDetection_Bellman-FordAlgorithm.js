@@ -3,6 +3,10 @@
  * - gets shortest paths from a node to all others, even if edges can have -ve (<0) values (Dijkstra can't handle that), and
  * - detects whether any negative (<0) cycles exist in the graph.
  *
+ * Ot(n^3) = Ot(V E), since E = V^2 (including "self-edges"), since you need to transform the graph to be full-connected (use a dummy node if you have to).
+ *
+ * Os(n) = Os(V).
+ *
  * Steps:
  * 1) Update a tracker array/HT of min path distance TO each node by checking each edge from all nodes to other nodes.
  *     - pick a starting node and set its path distance to 0.
@@ -11,6 +15,7 @@
  *     - Also, if the tracker array/HT stops updating, you can escape early from this step (and escape early from the next step too since there's no more updates = no negative <0 cycle detected in the graph).
  * 3) Do that 1 more time (= start a cycle).
  *     - --> That tells you whether the graph has a negative <0 cycle, if anything in the tracker array/HT updates/changes.
+ *
  * @param {number[][]} adjacencyMatrix2D
  * @param {number} startIndex
  * @returns {object} {negativeCycleDetected, minDistancesTo}

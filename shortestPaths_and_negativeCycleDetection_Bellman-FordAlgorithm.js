@@ -24,8 +24,8 @@ function shortestPaths_and_negativeCycleDetection_BFA(
 
   let negativeCycleDetected = false;
 
-  // V - 1 iterations through E edges: (return false early if early stop updates)
-  const V = adjacencyMatrix2D.length; // V - 1 = longest possible path = max number of edges to sum
+  // V - 1 iterations through E edges: (return false early if updates stop happening early)
+  const V = adjacencyMatrix2D.length; // V - 1 = longest possible path = max number of edges to sum without cycling
   for (let pathLength = 0; pathLength < V - 1; pathLength++) {
     negativeCycleDetected = bfa_relax(adjacencyMatrix2D, minDistancesTo);
     if (!negativeCycleDetected) {
@@ -39,7 +39,7 @@ function shortestPaths_and_negativeCycleDetection_BFA(
 }
 
 /**
- * Relax = one pass of minimizing paths per "to node" in the minDistancesTo tracker array/HT.
+ * Relax = one pass of trying to minimize path sums per "to node" in the minDistancesTo tracker array/HT.
  * @param {number[][]} matrix
  * @param {number[]} minDistancesTo
  * @returns {boolean} didUpdateMinDistancesTo - whether the min path distance to any node(s) updated.

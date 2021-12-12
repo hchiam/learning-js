@@ -15,7 +15,7 @@
  * @param {number} startIndex
  * @returns {object} {negativeCycleDetected, minDistancesTo}
  */
-function shortestPath_and_negativeCycleDetection_BFA(
+function shortestPaths_and_negativeCycleDetection_BFA(
   adjacencyMatrix2D,
   startIndex = 0
 ) {
@@ -63,5 +63,5 @@ function bfa_relax(matrix, minDistancesTo) {
 }
 
 module.exports = {
-  shortestPath_and_negativeCycleDetection_BFA,
+  shortestPaths_and_negativeCycleDetection_BFA,
 };

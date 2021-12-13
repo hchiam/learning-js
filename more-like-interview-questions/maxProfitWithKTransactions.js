@@ -6,7 +6,7 @@ and decisions affect other decisions, so got with DP, not a greedy algorithm.
 
 DP: 
 - subsolutions/states: day, transactions used, (profit = cell value).
-	(note that 1 transaction = a buy AND sell pair).
+	(note that 1 transaction = 1 buy AND 1 sell).
 - base cases: first day, 0 transactions used.
 - recurrence relation: buy/sell or don't buy/sell.
 
@@ -30,7 +30,7 @@ h=false
 1 -5,-5,-3,-3,-3,-3
 2 -5, 6, 6,47,57,87
 
-or just do a complete buy/sell pair per row
+or just do a complete buy/sell per row
 to avoid getting incorrect order of transactions
 and track running min buy, and track running max sell?
  or track running max profit if buy at certain day?
@@ -68,7 +68,7 @@ function maxProfitWithKTransactions_Ot_nk_Os_n(prices, k) {
   // DP table of max subsolution profit:
   let dpPrev = new Array(prices.length).fill(0);
   let dpNow = new Array(prices.length).fill(0);
-  // 0 instead of -Infinity because we always complete buy/sell pairs
+  // 0 instead of -Infinity because we always complete do 1 buy and 1 sell per row
 
   for (let t = 1; t < k + 1; t++) {
     let dMax = 0; // running max profit if buy a previous day
@@ -105,7 +105,7 @@ function maxProfitWithKTransactions_Ot_nk_Os_nk(prices, k) {
   const dp = new Array(k + 1)
     .fill(null)
     .map((x) => new Array(prices.length).fill(0));
-  // 0 instead of -Infinity because we always complete buy/sell pairs
+  // 0 instead of -Infinity because we always complete 1 buy and 1 sell per row
 
   for (let t = 1; t < k + 1; t++) {
     let dMax = 0; // running max

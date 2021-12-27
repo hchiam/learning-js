@@ -240,3 +240,13 @@ Just add this comment to the top of your JS file:
 ```js
 // @ts-check
 ```
+
+### Scope console log scripts in DevTools to an iframe or other environment:
+
+Chrome:
+
+![scope_dev_tools_chrome.png](scope_dev_tools_chrome.png)
+
+Firefox:
+
+![scope_dev_tools_firefox.png](scope_dev_tools_firefox.png)

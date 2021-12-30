@@ -1,3 +1,5 @@
+// UPDATE: see Chrome DevTools recorder feature
+
 javascript: (function () {
   console.log("Code generated from actions array assumes jQuery available.");
 

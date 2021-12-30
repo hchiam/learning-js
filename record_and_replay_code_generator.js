@@ -1,3 +1,5 @@
+// UPDATE: see Chrome DevTools recorder feature
+
 // to-do: how to handle non-unique selector? detect and then what?
 
 // requires jQuery:

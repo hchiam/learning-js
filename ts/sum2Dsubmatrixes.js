@@ -6,6 +6,10 @@ Ideas:
         = current cell + left square + top square - top left square (to de-dupe).
     and sums from (not at top left of matrix) to (bottom right)
         = normal sum - left square - top square + top left square (to de-dupe).
+
+How can we get a low Ot for both update and sumRegion?
+3) Use a Fenwick tree, AKA a Binary Indexed Tree (a BIT)? https://en.wikipedia.org/wiki/Fenwick_tree
+
 */
 var __spreadArray =
   (this && this.__spreadArray) ||

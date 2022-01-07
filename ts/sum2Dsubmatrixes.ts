@@ -8,7 +8,20 @@ Ideas:
         = normal sum - left square - top square + top left square (to de-dupe).
 
 How can we get a low Ot for both update and sumRegion?
+What's faster than linear scans? A logarithmic scan?
+And then extending that to 2D, go from Ot(n^2) down to Ot((log n)^2)?
+Maybe Ot(log r log c) for both?
+
 3) Use a Fenwick tree, AKA a Binary Indexed Tree (a BIT)? https://en.wikipedia.org/wiki/Fenwick_tree
+Watch these YouTube explanations in order: 
+https://youtu.be/uSFzHCZ4E-8 and then https://youtu.be/uZx-eqyu0Cg
+Get the next index to sum/update with growing step sizes: 
+- or + 1, 2, 4, -8, etc. = - or + (i & -i)
+For example, we decrement indices for the sum method, with -1, -2, -4:
+  7 -= 7 & -7 -= 111 & 001 -= 001 = 7 - (1) = 6
+  6 -= 6 & -6 -= 110 & 010 -= 010 = 6 - (2) = 4
+  4 -= 4 & -4 -= 100 & 100 -= 100 = 4 - (4) = 0
+  0 -= 0 & -0 -= 000 & 000 -= 000 = 0 - (0) = 0 (stop)
 
 */
 

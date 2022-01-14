@@ -44,10 +44,12 @@ surge bookmarklet-generator https://bookmarklet-generator.surge.sh
     <script>
       const input = document.querySelector("#input");
       const output = document.querySelector("#output");
-      input.addEventListener("keyup", () => {
+      input.addEventListener("input", () => {
         let code = input.value;
-        code = removeOneLineComments(code);
+        code = detectOneLineComments(code);
         code = encodePercent(code);
+        code = encodeSlash(code);
+        code = encodeDoubleQuote(code);
         code = wrapInJavascriptIIFE(code);
         output.value = code;
       });
@@ -57,8 +59,19 @@ surge bookmarklet-generator https://bookmarklet-generator.surge.sh
       function encodePercent(code) {
         return code.replaceAll("%", "%25");
       }
-      function removeOneLineComments(code) {
-        return code.replaceAll(/\/\/.*?(\n|$)/g, "$1");
+      function encodeDoubleQuote(code) {
+        return code.replaceAll('"', "%22");
+      }
+      function encodeSlash(code) {
+        return code.replaceAll("/", "%2F");
+      }
+      function detectOneLineComments(code) {
+        if (/(\/\/|\/\*).*?(\n|$)/g.exec(code)) {
+          alert(
+            "There might be a comment in the code. Remove comments before pasting."
+          );
+        }
+        return code;
       }
     </script>
   </body>

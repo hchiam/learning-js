@@ -21,3 +21,7 @@ Or just use https://bookmarklet-generator.surge.sh
 - you can keep the wrapping `javascript:(function(){` … `})();` in the JS (still works in browser console)
 - change `%25c` back to `%c` inside console.log
 - (but you’ll likely want to put back the comments)
+
+## There's also the possibility of HTML
+
+For example `data:text/html,<html></html>`: https://github.com/hchiam/learning-js/blob/main/bookmarklets/notepad.html

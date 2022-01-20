@@ -16,6 +16,7 @@ function copyToClipboard(text) {
         "Could not automatically copy to clipboard. \n\n Copy this text instead: \n\n" +
           text
       );
+      console.log(err);
     }
   }
 }

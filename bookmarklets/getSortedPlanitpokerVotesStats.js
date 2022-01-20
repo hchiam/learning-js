@@ -69,7 +69,7 @@ javascript: (function () {
         temp.remove();
       } catch (err) {
         alert(
-          "Could not automatically copy to clipboard. \n\n Copy this text instead: \n\n" +
+          "Could not automatically copy to clipboard. \n\n Manually copy this text instead: \n\n" +
             text
         );
         console.log(err);

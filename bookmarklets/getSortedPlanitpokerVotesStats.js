@@ -54,14 +54,25 @@ javascript: (function () {
     " ]";
 
   alert(clipboardText);
+  copyToClipboard(clipboardText);
 
-  var textarea = document.createElement("textarea");
-  selection = document.getSelection();
-  textarea.textContent = clipboardText;
-  document.body.appendChild(textarea);
-  selection.removeAllRanges();
-  textarea.select();
-  document.execCommand("copy");
-  selection.removeAllRanges();
-  document.body.removeChild(textarea);
+  function copyToClipboard(text) {
+    try {
+      navigator.clipboard.writeText(text);
+    } catch (e) {
+      try {
+        var temp = document.createElement("input");
+        document.body.append(temp);
+        temp.value = text;
+        temp.select();
+        document.execCommand("copy");
+        temp.remove();
+      } catch (err) {
+        alert(
+          "Could not automatically copy to clipboard. \n\n Copy this text instead: \n\n" +
+            text
+        );
+      }
+    }
+  }
 })();

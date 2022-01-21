@@ -79,5 +79,15 @@
       "});"
     ],
     "description": "Jasmine-style test setup"
+  },
+  "module.exports": {
+    "prefix": "exports",
+    "body": ["module.exports = {", "  ${1:function or variable},", "};"],
+    "description": "module.exports"
+  },
+  "require": {
+    "prefix": "require",
+    "body": ["const {${1:what you're importing}} = require('./${2:file.js}');"],
+    "description": "require"
   }
 }

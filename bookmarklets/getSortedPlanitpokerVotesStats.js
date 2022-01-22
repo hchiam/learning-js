@@ -58,7 +58,13 @@ javascript: (function () {
 
   function copyToClipboard(text) {
     try {
-      navigator.clipboard.writeText(text);
+      navigator.clipboard.writeText(text).catch(function (err) {
+        alert(
+          "Could not automatically copy to clipboard. \n\n Manually copy this text instead: \n\n" +
+            text
+        );
+        console.log(err);
+      });
     } catch (e) {
       try {
         var temp = document.createElement("input");

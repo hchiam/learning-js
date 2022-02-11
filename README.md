@@ -81,6 +81,10 @@ Use `minify`:
 minify minify-this-script.js > minified-script.js
 ```
 
+### stuff you can do without JS-heavy web frameworks
+
+https://codepen.io/hchiam/pen/ExbmjEP
+
 ### Using [`yarn`](https://github.com/hchiam/learning-yarn) instead of `npm`
 
 ```bash

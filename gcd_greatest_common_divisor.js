@@ -27,22 +27,22 @@ function gcd(x, y, callback) {
 example();
 
 function example() {
-  // log(0, 0);
-  // log(3, 9);
-  // log(3, 27);
-  // log(3, 3);
-  // log(3, 10);
-  // log(26, 12);
+  log(0, 0);
+  log(3, 9);
+  log(3, 27);
+  log(3, 3);
+  log(3, 10);
+  log(26, 12);
 
   log(24, 18);
-  // log(24, 9);
+  log(24, 9);
 }
 
 function log(x, y) {
   console.log(`Getting GCD of ${x} and ${y}:`);
-  gcd(x, y, callback);
+  console.log(gcd(x, y, callback));
 }
 
 function callback(x, y) {
-  console.log(x, y, "remainder", y % x);
+  // console.log(x, y, "remainder", y % x);
 }

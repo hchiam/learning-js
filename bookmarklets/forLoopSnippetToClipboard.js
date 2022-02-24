@@ -1,5 +1,5 @@
 javascript: (function () {
-  const toClipboard = "for (let i = 0; i < array.length; i++)";
+  var toClipboard = "for (let i = 0; i < array.length; i++)";
   copy(toClipboard);
   function copy(text) {
     var textarea = document.createElement("textarea");

@@ -2,14 +2,14 @@ function generatePairedDivTags(numberOfTags) {
   // instead of trying to generate solution n from solution n-1,
   // build up all solutions at the same time as branches/variants
   // (compare to my older generateParenthesis_fast.js code)
-  const output = [];
-  recurse(output, numberOfTags, numberOfTags, "");
-  return output.map((o) =>
-    o.replaceAll("o", "<div>").replaceAll("c", "</div>")
+  const solutions = [];
+  _recurse(solutions, numberOfTags, numberOfTags, "");
+  return solutions.map((solution) =>
+    solution.replaceAll("o", "<div>").replaceAll("c", "</div>")
   );
 }
 
-function recurse(output, openCount, closeCount, subsolution) {
+function _recurse(output, openCount, closeCount, subsolution) {
   const doneSubsolution = closeCount === 0;
   if (doneSubsolution) {
     output.push(subsolution);
@@ -18,11 +18,11 @@ function recurse(output, openCount, closeCount, subsolution) {
     const canAddClose = openCount < closeCount;
     if (canAddOpen) {
       const nextSubSolution = subsolution + "o";
-      recurse(output, openCount - 1, closeCount, nextSubSolution);
+      _recurse(output, openCount - 1, closeCount, nextSubSolution);
     }
     if (canAddClose) {
       const nextSubSolution = subsolution + "c";
-      recurse(output, openCount, closeCount - 1, nextSubSolution);
+      _recurse(output, openCount, closeCount - 1, nextSubSolution);
     }
   }
 }

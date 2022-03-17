@@ -26,9 +26,9 @@ Or just use https://bookmarklet-generator.surge.sh
 
 For example `data:text/html,<html></html>`: https://github.com/hchiam/learning-js/blob/main/bookmarklets/notepad.html
 
-## Enable running bookmarklets quickly with your keyboard (instead of manually clicking on bookmarks) in Firefox
+## Enable running bookmarklets quickly with your keyboard in Firefox
 
-For even faster usage (typing instead of clicking), you can enable bookmarklets to show up in Firefox URL address bar search suggestions:
+For even faster usage (typing instead of manually clicking), you can enable bookmarklets to show up in Firefox URL address bar search suggestions:
 
 1. Go to the `about:config` page in Firefox (type `about:config` in the address bar and hit enter).
 2. If you understand what you're doing, accept the risk and continue.

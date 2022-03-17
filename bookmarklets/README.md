@@ -24,7 +24,7 @@ Or just use https://bookmarklet-generator.surge.sh
 
 ## There's also the possibility of HTML
 
-For example `data:text/html,<html></html>`: https://github.com/hchiam/learning-js/blob/main/bookmarklets/notepad.html
+For example `data:text/html,<html contenteditable></html>`: https://github.com/hchiam/learning-js/blob/main/bookmarklets/notepad.html
 
 ## Enable running bookmarklets quickly with your keyboard in Firefox
 

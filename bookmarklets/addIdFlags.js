@@ -8,10 +8,8 @@ javascript: (function () {
       const el = $(this);
       const offset = el.offset();
       if (offset) {
-        let { top: globalTop, left: globalLeft } = offset;
-        const posKey = globalTop + " " + globalLeft;
-        let top = 0;
-        let left = 0;
+        let { top, left } = offset;
+        const posKey = top + " " + left;
         if (posKey in existingPositions) {
           const offsetMore = 6;
           existingPositions[posKey] += offsetMore;

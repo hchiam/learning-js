@@ -13,3 +13,8 @@ console.log(object1);
 console.log(shallowCloneObject);
 console.log(object1 === object1, "should be true");
 console.log(object1 === shallowCloneObject, "should be false");
+
+// // new, now available natively in modern browsers:
+// const obj = { a: 1, b: 2, circularRef: null };
+// obj.circularRef = obj;
+// const deepClone = structuredClone(obj);

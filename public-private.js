@@ -1,3 +1,5 @@
+// new to modern browsers: #privateMethodOrVariableName
+
 function SomeClass() {
   // private members:
   let privateVariable = "hidden";

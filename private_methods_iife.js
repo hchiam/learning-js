@@ -1,3 +1,5 @@
+// new to modern browsers: #privateMethodOrVariableName
+
 // IIFE for public and private methods in JS.
 // https://stackoverflow.com/questions/38758981/javascript-how-to-access-properties-and-method-of-iife
 

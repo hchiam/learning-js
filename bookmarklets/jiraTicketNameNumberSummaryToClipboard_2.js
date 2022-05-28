@@ -8,9 +8,12 @@ javascript: (function () {
   var parent = matches ? matches[0] : "";
   var ssTitle =
     (parent ? parent + " / " : "") +
-    document.querySelector(
+    (document.querySelector(
       `[data-test-id="issue.views.issue-base.foundation.breadcrumbs.breadcrumb-parent-issue-container"]`
-    ).innerText +
+    )?.innerText ||
+      document.querySelector(
+        `[data-test-id="issue.views.issue-base.foundation.breadcrumbs.breadcrumb-current-issue-container"]`
+      ).innerText) +
     " : " +
     document.querySelector(
       `[data-test-id="issue.views.issue-base.foundation.summary.heading"]`

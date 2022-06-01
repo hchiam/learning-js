@@ -19,5 +19,17 @@ javascript: (function () {
       `[data-test-id="issue.views.issue-base.foundation.summary.heading"]`
     ).innerText;
   console.log(ssTitle);
-  alert(`Copy this to your clipboard now: \n\n${ssTitle}`);
+  copy(ssTitle);
+  function copy(text) {
+    var textarea = document.createElement("textarea");
+    selection = document.getSelection();
+    textarea.textContent = text;
+    document.body.appendChild(textarea);
+    selection.removeAllRanges();
+    textarea.select();
+    document.execCommand("copy");
+    selection.removeAllRanges();
+    document.body.removeChild(textarea);
+    alert(`Copied to clipboard:\n\n${text}`);
+  }
 })();

@@ -3,6 +3,9 @@
  * or defaults to reduced motion for older browsers that don't support prefers-reduced-motion.
  */
 function prefersReducedMotion() {
-  return !window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+  return (
+    !window.matchMedia ||
+    !window.matchMedia("(prefers-reduced-motion: no-preference)").matches
+  );
   // note the "!"
 }

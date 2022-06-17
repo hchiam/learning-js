@@ -31,15 +31,35 @@ surge bookmarklet-generator https://bookmarklet-generator.surge.sh
       }
       textarea {
         width: 50vw;
+        padding: 1rem;
+        border: 3px solid white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px black;
+        transition: box-shadow 0.2s;
+      }
+      textarea:focus,
+      textarea:hover {
+        background: black;
+        box-shadow: 0 0 10px white;
       }
     </style>
   </head>
   <body>
     <main>
-      <h2>input</h2>
-      <textarea id="input" rows="10" autocomplete="off"></textarea>
-      <h2>output</h2>
-      <textarea id="output" rows="10" autocomplete="off"></textarea>
+      <h2>Input:</h2>
+      <textarea
+        id="input"
+        rows="10"
+        autocomplete="off"
+        placeholder="Enter normal JavaScript here."
+      ></textarea>
+      <h2>Output:</h2>
+      <textarea
+        id="output"
+        rows="10"
+        autocomplete="off"
+        placeholder="Bookmarklet URL will be generated here."
+      ></textarea>
     </main>
     <script>
       const input = document.querySelector("#input");

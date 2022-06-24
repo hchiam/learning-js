@@ -38,6 +38,8 @@ nodemon -x 'npm run lint; node index.js'
 
 **_Or_** `nodemon -x 'npm run lint; npm run test; node index.js'`
 
+**_Or_** `nodemon -x 'jest lowestIndexSameAsValue.test.js'` for example, to re-run the tests just for one file.
+
 This works just like [`rerun` for Python](https://github.com/hchiam/learning-python/blob/master/README.md#run-code-linter).
 
 **Alternatively:**

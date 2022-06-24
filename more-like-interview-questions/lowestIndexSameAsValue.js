@@ -23,12 +23,17 @@ function lowestIndexSameAsValue(array) {
   if (array[0] === 0) return 0;
   while (step > 0 && -1 < i && i < array.length) {
     while (array[i] < i && i + step < array.length) {
+      // if less than should be then all left also too low
+      // so go right:
       i += step;
     }
     while (array[i] > i && -1 < i - step) {
+      // if more than should be then all right also too high
+      // so go left:
       i -= step;
     }
     while (array[i] === i && -1 < i - step) {
+      // if equal then still check to the left just in case:
       candidate = Math.min(candidate, i);
       i -= step;
     }

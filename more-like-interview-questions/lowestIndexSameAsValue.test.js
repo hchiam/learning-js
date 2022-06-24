@@ -1,12 +1,3 @@
-// const { longestPalindrome } = require("./longestPalindrome3.js");
-// const answer = longestPalindrome;
-
-// describe("longestPalindrome", () => {
-//   it("handles null", () => {
-//     expect(answer(null)).toBe("");
-//   });
-// });
-
 /* eslint-disable no-undef */
 
 const { lowestIndexSameAsValue } = require("./lowestIndexSameAsValue");

@@ -2,6 +2,7 @@ javascript: (function () {
   addIdFlags("[id]");
 
   function addIdFlags(jQuerySelectorString) {
+    $("body").find(`[id^="bookmarklet-flag-"]`).remove();
     let styleString = "";
     const existingPositions = {};
     $(jQuerySelectorString).each(function () {
@@ -13,21 +14,26 @@ javascript: (function () {
         if (posKey in existingPositions) {
           const offsetMore = 6;
           existingPositions[posKey] += offsetMore;
-          top = existingPositions[posKey];
-          left = existingPositions[posKey];
+          top += existingPositions[posKey];
+          left += existingPositions[posKey];
+        } else {
+          existingPositions[posKey] = 1;
         }
-        existingPositions[posKey] = 1;
         const id = el.prop("id");
         const randomColor =
           "#" + (((1 << 24) * Math.random()) | 0).toString(16);
         top = Math.round(top) + "px";
         left = Math.round(left) + "px";
-        el.after(
-          `<div style="outline:5px solid ${randomColor};background:black;color:white;opacity:0.75;position:absolute;top:${top};left:${left};padding:1px;">${id}</div>`
+        $("body").append(
+          `<div id="bookmarklet-flag-${id}" style="background:black;box-shadow:0 0 5px 5px black;color:white;position:absolute;top:${top};left:${left};padding:1px;z-index:99999;transition:0.2s">${id}</div>`
         );
         styleString += `#${id}:not(:hover) { background: ${randomColor}; } `;
+        styleString += `#bookmarklet-flag-${id}:not(:hover) { outline:5px solid ${randomColor}; opacity:0.75; }
+   			 #bookmarklet-flag-${id}:hover { opacity:0; } `;
       }
     });
-    $("body").append(`<style>${styleString}</style>`);
+    $("body").append(
+      `<style id="bookmarklet-flag-style">${styleString}</style>`
+    );
   }
 })();

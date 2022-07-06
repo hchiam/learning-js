@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>postMessage demo - parent</title>
     <meta charset="utf-8" />
     <script>
-      var childwin;
-      const childname = "popup";
+      let popup;
+      const childName = "popup";
+      const popupUrl = "Page2.html";
+
       function openChild() {
-        childwin = window.open(
-          "Page2.html",
-          childname,
-          "height=300px, width=500px"
-        );
+        popup = window.open(popupUrl, childName, "height=300px, width=500px");
       }
+
       function sendMessage() {
-        let msg = { pName: "Bob", pAge: "35" };
+        let msg = { pName: "Bob", pAge: "100" };
+        const targetDomain = "*";
         // In production, DO NOT use '*', use toe target domain
-        childwin.postMessage(msg, "*"); // childwin is the targetWindow
-        childwin.focus();
+        popup.postMessage(msg, targetDomain); // popup is the targetWindow
+        popup.focus();
       }
     </script>
   </head>

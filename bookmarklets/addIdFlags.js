@@ -21,7 +21,7 @@ javascript: (function () {
         }
         const id = el.prop("id");
         const randomColor =
-          "#" + (((1 << 24) * Math.random()) | 0).toString(16);
+          "#" + (((1 << 24) * Math.random()) | 0).toString(16).padStart(6, "0");
         top = Math.round(top) + "px";
         left = Math.round(left) + "px";
         $("body").append(

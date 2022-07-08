@@ -1,6 +1,6 @@
 function pre(n, process) {
   // pre-order = me, left, right:
-  if (n) process(n);
+  if (n && process && typeof process === "function") process(n);
   if (n.left) pre(n.left, process); // note the recursion, not call process here
   if (n.right) pre(n.right, process); // note the recursion, not call process here
 } // post-order = left, right, me; in-order = left, me, right

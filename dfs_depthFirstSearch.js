@@ -1,6 +1,6 @@
 function dfs(n, x) {
   // for simplicity, check if value x exists
-  if (!n && n.v !== x) return false;
+  if (!n) return false;
   if (n.v === x) return true;
   const inLeft = n.left ? dfs(n.left, x) : false;
   const inRight = !inLeft && n.right ? dfs(n.right, x) : false;

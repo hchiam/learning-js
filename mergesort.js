@@ -1,45 +1,40 @@
-// tests:
-console.log(mergeSort([3, 2, 1]));
-console.log(mergeSort([3, 2, 4, 1])); // should show [1,2,3,4]
-console.log(mergeSort([5, 3, 4, 2, 1])); // should show [1,2,3,4,5]
-console.log(mergeSort([1, 3, 5, 7, 9, 2, 4, 6, 8, 0])); // should show [0,1,2,3,4,5,6,7,8,9]
-
 function mergeSort(a) {
   if (a.length <= 1) return a;
 
   const middleIndex = Math.floor(a.length / 2);
-  let left = a.slice(0, middleIndex);
-  let right = a.slice(middleIndex);
+  let leftArray = a.slice(0, middleIndex);
+  let rightArray = a.slice(middleIndex);
 
-  left = mergeSort(left); // re-assign subarray to get sorted sub-array
-  right = mergeSort(right); // re-assign subarray to get sorted version
+  leftArray = mergeSort(leftArray); // re-assign subarray to get sorted sub-array
+  rightArray = mergeSort(rightArray); // re-assign subarray to get sorted version
 
-  return merge(left, right); // merge the reassigned sub-arrays
+  return merge(leftArray, rightArray); // merge the reassigned sub-arrays
+}
 
-  /** @return {number[]} */
-  function merge(left, right) {
-    let i = 0; // left
-    let j = 0; // right
-    const output = [];
-    while (i < left.length && j < right.length) {
-      if (left[i] <= right[j]) {
-        output.push(left[i]);
-        i++;
-      } else {
-        output.push(right[j]);
-        j++;
-      }
-    }
-    while (i < left.length) {
+/**
+ * @param {number[]} left
+ * @param {number[]} right
+ *
+ * @return {number[]}
+ **/
+function merge(left, right) {
+  let i = 0; // left
+  let j = 0; // right
+  const output = [];
+  while (i < left.length && j < right.length) {
+    if (left[i] <= right[j]) {
       output.push(left[i]);
       i++;
-    }
-    while (j < right.length) {
+    } else {
       output.push(right[j]);
       j++;
     }
-    return output;
   }
+
+  if (i < left.length) output.push(...left.slice(i));
+  if (j < right.length) output.push(...right.slice(j));
+
+  return output;
 }
 
 // function mergeSort(a) {
@@ -68,3 +63,20 @@ function mergeSort(a) {
 //   if (j < R.length) output = output.concat(R.slice(j));
 //   return output;
 // }
+
+// tests:
+checkArraysMatch(mergeSort([3, 2, 1]), [1, 2, 3]);
+checkArraysMatch(mergeSort([3, 2, 4, 1]), [1, 2, 3, 4]);
+checkArraysMatch(mergeSort([5, 3, 4, 2, 1]), [1, 2, 3, 4, 5]);
+checkArraysMatch(
+  mergeSort([1, 3, 5, 7, 9, 2, 4, 6, 8, 0]),
+  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+);
+
+function checkArraysMatch(a, b) {
+  console.log(doArraysMatch(a, b) ? "%cOK" : "%c:(", "background:red;");
+}
+
+function doArraysMatch(a, b) {
+  return a.every((x, i) => a[i] === b[i]);
+}

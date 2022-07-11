@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 
+/**
+ * Ot(n log n) on average, but Os(n) I think
+ */
 function quickSort(a) {
-  // Ot(n log n) on average, but Os(n) I think
   if (!a.length) return a;
   const pivot = a[0];
   const left = a.slice(1).filter((x) => x <= pivot); // all guaranteed < right elems

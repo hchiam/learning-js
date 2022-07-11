@@ -1,3 +1,14 @@
+/* eslint-disable no-unused-vars */
+
+function quickSort(a) {
+  // Ot(n log n) on average, but Os(n) I think
+  if (!a.length) return a;
+  const pivot = a[0];
+  const left = a.slice(1).filter((x) => x <= pivot); // all guaranteed < right elems
+  const right = a.slice(1).filter((x) => x > pivot); // all guaranteed > left elems
+  return quickSort(left).concat(pivot, quickSort(right));
+}
+
 /**
  * use the "first index as pivot" approach to simplify (instead of more random)
  *
@@ -5,7 +16,7 @@
  *
  * Ot(n log n) Os(log n) on average, but worst case Ot(n^2)
  */
-function quickSort(array) {
+function quickSort_betterSpaceMaybe(array) {
   let windowStart = 0;
   let windowEnd = array.length - 1;
   helper(array, windowStart, windowEnd);
@@ -104,6 +115,8 @@ console.log([
 sorted = quickSort([
   1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92,
 ]);
+console.log(sorted, checkIfSorted(sorted));
+sorted = quickSort([1, 3, 5, 7, 9, 2, 4, 6, 8, 0]);
 console.log(sorted, checkIfSorted(sorted));
 
 function checkIfSorted(array) {

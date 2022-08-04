@@ -25,7 +25,7 @@ javascript: (function () {
         top = Math.round(top) + "px";
         left = Math.round(left) + "px";
         $("body").append(
-          `<div id="bookmarklet-flag-${id}" style="background:black;box-shadow:0 0 5px 5px black;color:white;position:absolute;top:${top};left:${left};padding:1px;z-index:99999;transition:0.2s">${id}</div>`
+          `<div id="bookmarklet-flag-${id}" title="${id}" style="background:black;box-shadow:0 0 5px 5px black;color:white;position:absolute;top:${top};left:${left};padding:1px;z-index:99999;transition:0.2s">${id}</div>`
         );
         styleString += `#${id}:not(:hover) { background: ${randomColor}; } `;
         styleString += `#bookmarklet-flag-${id}:not(:hover) { outline:5px solid ${randomColor}; opacity:0.75; }

@@ -8,6 +8,9 @@ describe("2 unique unpaired numbers in Ot(n) Os(1)", () => {
   });
   it("works on examples trying to break the rightMost1 groupings", () => {
     expect(singleNumber([1, 1, 2, 6]).sort()).toEqual([2, 6]);
+    // 1,1,2 vs 6 because rightMost1 = 4 = 0b100 because the repeated 10's cancel out
+
     expect(singleNumber([2, 6, 14, 14]).sort()).toEqual([2, 6]);
+    // 2 vs 6,14,14 because rightMost1 = 4 = 0b100 because the repeated 10's cancel out
   });
 });

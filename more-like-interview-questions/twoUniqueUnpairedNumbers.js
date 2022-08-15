@@ -22,6 +22,8 @@ var singleNumber = function (nums) {
   const output = [0, 0];
 
   nums.forEach((n) => {
+    // putting into 2 groups works even if all nums have same right most 1, because xor will cancel those out
+    // (see test cases for specific examples)
     if (n & rightMost1) {
       // 1
       output[0] ^= n;

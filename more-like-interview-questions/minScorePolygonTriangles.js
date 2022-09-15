@@ -1,12 +1,16 @@
+console.log(minScoreTriangulation([1, 2, 3]) === 6);
+console.log(minScoreTriangulation([3, 7, 4, 5]) === 144);
+console.log(minScoreTriangulation([1, 3, 1, 4, 1, 5]) === 13);
+
 /**
  * QUESTION: https://leetcode.com/problems/minimum-score-triangulation-of-polygon/
  * HELPFUL ANSWER: https://leetcode.com/problems/minimum-score-triangulation-of-polygon/discuss/2375659/DP-Solution-in-Javascript-(Recursion-%2B-Dp-Memo-%2B-Dp-tabulation)
  * @param {number[]} values
  * @return {number}
  */
-var minScoreTriangulation = function (values) {
+function minScoreTriangulation(values) {
   return tabulate(values);
-};
+}
 
 // return tabulate(values);
 function tabulate(values) {

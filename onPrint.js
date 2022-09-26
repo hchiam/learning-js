@@ -1,4 +1,7 @@
-/** https://stackoverflow.com/a/15662720 */
+/**
+ * listen for print event, like Ctrl+P
+ * https://stackoverflow.com/a/15662720
+ */
 function onPrint(callback, backupEventName = "beforeprint") {
   if ("matchMedia" in window) {
     window.matchMedia("print").addListener(function (media) {

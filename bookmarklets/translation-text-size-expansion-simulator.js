@@ -65,10 +65,10 @@ function useExpansionTable(englishText) {
 
 function getExpandedString(length) {
   let output = "";
-  const abc = "a̟̋́b̟̋́c̟̋́d̟̋́e̟̋́f̟̋́g̟̋́h̟̋́i̟̋́j̟̋́k̟̋́l̟̋́m̟̋́n̟̋́ő̟́p̟̋́q̟̋́r̟̋́s̟̋́t̟̋́ű̟́v̟̋́w̟̋́x̟̋́y̟̋́z̟̋́";
+  const abc = "abcdefghijklmnopqrstuvwxyz";
   let i = 0;
   while (i < length) {
-    output += abc[i % 26];
+    output += abc[i % 26] + "̟́";
     i++;
   }
   return output;

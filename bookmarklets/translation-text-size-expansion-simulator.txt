@@ -1,27 +1,27 @@
 javascript:(function(){
   englishToExpectedEuropeanLanguageExpansionSize();
-  
+
   console.log(
     %22Reference expansion table: https:%2F%2Fwww.w3.org%2FInternational%2Farticles%2Farticle-text-size%22
   );
-  
+
   function englishToExpectedEuropeanLanguageExpansionSize() {
     const elementsWithText = [...document.querySelectorAll(%22body *%22)]
       .filter((el) => hasText(el))
       .reverse();
     elementsWithText.forEach((el) => setExpandedSizeText(el));
   }
-  
+
   function hasText(element) {
     return (
       element.innerText && element.innerText.trim() && hasChildTextNode(element)
     );
   }
-  
+
   function hasChildTextNode(element) {
     return [...element.childNodes].some((n) => n.nodeType === Node.TEXT_NODE);
   }
-  
+
   function setExpandedSizeText(element) {
     const alreadyExpanded =
       element.getAttribute(
@@ -31,23 +31,23 @@ javascript:(function(){
         %22[data-englishToExpectedEuropeanLanguageExpansionSize]%22
       ).length;
     if (alreadyExpanded) return;
-  
+
     const originalLength = element.innerText.trim().length;
     const expandedLength = useExpansionTable(element.innerText.trim());
-  
+
     element.innerHTML += getExpandedString(expandedLength - originalLength);
-  
+
     const data = {
       originalLength,
       expandedLength,
     };
-  
+
     element.setAttribute(
       %22data-englishToExpectedEuropeanLanguageExpansionSize%22,
       JSON.stringify(data)
     );
   }
-  
+
   function useExpansionTable(englishText) {
     if (englishText.length <= 10) {
       return englishText.length * 3;
@@ -63,13 +63,13 @@ javascript:(function(){
       return englishText.length * 1.3;
     }
   }
-  
+
   function getExpandedString(length) {
     let output = %22%22;
-    const abc = %22a̟̋́b̟̋́c̟̋́d̟̋́e̟̋́f̟̋́g̟̋́h̟̋́i̟̋́j̟̋́k̟̋́l̟̋́m̟̋́n̟̋́ő̟́p̟̋́q̟̋́r̟̋́s̟̋́t̟̋́ű̟́v̟̋́w̟̋́x̟̋́y̟̋́z̟̋́%22;
+    const abc = %22abcdefghijklmnopqrstuvwxyz%22;
     let i = 0;
     while (i < length) {
-      output += abc[i %25 26];
+      output += abc[i %25 26] + %22̟́%22;
       i++;
     }
     return output;

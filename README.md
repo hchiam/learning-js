@@ -132,19 +132,47 @@ Learning about them: <https://github.com/hchiam/learning-service-workers>
 
 ### Chrome dev tools tricks for more productive debugging
 
+<https://www.youtube.com/watch?v=hdRDTj6ObiE>
+
 <https://blog.bitsrc.io/10-tips-to-improve-productivity-using-chrome-dev-tools-7918fc8203f3>
 
 and tips like this: <https://umaar.com/dev-tips/15-dollar-zero>
 
-`$0` = node selected in Elements panel
+`$_` = previous value
+
+`$0`, `$1`, `$2`, `$3`, `$4` = the last 5 DOM elements you clicked on in the Elements tab
 
 `$('some_selector')` = shortform for `document.querySelector('some_selector')`
 
 `$$('some_selector')` = shortform for `document.querySelectorAll('some_selector')`
 
-`copy()` = copies to clipboard any value/object/element inside it.
+`$(`some_selector`, ancestorElement)` or `$('some_selector', $0)`
+
+`$x('some_x_path')` = XPat
 
 `inspect($('some_selector')[0]);` jumps to Elements panel (jQuery not required for that `$`). Works in Firefox too.
+
+`queryObjects(YourConstructor)` = all objects created by `YourConstructor`
+
+`getEventListeners($0)` = event listeners on the element you last clicked on in Elements tab
+
+`monitorEvents(element, eventName)` = prints captured events
+
+`unmonitorEvents(element)`
+
+`monitor(functionName)` = prints function call with arguments, and also output
+
+`unmonitor(functionName)`
+
+`table()` = `console.table()`
+
+`clear()` = `console.clear()`
+
+`keys()` = `Object.keys()`
+
+`values()` = `Object.values()`
+
+`copy()` = copies to clipboard any value/object/element inside it.
 
 More: https://developers.google.com/web/tools/chrome-devtools/console/utilities#geteventlisteners
 

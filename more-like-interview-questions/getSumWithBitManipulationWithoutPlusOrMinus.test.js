@@ -1,6 +1,8 @@
 /* eslint-disable require-jsdoc */
 
-const { solutionWrapper } = require("./getSumWithoutPlusOrMinus.js");
+const {
+  solutionWrapper,
+} = require("./getSumWithBitManipulationWithoutPlusOrMinus.js");
 
 describe("the solution", () => {
   it("works with no bits overlapping", () => {

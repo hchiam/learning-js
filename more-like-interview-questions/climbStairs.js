@@ -15,6 +15,21 @@ function climbStairs(n) {
   return dp[n];
 }
 
+// but apparently going forwards works too:
+function climbStairs_forwardsPassDPTable(n) {
+  if (n < 0) return 0;
+  const len = n + 1;
+  const dp = new Array(len).fill(0);
+  dp[0] = 1;
+  let i = 0;
+  while (i < len) {
+    if (i + 1 < len) dp[i + 1] += dp[i];
+    if (i + 2 < len) dp[i + 2] += dp[i];
+    i++;
+  }
+  return dp[n];
+}
+
 function climbStairs_direct(n) {
   // start +1 earlier in Fibonacci sequence
   // because there's already 1 way for 0 steps
@@ -29,5 +44,6 @@ function climbStairs_direct(n) {
 
 module.exports = {
   climbStairs,
+  climbStairs_forwardsPassDPTable,
   climbStairs_direct,
 };

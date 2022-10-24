@@ -1,4 +1,8 @@
-const { climbStairs, climbStairs_direct } = require("./climbStairs");
+const {
+  climbStairs,
+  climbStairs_forwardsPassDPTable,
+  climbStairs_direct,
+} = require("./climbStairs");
 
 describe("climbStairs", () => {
   it("works on invalid negative numbers", () => {
@@ -15,6 +19,24 @@ describe("climbStairs", () => {
   it("works on bigger stairs", () => {
     expect(climbStairs(3)).toBe(3);
     expect(climbStairs(4)).toBe(5);
+  });
+});
+
+describe("climbStairs_forwardsPassDPTable", () => {
+  it("works on invalid negative numbers", () => {
+    expect(climbStairs_forwardsPassDPTable(-1)).toBe(0);
+    expect(climbStairs_forwardsPassDPTable(-2)).toBe(0);
+  });
+  it("works on trivial cases", () => {
+    expect(climbStairs_forwardsPassDPTable(0)).toBe(1);
+    expect(climbStairs_forwardsPassDPTable(1)).toBe(1);
+  });
+  it("works on basic case of 2 steps", () => {
+    expect(climbStairs_forwardsPassDPTable(2)).toBe(2);
+  });
+  it("works on bigger stairs", () => {
+    expect(climbStairs_forwardsPassDPTable(3)).toBe(3);
+    expect(climbStairs_forwardsPassDPTable(4)).toBe(5);
   });
 });
 

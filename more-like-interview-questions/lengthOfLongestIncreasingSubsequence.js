@@ -2,27 +2,19 @@
 
 // https://leetcode.com/problems/longest-increasing-subsequence/
 
-// The solution below uses dynamic programming tabulation.
-// There's a faster solution O(n log n) with binary search.
+// The solution below uses dynamic programming tabulation with Ot(n^2).
+// There's a faster solution Ot(n log n) with binary search.
 
-const lengthOfLIS = (numbers) => { // O(n^2)
-  if (numbers.length < 2) return numbers.length;
-  // fill DP table: O(n)
-  const dpTable = new Array(numbers.length).fill(1);
-  // scan per number to get longest lengths of subsequences: O(n^2)
-  for (let i = 0; i < numbers.length; i++) {
-    const number = numbers[i];
-    const length = dpTable[i];
-    for (let j = i + 1; j < numbers.length; j++) {
-      const laterNumber = numbers[j];
-      const laterLength = dpTable[j];
-      if (number < laterNumber) {
-        dpTable[j] = Math.max(length + 1, laterLength);
+const lengthOfLIS = (nums) => {
+  const dp = new Array(nums.length).fill(1);
+  for (let j = 1; j < nums.length; j++) {
+    for (let i = 0; i < j; i++) {
+      if (nums[i] < nums[j]) {
+        dp[j] = Math.max(dp[j], dp[i] + 1);
       }
     }
   }
-  // get max length (to return): O(n)
-  return Math.max(...dpTable);
+  return Math.max(...dp, 0);
 };
 
 function solutionWrapper(numbers) {

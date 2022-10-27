@@ -1,7 +1,7 @@
 function onEnterViewport(element, callback, options) {
   if (!IntersectionObserver) return;
 
-  if (!options) options = { threshold: [0, 1] };
+  // if (!options) options = { threshold: [0, 1] };
   const observer = new IntersectionObserver(handleIntersect, options);
   observer.observe(element);
 

@@ -1,3 +1,6 @@
+/**
+ * Demo: https://codepen.io/hchiam/pen/MWXYrKv?editors=0010
+ */
 function onEnterViewport(element, callback, options) {
   if (!IntersectionObserver) return;
 

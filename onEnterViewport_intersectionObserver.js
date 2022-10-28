@@ -13,6 +13,8 @@ function callback(entry, observer) {
     observer.unobserve(entry.target);
   }
 }
+
+Demo: https://codepen.io/hchiam/pen/MWXYrKv?editors=0010
 */
 function IntersectionObserverManager(callback, options) {
   this.observer = null;

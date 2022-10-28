@@ -52,3 +52,8 @@ function onEnterViewport(element, callback, options) {
     });
   }
 }
+
+module.exports = {
+  IntersectionObserverManager,
+  onEnterViewport,
+};

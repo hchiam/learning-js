@@ -26,21 +26,20 @@ const iteratively = (head) => {
 
   // the code below already covers 0, 1, 2, and 3+ nodes already:
 
-  let left = null;
-  let right = head;
-
-  while (right) {
-    const third = right.next;
-
+  let prev = null;
+  let curr = head;
+  let next = head?.next;
+  while (curr) {
+    // why curr instead of next? so last one also updates pointer
     // swap "arrows":
-    right.next = left;
+    curr.next = prev; // why do this first? so first points to null
 
     // advance without losing references:
-    left = right;
-    right = third;
+    prev = curr;
+    curr = next;
+    next = next?.next;
   }
-
-  return left; // not right, which will be null to escape while loop
+  return prev; // why prev instead of curr? because curr = next after last swap
 };
 
 const iteratively_OLD = (head) => {

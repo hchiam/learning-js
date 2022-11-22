@@ -22,25 +22,32 @@ Or push from all non-empty lists after each round?
 */
 var mergeKLists = function (lists) {
   const heap = new Heap();
-  for (let i = 0; i < lists.length; i++) {
-    let list = lists[i];
-    let node = list;
-    while (node) {
-      heap.push(node.val);
-      list = list.next;
-      node = node.next;
-    }
-  }
+  const LLs = ignoreEmptyLLs(lists);
+  push1FromEachLL(heap, LLs);
   let newLL = heap.pop();
   if (!newLL) return newLL;
   let pointer = newLL;
+  push1FromEachLL(heap, LLs);
   while (!heap.isEmpty()) {
     const node = heap.pop();
     pointer.next = node;
     pointer = pointer.next;
+    push1FromEachLL(heap, LLs);
   }
   return newLL;
 };
+
+function push1FromEachLL(heap, LLs) {
+  for (let i = 0; i < LLs.length; i++) {
+    // ideally get only 1 node from the LL you recently got the heap top from
+    let node = LLs[i];
+    if (node) {
+      // just get one from each list, instead of while (node)
+      heap.push(node.val);
+      LLs[i] = LLs[i].next; // node = node.next won't update the LLs
+    }
+  }
+}
 
 function Heap() {
   const heap = new MinPriorityQueue();
@@ -62,6 +69,10 @@ function Heap() {
     pop,
     isEmpty,
   };
+}
+
+function ignoreEmptyLLs(lists) {
+  return lists.filter((list) => list);
 }
 
 function generateLLFromArray(array) {

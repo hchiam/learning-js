@@ -31,3 +31,7 @@ For example `data:text/html,<html contenteditable></html>`: https://github.com/h
 Chrome currently includes bookmarks (and bookmarklets) in search suggestions by default. Hit `Ctrl+L` -> type part of the bookmarklet name -> hit Enter to run.
 
 For Firefox: `Ctrl+B` -> type a search -> tab to bookmarklet -> spacebar to select -> Enter to run.
+
+## Example bookmarklet project
+
+https://github.com/hchiam/basic-page-editor-bookmarklet

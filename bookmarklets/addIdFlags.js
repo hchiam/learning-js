@@ -1,15 +1,15 @@
 javascript: (function () {
-  addIdFlags("[id]");
+  addFlags("[id]");
 
   let resizeTimer = null;
   $(window).on("resize", function () {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-      addIdFlags("[id]");
+      addFlags("[id]");
     }, 1000);
   });
 
-  function addIdFlags(jQuerySelectorString) {
+  function addFlags(jQuerySelectorString) {
     $("body").find(`[id^="bookmarklet-flag-"]`).remove();
     let styleString = "";
     const existingPositions = {};

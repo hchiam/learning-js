@@ -6,7 +6,7 @@ javascript: (function () {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
       addFlags("[id]");
-    }, 1000);
+    }, 500);
   });
 
   function addFlags(jQuerySelectorString) {

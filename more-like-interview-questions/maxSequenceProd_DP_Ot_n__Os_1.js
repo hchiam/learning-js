@@ -1,10 +1,9 @@
-console.log(maxProduct([-2, -3, -4]) === 12);
-console.log(maxProduct([2, 3, -2, 4]) === 6);
-console.log(maxProduct([-2, 2, 3, -2, 4, -1]) === 96);
-
 /**
- * @param {number[]} nums
- * @return {number}
+Make use of Kadane's algorithm but use multiplication instead?
+NOTE: must also track min, since multiplication can easily flip!
+
+@param {number[]} nums
+@return {number}
 
 DP: recursive relation: continue or not continue. Since must be contiguous, not use means start new.
 
@@ -17,12 +16,25 @@ Can we do even better?
 DP: Ot(n), Os(1) is possible!
 How: 3 variables! (more like 6, but still constant space.)
 Track chain max to help with global max,
-track chain min in case you can get a better global max,
+track chain min in case you can get a better global max with double negative signs cancelling out,
 and track global max separately from chain max since last chain may not be global max.
 And always make use of the current value.
-
  */
-function maxProduct(nums) {
+var maxProduct = function (nums) {
+  let best = nums[0];
+  let min = 1;
+  let max = 1;
+  for (let n of nums) {
+    const newMin = Math.min(n, min * n, max * n);
+    const newMax = Math.max(n, min * n, max * n);
+    best = Math.max(best, newMax);
+    min = newMin;
+    max = newMax;
+  }
+  return best;
+};
+
+function maxProduct_older(nums) {
   let globalMax = nums[0];
   let chainMax = 1; // not nums[0]
   let chainMin = 1; // not nums[0]
@@ -65,3 +77,7 @@ function maxProduct(nums) {
   // }
   // return Math.max(...dp);
 }
+
+module.exports = {
+  maxProduct,
+};

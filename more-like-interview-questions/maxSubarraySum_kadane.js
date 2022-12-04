@@ -4,16 +4,27 @@
 /**
  * @param {number[]} nums
  * @return {number}
- */
-// if positive number then:
-// continue sequence if running sum is >0
-// or start new sequence
+
+if positive number then:
+continue sequence if running sum is >0
+or start new sequence
 //
-// if negative number then:
-//   if running sum + number > 0 then continue adding to running sum
-//   if running sum + number <=0 then don't bother adding to running sum
-// also track a global max sum and bump it up per local running sum
-var maxSubArray = function (nums) {
+if negative number then:
+  if running sum + number > 0 then continue adding to running sum
+  if running sum + number <=0 then don't bother adding to running sum
+also track a global max sum and bump it up per local running sum
+*/
+function maxSubArray(nums) {
+  let best = nums[0];
+  let curr = 0;
+  for (let n of nums) {
+    curr = Math.max(n, curr + n); // running sum restarts or continues
+    best = Math.max(best, curr);
+  }
+  return best;
+}
+
+var maxSubArray_older = function (nums) {
   let globalMaxSum = nums[0];
   let maxSumI = 0;
   let maxSumJ = 0;

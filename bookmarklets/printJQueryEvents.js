@@ -5,7 +5,8 @@ javascript: (function () {
     if (!events) {
       console.log(
         "(no jQuery events found on %c" + selector + "%c)",
-        "color: lime; background: black;"
+        "color: lime; background: black;",
+        ""
       );
       return;
     }
@@ -16,7 +17,8 @@ javascript: (function () {
         var namespace = listener.namespace ? "." + listener.namespace : "";
         console.groupCollapsed(
           "%c" + eventName + namespace + "%c: \n↳ handler.toString()",
-          "color: lime; background: black;"
+          "color: lime; background: black;",
+          ""
         );
         console.log(listener.handler.toString());
         console.groupEnd();

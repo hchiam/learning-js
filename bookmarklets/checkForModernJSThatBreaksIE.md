@@ -1,4 +1,4 @@
-# View on GitHub to get the convenient copy-to-clipboard button
+<!-- View on GitHub to get the convenient copy-to-clipboard button: -->
 
 ```js
 javascript:(function(){

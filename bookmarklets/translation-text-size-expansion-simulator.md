@@ -1,3 +1,6 @@
+# View on GitHub to get the convenient copy-to-clipboard button
+
+```js
 javascript:(function(){
 const settings = {
   expanded: false,
@@ -142,3 +145,4 @@ function getExpandedString(length) {
 }
 
 })();
+```

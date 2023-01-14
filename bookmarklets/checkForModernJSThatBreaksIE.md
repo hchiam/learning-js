@@ -1,3 +1,6 @@
+# View on GitHub to get the convenient copy-to-clipboard button
+
+```js
 javascript:(function(){
 checkForModernJSThatBreaksIE(%22targetJsFileName%22);
 
@@ -32,3 +35,4 @@ function checkForModernJSThatBreaksIE(targetJsFileName) {
 }
 
 })();
+```

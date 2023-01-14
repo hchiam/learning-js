@@ -1,14 +1,48 @@
-englishToExpectedEuropeanLanguageExpansionSize();
+const settings = {
+  expanded: false,
+  predictableMode: false,
+};
 
 console.log(
   "Reference expansion table: https://www.w3.org/International/articles/article-text-size"
 );
+
+alert(
+  'Use the Ctrl key to toggle. \n\nHit the "p" key to toggle "predictable mode".'
+);
+
+englishToExpectedEuropeanLanguageExpansionSize();
+
+document.body.addEventListener("keydown", function (event) {
+  if (event.ctrlKey) {
+    settings.expanded = !settings.expanded;
+    if (settings.expanded) {
+      englishToExpectedEuropeanLanguageExpansionSize();
+    } else {
+      backToEnglishSize();
+    }
+  } else if (event.key === "p" || event.key === "P") {
+    settings.predictableMode = !settings.predictableMode;
+    if (settings.predictableMode) {
+      alert("Spaces will NOT be randomly included.");
+    } else {
+      alert("Spaces WILL be randomly included.");
+    }
+  }
+});
 
 function englishToExpectedEuropeanLanguageExpansionSize() {
   const elementsWithText = [...document.querySelectorAll("body *")]
     .filter((el) => hasText(el))
     .reverse();
   elementsWithText.forEach((el) => setExpandedSizeText(el));
+}
+
+function backToEnglishSize() {
+  const elementsWithText = [...document.querySelectorAll("body *")]
+    .filter((el) => hasText(el))
+    .reverse();
+  elementsWithText.forEach((el) => setEnglishSizeText(el));
 }
 
 function hasText(element) {
@@ -21,54 +55,86 @@ function hasChildTextNode(element) {
   return [...element.childNodes].some((n) => n.nodeType === Node.TEXT_NODE);
 }
 
+function setEnglishSizeText(element) {
+  const elementData = element.getAttribute(
+    "data-englishToExpectedEuropeanLanguageExpansionSize"
+  );
+  if (elementData) {
+    const originalLength = JSON.parse(elementData).originalLength;
+    element.innerHTML = element.innerHTML.slice(0, originalLength);
+  }
+}
+
 function setExpandedSizeText(element) {
+  const elementData = element.getAttribute(
+    "data-englishToExpectedEuropeanLanguageExpansionSize"
+  );
   const alreadyExpanded =
-    element.getAttribute(
-      "data-englishToExpectedEuropeanLanguageExpansionSize"
-    ) ||
+    elementData ||
     element.querySelectorAll(
       "[data-englishToExpectedEuropeanLanguageExpansionSize]"
     ).length;
-  if (alreadyExpanded) return;
-
-  const originalLength = element.innerText.trim().length;
-  const expandedLength = useExpansionTable(element.innerText.trim());
-
-  element.innerHTML += getExpandedString(expandedLength - originalLength);
-
-  const data = {
-    originalLength,
-    expandedLength,
-  };
-
-  element.setAttribute(
-    "data-englishToExpectedEuropeanLanguageExpansionSize",
-    JSON.stringify(data)
-  );
+  if (alreadyExpanded) {
+    if (
+      element.hasAttribute(
+        "data-englishToExpectedEuropeanLanguageExpansionSize"
+      )
+    ) {
+      const originalLength = JSON.parse(elementData).originalLength;
+      const expandedLength = JSON.parse(elementData).expandedLength;
+      element.innerHTML = element.innerHTML.slice(0, originalLength);
+      element.innerHTML += getExpandedString(expandedLength - originalLength);
+    }
+  } else {
+    const originalLength = element.innerText.trim().length;
+    const expandedLength = useExpansionTable(element.innerText.trim());
+    element.innerHTML += getExpandedString(expandedLength - originalLength);
+    const data = {
+      originalLength,
+      expandedLength,
+    };
+    element.setAttribute(
+      "data-englishToExpectedEuropeanLanguageExpansionSize",
+      JSON.stringify(data)
+    );
+  }
 }
 
 function useExpansionTable(englishText) {
+  let expandedLength = englishText.length;
   if (englishText.length <= 10) {
-    return englishText.length * 3;
+    expandedLength = englishText.length * 3;
   } else if (englishText.length <= 20) {
-    return englishText.length * 2;
+    expandedLength = englishText.length * 2;
   } else if (englishText.length <= 30) {
-    return englishText.length * 1.8;
+    expandedLength = englishText.length * 1.8;
   } else if (englishText.length <= 50) {
-    return englishText.length * 1.6;
+    expandedLength = englishText.length * 1.6;
   } else if (englishText.length <= 70) {
-    return englishText.length * 1.7;
+    expandedLength = englishText.length * 1.7;
   } else if (englishText.length > 70) {
-    return englishText.length * 1.3;
+    expandedLength = englishText.length * 1.3;
   }
+  return Math.ceil(expandedLength);
 }
 
 function getExpandedString(length) {
   let output = "";
   const abc = "abcdefghijklmnopqrstuvwxyz";
+  const chanceOfSpace = settings.predictableMode ? 0 : 0.1;
   let i = 0;
   while (i < length) {
-    output += abc[i % 26] + "̟́";
+    const notLastCharacter = i < length - 1;
+    const precededBySpace = i > 0 && output[i - 1] === " ";
+    if (
+      notLastCharacter &&
+      !precededBySpace &&
+      Math.random() >= 1 - chanceOfSpace
+    ) {
+      output += " ";
+    } else {
+      output += abc[i % 26] + "̟́";
+    }
     i++;
   }
   return output;

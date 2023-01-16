@@ -2,6 +2,8 @@
 
 Only use a bookmarklet after you read and understand its code!
 
+![animation showing how to hover to get the copy-to-clipboard button](copy-code-to-clipboard.gif)
+
 More info: https://en.wikipedia.org/wiki/Bookmarklet
 
 ![example bookmarks](ExampleBookmarks.png)

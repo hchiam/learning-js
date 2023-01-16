@@ -1,5 +1,7 @@
 <!-- View on GitHub to get the convenient copy-to-clipboard button: -->
 
+![animation showing how to hover to get the copy-to-clipboard button](copy-code-to-clipboard.gif)
+
 ```js
 javascript: (function () {
   var test = (function () {

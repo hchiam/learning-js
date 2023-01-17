@@ -7,7 +7,7 @@
 ```js
 javascript:(function(){
 const settings = {
-  expanded: false,
+  expanded: true,
   predictableMode: false,
 };
 

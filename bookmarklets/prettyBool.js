@@ -24,12 +24,13 @@ prettyBool = (expression) => {
     ...partValues.map((v, i) => [partsMap[i], v]).flat(),
     partsMap.slice(-1)[0],
   ];
+  const style = "background:black;color:lime;";
   const styles = valuesRemapped
-    .map((x, i) => (i % 2 === 0 ? "background:black;color:lime;" : ""))
+    .map((x, i) => (i % 2 === 0 ? style : ""))
     .slice(0, -1);
   console.log("  " + partsRemapped.join("%c"), ...styles);
   console.log("= " + valuesRemapped.join("%c"), ...styles);
-  console.log("= " + eval(expression));
+  console.log("= %c" + eval(expression), style);
 };
 console.log(
   'try this:\n%cx = false;\nfunction test(x) {return false};\nprettyBool("(true && (x || test(true)))");',

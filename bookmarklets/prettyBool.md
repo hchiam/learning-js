@@ -6,9 +6,23 @@
 
 ```js
 javascript:(function(){
-window.prettyBool = (expression) => {
-  const parts = expression.replace(%2F[() ]%2Fg, %22%22).split(%2F[|&]{2}%2F);
-  const partsMap = expression.split(%2F[^|&() ]+%2F);
+prettyBool = (expression) => {
+  const parts = expression
+    .replace(%2F %2Fg, %22%22)
+    .split(%2F[|&]{2}%2F)
+    .map((p) => {
+      const open = (p.match(%2F\(%2Fg) || []).length;
+      const close = (p.match(%2F\)%2Fg) || []).length;
+      const diff = Math.abs(open - close);
+      if (open > close) {
+        return p.slice(diff, p.length);
+      } else if (close > open) {
+        return p.slice(0, p.length - diff);
+      } else {
+        return p;
+      }
+    });
+  const partsMap = expression.split(%2F\)*[^|&() ]+\(*%2F);
   const partValues = parts.map(eval);
   const partsRemapped = [
     ...parts.map((v, i) => [partsMap[i], v]).flat(),
@@ -26,7 +40,7 @@ window.prettyBool = (expression) => {
   console.log(%22= %22 + eval(expression));
 };
 console.log(
-  'try this:\n%25cx = false;\nprettyBool(%22true && (x || true)%22);',
+  'try this:\n%25cx = false;\nfunction test(x) {return false};\nprettyBool(%22(true && (x || test(true)))%22);',
   %22background:black;color:lime;%22
 );
 

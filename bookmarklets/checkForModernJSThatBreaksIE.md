@@ -40,3 +40,5 @@ function checkForModernJSThatBreaksIE(targetJsFileName) {
 
 })();
 ```
+
+https://github.com/hchiam/learning-js/blob/main/bookmarklets/checkForModernJSThatBreaksIE.js

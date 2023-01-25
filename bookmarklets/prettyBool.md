@@ -47,3 +47,5 @@ console.log(
 
 })();
 ```
+
+https://github.com/hchiam/learning-js/blob/main/bookmarklets/prettyBool.js

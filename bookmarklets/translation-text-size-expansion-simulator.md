@@ -150,3 +150,5 @@ function getExpandedString(length) {
 
 })();
 ```
+
+https://github.com/hchiam/learning-js/blob/main/bookmarklets/translation-text-size-expansion-simulator.js

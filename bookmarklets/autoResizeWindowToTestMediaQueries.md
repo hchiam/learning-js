@@ -67,3 +67,5 @@ javascript: (function () {
   if (typeof module !== "undefined") module.test = test;
 })();
 ```
+
+https://github.com/hchiam/learning-js/blob/main/bookmarklets/autoResizeWindowToTestMediaQueries.js

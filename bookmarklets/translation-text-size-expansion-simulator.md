@@ -11,6 +11,8 @@ const settings = {
   predictableMode: false,
 };
 
+const accents = %22̟́%22;
+
 console.log(
   %22Reference expansion table: https:%2F%2Fwww.w3.org%2FInternational%2Farticles%2Farticle-text-size%22
 );
@@ -69,7 +71,10 @@ function setEnglishSizeText(element) {
   );
   if (elementData) {
     const originalLength = JSON.parse(elementData).originalLength;
-    element.innerHTML = element.innerHTML.slice(0, originalLength);
+    const expandedLength = JSON.parse(elementData).expandedLength;
+    const difference = expandedLength - originalLength;
+    const multiplier = 1 + accents.length;
+    element.innerHTML = element.innerHTML.slice(0, -difference * multiplier);
   }
 }
 
@@ -94,12 +99,14 @@ function setExpandedSizeText(element) {
       element.innerHTML += getExpandedString(expandedLength - originalLength);
     }
   } else {
+    const originalHtmlLength = element.innerHTML.length;
     const originalLength = element.innerText.trim().length;
     const expandedLength = useExpansionTable(element.innerText.trim());
-    element.innerHTML += getExpandedString(expandedLength - originalLength);
+    const difference = expandedLength - originalLength;
+    element.innerHTML += getExpandedString(difference);
     const data = {
-      originalLength,
-      expandedLength,
+      originalLength: originalHtmlLength,
+      expandedLength: originalHtmlLength + difference,
     };
     element.setAttribute(
       %22data-englishToExpectedEuropeanLanguageExpansionSize%22,
@@ -139,9 +146,9 @@ function getExpandedString(length) {
       !precededBySpace &&
       Math.random() >= 1 - chanceOfSpace
     ) {
-      output += %22 %22;
+      output += %22 %22 + accents;
     } else {
-      output += abc[i %25 26] + %22̟́%22;
+      output += abc[i %25 26] + accents;
     }
     i++;
   }

@@ -3,6 +3,8 @@ const settings = {
   predictableMode: false,
 };
 
+const accents = "̟́";
+
 console.log(
   "Reference expansion table: https://www.w3.org/International/articles/article-text-size"
 );
@@ -61,7 +63,10 @@ function setEnglishSizeText(element) {
   );
   if (elementData) {
     const originalLength = JSON.parse(elementData).originalLength;
-    element.innerHTML = element.innerHTML.slice(0, originalLength);
+    const expandedLength = JSON.parse(elementData).expandedLength;
+    const difference = expandedLength - originalLength;
+    const multiplier = 1 + accents.length;
+    element.innerHTML = element.innerHTML.slice(0, -difference * multiplier);
   }
 }
 
@@ -86,12 +91,14 @@ function setExpandedSizeText(element) {
       element.innerHTML += getExpandedString(expandedLength - originalLength);
     }
   } else {
+    const originalHtmlLength = element.innerHTML.length;
     const originalLength = element.innerText.trim().length;
     const expandedLength = useExpansionTable(element.innerText.trim());
-    element.innerHTML += getExpandedString(expandedLength - originalLength);
+    const difference = expandedLength - originalLength;
+    element.innerHTML += getExpandedString(difference);
     const data = {
-      originalLength,
-      expandedLength,
+      originalLength: originalHtmlLength,
+      expandedLength: originalHtmlLength + difference,
     };
     element.setAttribute(
       "data-englishToExpectedEuropeanLanguageExpansionSize",
@@ -131,9 +138,9 @@ function getExpandedString(length) {
       !precededBySpace &&
       Math.random() >= 1 - chanceOfSpace
     ) {
-      output += " ";
+      output += " " + accents;
     } else {
-      output += abc[i % 26] + "̟́";
+      output += abc[i % 26] + accents;
     }
     i++;
   }

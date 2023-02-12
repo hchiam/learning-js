@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "deploy": "rm -rf .cache; rm -rf dist; surge . https://bookmarklet-generator.surge.sh"
+  }
+}

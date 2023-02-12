@@ -74,17 +74,39 @@ surge bookmarklet-generator https://bookmarklet-generator.surge.sh
         code = wrapInJavascriptIIFE(code);
         output.value = code;
       });
+      output.addEventListener("input", () => {
+        let code = output.value.trim();
+        code = decodePercent(code);
+        code = decodeSlash(code);
+        code = decodeDoubleQuote(code);
+        code = unwrapJavascriptIIFE(code);
+        input.value = code;
+      });
       function wrapInJavascriptIIFE(code) {
         return `javascript:(function(){\n${code}\n})();`;
+      }
+      function unwrapJavascriptIIFE(code) {
+        return code
+          .replace(/^javascript:\(function\(\){\n/, "")
+          .replace(/\n}\)\(\);$/, "");
       }
       function encodePercent(code) {
         return code.replaceAll("%", "%25");
       }
+      function decodePercent(code) {
+        return code.replaceAll("%25", "%");
+      }
       function encodeDoubleQuote(code) {
         return code.replaceAll('"', "%22");
       }
+      function decodeDoubleQuote(code) {
+        return code.replaceAll("%22", '"');
+      }
       function encodeSlash(code) {
         return code.replaceAll("/", "%2F");
+      }
+      function decodeSlash(code) {
+        return code.replaceAll("%2F", "/");
       }
       function detectOneLineComments(code) {
         if (/(\/\/|\/\*).*?(\n|$)/g.exec(code)) {

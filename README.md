@@ -284,3 +284,9 @@ Chrome:
 Firefox:
 
 ![scope_dev_tools_firefox.png](scope_dev_tools_firefox.png)
+
+### Regex cheatsheet
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
+
+For example, lookahead = `x(?=y)` ("match x if followed by y") and negative lookahead = `x(?!y)`.

@@ -30,7 +30,7 @@ javascript: (function () {
       (tagName ? tagName : "") +
       (el.getAttribute("id") ? "#" + el.getAttribute("id") : "") +
       (el.getAttribute("class")
-        ? "." + el.getAttribute("class").split(" ").join(".")
+        ? "." + el.getAttribute("class").trim().split(" ").join(".")
         : "");
 
     var selector =

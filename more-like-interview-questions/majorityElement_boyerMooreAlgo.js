@@ -30,6 +30,7 @@ const hashmapApproach = (numbers) => {
   return maxVal;
 };
 
+/** can be adapted to get the majority with streamed data (but returns something even when there's no true majority - requires second pass): */
 const boyerMooreMajorityVotingAlgorithm = (numbers) => {
   // https://en.wikipedia.org/wiki/Boyer–Moore_majority_vote_algorithm
   // https://leetcode.com/problems/majority-element/solution/

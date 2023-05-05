@@ -59,7 +59,7 @@ elements.forEach(e => {
     // if (getComputedStyle(e).visibility === 'visible' && e.innerText && (!e.hasChildNodes() || (e.childNodes.length === 1 && e.childNodes[0].nodeType === Node.TEXT_NODE))) {
     //     e.innerText = translate(e.innerText);
     // }
-    if (e.textContent && (!e.hasChildNodes() || (e.childNodes.length === 1 && e.childNodes[0].nodeType === Node.TEXT_NODE))) {
+    if (e.parentElement.tagName !== 'STYLE' && e.textContent && (!e.hasChildNodes() || (e.childNodes.length === 1 && e.childNodes[0].nodeType === Node.TEXT_NODE))) {
         e.textContent = translate(e.textContent);
     }
 });

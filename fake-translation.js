@@ -38,7 +38,7 @@ function translate(text) {
 }
 function getRandom(ht) {
   const values = Object.values(ht);
-  const i = Math .round(Math.random()*values.length);
+  const i = Math.round(Math.random()*(values.length-1));
   return values[i];
 }
 // const elements = [...document.querySelectorAll('body *:not(iframe)')]

@@ -29,7 +29,7 @@ function translate(text) {
     });
     return output;
 }
-// const elements = [...getTextNodesIn(document.body)]
+// const elements = [...document.querySelectorAll('body *:not(iframe)')]
 //     .filter(x=>getComputedStyle(x).visibility === 'visible');
 function getTextNodesIn(node) {
   let all = [];
@@ -42,9 +42,12 @@ function getTextNodesIn(node) {
   }
   return all;
 }
-const elements = [...document.querySelectorAll('body *:not(iframe)')]
+const elements = [...getTextNodesIn(document.body)];
 elements.forEach(e => {
-    if (getComputedStyle(e).visibility === 'visible' && e.innerText && (!e.hasChildNodes() || (e.childNodes.length === 1 && e.childNodes[0].nodeType === Node.TEXT_NODE))) {
-        e.innerText = translate(e.innerText);
+    // if (getComputedStyle(e).visibility === 'visible' && e.innerText && (!e.hasChildNodes() || (e.childNodes.length === 1 && e.childNodes[0].nodeType === Node.TEXT_NODE))) {
+    //     e.innerText = translate(e.innerText);
+    // }
+    if (e.textContent && (!e.hasChildNodes() || (e.childNodes.length === 1 && e.childNodes[0].nodeType === Node.TEXT_NODE))) {
+        e.textContent = translate(e.textContent);
     }
 });

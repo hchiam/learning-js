@@ -21,12 +21,20 @@ function translate(text) {
         if (t in consonants) {
             if (t === 'g' && text[i+1] in {e:'e',i:'i'}) {
                 output += 'ch';
+            } else if (t === 'G' && text[i+1] in {e:'e',i:'i'}) {
+                output += 'Ch';
             } else if (t === 'c' && text[i+1] in {e:'e',i:'i'}) {
                 output += 'z';
+            } else if (t === 'C' && text[i+1] in {e:'e',i:'i'}) {
+                output += 'Z';
             } else if (t === 'c' && text[i+1] === 'h') {
                 output += 'j';
+            } else if (t === 'C' && text[i+1] === 'h') {
+                output += 'J';
             } else if (t === 'j') {
                 output += 'ch';
+            } else if (t === 'J') {
+                output += 'Ch';
             } else {
                 output += consonants[t];
             }

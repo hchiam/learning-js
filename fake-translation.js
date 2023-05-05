@@ -38,40 +38,45 @@ function translate(text) {
             output += t;
         }
         if (/\w/.test(t) && (i+1 >= text.length || /[\s.,\/#!$%\^&\*;:{}=\-_—`~()\[\]]/.test(text[i+1]))) {
-          const c = getRandom(consonants).toLowerCase();
-          const v = getRandom(vowels).toLowerCase();
-          output += t in vowels ? c : v;
-          output += t in vowels ? v : c;
+            const c = getRandom(consonants).toLowerCase();
+            const v = getRandom(vowels).toLowerCase();
+            output += t in vowels ? c : v;
+            output += t in vowels ? v : c;
         }
     });
     return output;
 }
 function getRandom(ht) {
-  const values = Object.values(ht);
-  const i = Math.round(Math.random()*(values.length-1));
-  return values[i];
+    const values = Object.values(ht);
+    const i = Math.round(Math.random()*(values.length-1));
+    return values[i];
 }
 // const elements = [...document.querySelectorAll('body *:not(iframe)')]
 //     .filter(x=>getComputedStyle(x).visibility === 'visible');
 function getTextNodesIn(node) {
-  let all = [];
-  for (node = node.firstChild; node; node = node.nextSibling) {
-    if (node.nodeType === Node.TEXT_NODE) {
-        all.push(node);
-    } else {
-        all = all.concat(getTextNodesIn(node));
+    let all = [];
+    for (node = node.firstChild; node; node = node.nextSibling) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            all.push(node);
+        } else {
+            all = all.concat(getTextNodesIn(node));
+        }
     }
-  }
-  return all;
+    return all;
 }
-const elements = [...getTextNodesIn(document.body)];
-elements.forEach(e => {
-    // if (getComputedStyle(e).visibility === 'visible' && e.innerText && (!e.hasChildNodes() || (e.childNodes.length === 1 && e.childNodes[0].nodeType === Node.TEXT_NODE))) {
-    //     e.innerText = translate(e.innerText);
-    // }
-    if (!e.dataset?.fakeTranslated && e.parentElement.tagName !== 'STYLE' && e.textContent && (!e.hasChildNodes() || (e.childNodes.length === 1 && e.childNodes[0].nodeType === Node.TEXT_NODE))) {
-        e.textContent = translate(e.textContent);
-        e.dataset = {'fakeTranslated':true};
-    }
-});
+function translateElements() {
+    if (document.body.dataset?.fakeTranslated) return;
+    document.body.dataset.fakeTranslated = true;
+    const elements = [...getTextNodesIn(document.body)];
+    elements.forEach(e => {
+        // if (getComputedStyle(e).visibility === 'visible' && e.innerText && (!e.hasChildNodes() || (e.childNodes.length === 1 && e.childNodes[0].nodeType === Node.TEXT_NODE))) {
+        //     e.innerText = translate(e.innerText);
+        // }
+        if (!e.dataset?.fakeTranslated && e.parentElement.tagName !== 'STYLE' && e.textContent && (!e.hasChildNodes() || (e.childNodes.length === 1 && e.childNodes[0].nodeType === Node.TEXT_NODE))) {
+            e.textContent = translate(e.textContent);
+            e.dataset = {'fakeTranslated':true};
+        }
+    });
+}
+translateElements();
 })();

@@ -21,7 +21,9 @@ function translate(text) {
         if (t in consonants) {
             if (t === 'g' && text[i+1] in {e:'e',i:'i'}) {
                 output += 'ch';
-            } else if (t === 'c') {
+            } else if (t === 'c' && text[i+1] in {e:'e',i:'i'}) {
+                output += 'z';
+            } else if (t === 'c' && text[i+1] === 'h') {
                 output += 'j';
             } else if (t === 'j') {
                 output += 'ch';

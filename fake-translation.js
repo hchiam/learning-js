@@ -17,7 +17,7 @@ function translate(text) {
         a:'ä',e:'é',i:'î',o:'ö',u:'ü',
         A:'Ä',E:'É',I:'Î',O:'Ö',U:'Ü',
     };
-    [...text].forEach(t => {
+    [...text].forEach((t,i) => {
         if (t in consonants) {
             output += consonants[t];
         } else if (t in vowels) {
@@ -27,8 +27,19 @@ function translate(text) {
         } else {
             output += t;
         }
+        if (/\w/.test(t) && (i+1 >= text.length || /\W/.test(text[i+1]))) {
+          const c = getRandom(consonants).toLowerCase();
+          const v = getRandom(vowels).toLowerCase();
+          output += t in vowels ? c : v;
+          output += t in vowels ? v : c;
+        }
     });
     return output;
+}
+function getRandom(ht) {
+  const values = Object.values(ht);
+  const i = Math .round(Math.random()*values.length);
+  return values[i];
 }
 // const elements = [...document.querySelectorAll('body *:not(iframe)')]
 //     .filter(x=>getComputedStyle(x).visibility === 'visible');

@@ -2,8 +2,8 @@
 function translate(text) {
     let output = '';
     const consonants = {
-        b:'p',d:'t',f:'v',g:'k',k:'g',l:'r',m:'n',n:'m',p:'b',q:'ĝ',r:'l',s:'z',t:'d',v:'f',w:'y',y:'w',z:'s',
-        B:'P',D:'T',F:'V',G:'K',K:'G',L:'R',M:'N',N:'M',P:'B',Q:'Ĝ',R:'L',S:'Z',T:'D',V:'F',W:'Y',Y:'W',Z:'S',
+        b:'p',c:'c',d:'t',f:'v',g:'k',h:'h',j:'j',k:'g',l:'r',m:'n',n:'m',p:'b',q:'ĝ',r:'l',s:'z',t:'d',v:'f',w:'y',x:'x',y:'w',z:'s',
+        B:'P',C:'C',D:'T',F:'V',G:'K',H:'H',J:'J',K:'G',L:'R',M:'N',N:'M',P:'B',Q:'Ĝ',R:'L',S:'Z',T:'D',V:'F',W:'Y',X:'X',Y:'W',Z:'S',
         ĝ:'q',
         Ĝ:'Q',
     };
@@ -20,6 +20,10 @@ function translate(text) {
     [...text].forEach((t,i) => {
         if (t in consonants) {
             if (t === 'g' && text[i+1] in {e:'e',i:'i'}) {
+                output += 'ch';
+            } else if (t === 'c') {
+                output += 'j';
+            } else if (t === 'j') {
                 output += 'ch';
             } else {
                 output += consonants[t];

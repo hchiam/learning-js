@@ -1,3 +1,4 @@
+;(()=>{
 function translate(text) {
     let output = '';
     const consonants = {
@@ -51,3 +52,4 @@ elements.forEach(e => {
         e.textContent = translate(e.textContent);
     }
 });
+})();

@@ -23,6 +23,10 @@ function translate(text) {
                 output += 'ch';
             } else if (t === 'G' && text[i+1] in {e:'e',i:'i'}) {
                 output += 'Ch';
+            } else if (t === 'c' && text[i+1] in {a:'a',o:'o',u:'u'}) {
+                output += 'g';
+            } else if (t === 'C' && text[i+1] in {a:'a',o:'o',u:'u'}) {
+                output += 'G';
             } else if (t === 'c' && text[i+1] in {e:'e',i:'i'}) {
                 output += 'z';
             } else if (t === 'C' && text[i+1] in {e:'e',i:'i'}) {
@@ -45,7 +49,7 @@ function translate(text) {
         } else {
             output += t;
         }
-        if (/\w/.test(t) && (i+1 >= text.length || /[\s.,\/#!$%\^&\*;:{}=\-_—`~()\[\]]/.test(text[i+1]))) {
+        if (/\w/.test(t) && (i+1 >= text.length || /[\s.,\/#!?$%\^&\*;:{}=\-_—`~()\[\]]/.test(text[i+1]))) {
             const c = getRandom(consonants).toLowerCase();
             const v = getRandom(vowels).toLowerCase();
             output += t in vowels ? c : v;

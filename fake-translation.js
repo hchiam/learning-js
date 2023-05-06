@@ -49,7 +49,7 @@ function translate(text) {
         } else {
             output += t;
         }
-        if (/\w/.test(t) && (i+1 >= text.length || /[\s.,\/#!?$%\^&\*;:{}=\-_—`~()\[\]]/.test(text[i+1]))) {
+        if (/[A-z]/.test(t) && (i+1 >= text.length || /[\s.,\/#!?$%\^&\*;:{}=\-_—`~()\[\]]/.test(text[i+1]))) {
             const c = getRandom(consonants).toLowerCase();
             const v = getRandom(vowels).toLowerCase();
             output += t in vowels ? c : v;

@@ -21,7 +21,7 @@
           const url = new URL(link.href);
           if (
             !link.title &&
-            !link.innerText?.toLowerCase() !== url.pathname?.replace("/", "")
+            link.innerText?.toLowerCase() !== url.pathname?.replace("/", "")
           ) {
             link.title = url.hostname + url.pathname;
           }

@@ -18,11 +18,11 @@
           ?.filter((x) => getComputedStyle(x).visibility === "visible")?.[0]
           ?.querySelectorAll('a[href*="https"]');
         topNavSearchChips_https?.forEach((link) => {
+          const url = new URL(link.href);
           if (
             !link.title &&
-            !link.innerText?.toLowerCase() !== url?.pathname?.replace("/", "")
+            !link.innerText?.toLowerCase() !== url.pathname?.replace("/", "")
           ) {
-            const url = new URL(link.href);
             link.title = url.hostname + url.pathname;
           }
         });

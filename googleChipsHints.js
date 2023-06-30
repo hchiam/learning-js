@@ -20,7 +20,7 @@
         topNavSearchChips_https?.forEach((link) => {
           if (
             !link.title &&
-            !link.innerText?.toLowerCase() !== url.pathname.replace("/", "")
+            !link.innerText?.toLowerCase() !== url?.pathname?.replace("/", "")
           ) {
             const url = new URL(link.href);
             link.title = url.hostname + url.pathname;

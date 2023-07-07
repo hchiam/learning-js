@@ -1,5 +1,5 @@
 javascript: (function () {
-  [...$("*")].forEach((x) =>
+  [...document.querySelectorAll("*")].forEach((x) =>
     x.addEventListener("click", function (e) {
       e.stopPropagation();
       x.style.background = "gold";

@@ -18,15 +18,40 @@ function checkForModernJSThatBreaksIE(targetJsFileName) {
       return x.text();
     })
     .then(function (text) {
-      var lines = text.split(%22\n%22);
+      var lines = stringWithoutComments(text).split(%22\n%22);
       findThing(lines, %22`%22);
       findThing(lines, %22const %22);
       findThing(lines, %22let %22);
       findThing(lines, %22=>%22);
       findThing(lines, %22...%22);
+      findThing(lines, %22 of %22);
+      findThing(lines, %22new Map(%22);
+      findThing(lines, %22new Set(%22);
+      findThing(lines, %22class %22);
+      findThing(lines, %22new Promise(%22);
+      findThing(lines, %22 Symbol(%22);
+      findThing(lines, %22.includes(%22);
+      findThing(lines, %22.startsWith(%22);
+      findThing(lines, %22.endsWith(%22);
+      findThing(lines, %22Array.from(%22);
+      findThing(lines, %22Math.trunc(%22);
+      findThing(lines, %22Math.sign(%22);
+      findThing(lines, %22Math.cbrt(%22);
+      findThing(lines, %22Math.log2(%22);
+      findThing(lines, %22Math.log10(%22);
+      findThing(lines, %22Number.EPSILON%22);
+      findThing(lines, %22Number.MIN_SAFE_INTEGER%22);
+      findThing(lines, %22Number.MAX_SAFE_INTEGER%22);
+      findThing(lines, %22Number.isInteger(%22);
+      findThing(lines, %22Number.isSafeInteger(%22);
+      findThing(lines, %22 from %22);
       console.log(jsFileUrl);
       alert(%22Note: only checks for \n\n`\nconst\nlet\n=>\n...\n%22);
     });
+
+  function stringWithoutComments(string) {
+    return string.replace(%2F\%2F\*[\s\S]*?\*\%2F|(?<=[^:])\%2F\%2F.*|^\%2F\%2F.*%2Fg, %22%22);
+  }
 
   function findThing(lines, thing) {
     for (let i in lines) {

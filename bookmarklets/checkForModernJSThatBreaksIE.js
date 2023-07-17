@@ -10,15 +10,40 @@ function checkForModernJSThatBreaksIE(targetJsFileName) {
       return x.text();
     })
     .then(function (text) {
-      var lines = text.split("\n");
+      var lines = stringWithoutComments(text).split("\n");
       findThing(lines, "`");
       findThing(lines, "const ");
       findThing(lines, "let ");
       findThing(lines, "=>");
       findThing(lines, "...");
+      findThing(lines, " of ");
+      findThing(lines, "new Map(");
+      findThing(lines, "new Set(");
+      findThing(lines, "class ");
+      findThing(lines, "new Promise(");
+      findThing(lines, " Symbol(");
+      findThing(lines, ".includes(");
+      findThing(lines, ".startsWith(");
+      findThing(lines, ".endsWith(");
+      findThing(lines, "Array.from(");
+      findThing(lines, "Math.trunc(");
+      findThing(lines, "Math.sign(");
+      findThing(lines, "Math.cbrt(");
+      findThing(lines, "Math.log2(");
+      findThing(lines, "Math.log10(");
+      findThing(lines, "Number.EPSILON");
+      findThing(lines, "Number.MIN_SAFE_INTEGER");
+      findThing(lines, "Number.MAX_SAFE_INTEGER");
+      findThing(lines, "Number.isInteger(");
+      findThing(lines, "Number.isSafeInteger(");
+      findThing(lines, " from ");
       console.log(jsFileUrl);
       alert("Note: only checks for \n\n`\nconst\nlet\n=>\n...\n");
     });
+
+  function stringWithoutComments(string) {
+    return string.replace(/\/\*[\s\S]*?\*\/|(?<=[^:])\/\/.*|^\/\/.*/g, "");
+  }
 
   function findThing(lines, thing) {
     for (let i in lines) {

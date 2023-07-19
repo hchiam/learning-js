@@ -38,7 +38,9 @@ function checkForModernJSThatBreaksIE(targetJsFileName) {
       findThing(lines, "Number.isSafeInteger(");
       findThing(lines, " from ");
       console.log(jsFileUrl);
-      alert("Note: only checks for \n\n`\nconst\nlet\n=>\n...\n");
+      alert(
+        "Note: only checks for some of the ES6 features, like \n\n`\nconst\nlet\n=>\n...\n"
+      );
     });
 
   function stringWithoutComments(string) {

@@ -31,7 +31,7 @@ var fractionToDecimal = function (numerator, denominator) {
   let q = Math.floor(n / d);
   let r = n % d;
 
-  a += String(q);
+  a += String(q); // create the entire string, to then insert brackets if needed
 
   if (r === 0) return a; // e.g. 4/2 = 2
 
@@ -46,11 +46,15 @@ var fractionToDecimal = function (numerator, denominator) {
       const repeat = a.slice(startIndex);
       return `${before}(${repeat})`;
     } else {
-      hs[r] = a.length;
-      r *= 10;
-      q = Math.floor(r / d);
-      r = r % d;
-      a += String(q);
+      hs[r] = a.length; // store start index of remainder, including first r and before r*=10
+
+      r *= 10; // have decimal(s), so *10 to continue long division digit-by-digit
+
+      n = r;
+      q = Math.floor(n / d); // next output digit; times d fits evenly in r
+      a += String(q); // update output string with next digit
+
+      r = n % d; // next remainder is what's left for next step
     }
   }
 

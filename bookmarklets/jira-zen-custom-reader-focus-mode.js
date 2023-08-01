@@ -13,7 +13,7 @@ javascript: (() => {
       --leftSidebarWidth: 0;
       --rightSidebarWidth: 0;
     }
-    .zen header, .zen [data-testid="issue.views.issue-details.issue-layout.container-right"] {
+    .zen header, .zen [data-testid="issue.views.issue-details.issue-layout.container-right"] * {
       display: none !important;
     }`;
   }

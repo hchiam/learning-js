@@ -9,10 +9,11 @@ javascript:(function(){
 checkForModernJSThatBreaksIE(%22targetJsFileName%22);
 
 function checkForModernJSThatBreaksIE(targetJsFileName) {
+  var foundAnything = false;
   var jsFileUrl = document.querySelector(
     'script[src*=%22' + targetJsFileName + '%22]'
   ).src;
-  console.log(jsFileUrl);
+  console.log(%22Analyzing: %22, jsFileUrl);
   fetch(jsFileUrl)
     .then(function (x) {
       return x.text();
@@ -45,8 +46,11 @@ function checkForModernJSThatBreaksIE(targetJsFileName) {
       findThing(lines, %22Number.isInteger(%22);
       findThing(lines, %22Number.isSafeInteger(%22);
       findThing(lines, %22 from %22);
-      console.log(jsFileUrl);
-      alert(%22Note: only checks for some of the ES6 features, like \n\n`\nconst\nlet\n=>\n...\n%22);
+      if (!foundAnything) console.log(%22Detected nothing!%22);
+      console.log(%22Done analyzing: %22, jsFileUrl);
+      alert(
+        %22Note: only checks for some of the ES6 features, like \n\n`\nconst\nlet\n=>\n...\n%22
+      );
     });
 
   function stringWithoutComments(string) {
@@ -57,6 +61,7 @@ function checkForModernJSThatBreaksIE(targetJsFileName) {
     for (let i in lines) {
       const line = lines[i];
       if (line.includes(thing)) {
+        foundAnything = true;
         console.log(%22line%22, Number(i) + 1, ' has %22', thing, '%22:\n', line, %22\n%22);
       }
     }

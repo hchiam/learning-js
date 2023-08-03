@@ -1,10 +1,11 @@
 checkForModernJSThatBreaksIE("targetJsFileName");
 
 function checkForModernJSThatBreaksIE(targetJsFileName) {
+  var foundAnything = false;
   var jsFileUrl = document.querySelector(
     'script[src*="' + targetJsFileName + '"]'
   ).src;
-  console.log(jsFileUrl);
+  console.log("Analyzing: ", jsFileUrl);
   fetch(jsFileUrl)
     .then(function (x) {
       return x.text();
@@ -37,7 +38,8 @@ function checkForModernJSThatBreaksIE(targetJsFileName) {
       findThing(lines, "Number.isInteger(");
       findThing(lines, "Number.isSafeInteger(");
       findThing(lines, " from ");
-      console.log(jsFileUrl);
+      if (!foundAnything) console.log("Detected nothing!");
+      console.log("Done analyzing: ", jsFileUrl);
       alert(
         "Note: only checks for some of the ES6 features, like \n\n`\nconst\nlet\n=>\n...\n"
       );
@@ -51,6 +53,7 @@ function checkForModernJSThatBreaksIE(targetJsFileName) {
     for (let i in lines) {
       const line = lines[i];
       if (line.includes(thing)) {
+        foundAnything = true;
         console.log("line", Number(i) + 1, ' has "', thing, '":\n', line, "\n");
       }
     }

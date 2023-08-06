@@ -7,6 +7,7 @@ naive: all valid combos: scan 1-n then 1+1-n+1 etc Ot(n^2) Os(1)
 BCR: Ot(n) Os(1)
 dp table? Ot(n) Os(n) --> try this first
 1 var? Ot(n) Os(1) --> do this later if time
+remember: recursive relationship --> memo --> iterative --> variables
 1231
 1244
  2 7 9 3 1
@@ -30,7 +31,7 @@ function rob1(nums) {
   // Ot(n) Os(n) solution:
   if (nums.length < 3) return Math.max(...nums);
   const dp = new Array(nums.length).fill(0).map((x, i) => nums[i]);
-  // choices: choose or pass
+  // choices: choose or pass = recursive relationship
   // or choices: chose previous or passed previous:
   dp[2] = Math.max(dp[0] + dp[2], dp[1]);
   for (let i = 3; i < nums.length; i++) {

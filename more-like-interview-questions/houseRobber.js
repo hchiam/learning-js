@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/house-robber
+// https://leetcode.com/problems/house-robber/solutions/156523/from-good-to-great-how-to-approach-most-of-dp-problems/
 
 /**
  * @param {number[]} nums
@@ -29,34 +30,30 @@ var rob = function (nums) {
 
 function rob1(nums) {
   // Ot(n) Os(n) solution:
-  if (nums.length < 3) return Math.max(...nums);
-  const dp = new Array(nums.length).fill(0).map((x, i) => nums[i]);
+  if (nums.length < 3) return Math.max(...nums, 0);
+  const dp = new Array(nums.length + 1).fill(0);
   // choices: choose or pass = recursive relationship
   // or choices: chose previous or passed previous:
-  dp[2] = Math.max(dp[0] + dp[2], dp[1]);
-  for (let i = 3; i < nums.length; i++) {
-    dp[i] = Math.max(dp[i], dp[i - 1], dp[i - 2] + dp[i], dp[i - 3] + dp[i]);
+  dp[1] = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    // dp[i+1] because dp is off by 1
+    dp[i + 1] = Math.max(dp[i], dp[i - 1] + nums[i]);
   }
-  console.log(dp);
   return dp[dp.length - 1];
 }
 
 function rob2(nums) {
   // Ot(n) Os(1) solution:
-  let dp = Math.max(...nums);
-  if (nums.length < 3) return dp;
-  let dp3 = nums[0];
-  let dp2 = nums[1];
-  let dp1 = Math.max(dp3 + nums[2], dp2);
-  let dpi = nums[3] || Math.max(0, dp1, dp2 + 0, dp3 + 0);
-  for (let i = 3; i < nums.length; i++) {
-    dpi = nums[i];
-    dpi = Math.max(dpi, dp1, dp2 + dpi, dp3 + dpi);
-    dp3 = dp2;
+  if (nums.length < 3) return Math.max(...nums, 0);
+  let dp2 = 0;
+  let dp1 = nums[0];
+  let dp = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    dp = Math.max(dp, dp2 + nums[i], dp1);
     dp2 = dp1;
-    dp1 = dpi;
+    dp1 = dp;
   }
-  return dpi;
+  return dp;
 }
 
 module.exports = {

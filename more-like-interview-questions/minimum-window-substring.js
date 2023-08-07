@@ -60,7 +60,7 @@ var minWindow = function (s, t) {
   let left = 0;
   let right = 0;
   while (right < m) {
-    // move right pointer:
+    // move right pointer just one step:
 
     let v = s[right];
     if (v in need) {
@@ -72,7 +72,7 @@ var minWindow = function (s, t) {
     // move left pointer until un-used something:
 
     while (coveredCount === n) {
-      // covered all t letters to use
+      // = still covered all of t's letters to use
       if (right - left < minLen) {
         // update best output:
         minLen = right - left;
@@ -83,8 +83,8 @@ var minWindow = function (s, t) {
 
       v = s[left];
       if (v in need) {
-        if (need[v] >= 0) coveredCount--; // un-use
-        need[v]++; // may need to cover more left in future
+        if (need[v] >= 0) coveredCount--; // de-cover because un-using non-extra (= need)
+        need[v]++; // may need more to cover more left in future
       }
       left++;
     }

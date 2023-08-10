@@ -1,10 +1,9 @@
 javascript: (() => {
-  const show = document.querySelector(".bq9").previousSibling.inert;
-  document.querySelector(".bq9").previousSibling.inert = !show;
-  document.querySelector(".bq9").previousSibling.style.visibility = show
-    ? "visible"
-    : "hidden";
-  document.querySelector(".bq9").style.left = show
+  const tasksContainer = document.querySelector(".bq9");
+  const show = tasksContainer.previousSibling.inert;
+  tasksContainer.previousSibling.inert = !show;
+  tasksContainer.previousSibling.style.visibility = show ? "visible" : "hidden";
+  tasksContainer.style.left = show
     ? ""
-    : `calc(50% - ${document.querySelector(".bq9").offsetWidth}px / 2)`;
+    : `calc(50% - ${tasksContainer.offsetWidth}px / 2)`;
 })();

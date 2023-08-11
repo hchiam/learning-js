@@ -3,17 +3,17 @@
 /**
  * @param {string} s
  * @return {number}
-BCR: Ot(n) Os(all possible substrings)
+BCR: Ot(n) Os(1) - we just need the count
 idea 1: brute force: check all possible substrings
     Ot(all possible substrings)
     Ot(n + n/2 + n/3 + ...) -> Ot(n^2 * n), including creating strings
     or n^2 start-end pairs and for checking
-    Ot(n^3) Os(n^2)
+    Ot(n^3)
 idea 2: HMW make use of previously-calculated palindromes?
     track if it's reversible or repeated characters or finished?
     use a stack to do all those things?
-    DP table? Ot(n^2) and Os(n^2)?
-    or DP with reusing an array? Ot(n^2) and Os(n)?
+    DP table? Ot(n^2)?
+    or DP with reusing an array? Ot(n^2)?
         start at each index and use a stack to tell whether to count?
     or simply grow rightwards from each index?
         do we avoid duplicates?

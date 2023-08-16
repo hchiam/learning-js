@@ -14,6 +14,8 @@ maybe make use of BST and use binary search to find a number between them?
   2 binary searches for each value and track paths?
   Ot(n) Os(n)
 
+or: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/3384014/javascript-php-recursive-iterative-approaches/
+
  */
 
 /**
@@ -30,7 +32,8 @@ var lowestCommonAncestor = function (root, p, q) {
 };
 
 /**
-https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/3384014/javascript-php-recursive-iterative-approaches/ */
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/3384014/javascript-php-recursive-iterative-approaches/
+ */
 function idea3_iterative(root, p, q) {
   while (root) {
     if (p.val < root.val && q.val < root.val) {
@@ -46,7 +49,8 @@ function idea3_iterative(root, p, q) {
 }
 
 /**
-https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/3384014/javascript-php-recursive-iterative-approaches/ */
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/3384014/javascript-php-recursive-iterative-approaches/
+ */
 function idea3_recursive(root, p, q) {
   if (!root) return;
   if (p.val < root.val && q.val < root.val)

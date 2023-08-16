@@ -10,10 +10,10 @@ const lowestCommonAncestor = (root, p, q) => {
     } else if (rightOfBoth(lca, p, q)) {
       lca = lca.left;
       // no need for these conditions:
-    // } else if (lca == p) {
-    //   ;
-    // } else if (lca == q) {
-    //   ;
+      // } else if (lca == p) {
+      //   ;
+      // } else if (lca == q) {
+      //   ;
     }
   }
   return lca;
@@ -31,15 +31,12 @@ function leftOfBoth(lca, p, q) {
   return lca.val < p.val && lca.val < q.val;
 }
 
-function solutionWrapper(root, p, q) {
-  return lowestCommonAncestor(root, p, q);
-}
-
 function TreeNode(val) {
   this.val = val;
   this.left = this.right = null;
 }
 
 module.exports = {
-  solutionWrapper,
+  lowestCommonAncestor,
+  TreeNode,
 };

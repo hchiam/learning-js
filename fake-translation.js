@@ -17,6 +17,19 @@ function translate(text) {
         a:'ä',e:'é',i:'î',o:'ö',u:'ü',
         A:'Ä',E:'É',I:'Î',O:'Ö',U:'Ü',
     };
+    const other = {
+        '0':'◯',
+        '1':'●',
+        '2':'◗',
+        '3':'△',
+        '4':'□',
+        '5':'⬠',
+        '6':'◪',
+        '7':'▽',
+        '8':'▤',
+        '9':'◰',
+        '/':'⋌',
+    };
     [...text].forEach((t,i) => {
         if (t in consonants) {
             if (t === 'g' && text[i+1] in {e:'e',i:'i'}) {
@@ -46,6 +59,8 @@ function translate(text) {
             const vowel = vowels[t] || t;
             const shouldChange = Math.random() < 0.2;
             output += vowel in fancyVowels && shouldChange ? fancyVowels[vowel] : vowel;
+        } else if (t in other) {
+            output += other[t];
         } else {
             output += t;
         }

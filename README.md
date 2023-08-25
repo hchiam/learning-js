@@ -262,7 +262,7 @@ API usage example:
 ```js
 const pqAsHeap = new MinPriorityQueue();
 pqAsHeap.enqueue(num);
-pqAsHeap.dequeue();
+pqAsHeap.dequeue().element;
 pqAsHeap.size();
 pqAsHeap.front().element;
 ```

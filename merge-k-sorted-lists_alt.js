@@ -15,7 +15,12 @@ function ListNode(val, next) {
     - use min heap front to get min and know which LL to re-fill heap
 - and i think i remember MinPriorityQueue can be used in LeetCode
     - enqueue(num) dequeue() size() front().element
+- but for now, just merge all lists into one heap and let the heap output the next min
+  - Ot(n log n) Os(n)
+- if extra time, try to make the heap always only have k elements
+  - Ot(n log k) Os(n)
 - if extra time, try to slightly reduce space - not creating new nodes
+  - Ot(n log k) Os(1)
  */
 /**
  * @param {ListNode[]} lists

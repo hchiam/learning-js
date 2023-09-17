@@ -38,15 +38,20 @@
  * optimizations:
  * - BCR: Ot(1) Os(1)
  * - idea so far: also Ot(1) Os(1) if always 3x3 grid
+ *
+ * further work:
+ * - incorporate who goes first, because can't continue playing after first player wins
  */
 
 function isValidTicTacToeState(grid) {
+  // mention I like js function hoisting so read top-down like essay
   if (unbalancedTurns(grid)) return false;
   if (won(grid, "x") && won(grid, "o")) return false;
   return true;
 }
 
 function unbalancedTurns(grid) {
+  // mention filter and reduce
   let xCount = 0;
   let oCount = 0;
   for (let r = 0; r < grid.length; r++) {
@@ -56,7 +61,7 @@ function unbalancedTurns(grid) {
     }
   }
   const diff = Math.abs(xCount - oCount);
-  return diff > 2;
+  return diff > 1;
 }
 
 function won(grid, who) {

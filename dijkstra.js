@@ -1,6 +1,11 @@
+// to run test case(s), run this: jest dijkstra.test.js
+
+/**
+ * Dijkstra's algorithm is basically BFS (Breadth-First Search) but ideally with a priority queue instead of a FIFO queue.
+ */
 function dijkstra(originNodeName, graph) {
   const distances = {}; // will return this
-  const q = []; // --> TODO: as priority queue
+  const q = []; // --> TODO: as priority queue instead of naive FIFO queue
   const processed = {}; // decoupled memo object just for convenience
   initializeDistances();
   initializeQueue();

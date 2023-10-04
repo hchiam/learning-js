@@ -1,4 +1,4 @@
-// node sleep.js
+// node sleep_or_delay.js
 
 // delay without nesting!
 

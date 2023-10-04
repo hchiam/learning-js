@@ -3,14 +3,9 @@
  */
 function mergeSort(a) {
   if (a.length <= 1) return a;
-
-  const middleIndex = Math.floor(a.length / 2);
-  let leftArray = a.slice(0, middleIndex);
-  let rightArray = a.slice(middleIndex);
-
-  leftArray = mergeSort(leftArray); // re-assign subarray to get sorted sub-array
-  rightArray = mergeSort(rightArray); // re-assign subarray to get sorted version
-
+  const mid = Math.floor(a.length / 2);
+  const leftArray = mergeSort(a.slice(0, mid));
+  const rightArray = mergeSort(a.slice(mid));
   return merge(leftArray, rightArray); // merge the reassigned sub-arrays
 }
 

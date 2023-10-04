@@ -3,7 +3,7 @@
  *
  * But apparently it's more like Ot(n log n) worst case
  * and Ot(n + n^2 / b + b) on average,
- * or Ot(n) on average when b ~ n.
+ * or Ot(n) on average when b ~ n. Or if insertion sort inside each bucket assuming small buckets (either by uniform distribution over buckets, or clever bucket ranges to maintain small density across buckets).
  * https://en.wikipedia.org/wiki/Bucket_sort
  * (Average case if uniform distribution.)
  */

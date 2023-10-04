@@ -9,7 +9,7 @@ function quickSort(a) {
   const pivot = a[0];
   const left = a.slice(1).filter((x) => x <= pivot); // all guaranteed < right elems
   const right = a.slice(1).filter((x) => x > pivot); // all guaranteed > left elems
-  return quickSort(left).concat(pivot, quickSort(right));
+  return [...quickSort(left), pivot, ...quickSort(right)];
 }
 
 /**

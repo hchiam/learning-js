@@ -1,11 +1,16 @@
-// to run test case(s), run this: jest dijkstra.test.js
+// to run test case(s), run this:
+// jest dijkstra.test.js
+
+const { PriorityQueue } = require("@datastructures-js/priority-queue");
 
 /**
  * Dijkstra's algorithm is basically BFS (Breadth-First Search) but ideally with a priority queue instead of a FIFO queue.
  */
 function dijkstra(originNodeName, graph) {
   const distances = {}; // will return this
-  const q = []; // --> TODO: as priority queue instead of naive FIFO queue
+  // const q = []; // FIFO queue (doesn't guarantee shortest path
+  // const q = new PriorityQueue((a, b) => (a.distance < b.distance ? -1 : 1)); // priority queue (min heap) to guarantee shortest path
+  const q = new PriorityQueue((x) => x.distance); // priority queue (min heap) to guarantee shortest path
   const processed = {}; // decoupled memo object just for convenience
   initializeDistances();
   initializeQueue();
@@ -20,7 +25,7 @@ function dijkstra(originNodeName, graph) {
   }
 
   function initializeQueue() {
-    q.push({
+    q.enqueue({
       nodeName: originNodeName,
       distance: 0,
     });
@@ -29,8 +34,8 @@ function dijkstra(originNodeName, graph) {
   function bfsTraversalAndUpdateProcessedAndDistances() {
     // Dijkstra = BFS, but edge distances can be != 1
     // (BFS can be used to find min number of edges between nodes, unweighted)
-    while (q.length > 0) {
-      const A = q.pop().nodeName;
+    while (q.size() > 0) {
+      const A = q.dequeue().nodeName;
       if (processed[A]) {
         // ignore re-processing "from" nodes,
         // but re-process "to" nodes again (see below)
@@ -44,7 +49,7 @@ function dijkstra(originNodeName, graph) {
         const smallestDistanceToBSoFar = distances[B];
         if (distanceFromAToB < smallestDistanceToBSoFar) {
           distances[B] = distanceFromAToB;
-          q.push({
+          q.enqueue({
             nodeName: B,
             distance: distances[B],
           });

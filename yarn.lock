@@ -323,17 +323,17 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@datastructures-js/heap@^3.1.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@datastructures-js/heap/-/heap-3.2.0.tgz#d8fcdbf58c462c8a3f0fdfd9c6a57ca11505321e"
-  integrity sha512-FcU5ZAyb+VIOZz1HABsJUsbJi2ZyUDO7aoe97hq4d3tK3z8nMgwdxf5bO0gafR0ExFi18YTspntqHLzt4XOgnA==
+"@datastructures-js/heap@^4.3.1":
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/@datastructures-js/heap/-/heap-4.3.2.tgz#54e800f12441d197c6275dff1ed140072ac0ba9c"
+  integrity sha512-7/9QSsIZ+wMG3C9++mz9iOjdtTp9C036PISHvNjG3eyFO8nXOBJQFKgeV7M6/+EPl+oXXFRGBb8Ue60LsqTqGw==
 
-"@datastructures-js/priority-queue@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/@datastructures-js/priority-queue/-/priority-queue-5.1.1.tgz#00e64071d54821c0c163f89e3cbf7ff48d59b4ef"
-  integrity sha512-uMYmh+dNalf+FMQ2RbL6Y0rZkEykVMpGBZRa9feawuNN5XEc3QbBfkB6ampb1MqQZzbnfvawDfxSL9Y9SuKF1w==
+"@datastructures-js/priority-queue@^6.3.0":
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/@datastructures-js/priority-queue/-/priority-queue-6.3.0.tgz#f28e89488fa8723c54a922af41e16f5f410a8116"
+  integrity sha512-bJkryPys8zVYMCSjyBPYzJlw5V2kMeOYzGHRBXiGkwqTv8vZ/Ux5RO736T8Y6l3cH+ocbQV9UxlsFwA9qI4VhA==
   dependencies:
-    "@datastructures-js/heap" "^3.1.0"
+    "@datastructures-js/heap" "^4.3.1"
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"

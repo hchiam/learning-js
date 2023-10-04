@@ -2,6 +2,7 @@
 
 /**
  * Ot(n log n) on average, but Os(n) I think
+ * Ot(n ^ 2) worst case if already sorted
  */
 function quickSort(a) {
   if (!a.length) return a;

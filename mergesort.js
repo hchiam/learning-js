@@ -1,3 +1,6 @@
+/**
+ * Ot(n log n)
+ */
 function mergeSort(a) {
   if (a.length <= 1) return a;
 

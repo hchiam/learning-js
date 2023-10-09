@@ -63,6 +63,8 @@ drawChart({
   radius: 30,
 }); // big {x: 18, y: 30} 30
 
+drawChart(); // no params works too because function drawChart({...} = {}) {
+
 // more: https://github.com/hchiam/learning-js/blob/master/spread-operator.js
 
 const [message, status] = user

@@ -9,14 +9,14 @@ Object.defineProperty(batman, 'secretIdentity', {
   configurable: false,
   set: function(password) {
     if (password === "'puter") {
-      console.log('nananananananananananananananananananananananana');
+      console.groupCollapsed('nananananananananananananananananananananananana');
       console.log('PASSWORD ACCEPTED.');
       console.log("BATMAN'S SECRET IDENTITY:");
       console.log(realName);
       console.log("https://www.youtube.com/watch?v=gZjjrlrce6A");
-      console.log('nananananananananananananananananananananananana');
+      console.groupEnd('nananananananananananananananananananananananana');
     }
   },
 });
 
-console.log(batman.secretIdentity = "'puter");
+console.log(batman.secretIdentity = "puter");

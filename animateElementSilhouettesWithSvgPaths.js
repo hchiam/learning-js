@@ -1,6 +1,6 @@
-svgAnimateSilhouette($(".test"));
+animateElementSilhouettesWithSvgPaths($(".test"));
 
-async function svgAnimateSilhouette(jQueryElements) {
+async function animateElementSilhouettesWithSvgPaths(jQueryElements) {
   const svgClass = "svg-animate-silhouette";
 
   $(`.${svgClass}`).remove();

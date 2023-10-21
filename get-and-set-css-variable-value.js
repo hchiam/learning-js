@@ -18,10 +18,12 @@ setCSSVariable(cssVariableName, "lime");
 
 function getCSSVariable(name) {
   return getComputedStyle(document.querySelector(":root"))
-    .getPropertyValue('--' + name.replace(/^--/, ''))
+    .getPropertyValue("--" + name.trim().replace(/^--/, ""))
     .trim();
 }
 
 function setCSSVariable(name, value) {
-  document.querySelector(":root").style.setProperty('--' + name.replace(/^--/, ''), value);
+  document
+    .querySelector(":root")
+    .style.setProperty("--" + name.trim().replace(/^--/, ""), value);
 }

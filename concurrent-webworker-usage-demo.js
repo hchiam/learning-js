@@ -1,7 +1,7 @@
 // https://www.youtube.com/watch?v=-JE8P2TiJEg
 // https://nodejs.org/api/worker_threads.html
 
-const { worker } = require('worker_threads');
+const { worker } = require("worker_threads");
 
 exampleUsage();
 
@@ -15,13 +15,13 @@ function run(jobsData, concurrentWorkersCount) {
   const jobsDataChunks = chunkify(jobsData, concurrentWorkersCount);
 
   jobsDataChunks.forEach((data, i) => {
-    const worker = new Worker('./concurrent-webworker.js');
+    const worker = new Worker("./concurrent-webworker.js");
 
     // tell a worker to work on the data:
     worker.postMessage(data);
 
     // listen for the individual worker's message back saying that it's done its work:
-    worker.on('message', () => {
+    worker.on("message", () => {
       console.log(`Worker ${i} done.`);
     });
   });

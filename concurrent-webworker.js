@@ -1,16 +1,15 @@
 // https://www.youtube.com/watch?v=-JE8P2TiJEg
 // https://nodejs.org/api/worker_threads.html
 
-const { parentPort } = require('worker_threads');
+const { parentPort } = require("worker_threads");
 
 // listen for parent to message a worker:
-parentPort.on('message', jobData => {
-  
+parentPort.on("message", (jobData) => {
   // do some slow work:
   someSlowWork(jobData);
-  
+
   // tell parent who called this web worker that this individual worker's work is done:
-  parentPort.postMessage('done');
+  parentPort.postMessage("done");
 });
 
 function someSlowWork(jobData) {

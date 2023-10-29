@@ -7,3 +7,11 @@ const specialNumber = 5;
 export { specialNumber };
 
 // import { specialNumber as five } from './export-after-declare';
+
+// ASIDE:
+// import whatEverNameYouWant from './js-file';
+// only works if you have a default export in that js-file.js:
+// export default someDefaultThing;
+
+// TIP:
+// export default the "main" thing, regular export "other" things

@@ -58,7 +58,7 @@ javascript: (async () => {
       },
       body: JSON.stringify({
         model: "text-davinci-003",
-        prompt: `Summarize the following text into one sentence: \n\n---\n\n${text}\n\n---\n\n`,
+        prompt: `Summarize the following text into one sentence, then list any main headings or major points: \n\n---\n\n${text}\n\n---\n\n`,
         temperature: 0.6,
         max_tokens: 500,
         top_p: 1,

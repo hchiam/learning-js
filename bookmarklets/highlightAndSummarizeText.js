@@ -60,7 +60,7 @@ javascript: (async () => {
         model: "text-davinci-003",
         prompt: `Summarize the following text into one sentence, then list any main headings or major points: \n\n---\n\n${text}\n\n---\n\n`,
         temperature: 0.6,
-        max_tokens: 500,
+        max_tokens: 200,
         top_p: 1,
         frequency_penalty: 0,
         presence_penalty: 0,

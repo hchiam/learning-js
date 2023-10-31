@@ -65,7 +65,14 @@ javascript: (async () => {
         frequency_penalty: 0,
         presence_penalty: 0,
       }),
+    }).catch(error => {
+      throw new Error('Error', {cause: error});
     });
+    if (!result.ok) {
+      alert(`Error: ${await result.text()}\n\nLook at the console log for the text that was selected.`);
+      console.log(element.innerText);
+      throw new Error(`Error: ${await result.text()}`);
+    }
     const json = await result.json();
     const summary = json.choices[0].text;
     console.log(element, summary);

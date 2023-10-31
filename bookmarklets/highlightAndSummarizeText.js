@@ -69,8 +69,10 @@ javascript: (async () => {
       throw new Error('Error', {cause: error});
     });
     if (!result.ok) {
+      const errorMessage = `Error: ${await result.text()}\n\nLook at the console log for the text that was selected.`;
+      console.log(errorMessage);
       console.log(element.innerText);
-      alert(`Error: ${await result.text()}\n\nLook at the console log for the text that was selected.`);
+      alert(errorMessage);
       throw new Error(`Error: ${await result.text()}`);
     }
     const json = await result.json();

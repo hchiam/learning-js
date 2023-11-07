@@ -21,6 +21,11 @@ javascript: (async () => {
         if (e.target.wasSummarized) {
           alert("Already summarized this (see console log).");
         } else {
+          const proceed = confirm("Reminder: do you want to send this info to OpenAI to process?");
+          if (!proceed) {
+            alert("Cancelling.");
+            return;
+          }
           document.body.inert = true;
           try {
             await getSummary(e.target);

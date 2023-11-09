@@ -20,8 +20,10 @@ javascript: (() => {
     const targetTime = new Date(
       new Date().getTime() + reminderMinutes * 60_000
     );
+    const hours = targetTime.getHours();
+    const minutes = String(targetTime.getMinutes()).padStart(2, "0");
     console.log(
-      `Alarm for: ${targetTime.getHours()}:${targetTime.getMinutes()}`
+      `Alarm for: ${hours}:${minutes}`
     );
   }
 

@@ -1,0 +1,18 @@
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget" target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget</a>
+
+<button><span>text in span</span> text in button</button>
+
+<pre></pre>
+
+<script>
+  /*
+    if you happen to click the span inside the button, you get this:
+    event.target:        [object HTMLSpanElement]
+    event.currentTarget: [object HTMLButtonElement]
+    */
+  document.querySelector('button').addEventListener('click', event => {
+    const pre = document.querySelector('pre');
+    pre.innerText = `event.target:        ${event.target}
+event.currentTarget: ${event.currentTarget}`;
+  });
+</script>

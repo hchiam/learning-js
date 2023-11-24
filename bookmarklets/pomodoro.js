@@ -39,8 +39,13 @@ javascript: (() => {
     progress.style.position = 'fixed';
     progress.style.top = '1rem';
     progress.style.left = '1rem';
-    progress.addEventListener('mouseenter', () => {progress.style.opacity=0.1;});
-    progress.addEventListener('mouseleave', () => {progress.style.opacity=1;});
+    progress.style.transition = 'height 0.2s';
+    progress.addEventListener('mouseenter', () => {
+      setTimeout(()=>progress.style.height=0,1000);
+    });
+    progress.addEventListener('mouseleave', () => {
+      setTimeout(()=>progress.style.height='',1000);
+    });
     document.body.append(progress);
     
     const timerProgress = setInterval(()=>{

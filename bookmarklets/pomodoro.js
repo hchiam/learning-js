@@ -25,8 +25,35 @@ javascript: (() => {
     console.log(
       `Alarm for: ${hours}:${minutes}`
     );
+    showProgress(reminderMinutes)
   }
 
+  function showProgress(reminderMinutes) {
+    const timeStart = new Date();
+    const timeEnd = new Date(timeStart.getTime() + reminderMinutes * 60_000);
+    const timeTotal = timeEnd - timeStart;
+    
+    const progress = document.createElement('progress');
+    progress.max = 100;
+    progress.value = 0;
+    progress.style.position = 'fixed';
+    progress.style.top = '1rem';
+    progress.style.left = '1rem';
+    progress.addEventListener('mouseenter', () => {progress.style.opacity=0.1;});
+    progress.addEventListener('mouseleave', () => {progress.style.opacity=1;});
+    document.body.append(progress);
+    
+    const timerProgress = setInterval(()=>{
+      const timeNow = new Date();
+      const timeProgress = 100-((timeEnd - timeNow)/timeTotal)*100;
+      progress.value = timeProgress;
+      if (timeProgress >= 100) {
+        clearInterval(timerProgress);
+        progress.remove();
+      }
+    },1000);
+  }
+    
   function popup(text) {
     const div = document.createElement("div");
     div.className = "pomodoro-popup";

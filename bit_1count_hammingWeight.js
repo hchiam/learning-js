@@ -1,4 +1,5 @@
 function hammingWeight(n) {
+  // cf.: count1Bits(n) in https://github.com/hchiam/learning-js/blob/main/bit_operations.js
   if (n === 0) return 0;
   let ones = 0;
   while (n > 0) {

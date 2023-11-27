@@ -45,4 +45,24 @@ describe("SIMPLER MinHeap implementation", () => {
     expect(heap.pop()).toBe(8);
     expect(heap.pop()).toBe(14);
   });
+  it("works with custom callback", () => {
+    const heap = new SIMPLER_MinHeap((a, b) => a[0] - b[0]);
+    heap.add([5, "a"]);
+    heap.add([4, "b"]);
+    heap.add([8, "c"]);
+    heap.add([6, "d"]);
+    heap.add([1, "e"]);
+    heap.add([14, "f"]);
+    heap.add([2, "g"]);
+    heap.add([7, "h"]);
+
+    expect(heap.pop()[0]).toBe(1);
+    expect(heap.pop()[0]).toBe(2);
+    expect(heap.pop()[0]).toBe(4);
+    expect(heap.pop()[0]).toBe(5);
+    expect(heap.pop()[0]).toBe(6);
+    expect(heap.pop()[0]).toBe(7);
+    expect(heap.pop()[0]).toBe(8);
+    expect(heap.pop()[0]).toBe(14);
+  });
 });

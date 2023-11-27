@@ -101,3 +101,7 @@ const MinHeap = function () {
     return result;
   };
 };
+
+module.exports = {
+  MinHeap,
+};

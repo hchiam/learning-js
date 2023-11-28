@@ -218,6 +218,24 @@ https://github.com/hchiam/learning-js/tree/master/bookmarklets#bookmarklets
 
 `this` in `() => {}` = owner. Useful if you want `this` to always be the creator of the function. I think _nested_ arrow functions also pass along `this`, which you might like.
 
+```js
+// https://www.freecodecamp.org/news/the-difference-between-arrow-functions-and-normal-functions/
+const obj = {
+  a: () => {
+    console.log(this);
+    console.log(
+      `"this" will be whatever "this" was before the function was created`
+    );
+  },
+  f: function () {
+    console.log(this);
+    console.log(`"this" will be the current object that contains the function`);
+  },
+};
+obj.a();
+obj.f();
+```
+
 ### CJS vs MJS/ESM/ES6M vs all the other types of JavaScript modules syntax
 
 - ESM = `import` and `export`. Simplest, async, tree-shakeable, but not universally compatible.

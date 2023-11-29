@@ -316,3 +316,13 @@ https://reqbin.com/ - also shows a bunch of example requests like GET with beare
 https://reqbin.com/json-formatter
 
 https://reqbin.com/json-formatter
+
+### Broaden JavaScript knowledge:
+
+https://javascript.info/
+
+e.g.:
+
+- https://javascript.info/weakref-finalizationregistry
+- https://javascript.info/proxy
+- https://javascript.info/currying-partials

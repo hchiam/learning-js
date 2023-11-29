@@ -308,3 +308,11 @@ Firefox:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
 
 For example, lookahead = `x(?=y)` ("match x if followed by y") and negative lookahead = `x(?!y)`.
+
+### ReqBin - test API endpoints by making API requests
+
+https://reqbin.com/ - also shows a bunch of example requests like GET with bearer token auth header, or Curl/JS/Python/PHP/REST/POST/JSON/POST/PATCH/PUT/DELETE
+
+https://reqbin.com/json-formatter
+
+https://reqbin.com/json-formatter

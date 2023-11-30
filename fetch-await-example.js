@@ -11,3 +11,10 @@ async function example() {
 
 await example();
 console.log("outside", a);
+
+/*
+compare with:
+https://github.com/hchiam/learning-js/blob/main/loadScript.js
+https://github.com/hchiam/learning-js/blob/main/confetti.js
+https://github.com/hchiam/learning-js/blob/main/fetch-github-latest-release-name.js
+*/

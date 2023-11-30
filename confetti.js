@@ -4,3 +4,10 @@ fetch(
   .then((x) => x.text())
   .then((x) => eval(x))
   .then((x) => confetti());
+
+/*
+compare with:
+https://github.com/hchiam/learning-js/blob/main/loadScript.js
+https://github.com/hchiam/learning-js/blob/main/fetch-await-example.js
+https://github.com/hchiam/learning-js/blob/main/fetch-github-latest-release-name.js
+*/

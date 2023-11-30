@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "dev": "npm run start",
+    "start": "bun index.tsx"
+  }
+}

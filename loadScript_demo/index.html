@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>loadScript demo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/hchiam/css-boilerplate@7.0.0/style.css"
+      integrity="sha384-4LyMgnYb2AiZtfGx9DmU1yIah53F9unFaCNv8tmbRTycOKKEfY1VleH71ezkUOT8"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <p>hi</p>
+    <script src="/loadScript.js"></script>
+    <script>
+      alert("loading other.js:");
+      loadScript("other.js");
+    </script>
+  </body>
+</html>

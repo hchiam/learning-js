@@ -8,6 +8,7 @@ function useIframeLoadingOverlay(
   const originalCountOfIframesLoading = originalIframesLoading.length;
   if (originalCountOfIframesLoading === 0) {
     iframeLoadingOverlay.addClass("d-none");
+    allLoadedCallback?.();
   } else {
     iframeLoadingOverlay.removeClass("d-none");
     const progressBar = iframeLoadingOverlay.find("progress");

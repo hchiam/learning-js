@@ -1,7 +1,7 @@
 // written assuming jQuery is available:
 function useIframeLoadingOverlay(
   allLoadedCallback,
-  selector = "iframe:visible"
+  selector = "iframe:not(.wait-for-iframe-to-load):visible"
 ) {
   const iframeLoadingOverlay = $(".iframe-loading-overlay");
   const originalIframesLoading = $(selector);

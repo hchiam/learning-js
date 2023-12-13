@@ -1,8 +1,6 @@
 javascript: (() => {
-  const href = "https://unpkg.com/open-props";
-  const link = Object.assign(document.createElement("link"), {
-    rel: "stylesheet",
-    href: href,
-  });
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = "https://unpkg.com/open-props";
   document.head.append(link);
 })();

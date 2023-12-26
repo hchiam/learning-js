@@ -21,7 +21,9 @@ javascript: (async () => {
         if (e.target.wasSummarized) {
           alert("Already summarized this (see console log).");
         } else {
-          const proceed = confirm("Reminder: do you want to send this info to OpenAI to process?");
+          const proceed = confirm(
+            "Reminder: do you want to send this info to OpenAI to process?"
+          );
           if (!proceed) {
             alert("Cancelling.");
             return;
@@ -62,7 +64,7 @@ javascript: (async () => {
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "text-davinci-003",
+        model: "gpt-3.5-turbo-instruct",
         prompt: `Summarize the following text into one sentence, then list any main headings or major points: \n\n---\n\n${text}\n\n---\n\n`,
         temperature: 0.6,
         max_tokens: 200,
@@ -70,8 +72,8 @@ javascript: (async () => {
         frequency_penalty: 0,
         presence_penalty: 0,
       }),
-    }).catch(error => {
-      throw new Error('Error', {cause: error});
+    }).catch((error) => {
+      throw new Error("Error", { cause: error });
     });
     if (!result.ok) {
       const errorMessage = `Error: ${await result.text()}\n\nLook at the console log for the text that was selected.`;

@@ -309,6 +309,26 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expression
 
 For example, lookahead = `x(?=y)` ("match x if followed by y") and negative lookahead = `x(?!y)`.
 
+### Web Locks
+
+```js
+// multiple browser tabs can try to access a lock named my_resource, but only one will be processed at a time (queued)
+// also scoped to origins (https://example.com is different from https://example.org:8080)
+navigator.locks.request("my_resource", async (lock) => {
+  // lock acquired
+
+  // do stuff
+  await do_something();
+  await do_something_else();
+
+  // lock released
+});
+```
+
+Note: deadlocks can still happen if, say, multiple locks are requested out-of-order.
+
+More details/options: https://developer.mozilla.org/en-US/docs/Web/API/Web_Locks_API
+
 ### ReqBin - test API endpoints by making API requests
 
 https://reqbin.com/ - also shows a bunch of example requests like GET with bearer token auth header, or Curl/JS/Python/PHP/REST/POST/JSON/POST/PATCH/PUT/DELETE

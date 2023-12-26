@@ -10,11 +10,21 @@ More info: https://en.wikipedia.org/wiki/Bookmarklet
 
 An alternative to bookmarklets are [Chrome Snippets](https://developer.chrome.com/docs/devtools/javascript/snippets/).
 
+## Using bookmarklets
+
+1. copy the code of a bookmarklet
+
+2. create a bookmark in Chrome, paste the code you just copied into the URL field, and ideally name that bookmark with a unique name or a unique sequence of letters that's different from your other bookmarks (this helps minimize the number of keys you'll have to press later on)
+
+3. now you can do this in Chrome:
+ * mac: <kbd>command</kbd> + <kbd>L</kbd>, then type to search for the bookmark name, then hit enter --> the code in the bookmarklet will be run
+ * pc: <kbd>Ctrl</kbd> + <kbd>L</kbd>, then type to search for the bookmark name, then hit enter --> the code in the bookmarklet will be run
+
 ## Tips for converting from normal JS to bookmarklet
 
 - wrap it in `javascript:(function(){` … `})();`
 - encode `%` as `%25`, so console.log `%c` becomes `%25c`
-- remove comments that use `//`
+- remove comments that use `//`, or replace them with `/* ... */` comments
 
 Or just use https://bookmarklet-generator.surge.sh
 
@@ -22,7 +32,7 @@ Or just use https://bookmarklet-generator.surge.sh
 
 - you can keep the wrapping `javascript:(function(){` … `})();` in the JS (still works in browser console)
 - change `%25c` back to `%c` inside console.log
-- (but you’ll likely want to put back the comments)
+- turn `//` comments into `/* ... */` comments
 
 ## There's also the possibility of HTML
 

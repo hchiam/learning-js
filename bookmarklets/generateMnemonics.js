@@ -79,7 +79,7 @@ javascript: (async () => {
     }
     const json = await result.json();
     const mnemonics = json.choices[0].message.content;
-    console.log(text, json);
+    console.log(text, mnemonics);
     alert(mnemonics);
   }
 })();

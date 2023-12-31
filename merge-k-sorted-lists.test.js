@@ -6,11 +6,38 @@ const {
 
 const { mergeKLists_alt } = require("./merge-k-sorted-lists_alt");
 
+describe("make sure helper functions work", () => {
+  it("ListNode", () => {
+    const node = new ListNode(123);
+    expect(node.val).toEqual(123);
+    expect(node.next).toEqual(null);
+  });
+  it("ListNode.next", () => {
+    const node = new ListNode(123);
+    node.next = new ListNode(456);
+    expect(node.val).toEqual(123);
+    expect(node.next.val).toEqual(456);
+  });
+  it("generateLLFromArray", () => {
+    const head = generateLLFromArray([1, 2, 3]);
+    expect(head.val).toEqual(1);
+    expect(head.next.val).toEqual(2);
+    expect(head.next.next.val).toEqual(3);
+    expect(head.next.next.next).toEqual(null);
+  });
+  it("generateLLFromArray with empty array", () => {
+    const head = generateLLFromArray([1, 2, 3]);
+    expect(head.val).toEqual(1);
+    expect(head.next.val).toEqual(2);
+    expect(head.next.next.val).toEqual(3);
+    expect(head.next.next.next).toEqual(null);
+  });
+});
+
 describe("merge K sorted lists", () => {
   it("generateLLFromArray works", () => {
-    const actual = generateLLFromArray([1]);
-    const expected = new ListNode(1);
-    expect(actual).toEqual(expected);
+    const head = generateLLFromArray([]);
+    expect(head).toEqual(null);
   });
 
   it("works on lists with different lengths [[1,4,5],[1,3,4],[2,6]]", () => {

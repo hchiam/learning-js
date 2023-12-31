@@ -37,10 +37,10 @@ var mergeKLists_alt = function (lists) {
   }
   const top = heap.dequeue();
   if (!top) return null;
-  const output = new ListNode(top.element);
+  const output = new ListNode(top);
   let pointer = output;
   while (heap.size()) {
-    const top = heap.dequeue().element;
+    const top = heap.dequeue();
     pointer.next = new ListNode(top);
     pointer = pointer.next;
   }

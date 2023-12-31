@@ -55,9 +55,8 @@ function Heap() {
     heap.enqueue(item); // can't use kthList?
   }
   function pop() {
-    const node = heap.dequeue();
-    if (!node) return null;
-    const val = node.element;
+    const val = heap.dequeue();
+    if (!val) return null;
     return new ListNode(val);
   }
   function isEmpty() {

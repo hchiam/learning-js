@@ -3,19 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "jest --bail --findRelatedTests **/*.js",
+    "test": "jest --bail --findRelatedTests *.test.js",
+    "fuzz": "JAZZER_FUZZ=1 jest *.fuzz.js",
+    "fuzz_regression": "JAZZER_FUZZ=0 jest *.fuzz.js",
     "lint": "prettier --write *.{js,css,html,scss,json,md,ts,tsx}",
     "deploy:bookmarklet-generator": "rm -rf bookmarklets/bookmarklet-generator/.cache; rm -rf bookmarklets/bookmarklet-generator/dist; surge bookmarklets/bookmarklet-generator https://bookmarklet-generator.surge.sh"
   },
   "dependencies": {
-    "@datastructures-js/priority-queue": "^6.3.0"
+    "@datastructures-js/priority-queue": "6.3.0"
   },
   "devDependencies": {
+    "@jazzer.js/jest-runner": "^2.1.0",
     "eslint": "^6.4.0",
     "eslint-config-google": "^0.14.0",
     "husky": "^4.3.0",
-    "jest": "^27.0.4",
-    "jest-cli": "^27.4.3",
+    "jest": "^29.7.0",
+    "jest-cli": "^29.7.0",
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.1"
   },
@@ -29,7 +32,7 @@
   },
   "lint-staged": {
     "**/*.js": [
-      "jest --bail --findRelatedTests"
+      "npm run test"
     ],
     "*.{js,css,html,scss,json,md,ts,tsx}": "prettier --write"
   }

@@ -1,4 +1,5 @@
 // reference: https://hackernoon.com/currying-in-js-d9ddc64f162e
+// why currying: reusable first partial function call: https://javascript.info/currying-partials#currying-what-for
 // run this file: node curry.js
 
 const log1 = curry((x) => console.log(x));
@@ -34,8 +35,10 @@ function curry(fn) {
     return (nextArg) => {
       const atLastArgument = arity - 1 === 0;
       if (atLastArgument) {
+        // call the original function now:
         return fn(...args, nextArg);
       } else {
+        // don't call the actual original function yet:
         return nest(arity - 1, [...args, nextArg]);
       }
     };
@@ -51,8 +54,10 @@ function curryWithVariableArity(fn) {
     return (...nextArgs) => {
       const atLastArguments = arity - nextArgs.length === 0;
       if (atLastArguments) {
+        // call the original function now:
         return fn(...args, ...nextArgs);
       } else {
+        // don't call the actual original function yet:
         return nest(arity - nextArgs.length, [...args, ...nextArgs]);
       }
     };

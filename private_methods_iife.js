@@ -8,7 +8,7 @@ let app = (function () {
     let name = "Howard"; // IMPORTANT: local property -> "private"
     this.sayHi = function () {
       // IMPORTANT: this (not let) -> "public"
-      alert("hi, my name is " + name);
+      console.log("hi, my name is " + name);
     };
   }
 
@@ -17,8 +17,8 @@ let app = (function () {
 
 var a = new app();
 a.sayHi();
-alert(
-  'The private local property "name" should be undefined: ' +
+console.log(
+  'The private local property "name" should not be accessible to the outside: ' +
     (typeof a.name == "undefined")
 );
 
@@ -28,7 +28,7 @@ var add = (function () {
   var counter = 0; // "private" variable only accessible whenever you call add
   return function add_theReturnedFunction() {
     counter += 1; // update the "private" variable that's only accessible inside the IIFE
-    alert('The "private" counter = ' + counter);
+    console.log('The "private" counter = ' + counter);
     return counter;
   };
 })();
@@ -36,3 +36,5 @@ var add = (function () {
 add();
 add();
 add();
+
+// also note that '#...' "private" variables are still inspectable in Chrome console: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties#description

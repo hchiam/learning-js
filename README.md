@@ -329,6 +329,24 @@ Note: deadlocks can still happen if, say, multiple locks are requested out-of-or
 
 More details/options: https://developer.mozilla.org/en-US/docs/Web/API/Web_Locks_API
 
+### `import` vs `import()`
+
+[Static `import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import):
+
+```js
+import { something as aliasedName } from "some-module.js";
+```
+
+[Dynamic `import()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import):
+
+```js
+import("/some-module.js").then((aliasedName) => {});
+// or:
+const { default: myDefault, foo, bar } = await import("/some-module.js");
+// or just:
+await import("/some-module.js"); // like if you just want its side-effects
+```
+
 ### ReqBin - test API endpoints by making API requests
 
 https://reqbin.com/ - also shows a bunch of example requests like GET with bearer token auth header, or Curl/JS/Python/PHP/REST/POST/JSON/POST/PATCH/PUT/DELETE
@@ -337,7 +355,7 @@ https://reqbin.com/json-formatter
 
 https://reqbin.com/json-formatter
 
-### Broaden JavaScript knowledge:
+### Broaden JavaScript knowledge
 
 https://javascript.info/
 

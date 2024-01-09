@@ -164,7 +164,19 @@ and tips like this: <https://umaar.com/dev-tips/15-dollar-zero>
 
 `unmonitor(functionName)`
 
-`table()` = `console.table()`
+`table()` (shortcut in Chrome) = `console.table()`
+
+- ```js
+  console.table([
+    { a: 1, c: "hi" },
+    { a: 3, b: 2 },
+  ]);
+  /**
+   * (index)  a     c     b
+   * 0        1     'hi'
+   * 1        3           2
+   */
+  ```
 
 `clear()` = `console.clear()`
 

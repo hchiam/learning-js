@@ -359,6 +359,16 @@ const { default: myDefault, foo, bar } = await import("/some-module.js");
 await import("/some-module.js"); // like if you just want its side-effects
 ```
 
+### D3 `<path>`/svg `.click()` note
+
+```js
+/** Because simply using d3Element.click() or jQuery $(d3Element).click() doesn't work: https://stackoverflow.com/questions/9063383/how-to-invoke-click-event-programmatically-in-d3 */
+function triggerD3PathClick(d3Element) {
+  const event = new MouseEvent("click");
+  d3Element.dispatchEvent(event);
+}
+```
+
 ### ReqBin - test API endpoints by making API requests
 
 https://reqbin.com/ - also shows a bunch of example requests like GET with bearer token auth header, or Curl/JS/Python/PHP/REST/POST/JSON/POST/PATCH/PUT/DELETE

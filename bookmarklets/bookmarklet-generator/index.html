@@ -73,10 +73,12 @@ or from top-level: yarn deploy:bookmarklet-generator
         code = encodeSlash(code);
         code = encodeDoubleQuote(code);
         code = wrapInJavascriptIIFE(code);
+        detectLimitHit(code);
         output.value = code;
       });
       output.addEventListener("input", () => {
         let code = output.value.trim();
+        detectLimitHit(code);
         code = decodePercent(code);
         code = decodeSlash(code);
         code = decodeDoubleQuote(code);
@@ -116,6 +118,14 @@ or from top-level: yarn deploy:bookmarklet-generator
           );
         }
         return code;
+      }
+      function detectLimitHit(code) {
+        const limit = 2000;
+        if (code.length > limit) {
+          alert(
+            `It might be too long. There's a rough limit of ${limit} characters: https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers`
+          );
+        }
       }
     </script>
   </body>

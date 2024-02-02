@@ -17,14 +17,16 @@ An alternative to bookmarklets are [Chrome Snippets](https://developer.chrome.co
 2. create a bookmark in Chrome, paste the code you just copied into the URL field, and ideally name that bookmark with a unique name or a unique sequence of letters that's different from your other bookmarks (this helps minimize the number of keys you'll have to press later on)
 
 3. now you can do this in Chrome:
- * mac: <kbd>command</kbd> + <kbd>L</kbd>, then type to search for the bookmark name, then hit enter --> the code in the bookmarklet will be run
- * pc: <kbd>Ctrl</kbd> + <kbd>L</kbd>, then type to search for the bookmark name, then hit enter --> the code in the bookmarklet will be run
+
+- mac: <kbd>command</kbd> + <kbd>L</kbd>, then type to search for the bookmark name, then hit enter --> the code in the bookmarklet will be run
+- pc: <kbd>Ctrl</kbd> + <kbd>L</kbd>, then type to search for the bookmark name, then hit enter --> the code in the bookmarklet will be run
 
 ## Tips for converting from normal JS to bookmarklet
 
 - wrap it in `javascript:(function(){` … `})();`
 - encode `%` as `%25`, so console.log `%c` becomes `%25c`
 - remove comments that use `//`, or replace them with `/* ... */` comments
+- **_NOTE_**: there's a rough limit of [2000 characters](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers).
 
 Or just use https://bookmarklet-generator.surge.sh
 

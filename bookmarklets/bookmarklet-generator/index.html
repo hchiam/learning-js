@@ -43,6 +43,15 @@ or from top-level: yarn deploy:bookmarklet-generator
         background: black;
         box-shadow: 0 0 10px white;
       }
+      #limit_warning {
+        background: yellow;
+        border-radius: 10px;
+        color: black;
+        max-width: 50vw;
+        padding: 0;
+        transform: scaleY(0);
+        transition: padding 0.2s, transform 0.2s;
+      }
     </style>
   </head>
   <body>
@@ -55,6 +64,7 @@ or from top-level: yarn deploy:bookmarklet-generator
         placeholder="Enter normal JavaScript here."
         autofocus
       ></textarea>
+      <p id="limit_warning"></p>
       <h2>Output:</h2>
       <textarea
         id="output"
@@ -121,10 +131,15 @@ or from top-level: yarn deploy:bookmarklet-generator
       }
       function detectLimitHit(code) {
         const limit = 2000;
+        const limit_warning = document.querySelector("#limit_warning");
         if (code.length > limit) {
-          alert(
-            `It might be too long. There's a rough limit of ${limit} characters: https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers`
-          );
+          limit_warning.innerText = `It might be too long for older browsers. There's a rough limit of ${limit} characters: https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers`;
+          limit_warning.style.padding = "10px";
+          limit_warning.style.transform = "scaleY(1)";
+        } else {
+          limit_warning.innerText = "";
+          limit_warning.style.padding = "0px";
+          limit_warning.style.transform = "scaleY(0)";
         }
       }
     </script>

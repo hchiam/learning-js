@@ -65,7 +65,7 @@ javascript: (async () => {
       },
       body: JSON.stringify({
         model: "gpt-3.5-turbo-instruct",
-        prompt: `Summarize the following text into one sentence, then list any main headings or major points: \n\n---\n\n${text}\n\n---\n\n`,
+        prompt: `Summarize the following text into one sentence, then list any main headings or major points, and then finally list out any other lesser-known information from the text: \n\n---\n\n${text}\n\n---\n\n`,
         temperature: 0.6,
         max_tokens: 200,
         top_p: 1,

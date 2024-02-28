@@ -369,6 +369,14 @@ function triggerD3PathClick(d3Element) {
 }
 ```
 
+### xpath
+
+Here's an xpath to get only the English entry part of a Wiktionary page:
+
+```js
+$x("//h2[span[text()='English']] | //h2[span[text()='English']]/following-sibling::*[preceding-sibling::h2[1][span[text()='English']] and not(self::h2)]")
+```
+
 ### ReqBin - test API endpoints by making API requests
 
 https://reqbin.com/ - also shows a bunch of example requests like GET with bearer token auth header, or Curl/JS/Python/PHP/REST/POST/JSON/POST/PATCH/PUT/DELETE

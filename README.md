@@ -148,7 +148,7 @@ and tips like this: <https://umaar.com/dev-tips/15-dollar-zero>
 
 `$(`some_selector`, ancestorElement)` or `$('some_selector', $0)`
 
-`$x('some_x_path')` = XPat
+`$x('some_x_path')` = XPath
 
 `inspect($('some_selector')[0]);` jumps to Elements panel (jQuery not required for that `$`). Works in Firefox too.
 

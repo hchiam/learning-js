@@ -375,6 +375,15 @@ Here's an xpath to get only the English entry part of a Wiktionary page:
 
 ```js
 $x("//h2[span[text()='English']] | //h2[span[text()='English']]/following-sibling::*[preceding-sibling::h2[1][span[text()='English']] and not(self::h2)]")
+// use | so you can include the English h2 in the selection
+// you need the [1] so you stop selecting elements after the next h2
+// you need self:: in not(self::h2) to avoid including the next h2
+```
+
+Building on that, here's an xpath to get just the etymology and definition(s) (`<p>` or `<ol>`) of the English part of a Wiktionary page:
+
+```js
+$x("//h2[span[text()='English']]/following-sibling::*[self::p or self::ol][preceding-sibling::h2[1][span[text()='English']]]")
 ```
 
 ### ReqBin - test API endpoints by making API requests

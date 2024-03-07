@@ -1,6 +1,6 @@
 // jest minMaxHeap.test.js --watch
 
-const { Heap } = require("./MinMaxHeap.js");
+const { Heap } = require("./minMaxHeap.js");
 const { MinMaxHeap_2 } = require("./minMaxHeap_2.js");
 
 describe("Heap", () => {

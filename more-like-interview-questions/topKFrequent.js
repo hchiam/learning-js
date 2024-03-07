@@ -2,21 +2,46 @@
 
 // https://leetcode.com/problems/top-k-frequent-elements/
 
-// this solution uses a slightly modified version of heap from
-// https://gist.github.com/tpae/54ec7371f947505967a2036b9c002428
-
 /**
- * tricky bits:
- *  - clone to avoid object reference problems
- *  - check if this.data[someIndex] exists before compare .freq
- */
-
-/**
+ * better than Ot(n log n) means you can't use min heap
+ * need Ot(n) --> HT of frequencies: HT x a few loops = Ot(n)
  * @param {number[]} nums
  * @param {number} k
  * @return {number[]}
  */
-const topKFrequent = function(nums, k) {
+function topKFrequent(nums, k) {
+    const freqsHT = {}; // { num: freq }
+    for (let num of nums) {
+        freqsHT[num] = num in freqsHT ? freqsHT[num] + 1 : 1;
+    }
+    const temp = [];
+    for (let [num, freq] of Object.entries(freqsHT)) {
+        temp[freq] = num;
+    }
+    let i = k;
+    let t = temp.length - 1;
+    const output = [];
+    while (i > 0 && t >= 0) {
+        if (typeof temp[t] !== 'undefined') {
+            output.push(temp[t]);
+            i--;
+        }
+        t--;
+    }
+    return output;
+};
+
+/**
+// this solution uses a slightly modified version of heap from
+// https://gist.github.com/tpae/54ec7371f947505967a2036b9c002428
+ * tricky bits:
+ *  - clone to avoid object reference problems
+ *  - check if this.data[someIndex] exists before compare .freq
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+const topKFrequent_MINHEAPSOLUTION = function(nums, k) {
   // assumes k is valid
   if (nums.length === 1) return [nums[0]];
   const ht = {};

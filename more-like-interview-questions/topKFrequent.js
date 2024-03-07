@@ -10,26 +10,38 @@
  * @return {number[]}
  */
 function topKFrequent(nums, k) {
-    const freqsHT = {}; // { num: freq }
-    for (let num of nums) {
-        freqsHT[num] = num in freqsHT ? freqsHT[num] + 1 : 1;
+  const freqsHT = {}; // { num: freq }
+  for (let num of nums) {
+    freqsHT[num] = num in freqsHT ? freqsHT[num] + 1 : 1;
+  }
+  const temp = [];
+  for (let [num, freq] of Object.entries(freqsHT)) {
+    // need to handle numbers of same frequency counts but should all count towards top frequencies
+    if (freq in temp) {
+      temp[freq].push(num);
+    } else {
+      temp[freq] = [num];
     }
-    const temp = [];
-    for (let [num, freq] of Object.entries(freqsHT)) {
-        temp[freq] = num;
+  }
+  let i = k;
+  let t = temp.length - 1;
+  const output = [];
+  while (i > 0 && t >= 0) {
+    if (typeof temp[t] !== "undefined" && temp[t].length) {
+      // need to handle numbers of same frequency counts but should all count towards top frequencies
+      for (
+        let indexWithinFreq = temp[t].length - 1;
+        i > 0 && indexWithinFreq >= 0;
+        indexWithinFreq--
+      ) {
+        output.push(Number(temp[t].pop()));
+        i--;
+      }
     }
-    let i = k;
-    let t = temp.length - 1;
-    const output = [];
-    while (i > 0 && t >= 0) {
-        if (typeof temp[t] !== 'undefined') {
-            output.push(temp[t]);
-            i--;
-        }
-        t--;
-    }
-    return output;
-};
+    t--;
+  }
+  return output;
+}
 
 /**
 // this solution uses a slightly modified version of heap from
@@ -41,7 +53,7 @@ function topKFrequent(nums, k) {
  * @param {number} k
  * @return {number[]}
  */
-const topKFrequent_MINHEAPSOLUTION = function(nums, k) {
+const topKFrequent_MINHEAPSOLUTION = function (nums, k) {
   // assumes k is valid
   if (nums.length === 1) return [nums[0]];
   const ht = {};
@@ -75,23 +87,26 @@ function MinHeap() {
   this.data = [];
 }
 
-MinHeap.prototype.size = function() {
+MinHeap.prototype.size = function () {
   return this.data.length;
 };
 
-MinHeap.prototype.insert = function(num, freq) {
-  this.data.push({num, freq});
-  this.bubbleUp(this.data.length-1);
+MinHeap.prototype.insert = function (num, freq) {
+  this.data.push({ num, freq });
+  this.bubbleUp(this.data.length - 1);
 };
 
-MinHeap.prototype.bubbleUp = function(index) {
+MinHeap.prototype.bubbleUp = function (index) {
   while (index > 0) {
-  // get the parent
+    // get the parent
     const parent = Math.floor((index + 1) / 2) - 1;
 
     // if parent is greater than child
-    if (this.data[parent] && this.data[index] &&
-      this.data[parent].freq > this.data[index].freq) {
+    if (
+      this.data[parent] &&
+      this.data[index] &&
+      this.data[parent].freq > this.data[index].freq
+    ) {
       // swap
       const temp = clone(this.data[parent]);
       this.data[parent] = clone(this.data[index]);
@@ -101,7 +116,7 @@ MinHeap.prototype.bubbleUp = function(index) {
     index = parent;
   }
 };
-MinHeap.prototype.extractMin = function() {
+MinHeap.prototype.extractMin = function () {
   const min = this.data[0];
 
   // set first element to last element
@@ -113,28 +128,35 @@ MinHeap.prototype.extractMin = function() {
   return min;
 };
 
-MinHeap.prototype.pop = function() {
+MinHeap.prototype.pop = function () {
   return this.extractMin();
 };
 
-MinHeap.prototype.bubbleDown = function(index) {
+MinHeap.prototype.bubbleDown = function (index) {
   while (true) {
-    const child = (index+1)*2;
+    const child = (index + 1) * 2;
     const sibling = child - 1;
     let toSwap = null;
 
     // if current is greater than child
-    if (this.data[index] && this.data[child] &&
-      this.data[index].freq > this.data[child].freq) {
+    if (
+      this.data[index] &&
+      this.data[child] &&
+      this.data[index].freq > this.data[child].freq
+    ) {
       toSwap = child;
     }
 
     // if sibling is smaller than child, but also smaller than current
-    if (this.data[index] && this.data[sibling] &&
+    if (
+      this.data[index] &&
+      this.data[sibling] &&
       this.data[index].freq > this.data[sibling].freq &&
-      (this.data[child] == null || (this.data[child] !== null &&
-        this.data[sibling] &&
-        this.data[sibling].freq < this.data[child].freq))) {
+      (this.data[child] == null ||
+        (this.data[child] !== null &&
+          this.data[sibling] &&
+          this.data[sibling].freq < this.data[child].freq))
+    ) {
       toSwap = sibling;
     }
 

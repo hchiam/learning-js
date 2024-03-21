@@ -1,5 +1,5 @@
 javascript: (function () {
-  var toClipboard = "<script>alert('xss');</script>";
+  var toClipboard = "<script>alert(document.cookie);</script>";
   copy(toClipboard);
   function copy(text) {
     var textarea = document.createElement("textarea");

@@ -318,8 +318,33 @@ Firefox:
 ### Regex cheatsheet
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
+- `x(?=y)` = lookahead _(AKA **positive** lookahead, in contrast to negative lookahead)_ = "match x if followed by y"
+- `x(?!y)` = **negative** lookahead = "match x if NOT followed by y"
+- `(?<=y)x` = lookbehind _(AKA **positive** lookbehind, in contrast to negative lookbehind)_ = "match x if preceded by y"
+- `(?<!y)x` = **negative** lookbehind = "match x if NOT preceded by y"
+- `(?:x)` = **noncapturing** group = "match x but don't remember the group"
+- `(?<Name>x)` = capture group with name `Name`
+- `\n` = reference to the nth capture group match (count the left brackets)
+- `\k<Name>` = reference to the capture group with name `Name` (note: `\k` is not some variable, it's literally like replacing the "`?`")
+- `^` = start
+- `$` = end
+- `x*` = 0 or more times (mnemonic: `*` looks more like a 0 than `+` does, and `*0` changes a number, while `*1` doesn't)
+- `x+` = 1 or more times (mnemonic: `+` looks more like a 1 than `*` does, and `+1` changes a number, while `+0` doesn't)
+- `x?` = 0 or 1 time = "optionally exists"
+- `x{n}` = n times
+- `x{n,}` = n or more times
+- `x{n,m}` = n to m times, inclusive
+- `x*?`, `x+?`, `x??`, `x{n}?`, `x{n,}?`, `x{n,m}?` = match non-greedily = "match minimally", e.g. `/<.*?>/` only matches `<a>` instead of `<a></a>` entirely.
+- `\b` = "word boundary" (note: `/\w\b\w/` can't ever matche anything, but `/\w\b\W\w/` can)
+    - likely useful as: `/\bword\b/g` (replace `word` with your word or word pattern)
+- `[\b]` = backspace
+- `\xhh` = character with 2 hexadecimal digits
+- `\uhhhh` = UTF-16 character with 4 hexadecimal digits
+- `\u{hhhh}`, `\u{hhhhh}` (with `u` flag) = Unicode character with 4/5 hexadecimal digits
 
-For example, lookahead = `x(?=y)` ("match x if followed by y") and negative lookahead = `x(?!y)`.
+My applied example: regex to automatically group digits with spaces in input boxes:
+- https://codepen.io/hchiam/pen/yLrjgrV (4 digits from left to right, or from right to left)
+- `.split(/(\d{4})/g)` --> `.replace(/\D/g,'').split(/(\d{4})/g).filter(x=>x).join(' ')`
 
 ### Web Locks
 

@@ -345,6 +345,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expression
 My applied example: regex to automatically group digits with spaces in input boxes:
 - https://codepen.io/hchiam/pen/yLrjgrV (4 digits from left to right, or from right to left)
 - `.split(/(\d{4})/g)` --> `.replace(/\D/g,'').split(/(\d{4})/g).filter(x=>x).join(' ')`
+    - `1234567890` --> `1234 5678 90`
 
 ### Web Locks
 

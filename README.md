@@ -412,6 +412,12 @@ Building on that, here's an xpath to get just the etymology and definition(s) (`
 $x("//h2[span[text()='English']]/following-sibling::*[self::p or self::ol][preceding-sibling::h2[1][span[text()='English']]]")
 ```
 
+### Event listener `event.target` vs `event.currentTarget`
+
+https://stackoverflow.com/a/10086501
+- `currentTarget` = listening element (e.g. the individual button that has the click event listener fired on it)
+- `target` = triggering element (i.e. maybe the button, or maybe the i or span you actually clicked on inside of the button) 
+
 ### ReqBin - test API endpoints by making API requests
 
 https://reqbin.com/ - also shows a bunch of example requests like GET with bearer token auth header, or Curl/JS/Python/PHP/REST/POST/JSON/POST/PATCH/PUT/DELETE

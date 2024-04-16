@@ -32,7 +32,7 @@ example:
 ## [`.reduce((c,v,i,a)=>{},init)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#parameters)
 - "reducecvia"
 - or "**recvia**", which sounds like "wreck vehicle" or "rec vehicle"
-- or "**redeia**" (`.reduce((c,e,i,a)=>{},init)`)
+- or "**redceia**" (`.reduce((c,e,i,a)=>{},init)`)
 
 example:
 

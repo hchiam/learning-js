@@ -11,9 +11,19 @@ javascript:(function() {
   overlay.style.fontFamily = 'Arial, sans-serif';
   overlay.style.fontSize = '16px';
   overlay.style.userSelect = 'none';
-  overlay.style.pointerEvents = 'none';
+  overlay.style.transition = 'left 0.5s';
 
   document.body.appendChild(overlay);
+
+  let timeoutId = null;
+
+  overlay.addEventListener('mouseenter', function() {
+    overlay.style.left = '-100%'; 
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(function() {
+      overlay.style.left = '10px';
+    }, 3000);
+  });
 
   document.addEventListener('keydown', function(event) {
     const ctrl = event.ctrlKey ? 'Ctrl+' : '';

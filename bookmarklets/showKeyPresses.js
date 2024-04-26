@@ -4,7 +4,7 @@ javascript:(function() {
   overlay.style.bottom = '10px';
   overlay.style.left = '10px';
   overlay.style.padding = '5px 10px';
-  overlay.style.backgroundColor = 'rgba(0,0,0,0.7)';
+  overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
   overlay.style.color = 'white';
   overlay.style.zIndex = '10000';
   overlay.style.borderRadius = '5px';

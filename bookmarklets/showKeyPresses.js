@@ -1,6 +1,6 @@
 javascript:(function() {
   const overlay = document.createElement('div');
-  overlay.id = 'keypressOverlayBookmarklet';
+  overlay.id = 'keypressBookmarkletOverlay';
   overlay.style.position = 'fixed';
   overlay.style.bottom = '10px';
   overlay.style.left = '-100%';
@@ -28,13 +28,14 @@ javascript:(function() {
   });
 
   document.addEventListener('keydown', function(event) {
-    const ctrl = event.ctrlKey ? '<kbd>Ctrl</kbd>+' : '';
-    const alt = event.altKey ? '<kbd>Alt</kbd>+' : '';
-    const shift = event.shiftKey ? '<kbd>Shift</kbd>+' : '';
-    const meta = event.metaKey ? '<kbd>Cmd/Window</kbd>+' : '';
+    const ctrl = event.ctrlKey ? '<kbd>Ctrl</kbd> + ' : '';
+    const alt = event.altKey ? '<kbd>Alt</kbd> + ' : '';
+    const shift = event.shiftKey ? '<kbd>Shift</kbd> + ' : '';
+    const meta = event.metaKey ? '<kbd>Cmd/Window</kbd> + ' : '';
     let keyName = event.key === ' ' ? 'Spacebar' : event.key;
 
-    let modifiersWithoutPlus = `${ctrl}${alt}${shift}${meta}`.slice(0, -1);
+    let modifiers = `${ctrl}${alt}${shift}${meta}`;
+    modifiers = modifiers.substring(0, modifiers.length - (modifiers.endsWith(' + ') ? 3 : 0));
     let isFunctionKey = /^F[1-9][0-2]?$/.test(keyName);
     let isNonModifierKey = !['Alt', 'Shift', 'Control', 'Meta'].includes(keyName);
     let displayKeyName = '';
@@ -43,7 +44,7 @@ javascript:(function() {
       displayKeyName = `<kbd>${keyName}</kbd>`;
     }
 
-    overlay.innerHTML = `Key pressed: ${modifiersWithoutPlus}${modifiersWithoutPlus && displayKeyName ? '+' : ''}${displayKeyName}`;
+    overlay.innerHTML = `Hit: ${modifiers}${modifiers && displayKeyName ? ' + ' : ''}${displayKeyName}`;
     overlay.style.opacity = '1';
     overlay.style.left = '10px';
 
@@ -56,7 +57,7 @@ javascript:(function() {
 
   const style = document.createElement('style');
   document.head.appendChild(style);
-  style.sheet.insertRule(`#keypressOverlayBookmarklet kbd {
+  style.sheet.insertRule(`#keypressBookmarkletOverlay kbd {
     padding: 5px 10px !important;
     font-family: Arial, sans-serif !important;
     background-color: #333 !important;

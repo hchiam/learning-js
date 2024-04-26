@@ -2,23 +2,24 @@ javascript:(function() {
   const overlay = document.createElement('div');
   overlay.style.position = 'fixed';
   overlay.style.bottom = '10px';
-  overlay.style.left = '10px';
-  overlay.style.padding = '5px 10px';
-  overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
+  overlay.style.left = '-100%';
+  overlay.style.padding = '10px';
+  overlay.style.backgroundColor = 'rgba(0,0,0,0.7)';
   overlay.style.color = 'white';
   overlay.style.zIndex = '10000';
   overlay.style.borderRadius = '5px';
   overlay.style.fontFamily = 'Arial, sans-serif';
   overlay.style.fontSize = '16px';
   overlay.style.userSelect = 'none';
-  overlay.style.transition = 'left 0.5s';
+  overlay.style.opacity = '0';
+  overlay.style.transition = 'left 0.2s, opacity 0.5s';
 
   document.body.appendChild(overlay);
 
   let timeoutId = null;
 
   overlay.addEventListener('mouseenter', function() {
-    overlay.style.left = '-100%'; 
+    overlay.style.left = '-100%';
     clearTimeout(timeoutId);
     timeoutId = setTimeout(function() {
       overlay.style.left = '10px';
@@ -26,10 +27,10 @@ javascript:(function() {
   });
 
   document.addEventListener('keydown', function(event) {
-    const ctrl = event.ctrlKey ? 'Ctrl+' : '';
-    const alt = event.altKey ? 'Alt+' : '';
-    const shift = event.shiftKey ? 'Shift+' : '';
-    const meta = event.metaKey ? 'Cmd/Window+' : '';
+    const ctrl = event.ctrlKey ? '<kbd>Ctrl</kbd>+' : '';
+    const alt = event.altKey ? '<kbd>Alt</kbd>+' : '';
+    const shift = event.shiftKey ? '<kbd>Shift</kbd>+' : '';
+    const meta = event.metaKey ? '<kbd>Cmd/Window</kbd>+' : '';
     let keyName = event.key === ' ' ? 'Spacebar' : event.key;
 
     let modifiersWithoutPlus = `${ctrl}${alt}${shift}${meta}`.slice(0, -1);
@@ -38,9 +39,30 @@ javascript:(function() {
     let displayKeyName = '';
 
     if (isFunctionKey || isNonModifierKey) {
-      displayKeyName = keyName;
+      displayKeyName = `<kbd>${keyName}</kbd>`;
     }
 
-    overlay.textContent = `Key pressed: ${modifiersWithoutPlus}${modifiersWithoutPlus && displayKeyName ? '+' : ''}${displayKeyName}`;
+    overlay.innerHTML = `Key pressed: ${modifiersWithoutPlus}${modifiersWithoutPlus && displayKeyName ? '+' : ''}${displayKeyName}`;
+    overlay.style.opacity = '1';
+    overlay.style.left = '10px';
+
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(function() {
+      overlay.style.opacity = '0';
+      overlay.innerHTML = '';
+    }, 1000);
   });
+
+  const style = document.createElement('style');
+  document.head.appendChild(style);
+  style.sheet.insertRule(`kbd {
+    padding: 5px 10px;
+    font-family: Arial, sans-serif;
+    background-color: #eee;
+    border: 1px solid #b4b4b4;
+    box-shadow: 1px 1px 0 #fff, 2px 2px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    margin: 2px;
+    vertical-align: middle;
+  }`);
 })();

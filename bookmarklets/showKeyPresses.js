@@ -1,5 +1,6 @@
 javascript:(function() {
   const overlay = document.createElement('div');
+  overlay.id = 'keypressOverlayBookmarklet';
   overlay.style.position = 'fixed';
   overlay.style.bottom = '10px';
   overlay.style.left = '-100%';
@@ -55,14 +56,15 @@ javascript:(function() {
 
   const style = document.createElement('style');
   document.head.appendChild(style);
-  style.sheet.insertRule(`kbd {
-    padding: 5px 10px;
-    font-family: Arial, sans-serif;
-    background-color: #eee;
-    border: 1px solid #b4b4b4;
-    box-shadow: 1px 1px 0 #fff, 2px 2px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 3px;
-    margin: 2px;
-    vertical-align: middle;
+  style.sheet.insertRule(`#keypressOverlayBookmarklet kbd {
+    padding: 5px 10px !important;
+    font-family: Arial, sans-serif !important;
+    background-color: #333 !important;
+    color: #fff !important;
+    border: 1px solid #b4b4b4 !important;
+    box-shadow: 1px 1px 0 #fff, 2px 2px 0 rgba(0, 0, 0, 0.2) !important;
+    border-radius: 3px !important;
+    margin: 2px !important;
+    vertical-align: middle !important;
   }`);
 })();

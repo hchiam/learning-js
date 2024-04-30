@@ -418,6 +418,10 @@ https://stackoverflow.com/a/10086501
 - `currentTarget` = listening element (e.g. the individual button that has the click event listener fired on it)
 - `target` = triggering element (i.e. maybe the button, or maybe the i or span you actually clicked on inside of the button) 
 
+### operator precedence reference
+
+for example, `&` is evaluated before `&&` before `||`: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table
+
 ### ReqBin - test API endpoints by making API requests
 
 https://reqbin.com/ - also shows a bunch of example requests like GET with bearer token auth header, or Curl/JS/Python/PHP/REST/POST/JSON/POST/PATCH/PUT/DELETE

@@ -16,6 +16,14 @@ e.g.:
 - https://javascript.info/proxy
 - https://javascript.info/currying-partials
 
+### ReqBin - test API endpoints by making API requests
+
+https://reqbin.com/ - also shows a bunch of example requests like GET with bearer token auth header, or Curl/JS/Python/PHP/REST/POST/JSON/POST/PATCH/PUT/DELETE
+
+https://reqbin.com/json-formatter
+
+https://reqbin.com/json-formatter
+
 ## How to Run .js Files Using Terminal/CommandLine:
 
 Make sure to include console.log("output text here");
@@ -431,11 +439,3 @@ https://stackoverflow.com/a/10086501
 ### operator precedence reference
 
 for example, `&` is evaluated before `&&` before `||`: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table
-
-### ReqBin - test API endpoints by making API requests
-
-https://reqbin.com/ - also shows a bunch of example requests like GET with bearer token auth header, or Curl/JS/Python/PHP/REST/POST/JSON/POST/PATCH/PUT/DELETE
-
-https://reqbin.com/json-formatter
-
-https://reqbin.com/json-formatter

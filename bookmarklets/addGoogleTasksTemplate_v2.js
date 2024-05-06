@@ -1,14 +1,10 @@
-javascript:(async() => {
+javascript:(() => {
   if (location.host !== 'tasks.google.com') {
     alert('opening Google tasks - rerun the bookmarklet there');
     window.open('https://tasks.google.com/embed/?origin=https://mail.google.com&fullWidth=1&amp;lfhs=2');
     return;
   }
-  const template = `3-4:30 Break
-4:30-6 Study
-6-7 Eat
-7-8:30 Study
-8:30-10 Break`; // each new line will create a new task (non-nested) when pasted
+  const template = '3-4:30 Break\n4:30-6 Study\n6-7 Eat\n7-8:30 Study\n8:30-10 Break'; /* each new line will create a new task (non-nested) when pasted */
   copy(template);
   function copy(text) {
     var textarea = document.createElement("textarea");

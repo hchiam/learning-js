@@ -439,3 +439,7 @@ https://stackoverflow.com/a/10086501
 ### operator precedence reference
 
 for example, `&` is evaluated before `&&` before `||`: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table
+
+### example of debugging with chrome dev tools and fixing code base
+
+"Optimizing INP: A deep dive": https://youtu.be/cmtfM4emG5k

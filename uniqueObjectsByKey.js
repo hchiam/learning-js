@@ -10,5 +10,5 @@ var array =
 console.log(uniqueObjectsByKey(array, 'age'));
 */
 function uniqueObjectsByKey(arrayOfObjects, key) {
-  return [...new Map(array.map((item) => [item[key],item]))];
+  return [...new Map(arrayOfObjects.map((item) => [item[key],item]))].map(item => item[1]);
 }

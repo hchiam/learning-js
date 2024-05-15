@@ -44,6 +44,11 @@ javascript:(function() {
       displayKeyName = `<kbd>${keyName}</kbd>`;
     }
 
+    if (document.activeElement.type === 'password') {
+      modifiers = '';
+      displayKeyName = '•';
+    }
+
     overlay.innerHTML = `Hit: ${modifiers}${modifiers && displayKeyName ? ' + ' : ''}${displayKeyName}`;
     overlay.style.opacity = '1';
     overlay.style.left = '10px';

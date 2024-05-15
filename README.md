@@ -443,3 +443,29 @@ for example, `&` is evaluated before `&&` before `||`: https://developer.mozilla
 ### example of debugging with chrome dev tools and fixing code base
 
 "Optimizing INP: A deep dive": https://youtu.be/cmtfM4emG5k
+
+### weird timing behaviour with `try` `catch` `finally`
+
+https://jakearchibald.com/2021/last-return-wins/
+
+The `finally` console log prints `'two'` "before" the `return 'three'`:
+
+```js
+// this code prints out 'one', 'two', 'three', 'four':
+
+function finallyTest() {
+  try {
+    console.log('one');
+    return 'three';
+  } catch (err) {
+    console.log('error');
+  } finally {
+    console.log('two');
+  }
+}
+
+console.log(finallyTest());
+console.log('four');
+```
+
+This might cause unexpected timing issues if you're not aware of this. (Also, `​.finally` behaves differently for `Promise`s.)

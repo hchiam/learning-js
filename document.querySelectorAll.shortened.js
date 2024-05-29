@@ -2,4 +2,4 @@
 $ = document.querySelectorAll.bind(document);
 
 // or even shorter:
-s = s => document.querySelectorAll(s);
+$ = s => document.querySelectorAll(s);

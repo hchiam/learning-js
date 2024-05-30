@@ -8,6 +8,12 @@ javascript: (function () {
       addFlags("[id]");
     }, 500);
   });
+  $('body').on('change', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      addFlags("[id]");
+    }, 500);
+  });
 
   function addFlags(jQuerySelectorString) {
     $("body").find(`[id^="bookmarklet-flag-"]`).remove();
@@ -35,9 +41,12 @@ javascript: (function () {
         $("body").append(
           `<div id="bookmarklet-flag-${id}" title="${id}" style="background:black;box-shadow:0 0 5px 5px black;color:white;position:absolute;top:${top};left:${left};padding:1px;z-index:99999;transition:0.2s">${id}</div>`
         );
-        styleString += `#${id}:not(:hover) { background: ${randomColor}; } `;
+        styleString += `#${id}:not(:hover) { background: ${randomColor}; }
+          body:has(#${id}:hover) #bookmarklet-flag-${id} { opacity:0;pointer-events:none; }
+          [id]:hover #${id} #bookmarklet-flag-${id} { opacity:0;pointer-events:none; }
+          #${id}:has(:hover) #bookmarklet-flag-${id} { opacity:0;pointer-events:none; }`;
         styleString += `#bookmarklet-flag-${id}:not(:hover) { outline:5px solid ${randomColor}; opacity:0.75; }
-   			 #bookmarklet-flag-${id}:hover { opacity:0; } `;
+          #bookmarklet-flag-${id}:hover { opacity:0;pointer-events:none; } `;
       }
     });
     $("body").append(

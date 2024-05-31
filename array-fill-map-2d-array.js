@@ -1,3 +1,5 @@
+// for my own helper class for 2D arrays, see: https://github.com/hchiam/grid
+
 // mnemonic: afm afm
 function get2dArray(rows, cols, valueCallback) {
   return new Array(rows).fill(null).map(() =>

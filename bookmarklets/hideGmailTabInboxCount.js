@@ -1,1 +1,1 @@
-javascript:(()=>{document.title='Gmail';})();
+javascript:(()=>{setInterval(()=>{document.title='Gmail';},1000)})();

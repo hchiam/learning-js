@@ -469,3 +469,5 @@ console.log('four');
 ```
 
 This might cause unexpected timing issues if you're not aware of this. (Also, `​.finally` behaves differently for `Promise`s.)
+
+More notes on `Promise`s and `async`/`await`: https://www.joshwcomeau.com/javascript/promises/

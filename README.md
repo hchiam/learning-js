@@ -471,3 +471,7 @@ console.log('four');
 This might cause unexpected timing issues if you're not aware of this. (Also, `​.finally` behaves differently for `Promise`s.)
 
 More notes on `Promise`s and `async`/`await`: https://www.joshwcomeau.com/javascript/promises/
+
+### Example use of JS animation `ScrollTimeline` that goes dynamically beyond what CSS can do
+
+https://web.dev/articles/building/a-tabs-component#animation

@@ -483,3 +483,13 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 ```js
 var thisisTrue = String.raw`C:\folder\path\file.js` === `C:\\folder\\path\\file.js`;
 ```
+
+```js
+// using new RegExp with String.raw and variable:
+var x = 'Street';
+
+console.log(new RegExp(`(\\d+) ${x}`).exec('123 Street')[1]);
+// '123'
+console.log(new RegExp(String.raw`(\d+) ${x}`).exec('123 Street')[1]);
+// '123'
+```

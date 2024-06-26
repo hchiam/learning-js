@@ -475,3 +475,11 @@ More notes on `Promise`s and `async`/`await`: https://www.joshwcomeau.com/javasc
 ### Example use of JS animation `ScrollTimeline` that goes dynamically beyond what CSS can do
 
 https://web.dev/articles/building/a-tabs-component#animation
+
+### tag function of template literals string, raw
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/raw
+
+```js
+var thisisTrue = String.raw`C:\folder\path\file.js` === `C:\\folder\\path\\file.js`;
+```

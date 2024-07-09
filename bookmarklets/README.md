@@ -43,6 +43,7 @@ For example `data:text/html,<html contenteditable></html>`: https://github.com/h
 ## Enable running bookmarklets quickly with keyboard shortcuts
 
 Chrome currently includes bookmarks (and bookmarklets) in search suggestions by default. Hit `Ctrl+L` -> type part of the bookmarklet name -> hit Enter to run.
+- If you find Chrome suggesting tabs or history annoying, you can disable a flag: chrome://flags/#omnibox-grouping-framework-non-zps
 
 For Firefox: `Ctrl+B` -> type a search -> tab to bookmarklet -> spacebar to select -> Enter to run.
 

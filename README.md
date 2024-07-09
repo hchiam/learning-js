@@ -430,11 +430,14 @@ Building on that, here's an xpath to get just the etymology and definition(s) (`
 $x("//h2[span[text()='English']]/following-sibling::*[self::p or self::ol][preceding-sibling::h2[1][span[text()='English']]]")
 ```
 
-### Event listener `event.target` vs `event.currentTarget`
+### Event listener `event.target` vs `event.currentTarget` vs `event.relatedTarget`
 
 https://stackoverflow.com/a/10086501
 - `currentTarget` = listening element (e.g. the individual button that has the click event listener fired on it)
 - `target` = triggering element (i.e. maybe the button, or maybe the i or span you actually clicked on inside of the button) 
+
+https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent/relatedTarget
+- `relatedTarget` = element focused _to_ for `blur`, focused _from_ for `focus`; similar idea for `focusin` and `focusout` and `mouse`(...)/`drag`(...) events, but note that `relatedTarget` may be `null` for non-focusable elements or for security reasons like tabbing out of a page.
 
 ### operator precedence reference
 

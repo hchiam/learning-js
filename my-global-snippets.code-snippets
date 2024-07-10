@@ -5,33 +5,18 @@
   // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
   // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
   // Placeholders with the same ids are connected.
-  "Print to console": {
-    "scope": "javascript,typescript",
-    "prefix": "log",
-    "body": ["console.log($1);"],
-    "description": "Log output to console"
-  },
   "Console Log": {
     "prefix": "console",
     "body": ["console.log($1);"],
     "description": "console.log"
   },
-  "Pi": {
-    "prefix": "pi",
-    "body": [
-      "3.141592653589793238462643383279502884197169399375105820974944592307816406"
-    ],
-    "description": "The first few digits of pi"
-  },
-  "alert": {
-    "prefix": "alert",
-    "body": ["alert(JSON.stringify($1));"],
-    "description": "alert"
-  },
   "alphabet": {
     "prefix": "abc",
-    "body": ["abcdefghijklmnopqrstuvwxyz"],
-    "description": "abc"
+    "body": ["abcdefghijklmnopqrstuvwxyz"]
+  },
+  "alphabet CAPS": {
+    "prefix": "ABC",
+    "body": ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
   },
   "numbers 0-9": {
     "prefix": "n0123",
@@ -66,7 +51,11 @@
   },
   "iife": {
     "prefix": "iife",
-    "body": [";(function(){})();"],
+    "body": [
+      ";(function(){",
+      "  ${1}",
+      "})();"
+    ],
     "description": "IIFE"
   },
   "describe-test": {

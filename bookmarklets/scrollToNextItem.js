@@ -10,9 +10,7 @@ javascript:(()=>{
     const s = getNextScrollItem();
     $('body').addEventListener('keyup',e=>{
         if (e.key === 's') {
-            window.scrollTo({
-                top: s.next().value.offsetTop
-            });
+            s.next().value.scrollIntoView();
         }
     });
     function* getNextScrollItem() {

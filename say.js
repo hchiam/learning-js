@@ -1,5 +1,11 @@
 /**
 // https://github.com/hchiam/learning-js/blob/main/bookmarklets/say.js
+
+let voices = speechSynthesis.getVoices();
+speechSynthesis.addEventListener("voiceschanged", () => {
+  voices = speechSynthesis.getVoices();
+});
+
 say('quelle heure est-il ?', 'fr-CA');
 */
 function say(what, voiceLang, callback) {

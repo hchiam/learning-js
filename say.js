@@ -1,6 +1,8 @@
 /**
 // https://github.com/hchiam/learning-js/blob/main/bookmarklets/say.js
 
+// https://github.com/hchiam/say-what/blob/main/index.html
+
 let voices = speechSynthesis.getVoices();
 speechSynthesis.addEventListener("voiceschanged", () => {
   voices = speechSynthesis.getVoices();

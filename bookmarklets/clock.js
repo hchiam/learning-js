@@ -16,8 +16,8 @@ javascript:(()=>{
         btn.style.borderRadius = '3px';
         btn.style.outline = 'transparent';
         btn.style.background = 'transparent';
-        btn.style['-webkit-text-fill-color'] = 'black';
-        btn.style['-webkit-text-stroke'] = '2px #ffffff80';
+        btn.style['-webkit-text-fill-color'] = 'white';
+        btn.style['-webkit-text-stroke'] = '2px #00000080';
         btn.style['paint-order'] = 'stroke fill';
         btn.style.fontFamily = 'monospace';
 

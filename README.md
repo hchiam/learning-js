@@ -333,6 +333,10 @@ Firefox:
 
 ![scope_dev_tools_firefox.png](scope_dev_tools_firefox.png)
 
+### Regex and ReDoS security
+
+- avoid evil RegEx, avoid exponential backtracking, avoid ReDoS: https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS
+
 ### Regex cheatsheet
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet

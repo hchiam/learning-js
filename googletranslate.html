@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <body>
+  <body class="notranslate">
     <!--These are the essentials: (page with TEXT, element ID for where to generate select box, JS code to create select box, SCRIPT src= google API call to create element)-->
-    <p>
+    <p class="translate">
       All text on this page will automatically translate with the selection in
-      the selection box generated from Google's "translation API".
+      the selection box generated from Google's "translation API". Unless you
+      add class="notranslate" on the body, and class="translate" on the target.
     </p>
     <div id="myDivIDMakeIntoSelectBox">
       This element with id="myDivIDMakeIntoSelectBox" will turn into a selection
@@ -18,6 +19,11 @@
           { pageLanguage: "en" },
           "myDivIDMakeIntoSelectBox"
         );
+        // setTimeout(()=>{
+        //   const select = document.querySelector('#myDivIDMakeIntoSelectBox').querySelector('select');
+        //   select.value = 'fr';
+        //   select.click();
+        // },1000);
       }
     </script>
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

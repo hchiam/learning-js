@@ -5,9 +5,14 @@ javascript: (function () {
     x.addEventListener("click", (e) => {
       if (window.highlightWhatYouClick) {
         e.stopPropagation();
-        x.style.background = "gold";
-        x.style.color = "black";
-        x.nextElementSibling?.scrollIntoView({ behavior: "smooth" });
+        if (x.style.background !== "gold") {
+          x.style.background = "gold";
+          x.style.color = "black";
+          x.nextElementSibling?.scrollIntoView({ behavior: "smooth" });
+        } else {
+          x.style.background = "";
+          x.style.color = "";
+        }
       }
     });
     let outline = x.style.outline;

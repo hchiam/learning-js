@@ -77,6 +77,27 @@ javascript: (function () {
 
     var lastAnnouncedMinute = -1;
 
+    window.analogClockBookmarklet = {
+        clock: clock,
+        clockInterval: setInterval(updateClock, 1000),
+        fullscreenCheckInterval: updateContainerIfFullScreen(container => {
+            if (!container.contains(clock)) container.appendChild(clock);
+        })
+    };
+
+    var positionTopRight = true;
+
+    clock.addEventListener("mouseenter", function () {
+        if (positionTopRight) {
+            clock.style.top = "calc(100% - 122px)";
+            clock.style.left = "10px";
+        } else {
+            clock.style.top = "10px";
+            clock.style.left = "calc(100% - 122px)";
+        }
+        positionTopRight = !positionTopRight;
+    });
+
     function updateClock() {
         var now = new Date();
         var sec = now.getSeconds();
@@ -120,14 +141,6 @@ javascript: (function () {
         speechSynthesis.speak(utterance);
     }
 
-    window.analogClockBookmarklet = {
-        clock: clock,
-        clockInterval: setInterval(updateClock, 1000),
-        fullscreenCheckInterval: updateContainerIfFullScreen(container => {
-            if (!container.contains(clock)) container.appendChild(clock);
-        })
-    };
-
     function updateContainerIfFullScreen(callback, pollInterval = 1000, fallbackElement = document.body) {
         return setInterval(() => {
             const fullscreenElement = document.querySelector(':fullscreen');
@@ -138,17 +151,4 @@ javascript: (function () {
             }
         }, pollInterval);
     }
-
-    var positionTopRight = true;
-
-    clock.addEventListener("mouseenter", function () {
-        if (positionTopRight) {
-            clock.style.top = "calc(100% - 122px)";
-            clock.style.left = "10px";
-        } else {
-            clock.style.top = "10px";
-            clock.style.left = "calc(100% - 122px)";
-        }
-        positionTopRight = !positionTopRight;
-    });
 })();

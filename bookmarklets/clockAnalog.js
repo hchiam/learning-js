@@ -123,7 +123,9 @@ javascript: (function () {
     window.analogClockBookmarklet = {
         clock: clock,
         clockInterval: setInterval(updateClock, 1000),
-        fullscreenCheckInterval: updateContainerIfFullScreen(container => container.appendChild(clock))
+        fullscreenCheckInterval: updateContainerIfFullScreen(container => {
+            if (!container.contains(clock)) container.appendChild(clock);
+        })
     };
 
     function updateContainerIfFullScreen(callback, pollInterval = 1000, fallbackElement = document.body) {

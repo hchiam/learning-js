@@ -1,4 +1,13 @@
 javascript: (function () {
+    if (window.analogClockBookmarklet) {
+        clearInterval(window.analogClockBookmarklet.clockInterval);
+        clearInterval(window.analogClockBookmarklet.fullscreenCheckInterval);
+        window.analogClockBookmarklet.clock.remove();
+        delete window.analogClockBookmarklet;
+        alert("Clock removed");
+        return;
+    }
+
     var shouldAnnounce = confirm("[Generating clock...] \n\nDo you want the clock to ALSO announce the time every quarter hour? (every 15 minutes)");
 
     var clock = document.createElement("div");
@@ -111,8 +120,22 @@ javascript: (function () {
         speechSynthesis.speak(utterance);
     }
 
-    setInterval(updateClock, 1000);
-    updateClock();
+    window.analogClockBookmarklet = {
+        clock: clock,
+        clockInterval: setInterval(updateClock, 1000),
+        fullscreenCheckInterval: updateContainerIfFullScreen(container => container.appendChild(clock))
+    };
+
+    function updateContainerIfFullScreen(callback, pollInterval = 1000, fallbackElement = document.body) {
+        return setInterval(() => {
+            const fullscreenElement = document.querySelector(':fullscreen');
+            if (fullscreenElement) {
+                callback(fullscreenElement);
+            } else {
+                callback(fallbackElement);
+            }
+        }, pollInterval);
+    }
 
     var positionTopRight = true;
 

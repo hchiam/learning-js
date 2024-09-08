@@ -1,10 +1,13 @@
-javascript:(()=>{
+javascript: (() => {
     /* like when you still want to see the clock while watching YouTube videos full screen */
     const clock = createClock();
     clock.innerText = time();
-    let clockInterval = setInterval(()=>{
+    let clockInterval = setInterval(() => {
         clock.innerText = time();
-    },1000);
+    }, 1000);
+    updateContainerIfFullScreen(container => {
+        if (!container.contains(clock)) container.appendChild(clock);
+    });
     function createClock() {
         const btn = document.createElement('button');
         btn.id = 'bookmarklet_clock';
@@ -21,21 +24,21 @@ javascript:(()=>{
         btn.style['paint-order'] = 'stroke fill';
         btn.style.fontFamily = 'monospace';
 
-        btn.addEventListener('hover', ()=>{
+        btn.addEventListener('hover', () => {
             btn.style.background = 'red';
         });
-        btn.addEventListener('mouseover', ()=>{
+        btn.addEventListener('mouseover', () => {
             btn.style.background = 'red';
         });
-        btn.addEventListener('focus', ()=>{
+        btn.addEventListener('focus', () => {
             btn.style.background = 'red';
         });
-        
-        btn.addEventListener('click', ()=>{
+
+        btn.addEventListener('click', () => {
             stopClock();
             btn.remove();
         });
-        
+
         document.body.appendChild(btn);
         return btn;
     }
@@ -47,9 +50,19 @@ javascript:(()=>{
         return `${fmt(h)}:${fmt(m)}:${fmt(s)}`;
     }
     function fmt(t) {
-        return String(t).padStart(2,0);
+        return String(t).padStart(2, 0);
     }
     function stopClock() {
         clearInterval(clockInterval);
+    }
+    function updateContainerIfFullScreen(callback, pollInterval = 1000, fallbackElement = document.body) {
+        return setInterval(() => {
+            const fullscreenElement = document.querySelector(':fullscreen');
+            if (fullscreenElement) {
+                callback(fullscreenElement);
+            } else {
+                callback(fallbackElement);
+            }
+        }, pollInterval);
     }
 })();

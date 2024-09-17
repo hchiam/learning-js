@@ -508,3 +508,11 @@ You might know about `' '` and `&nbsp;`, but did you know about `&puncsp;` (`'\u
 ```js
 'a'.padEnd(10, '\u2008'); // U+2008 is Unicode for &puncsp;
 ```
+
+### using JS to set CSS styles
+
+```js
+element.style.color = 'red'; // this does something
+element.style.color = 'red !important'; // WARNING: this won't do anything! it won't even change the color!
+element.style.setProperty('color', 'red', 'important'); // this works if you want to include !important
+```

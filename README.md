@@ -516,3 +516,11 @@ element.style.color = 'red'; // this does something
 element.style.color = 'red !important'; // WARNING: this won't do anything! it won't even change the color!
 element.style.setProperty('color', 'red', 'important'); // this works if you want to include !important
 ```
+
+### width and height of HTML elements in CSS/JS
+
+https://stackoverflow.com/questions/21064101/understanding-offsetwidth-clientwidth-scrollwidth-and-height-respectively
+- offsetWidth, offsetHeight (includes padding and border)
+    - clientWidth, clientHeight (like offsetWidth and offsetHeight but without the padding or border)
+- CSS width, CSS height
+- scrollWidth, scrollHeight (doesn't include padding or border, but does include overflow content)

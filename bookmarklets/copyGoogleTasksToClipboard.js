@@ -23,7 +23,7 @@ javascript: (() => {
         );
         let indent = "";
         if (isSubtask) {
-          indent += " ▸ ";
+          indent += "  ";
         }
         if (isDescription) {
           indent += "     ";
@@ -39,7 +39,9 @@ javascript: (() => {
         ) {
           linkText = " " + emailLink.href;
         }
-        return indent + task.innerText + linkText;
+        return (
+          indent + (!isDescription ? "▶ " : "") + task.innerText + linkText
+        );
       })
       .join("\n\n");
     copy(singleString);

@@ -1,7 +1,11 @@
 javascript: (() => {
   if (location.host !== "tasks.google.com") {
-    location.href =
-      "https://tasks.google.com/embed/?origin=https://mail.google.com&fullWidth=1&amp;lfhs=2";
+    window
+      .open(
+        "https://tasks.google.com/embed/?origin=https://mail.google.com&fullWidth=1&amp;lfhs=2",
+        "_blank"
+      )
+      .focus();
   } else {
     getTasks();
   }
@@ -19,7 +23,7 @@ javascript: (() => {
         );
         let indent = "";
         if (isSubtask) {
-          indent += "  ";
+          indent += " ▸ ";
         }
         if (isDescription) {
           indent += "     ";
@@ -37,7 +41,7 @@ javascript: (() => {
         }
         return indent + task.innerText + linkText;
       })
-      .join("\n");
+      .join("\n\n");
     copy(singleString);
   }
   function copy(text) {

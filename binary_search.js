@@ -1,3 +1,9 @@
+/**
+A GREAT LEETCODE POST TO LEARN HOW TO USE A HELPFUL 
+CODE TEMPLATE FOR BINARY SEARCH: 
+https://leetcode.com/discuss/general-discussion/786126/Python-Powerful-Ultimate-Binary-Search-Template.-Solved-many-problems
+*/
+
 const targets = [7, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, -1];
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const answers = 0b00111111111101;

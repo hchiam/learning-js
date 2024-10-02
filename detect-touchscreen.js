@@ -1,3 +1,3 @@
 function usingTouchScreen() {
-  return window.matchMedia("(hover: none) and (pointer: coarse)")?.matches;
+  return window.matchMedia?.("(hover: none) and (pointer: coarse)")?.matches;
 }

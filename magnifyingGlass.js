@@ -1,7 +1,7 @@
 magnifyingGlass();
 
 /**
-clone the page and translate/zoom/clip the clone to simulate a magnifying glass:
+clone the page and clip, translate, and zoom the clone to simulate a magnifying glass:
 */
 function magnifyingGlass() {
   var magnifierSize = 200;

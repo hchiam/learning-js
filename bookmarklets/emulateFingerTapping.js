@@ -7,6 +7,7 @@ svgContainer.innerHTML = getSvgHand();
 svgContainer.style.position = 'fixed';
 svgContainer.style.pointerEvents = 'none';
 svgContainer.style.transform = useLeftHand ? 'scaleX(-1) translate(calc(100% - 34.0157px), -9mm)' : 'translate(-9mm, -9mm)';
+svgContainer.style.zIndex = 2147483647;
 document.body.appendChild(svgContainer);
 
 function followPosition(clientPosition) {

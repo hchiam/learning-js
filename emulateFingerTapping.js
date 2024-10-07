@@ -1,7 +1,11 @@
-var makeFingerDisappearOnLift = true;
+var makeFingerDisappearOnLift = false;
 var div = document.createElement('div');
 div.style.position = 'fixed';
-div.innerText = 'hi';
+div.style.background = '#0000ff80';
+div.style.height = '7cm';
+div.style.width = '18mm';
+div.style.transform = 'translate(-50%, -9mm)';
+div.style.borderRadius = '9mm 9mm 0 0';
 document.body.appendChild(div);
 function followPosition(clientPosition) {
   div.style.left = clientPosition.clientX + 'px';

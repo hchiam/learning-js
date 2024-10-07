@@ -37,13 +37,10 @@ function magnifyingGlass() {
   magnifierContent.style.position = 'absolute';
   magnifierContent.style.top = '0';
   magnifierContent.style.left = '0';
-  magnifierContent.style.width = document.documentElement.scrollWidth + 'px';
+  magnifierContent.style.width = (document.documentElement.scrollWidth + getScrollbarWidth()) + 'px';
   magnifierContent.style.height = document.documentElement.scrollHeight + 'px';
 
-  // Clone the entire document
   var clonedDocument = document.documentElement.cloneNode(true);
-
-  // Remove scripts to prevent duplicated execution
   var scripts = clonedDocument.querySelectorAll('script');
   scripts.forEach(function(script) {
     script.parentNode.removeChild(script);
@@ -73,7 +70,12 @@ function magnifyingGlass() {
   }
 
   function onWindowResize() {
-    magnifierContent.style.width = document.documentElement.scrollWidth + 'px';
+    magnifierContent.style.width = (document.documentElement.scrollWidth + getScrollbarWidth()) + 'px';
     magnifierContent.style.height = document.documentElement.scrollHeight + 'px';
+  }
+
+  /* https://github.com/hchiam/learning-js/blob/main/scrollbarWidth.js */
+  function getScrollbarWidth() {
+    return window.innerWidth - document.documentElement.clientWidth;
   }
 }

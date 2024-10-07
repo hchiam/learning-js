@@ -52,11 +52,13 @@ function magnifyingGlass() {
   function moveMagnifier(e) {
     var x = e.clientX;
     var y = e.clientY;
+    var pageX = e.pageX;
+    var pageY = e.pageY;
     
     magnifier.style.left = (x - halfMagnifierSize) + 'px';
     magnifier.style.top = (y - halfMagnifierSize) + 'px';
     
-    magnifierContent.style.transformOrigin = x + 'px ' + y + 'px';
-    magnifierContent.style.transform = 'translate(' + (-x + halfMagnifierSize) + 'px, ' + (-y + halfMagnifierSize) + 'px) scale(' + magnificationScale + ')';
+    magnifierContent.style.transformOrigin = pageX + 'px ' + pageY + 'px';
+    magnifierContent.style.transform = 'translate(' + (-pageX + halfMagnifierSize) + 'px, ' + (-pageY + halfMagnifierSize) + 'px) scale(' + magnificationScale + ')';
   }
 }

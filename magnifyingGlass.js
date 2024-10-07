@@ -74,7 +74,7 @@ function magnifyingGlass() {
     magnifierContent.style.height = document.documentElement.scrollHeight + 'px';
   }
 
-  /* https://github.com/hchiam/learning-js/blob/main/scrollbarWidth.js */
+  /** https://github.com/hchiam/learning-js/blob/main/scrollbarWidth.js */
   function getScrollbarWidth() {
     return window.innerWidth - document.documentElement.clientWidth;
   }

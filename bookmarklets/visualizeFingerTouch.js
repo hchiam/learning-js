@@ -1,6 +1,7 @@
 javascript:(()=>{
   var useLeftHand = false;
   var makeFingerDisappearOnLift = false;
+  var handColour = '#0000ff80';
 
   var finger = createHtml();
   document.body.appendChild(finger);
@@ -43,7 +44,7 @@ javascript:(()=>{
     index.style.borderRadius = '9mm 9mm 0 0';
     index.style.transformOrigin = '0 0';
     index.style.transform = (useLeftHand ? 'scaleX(-1) ' : '') + 'rotate(-0.125turn) translate(-9mm, -9mm) ';
-    index.style.background = '#0000ff80';
+    index.style.background = handColour;
     index.style.pointerEvents = 'none';
     index.style.zIndex = 2147483647;
     index.style.boxSizing = 'border-box';

@@ -3,6 +3,7 @@ function addProgressBar() {
     progressBar.max = 100;
     progressBar.value = 0;
     progressBar.style.position = 'fixed';
+    progressBar.style.zIndex = 2147483647;
     progressBar.style.top = '1rem';
     progressBar.style.left = '1rem';
     progressBar.style.transition = 'height 0.2s';

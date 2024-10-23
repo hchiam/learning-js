@@ -1,3 +1,42 @@
+/*
+TODO: test this class implementation:
+TODO: test this class implementation:
+TODO: test this class implementation:
+
+class TrieNode {
+    constructor(val, isEndOfWord) {
+        this.val = val;
+        this.isEndOfWord = isEndOfWord;
+        this.next = {};
+    }
+}
+
+class Trie {
+    constructor() {
+        this.trie = new TrieNode('', true);
+    }
+    add(word) {
+        let p = this.trie;
+        for (let letter of word) {
+            if (!(letter in p.next)) {
+                p.next[letter] = new TrieNode(letter, false);
+            }
+            p = p.next[letter];
+        }
+        p.isEndOfWord = true;
+    }
+    find(word) {
+        if (!word) return true;
+        let p = this.trie;
+        for (let letter of word) {
+            if (!(letter in p.next)) return false;
+            p = p.next[letter];
+        }
+        return p.isEndOfWord;
+    }
+}
+*/
+
 var TrieNode = function (value, isEndOfWord = false) {
   this.value = value;
   this.children = {};

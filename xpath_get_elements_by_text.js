@@ -1,3 +1,8 @@
+function getElementsByText(text) {
+  return getElementsByXPath(`//*[text()='${text}']`); // see getElementsByXPath below
+}
+
+
 // https://developer.mozilla.org/en-US/docs/Web/API/Document/evaluate
 
 // EXAMPLE:

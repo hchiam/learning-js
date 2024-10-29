@@ -1,3 +1,4 @@
+// or https://github.com/hchiam/learning-jquery/blob/main/getElementByText.js
 function getElementsByText(text) {
   return getElementsByXPath(`//*[text()='${text}']`); // see getElementsByXPath below
 }

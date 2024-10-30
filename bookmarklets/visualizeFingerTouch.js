@@ -39,7 +39,7 @@ javascript:(()=>{
   function createHtml() {
     var index = document.createElement('div');
     index.style.position = 'fixed';
-    index.style.width = '18mm'; /* https://www.smashingmagazine.com/2012/02/index-friendly-design-ideal-mobile-touchscreen-target-sizes */
+    index.style.width = '18mm'; /* https://www.smashingmagazine.com/2012/02/finger-friendly-design-ideal-mobile-touchscreen-target-sizes */
     index.style.height = '75mm';
     index.style.borderRadius = '9mm 9mm 0 0';
     index.style.transformOrigin = '0 0';

@@ -221,6 +221,13 @@ In the console terminal CLI:
 
 - https://github.com/hchiam/learning-nodejs/blob/master/README.md#read-a-local-file-via-console-cli
 
+### Compare JSON files
+
+https://codepen.io/hchiam/pen/RwXqxwZ
+- edited
+- deleted
+- added
+
 ### Get a lot of the functions and jQuery event listeners in a script string:
 
 https://github.com/hchiam/getFunctions

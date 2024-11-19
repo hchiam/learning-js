@@ -531,3 +531,12 @@ https://stackoverflow.com/questions/21064101/understanding-offsetwidth-clientwid
     - clientWidth, clientHeight (like offsetWidth and offsetHeight but without the padding or border)
 - CSS width, CSS height
 - scrollWidth, scrollHeight (doesn't include padding or border, but does include overflow content)
+
+### remove initial "1." text node without replacing children HTML:
+
+```js
+// if first child (likely textNode) starts with "#.", then remove that child:
+if (/^\d+\.$/.test(element.childNodes[0].nodeValue)) {
+    element.childNodes[0].remove();
+}
+```

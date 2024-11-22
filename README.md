@@ -32,6 +32,8 @@ Make sure to include console.log("output text here");
 
 ## Learn about Modern ES6 JS Features
 
+ES6 (ECMAScript 2015) started in **2015**, with yearly additions after that: https://www.w3schools.com/js/js_versions.asp
+
 <https://stackoverflow.blog/2019/09/12/practical-ways-to-write-better-javascript>
 
 Also note the stuff around the default values for function arguments here: <https://devhints.io/es6?ref=devawesome.io>

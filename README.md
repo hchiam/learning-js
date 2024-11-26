@@ -542,3 +542,14 @@ if (/^\d+\.$/.test(element.childNodes[0].nodeValue)) {
     element.childNodes[0].remove();
 }
 ```
+
+### `Set` methods
+
+- https://web.dev/blog/set-methods?hl=en
+    - `aSet.intersection(bSet)`
+    - `aSet.union(bSet)`
+    - `firstSet.difference(notInSecondSet)`
+    - `inAXorB = aSet.symmetricDifference(bSet)`
+    - `fours.isSubsetOf(events)`
+    - `evens.isSupersetOf(fours)`
+    - `haveNothingInCommon = primes.isDisjointFrom(squares)`

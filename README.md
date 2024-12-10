@@ -372,6 +372,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expression
 - `\xhh` = character with 2 hexadecimal digits
 - `\uhhhh` = UTF-16 character with 4 hexadecimal digits
 - `\u{hhhh}`, `\u{hhhhh}` (with `u` flag) = Unicode character with 4/5 hexadecimal digits
+    - `'\u{2713}' === '\u2713'` but can include other symbols than numbers in brackets
 
 My applied example: regex to automatically group digits with spaces in input boxes:
 - https://codepen.io/hchiam/pen/yLrjgrV (4 digits from left to right, or from right to left)
@@ -513,6 +514,7 @@ console.log(new RegExp(String.raw`(\d+) ${x}`).exec('123 Street')[1]);
 ### space characters
 
 You might know about `' '` and `&nbsp;`, but did you know about `&puncsp;` (`'\u2008'`) which takes up space but is able to wrap? there's even more Unicode characters: https://stackoverflow.com/questions/8515365/are-there-other-whitespace-codes-like-nbsp-for-half-spaces-em-spaces-en-space You can also do this in JS:
+    - `'\u{2713}' === '\u2713'` but can include other symbols than numbers in brackets
 
 ```js
 'a'.padEnd(10, '\u2008'); // U+2008 is Unicode for &puncsp;

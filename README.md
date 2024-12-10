@@ -555,3 +555,31 @@ if (/^\d+\.$/.test(element.childNodes[0].nodeValue)) {
     - `fours.isSubsetOf(events)`
     - `evens.isSupersetOf(fours)`
     - `haveNothingInCommon = primes.isDisjointFrom(squares)`
+
+## `document.implementation.createHTMLDocument()`:
+
+- https://www.youtube.com/watch?v=surh_D8CU9A&list=PLNYkxOF6rcIAEVKJ98bDkQRkwvO4grhnt&index=11
+- https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createHTMLDocument#examples
+
+```js
+output.innerHTML = '';
+const doc = document.implementation.createHTMLDocument(); // <-- a key part
+doc.write('<p>list:</p><ul><li>');
+output.append(doc.body.firstChild); // <-- a key part
+// then to keep appending:
+let previousLength = 0; // until browser stream chunk implementation detail changes
+for await (const chunk of stream) {
+  const newContent = sanitized(chunk.slice(previousLength)) + '<li>';
+  previousLength = chunk.length;
+  doc.write(newContent); // <-- a key part for streaming instead of replacing all
+}
+doc.write('</ul>');
+```
+
+which can more performant/streamable than this:
+
+```js
+output.innerHTML = '<p>completely replacing everything every time</p>';
+```
+
+You can see the difference in Chrome DevTools with Ctrl+Shift+P > Rendering > Paint flashing. 

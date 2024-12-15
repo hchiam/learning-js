@@ -21,7 +21,7 @@ An alternative to bookmarklets are [Chrome Snippets](https://developer.chrome.co
 - mac: <kbd>command</kbd> + <kbd>L</kbd>, then type to search for the bookmark name, then hit enter --> the code in the bookmarklet will be run
 - pc: <kbd>Ctrl</kbd> + <kbd>L</kbd>, then type to search for the bookmark name, then hit enter --> the code in the bookmarklet will be run
 
-## You can also use bookmarklets on mobile devices
+## You can also set up and use bookmarklets on mobile devices
 
 - https://support.start.me/en/articles/9182868-bookmarklet-install-on-your-mobile-device
 - https://paul.kinlan.me/use-bookmarklets-on-chrome-on-android/

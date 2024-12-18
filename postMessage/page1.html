@@ -15,7 +15,7 @@
       function sendMessage() {
         let msg = { pName: "Bob", pAge: "100" };
         const targetDomain = "*";
-        // In production, DO NOT use '*', use toe target domain
+        // In production, DO NOT use '*', use to target domain
         popup.postMessage(msg, targetDomain); // popup is the targetWindow
         popup.focus();
       }

@@ -584,7 +584,9 @@ output.innerHTML = '<p>completely replacing everything every time</p>';
 
 You can see the difference in Chrome DevTools with Ctrl+Shift+P > Rendering > Paint flashing. 
 
-### communicate data between tabs
+## communicate data between tabs and calling functions on the other tab
+
+- requires the first tab opening the second tab in js code
 
 https://stackoverflow.com/questions/1366483/javascript-sharing-data-between-tabs/1367357#1367357
 

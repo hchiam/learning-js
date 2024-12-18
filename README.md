@@ -605,3 +605,5 @@ var parent_window = window.opener;
 var var_from_parent = parent_window.some_var;
 parent_window.someFunction( 'with', 'these', 'params' )
 ```
+
+https://github.com/hchiam/learning-js/tree/main/postMessage

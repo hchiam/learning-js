@@ -583,3 +583,23 @@ output.innerHTML = '<p>completely replacing everything every time</p>';
 ```
 
 You can see the difference in Chrome DevTools with Ctrl+Shift+P > Rendering > Paint flashing. 
+
+### communicate data between tabs
+
+https://stackoverflow.com/questions/1366483/javascript-sharing-data-between-tabs/1367357#1367357
+
+first tab: (opens second tab in js code)
+
+```js
+var child_window = window.open( ...params... );
+var var_from_child = child_window.some_var;
+child_window.someFunction( 'with', 'these', 'params' )
+```
+
+second tab: (opened by first tab in js code)
+
+```js
+var parent_window = window.opener;
+var var_from_parent = parent_window.some_var;
+parent_window.someFunction( 'with', 'these', 'params' )
+```

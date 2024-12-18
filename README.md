@@ -593,7 +593,7 @@ https://stackoverflow.com/questions/1366483/javascript-sharing-data-between-tabs
 first tab: (opens second tab in js code)
 
 ```js
-var child_window = window.open( ...params... );
+var child_window = window.open('http://localhost:5173', '_blank');
 var var_from_child = child_window.some_var;
 child_window.someFunction( 'with', 'these', 'params' )
 ```

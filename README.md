@@ -8,23 +8,23 @@ Just one of the things I'm learning. <https://github.com/hchiam/learning>
 
 ## Broaden JavaScript knowledge
 
-https://javascript.info/
+<https://javascript.info/>
 
 e.g.:
 
-- https://javascript.info/weakref-finalizationregistry
-- https://javascript.info/proxy
-- https://javascript.info/currying-partials
+- <https://javascript.info/weakref-finalizationregistry>
+- <https://javascript.info/proxy>
+- <https://javascript.info/currying-partials>
 
 ### ReqBin - test API endpoints by making API requests
 
-https://reqbin.com/ - also shows a bunch of example requests like GET with bearer token auth header, or Curl/JS/Python/PHP/REST/POST/JSON/POST/PATCH/PUT/DELETE
+<https://reqbin.com/> - also shows a bunch of example requests like GET with bearer token auth header, or Curl/JS/Python/PHP/REST/POST/JSON/POST/PATCH/PUT/DELETE
 
-https://reqbin.com/json-formatter
+<https://reqbin.com/json-formatter>
 
-https://reqbin.com/json-formatter
+<https://reqbin.com/json-formatter>
 
-## How to Run .js Files Using Terminal/CommandLine:
+## How to Run .js Files Using Terminal/CommandLine
 
 Make sure to include console.log("output text here");
 
@@ -32,7 +32,7 @@ Make sure to include console.log("output text here");
 
 ## Learn about Modern ES6 JS Features
 
-ES6 (ECMAScript 2015) started in **2015**, with yearly additions after that: https://www.w3schools.com/js/js_versions.asp
+ES6 (ECMAScript 2015) started in **2015**, with yearly additions after that: <https://www.w3schools.com/js/js_versions.asp>
 
 <https://stackoverflow.blog/2019/09/12/practical-ways-to-write-better-javascript>
 
@@ -105,7 +105,7 @@ minify minify-this-script.js > minified-script.js
 
 ### stuff you can do without JS-heavy web frameworks
 
-https://codepen.io/hchiam/pen/ExbmjEP
+<https://codepen.io/hchiam/pen/ExbmjEP>
 
 ### Using [`yarn`](https://github.com/hchiam/learning-yarn) instead of `npm`
 
@@ -206,7 +206,7 @@ and tips like this: <https://umaar.com/dev-tips/15-dollar-zero>
 
 `copy()` = copies to clipboard any value/object/element inside it.
 
-More: https://developers.google.com/web/tools/chrome-devtools/console/utilities#geteventlisteners
+More: <https://developers.google.com/web/tools/chrome-devtools/console/utilities#geteventlisteners>
 
 ### Edit any website (temporarily on the client side)
 
@@ -216,23 +216,24 @@ Enter this into the console log in dev tools: `document.designMode='on'`
 
 In the browser:
 
-- https://github.com/hchiam/learning-js/blob/master/read-text-file.js or
-- https://github.com/hchiam/learning-js/blob/master/read-json-file.js
+- <https://github.com/hchiam/learning-js/blob/master/read-text-file.js> or
+- <https://github.com/hchiam/learning-js/blob/master/read-json-file.js>
 
 In the console terminal CLI:
 
-- https://github.com/hchiam/learning-nodejs/blob/master/README.md#read-a-local-file-via-console-cli
+- <https://github.com/hchiam/learning-nodejs/blob/master/README.md#read-a-local-file-via-console-cli>
 
 ### Compare JSON files
 
-https://codepen.io/hchiam/pen/RwXqxwZ
+<https://codepen.io/hchiam/pen/RwXqxwZ>
+
 - edited
 - deleted
 - added
 
-### Get a lot of the functions and jQuery event listeners in a script string:
+### Get a lot of the functions and jQuery event listeners in a script string
 
-https://github.com/hchiam/getFunctions
+<https://github.com/hchiam/getFunctions>
 
 ### Support modern browsers and older browsers (like IE11) at the same time
 
@@ -247,9 +248,9 @@ https://github.com/hchiam/getFunctions
 
 Only use them after you read and understand the contents of each bookmarklet!
 
-https://en.wikipedia.org/wiki/Bookmarklet
+<https://en.wikipedia.org/wiki/Bookmarklet>
 
-https://github.com/hchiam/learning-js/tree/master/bookmarklets#bookmarklets
+<https://github.com/hchiam/learning-js/tree/master/bookmarklets#bookmarklets>
 
 ### `this` keyword in old-school functions vs the newer arrow functions
 
@@ -284,13 +285,13 @@ obj.f();
 
 Read later:
 
-https://www.sitepoint.com/understanding-es6-modules
+<https://www.sitepoint.com/understanding-es6-modules>
 
-https://stackoverflow.com/a/46677972
+<https://stackoverflow.com/a/46677972>
 
-https://dev.to/iggredible/what-the-heck-are-cjs-amd-umd-and-esm-ikm
+<https://dev.to/iggredible/what-the-heck-are-cjs-amd-umd-and-esm-ikm>
 
-https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/
+<https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/>
 
 ### [Priority queue](https://github.com/datastructures-js/priority-queue) which can be used as a min heap or max heap
 
@@ -324,7 +325,7 @@ pqAsHeap.size();
 pqAsHeap.front().element;
 ```
 
-### add [type checking even in JS files](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript), no config necessary (in VSCode):
+### add [type checking even in JS files](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript), no config necessary (in VSCode)
 
 Just add this comment to the top of your JS file:
 
@@ -332,7 +333,7 @@ Just add this comment to the top of your JS file:
 // @ts-check
 ```
 
-### Scope console log scripts in DevTools to an iframe or other environment:
+### Scope console log scripts in DevTools to an iframe or other environment
 
 Chrome:
 
@@ -344,11 +345,12 @@ Firefox:
 
 ### Regex and ReDoS security
 
-- avoid evil RegEx, avoid exponential backtracking, avoid ReDoS: https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS
+- avoid evil RegEx, avoid exponential backtracking, avoid ReDoS: <https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS>
 
 ### Regex cheatsheet
 
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
+<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet>
+
 - `x(?=y)` = lookahead _(AKA **positive** lookahead, in contrast to negative lookahead)_ = "match x if followed by y"
 - `x(?!y)` = **negative** lookahead = "match x if NOT followed by y"
 - `(?<=y)x` = lookbehind _(AKA **positive** lookbehind, in contrast to negative lookbehind)_ = "match x if preceded by y"
@@ -367,17 +369,18 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expression
 - `x{n,m}` = n to m times, inclusive
 - `x*?`, `x+?`, `x??`, `x{n}?`, `x{n,}?`, `x{n,m}?` = match non-greedily = "match minimally", e.g. `/<.*?>/` only matches `<a>` instead of `<a></a>` entirely.
 - `\b` = "word boundary" (note: `/\w\b\w/` can't ever matche anything, but `/\w\b\W\w/` can)
-    - likely useful as: `/\bword\b/g` (replace `word` with your word or word pattern)
+  - likely useful as: `/\bword\b/g` (replace `word` with your word or word pattern)
 - `[\b]` = backspace
 - `\xhh` = character with 2 hexadecimal digits
 - `\uhhhh` = UTF-16 character with 4 hexadecimal digits
 - `\u{hhhh}`, `\u{hhhhh}` (with `u` flag) = Unicode character with 4/5 hexadecimal digits
-    - `'\u{2713}' === '\u2713'` but can include other symbols than numbers in brackets
+  - `'\u{2713}' === '\u2713'` but can include other symbols than numbers in brackets
 
 My applied example: regex to automatically group digits with spaces in input boxes:
-- https://codepen.io/hchiam/pen/yLrjgrV (4 digits from left to right, or from right to left)
+
+- <https://codepen.io/hchiam/pen/yLrjgrV> (4 digits from left to right, or from right to left)
 - `.split(/(\d{4})/g)` --> `.replace(/\D/g,'').split(/(\d{4})/g).filter(x=>x).join(' ')`
-    - `1234567890` --> `1234 5678 90`
+  - `1234567890` --> `1234 5678 90`
 
 ### Web Locks
 
@@ -397,7 +400,7 @@ navigator.locks.request("my_resource", async (lock) => {
 
 Note: deadlocks can still happen if, say, multiple locks are requested out-of-order.
 
-More details/options: https://developer.mozilla.org/en-US/docs/Web/API/Web_Locks_API
+More details/options: <https://developer.mozilla.org/en-US/docs/Web/API/Web_Locks_API>
 
 ### `import` vs `import()`
 
@@ -446,24 +449,26 @@ $x("//h2[span[text()='English']]/following-sibling::*[self::p or self::ol][prece
 
 ### Event listener `event.target` vs `event.currentTarget` vs `event.relatedTarget`
 
-https://stackoverflow.com/a/10086501
-- `currentTarget` = listening element (e.g. the individual button that has the click event listener fired on it)
-- `target` = triggering element (i.e. maybe the button, or maybe the i or span you actually clicked on inside of the button) 
+<https://stackoverflow.com/a/10086501>
 
-https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent/relatedTarget
+- `currentTarget` = listening element (e.g. the individual button that has the click event listener fired on it)
+- `target` = triggering element (i.e. maybe the button, or maybe the i or span you actually clicked on inside of the button)
+
+<https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent/relatedTarget>
+
 - `relatedTarget` = element focused _to_ for `blur`, focused _from_ for `focus`; similar idea for `focusin` and `focusout` and `mouse`(...)/`drag`(...) events, but note that `relatedTarget` may be `null` for non-focusable elements or for security reasons like tabbing out of a page.
 
 ### operator precedence reference
 
-for example, `&` is evaluated before `&&` before `||`: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table
+for example, `&` is evaluated before `&&` before `||`: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table>
 
 ### example of debugging with chrome dev tools and fixing code base
 
-"Optimizing INP: A deep dive": https://youtu.be/cmtfM4emG5k
+"Optimizing INP: A deep dive": <https://youtu.be/cmtfM4emG5k>
 
 ### weird timing behaviour with `try` `catch` `finally`
 
-https://jakearchibald.com/2021/last-return-wins/
+<https://jakearchibald.com/2021/last-return-wins/>
 
 The `finally` console log prints `'two'` "before" the `return 'three'`:
 
@@ -487,15 +492,15 @@ console.log('four');
 
 This might cause unexpected timing issues if you're not aware of this. (Also, `​.finally` behaves differently for `Promise`s.)
 
-More notes on `Promise`s and `async`/`await`: https://www.joshwcomeau.com/javascript/promises/
+More notes on `Promise`s and `async`/`await`: <https://www.joshwcomeau.com/javascript/promises/>
 
 ### Example use of JS animation `ScrollTimeline` that goes dynamically beyond what CSS can do
 
-https://web.dev/articles/building/a-tabs-component#animation
+<https://web.dev/articles/building/a-tabs-component#animation>
 
 ### tag function of template literals string, raw
 
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/raw
+<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/raw>
 
 ```js
 var thisisTrue = String.raw`C:\folder\path\file.js` === `C:\\folder\\path\\file.js`;
@@ -513,7 +518,7 @@ console.log(new RegExp(String.raw`(\d+) ${x}`).exec('123 Street')[1]);
 
 ### space characters
 
-You might know about `' '` and `&nbsp;`, but did you know about `&puncsp;` (`'\u2008'`) which takes up space but is able to wrap? there's even more Unicode characters: https://stackoverflow.com/questions/8515365/are-there-other-whitespace-codes-like-nbsp-for-half-spaces-em-spaces-en-space You can also do this in JS:
+You might know about `' '` and `&nbsp;`, but did you know about `&puncsp;` (`'\u2008'`) which takes up space but is able to wrap? there's even more Unicode characters: <https://stackoverflow.com/questions/8515365/are-there-other-whitespace-codes-like-nbsp-for-half-spaces-em-spaces-en-space> You can also do this in JS:
     - `'\u{2713}' === '\u2713'` but can include other symbols than numbers in brackets
 
 ```js
@@ -530,13 +535,14 @@ element.style.setProperty('color', 'red', 'important'); // this works if you wan
 
 ### width and height of HTML elements in CSS/JS
 
-https://stackoverflow.com/questions/21064101/understanding-offsetwidth-clientwidth-scrollwidth-and-height-respectively
+<https://stackoverflow.com/questions/21064101/understanding-offsetwidth-clientwidth-scrollwidth-and-height-respectively>
+
 - offsetWidth, offsetHeight (includes padding and border)
-    - clientWidth, clientHeight (like offsetWidth and offsetHeight but without the padding or border)
+  - clientWidth, clientHeight (like offsetWidth and offsetHeight but without the padding or border)
 - CSS width, CSS height
 - scrollWidth, scrollHeight (doesn't include padding or border, but does include overflow content)
 
-### remove initial "1." text node without replacing children HTML:
+### remove initial "1." text node without replacing children HTML
 
 ```js
 // if first child (likely textNode) starts with "#.", then remove that child:
@@ -547,19 +553,19 @@ if (/^\d+\.$/.test(element.childNodes[0].nodeValue)) {
 
 ### `Set` methods
 
-- https://web.dev/blog/set-methods?hl=en
-    - `aSet.intersection(bSet)`
-    - `aSet.union(bSet)`
-    - `firstSet.difference(notInSecondSet)`
-    - `inAXorB = aSet.symmetricDifference(bSet)`
-    - `fours.isSubsetOf(events)`
-    - `evens.isSupersetOf(fours)`
-    - `haveNothingInCommon = primes.isDisjointFrom(squares)`
+- <https://web.dev/blog/set-methods?hl=en>
+  - `aSet.intersection(bSet)`
+  - `aSet.union(bSet)`
+  - `firstSet.difference(notInSecondSet)`
+  - `inAXorB = aSet.symmetricDifference(bSet)`
+  - `fours.isSubsetOf(events)`
+  - `evens.isSupersetOf(fours)`
+  - `haveNothingInCommon = primes.isDisjointFrom(squares)`
 
-## `document.implementation.createHTMLDocument()`:
+## `document.implementation.createHTMLDocument()`
 
-- https://www.youtube.com/watch?v=surh_D8CU9A&list=PLNYkxOF6rcIAEVKJ98bDkQRkwvO4grhnt&index=11
-- https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createHTMLDocument#examples
+- <https://www.youtube.com/watch?v=surh_D8CU9A&list=PLNYkxOF6rcIAEVKJ98bDkQRkwvO4grhnt&index=11>
+- <https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createHTMLDocument#examples>
 
 ```js
 output.innerHTML = '';
@@ -582,13 +588,13 @@ which can more performant/streamable than this:
 output.innerHTML = '<p>completely replacing everything every time</p>';
 ```
 
-You can see the difference in Chrome DevTools with Ctrl+Shift+P > Rendering > Paint flashing. 
+You can see the difference in Chrome DevTools with Ctrl+Shift+P > Rendering > Paint flashing.
 
 ## communicate data between tabs and calling functions on the other tab
 
 - requires the first tab opening the second tab in js code
 
-https://stackoverflow.com/questions/1366483/javascript-sharing-data-between-tabs/1367357#1367357
+<https://stackoverflow.com/questions/1366483/javascript-sharing-data-between-tabs/1367357#1367357>
 
 first tab: (opens second tab in js code)
 
@@ -606,6 +612,6 @@ var var_from_parent = parent_window.some_var;
 parent_window.someFunction( 'with', 'these', 'params' )
 ```
 
-https://github.com/hchiam/learning-js/tree/main/postMessage
+<https://github.com/hchiam/learning-js/tree/main/postMessage>
 
-https://github.com/hchiam/recreateVideoInSeparateWindow (google meet `<video>` --> 2nd window `<canvas>`)
+<https://github.com/hchiam/recreateVideoInSeparateWindow> (google meet `<video>` --> 2nd window `<canvas>`)

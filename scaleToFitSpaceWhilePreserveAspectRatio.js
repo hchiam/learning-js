@@ -1,5 +1,6 @@
 /**
 Scale width and height to fit the lesser-available width/height while maintaining an aspect ratio:
+(behaves like CSS img object-fit: contain;)
 */
 function scaleToFit(availableW, availableH, aspectRatioW, aspectRatioH) {
   let scale = 1;

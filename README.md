@@ -615,3 +615,7 @@ parent_window.someFunction( 'with', 'these', 'params' )
 <https://github.com/hchiam/learning-js/tree/main/postMessage>
 
 <https://github.com/hchiam/recreateVideoInSeparateWindow> (google meet `<video>` --> 2nd window `<canvas>`)
+
+## save SVG in the `<body>` as a .PNG file:
+
+https://codepen.io/hchiam/pen/XJrYMNL?editors=1010

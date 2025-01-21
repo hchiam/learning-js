@@ -5,7 +5,15 @@ function debounce(theFunction, timeout = 100) {
    * doSomethingDebounced();
    *
    * or:
-   * debounce(()=>{doSomething()})();
+   * debounce(()=>{doSomething()})(); // REMEMBER the () at the end!
+   *
+   * or:
+   * element.addEventListener('resize', debounce(()=>{doSomething()})); // WITHOUT the () at the end!
+   *
+   * DON'T DO THIS:
+   * element.addEventListener('scroll', ()=>{ debounce(()=>{ ... })(); } ); // this can cause multiple unnecessary calls!
+   *
+   * For leading/trailing edge options, consider https://davidwalsh.name/javascript-debounce-function
    */
   let timer;
   return (...args) => {

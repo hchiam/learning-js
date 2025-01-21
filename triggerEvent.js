@@ -1,3 +1,15 @@
+/*
+https://stackoverflow.com/questions/20567748/how-to-trigger-a-onmousedown-event-manually-from-javascript-not-jquery-on-a-em
+
+just something like
+$('.test').dispatchEvent(new Event('click'));
+or
+document.dispatchEvent(new Event('mousedown'));
+document.dispatchEvent(new Event('click'));
+
+or:
+*/
+
 // https://stackoverflow.com/questions/2490825/how-to-trigger-event-in-javascript
 
 // triggerEvent(element, "keypress", { key: "a" });

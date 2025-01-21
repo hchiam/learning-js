@@ -174,7 +174,9 @@ and tips like this: <https://umaar.com/dev-tips/15-dollar-zero>
 
 `queryObjects(YourConstructor)` = all objects created by `YourConstructor`
 
-`getEventListeners($0)` = event listeners on the element you last clicked on in Elements tab
+`getEventListeners($0)` = get event listeners on the element you last clicked on in Elements tab
+- `getEventListeners(htmlElement)` in Chrome
+- **Inspector tab** shows "`event`" buttons next to elements in Firefox - https://bugzilla.mozilla.org/show_bug.cgi?id=1164285
 
 `monitorEvents(element, eventName)` = prints captured events
 

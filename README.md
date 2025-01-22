@@ -621,3 +621,7 @@ parent_window.someFunction( 'with', 'these', 'params' )
 ## save SVG in the `<body>` as a .PNG file:
 
 https://codepen.io/hchiam/pen/XJrYMNL?editors=1010
+
+## `unicode-range` can be used to mix fonts or target letters to use different fonts:
+
+- CSS+JS mixed font `unicode-range` "animation": https://codepen.io/hchiam/pen/YPKJKMY?editors=0100

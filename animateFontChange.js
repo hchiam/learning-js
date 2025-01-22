@@ -5,8 +5,8 @@ document.querySelector("button").addEventListener("click", () => {
 });
 
 async function animateFontChange(
-  rangeStartHex = 0x041, // 'A'
-  rangeEndHex = 0x122, // 'z'
+  rangeStartHex = 0x0041, // 'A'
+  rangeEndHex = 0x007a, // 'z'
   speedMs = 10
 ) {
   const prefix = "U+" + rangeStartHex.toString(16).toUpperCase() + "-";

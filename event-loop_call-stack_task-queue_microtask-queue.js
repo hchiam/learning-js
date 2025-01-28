@@ -1,3 +1,6 @@
+// https://www.youtube.com/watch?v=8aGhZQkoFbQ&t=896s = QUICK EXPLANATION:
+// use setTimeout with 0 seconds because event loop queue will be emptied after function call stack is clear
+
 // https://www.youtube.com/watch?v=FSs_JYwnAdI
 
 setTimeout(

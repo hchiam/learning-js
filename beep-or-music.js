@@ -22,6 +22,7 @@ There's also:
 audio.loop = true;
 audio.pause();
 audio.currentTime = 0;
+audio.currentTime = audio.duration;
 
 demo: https://codepen.io/hchiam/pen/OPLdRWq
 */

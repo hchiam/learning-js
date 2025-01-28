@@ -16,3 +16,12 @@ function playSound(filePath, volume /* 0 to 1 */) {
   if (volume) audio.volume = volume;
   audio.play();
 }
+
+/*
+There's also:
+audio.loop = true;
+audio.pause();
+audio.currentTime = 0;
+
+demo: https://codepen.io/hchiam/pen/OPLdRWq
+*/

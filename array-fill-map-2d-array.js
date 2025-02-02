@@ -1,10 +1,11 @@
 // for my own helper class for 2D arrays, see: https://github.com/hchiam/grid
 
 // mnemonic: afm afm
+// mnemonic: "arrows fill map, arrows fill map, value"
 function get2dArray(rows, cols, valueCallback) {
-  return new Array(rows).fill(null).map(() =>
+  return new Array(rows).fill().map(() =>
     // afm
-    new Array(cols).fill(null).map(() => {
+    new Array(cols).fill().map(() => {
       // afm
       return valueCallback(); // or just put { deep: "copy" } here
     })

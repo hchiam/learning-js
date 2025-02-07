@@ -518,6 +518,14 @@ console.log(new RegExp(String.raw`(\d+) ${x}`).exec('123 Street')[1]);
 // '123'
 ```
 
+so:
+
+```js
+new RegExp('\d') // doesN'T work, requires double back slash
+new RegExp('\\d') // works, requires double back slash
+new RegExp(String.raw`\d`) // works
+```
+
 ### space characters
 
 You might know about `' '` and `&nbsp;`, but did you know about `&puncsp;` (`'\u2008'`) which takes up space but is able to wrap? there's even more Unicode characters: <https://stackoverflow.com/questions/8515365/are-there-other-whitespace-codes-like-nbsp-for-half-spaces-em-spaces-en-space> You can also do this in JS:

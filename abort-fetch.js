@@ -47,5 +47,4 @@ signal.addEventListener('abort', ()=>{
   //...
 });
 
-// see abortableTransaction.js for a helper function:
-// https://github.com/hchiam/learning-js/blob/main/abortableTransaction.js
+// see abortableTransaction.js for a helper function: https://github.com/hchiam/learning-js/blob/main/abortableTransaction.js

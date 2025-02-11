@@ -246,6 +246,36 @@ In the console terminal CLI:
 <!-- https://www.youtube.com/watch?v=cLxNdLK--yI -->
 ```
 
+### Evergreen browsers
+
+Conclusions:
+- Chrome:  was always evergreen (2008) = Chrome 1.
+- Safari:  quasi-evergreen (2013) = Safari 7 BUT you need to have your Mac settings set to automatically download and install updates.
+- Firefox:  rapid releases in 2011, silent updater in 2012 v15, but automated update feature in 2005 = Firefox 1.5 = effectively Firefox 1.
+- Edge:  the Chromium-based version of Edge (vs Edge Legacy) was released in 2020 = Edge 79 (some time after Edge Legacy 44).
+- IE:  seems like IE 11 but also Microsoft dropped support for IE, so you stop supporting IE = N/A now.
+- detecting basic stuff like browser and major version in `navigator.userAgent` is currently (2024) still available
+    - even in Chrome's user agent reduction: https://developers.google.com/privacy-sandbox/blog/user-agent-reduction-android-model-and-version
+    - whereas Chrome's `navigator.userAgentData` is currently (2025) not adopted in other browsers: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/userAgentData#browser_compatibility
+    - why migrate to User-Agent Client Hints: https://developers.google.com/privacy-sandbox/protections/user-agent
+    - how migrate to User-Agent Client Hints: https://web.dev/articles/migrate-to-ua-ch
+
+References:
+- https://nordvpn.com/cybersecurity/glossary/evergreen-browser/
+- https://css-tricks.com/evergreen-does-not-mean-immediately-available/
+- https://support.mozilla.org/en-US/questions/1058530
+- https://en.wikipedia.org/wiki/Firefox_early_version_history
+- https://wiki.mozilla.org/Silent_Update_updater
+- https://website-archive.mozilla.org/www.mozilla.org/firefox_releasenotes/en-us/firefox/releases/1.0?flang=es-MX
+- https://website-archive.mozilla.org/www.mozilla.org/firefox_releasenotes/en-us/firefox/releases/1.5
+- https://phys.org/news/2005-12-firefox.html
+- you can make Mac automatically download AND install updates: https://support.apple.com/en-ca/guide/mac-help/mchla7037245/mac
+- https://en.wikipedia.org/wiki/Microsoft_Edge_Legacy
+- https://superuser.com/questions/1552847/what-version-of-edge-marked-the-start-of-using-chromium-internally
+    - This superuser answer may be helpful for detecting pre-Chromium-based Edge Legacy.
+- https://www.w3schools.com/browsers/browsers_explorer.asp#edgeinfo
+- https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-it-pro/internet-explorer-11/ie11-deploy-guide/ie11-delivery-through-automatic-updates
+
 ### Bookmarklets
 
 Only use them after you read and understand the contents of each bookmarklet!

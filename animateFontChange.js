@@ -15,7 +15,7 @@ async function animateFontChange(
     const suffix = /*'U+' +*/ i.toString(16).toUpperCase();
     updateFontUnicodeRange(prefix + suffix);
     await sleep(speedMs);
-    if (delayAfterFirstLoad && i === rangeEndHex) {
+    if (delayAfterFirstLoad && i === rangeStartHex) {
       await sleep(delayAfterFirstLoad);
     }
   }

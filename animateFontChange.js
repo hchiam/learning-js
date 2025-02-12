@@ -7,13 +7,17 @@ document.querySelector("button").addEventListener("click", () => {
 async function animateFontChange(
   rangeStartHex = 0x0041, // 'A'
   rangeEndHex = 0x007a, // 'z'
-  speedMs = 10
+  speedMs = 10,
+  delayAfterFirstLoad = 0
 ) {
   const prefix = "U+" + rangeStartHex.toString(16).toUpperCase() + "-";
   for (let i = rangeStartHex; i <= rangeEndHex; i++) {
     const suffix = /*'U+' +*/ i.toString(16).toUpperCase();
     updateFontUnicodeRange(prefix + suffix);
     await sleep(speedMs);
+    if (delayAfterFirstLoad && i === rangeEndHex) {
+      await sleep(delayAfterFirstLoad);
+    }
   }
   updateFontUnicodeRange(""); // now target all characters for completion
 }

@@ -4,9 +4,9 @@ javascript:(() => {
     textExpanderMemory = JSON.parse(textExpanderMemory);
   } else {
     textExpanderMemory = { 
-      'script': '&lt;script>&lt;/script>',
-      'style': '&lt;style>&lt;/style>',
-      'div': '&lt;div>&lt;/div>',
+      'script': '<script></script>',
+      'style': '<style></style>',
+      'div': '<div></div>',
     };
     localStorage.textExpanderBookmarkletMemory = JSON.stringify(textExpanderMemory);
   }

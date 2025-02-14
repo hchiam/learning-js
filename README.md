@@ -680,7 +680,9 @@ https://github.com/hchiam/pwa-template
 
 ## call stack string
 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack
+
 ```js
-// note: not a recommended/standardized string - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack#examples
+// note: not a recommended/standardized string - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack
 const callStack = new Error().stack;
 ```

@@ -677,3 +677,10 @@ https://www.youtube.com/watch?v=8aGhZQkoFbQ&t=896s
 ## installable PWA (Progressive Web App) template (uses a service worker)
 
 https://github.com/hchiam/pwa-template
+
+## call stack string
+
+```js
+// note: not a recommended/standardized string - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack#examples
+const callStack = new Error().stack;
+```

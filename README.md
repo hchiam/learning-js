@@ -695,3 +695,7 @@ setTimeout(() => {
 // note: not a recommended/standardized string - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack
 const callStack = new Error().stack;
 ```
+
+## locally play video with speed control
+
+<https://codepen.io/hchiam/pen/qEBVLWG>

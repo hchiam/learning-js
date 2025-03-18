@@ -175,8 +175,9 @@ and tips like this: <https://umaar.com/dev-tips/15-dollar-zero>
 `queryObjects(YourConstructor)` = all objects created by `YourConstructor`
 
 `getEventListeners($0)` = get event listeners on the element you last clicked on in Elements tab
+
 - `getEventListeners(htmlElement)` in Chrome
-- **Inspector tab** shows "`event`" buttons next to elements in Firefox - https://bugzilla.mozilla.org/show_bug.cgi?id=1164285
+- **Inspector tab** shows "`event`" buttons next to elements in Firefox - <https://bugzilla.mozilla.org/show_bug.cgi?id=1164285>
 
 `monitorEvents(element, eventName)` = prints captured events
 
@@ -249,32 +250,34 @@ In the console terminal CLI:
 ### Evergreen browsers
 
 Conclusions:
-- Chrome:  was always evergreen (2008) = Chrome 1.
-- Safari:  quasi-evergreen (2013) = Safari 7 BUT you need to have your Mac settings set to automatically download and install updates.
-- Firefox:  rapid releases in 2011, silent updater in 2012 v15, but automated update feature in 2005 = Firefox 1.5 = effectively Firefox 1.
-- Edge:  the Chromium-based version of Edge (vs Edge Legacy) was released in 2020 = Edge 79 (some time after Edge Legacy 44).
-- IE:  seems like IE 11 but also Microsoft dropped support for IE, so you stop supporting IE = N/A now.
+
+- Chrome: was always evergreen (2008) = Chrome 1.
+- Safari: quasi-evergreen (2013) = Safari 7 BUT you need to have your Mac settings set to automatically download and install updates.
+- Firefox: rapid releases in 2011, silent updater in 2012 v15, but automated update feature in 2005 = Firefox 1.5 = effectively Firefox 1.
+- Edge: the Chromium-based version of Edge (vs Edge Legacy) was released in 2020 = Edge 79 (some time after Edge Legacy 44).
+- IE: seems like IE 11 but also Microsoft dropped support for IE, so you stop supporting IE = N/A now.
 - detecting basic stuff like browser and major version in `navigator.userAgent` is currently (2024) still available
-    - even in Chrome's user agent reduction: https://developers.google.com/privacy-sandbox/blog/user-agent-reduction-android-model-and-version
-    - whereas Chrome's `navigator.userAgentData` is currently (2025) not adopted in other browsers: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/userAgentData#browser_compatibility
-    - why migrate to User-Agent Client Hints: https://developers.google.com/privacy-sandbox/protections/user-agent
-    - how migrate to User-Agent Client Hints: https://web.dev/articles/migrate-to-ua-ch
+  - even in Chrome's user agent reduction: <https://developers.google.com/privacy-sandbox/blog/user-agent-reduction-android-model-and-version>
+  - whereas Chrome's `navigator.userAgentData` is currently (2025) not adopted in other browsers: <https://developer.mozilla.org/en-US/docs/Web/API/Navigator/userAgentData#browser_compatibility>
+  - why migrate to User-Agent Client Hints: <https://developers.google.com/privacy-sandbox/protections/user-agent>
+  - how migrate to User-Agent Client Hints: <https://web.dev/articles/migrate-to-ua-ch>
 
 References:
-- https://nordvpn.com/cybersecurity/glossary/evergreen-browser/
-- https://css-tricks.com/evergreen-does-not-mean-immediately-available/
-- https://support.mozilla.org/en-US/questions/1058530
-- https://en.wikipedia.org/wiki/Firefox_early_version_history
-- https://wiki.mozilla.org/Silent_Update_updater
-- https://website-archive.mozilla.org/www.mozilla.org/firefox_releasenotes/en-us/firefox/releases/1.0?flang=es-MX
-- https://website-archive.mozilla.org/www.mozilla.org/firefox_releasenotes/en-us/firefox/releases/1.5
-- https://phys.org/news/2005-12-firefox.html
-- you can make Mac automatically download AND install updates: https://support.apple.com/en-ca/guide/mac-help/mchla7037245/mac
-- https://en.wikipedia.org/wiki/Microsoft_Edge_Legacy
-- https://superuser.com/questions/1552847/what-version-of-edge-marked-the-start-of-using-chromium-internally
-    - This superuser answer may be helpful for detecting pre-Chromium-based Edge Legacy.
-- https://www.w3schools.com/browsers/browsers_explorer.asp#edgeinfo
-- https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-it-pro/internet-explorer-11/ie11-deploy-guide/ie11-delivery-through-automatic-updates
+
+- <https://nordvpn.com/cybersecurity/glossary/evergreen-browser/>
+- <https://css-tricks.com/evergreen-does-not-mean-immediately-available/>
+- <https://support.mozilla.org/en-US/questions/1058530>
+- <https://en.wikipedia.org/wiki/Firefox_early_version_history>
+- <https://wiki.mozilla.org/Silent_Update_updater>
+- <https://website-archive.mozilla.org/www.mozilla.org/firefox_releasenotes/en-us/firefox/releases/1.0?flang=es-MX>
+- <https://website-archive.mozilla.org/www.mozilla.org/firefox_releasenotes/en-us/firefox/releases/1.5>
+- <https://phys.org/news/2005-12-firefox.html>
+- you can make Mac automatically download AND install updates: <https://support.apple.com/en-ca/guide/mac-help/mchla7037245/mac>
+- <https://en.wikipedia.org/wiki/Microsoft_Edge_Legacy>
+- <https://superuser.com/questions/1552847/what-version-of-edge-marked-the-start-of-using-chromium-internally>
+  - This superuser answer may be helpful for detecting pre-Chromium-based Edge Legacy.
+- <https://www.w3schools.com/browsers/browsers_explorer.asp#edgeinfo>
+- <https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-it-pro/internet-explorer-11/ie11-deploy-guide/ie11-delivery-through-automatic-updates>
 
 ### Bookmarklets
 
@@ -467,7 +470,9 @@ function triggerD3PathClick(d3Element) {
 Here's an xpath to get only the English entry part of a Wiktionary page:
 
 ```js
-$x("//h2[span[text()='English']] | //h2[span[text()='English']]/following-sibling::*[preceding-sibling::h2[1][span[text()='English']] and not(self::h2)]")
+$x(
+  "//h2[span[text()='English']] | //h2[span[text()='English']]/following-sibling::*[preceding-sibling::h2[1][span[text()='English']] and not(self::h2)]"
+);
 // use | so you can include the English h2 in the selection
 // you need the [1] so you stop selecting elements after the next h2
 // you need self:: in not(self::h2) to avoid including the next h2
@@ -476,7 +481,9 @@ $x("//h2[span[text()='English']] | //h2[span[text()='English']]/following-siblin
 Building on that, here's an xpath to get just the etymology and definition(s) (`<p>` or `<ol>`) of the English part of a Wiktionary page:
 
 ```js
-$x("//h2[span[text()='English']]/following-sibling::*[self::p or self::ol][preceding-sibling::h2[1][span[text()='English']]]")
+$x(
+  "//h2[span[text()='English']]/following-sibling::*[self::p or self::ol][preceding-sibling::h2[1][span[text()='English']]]"
+);
 ```
 
 ### Event listener `event.target` vs `event.currentTarget` vs `event.relatedTarget`
@@ -509,17 +516,17 @@ The `finally` console log prints `'two'` "before" the `return 'three'`:
 
 function finallyTest() {
   try {
-    console.log('one');
-    return 'three';
+    console.log("one");
+    return "three";
   } catch (err) {
-    console.log('error');
+    console.log("error");
   } finally {
-    console.log('two');
+    console.log("two");
   }
 }
 
 console.log(finallyTest());
-console.log('four');
+console.log("four");
 ```
 
 This might cause unexpected timing issues if you're not aware of this. (Also, `​.finally` behaves differently for `Promise`s.)
@@ -535,42 +542,42 @@ More notes on `Promise`s and `async`/`await`: <https://www.joshwcomeau.com/javas
 <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/raw>
 
 ```js
-var thisisTrue = String.raw`C:\folder\path\file.js` === `C:\\folder\\path\\file.js`;
+var thisisTrue =
+  String.raw`C:\folder\path\file.js` === `C:\\folder\\path\\file.js`;
 ```
 
 ```js
 // using new RegExp with String.raw and variable:
-var x = 'Street';
+var x = "Street";
 
-console.log(new RegExp(`(\\d+) ${x}`).exec('123 Street')[1]);
+console.log(new RegExp(`(\\d+) ${x}`).exec("123 Street")[1]);
 // '123'
-console.log(new RegExp(String.raw`(\d+) ${x}`).exec('123 Street')[1]);
+console.log(new RegExp(String.raw`(\d+) ${x}`).exec("123 Street")[1]);
 // '123'
 ```
 
 so:
 
 ```js
-new RegExp('\d') // doesN'T work, requires double back slash
-new RegExp('\\d') // works, requires double back slash
-new RegExp(String.raw`\d`) // works
+new RegExp("d"); // doesN'T work, requires double back slash
+new RegExp("\\d"); // works, requires double back slash
+new RegExp(String.raw`\d`); // works
 ```
 
 ### space characters
 
-You might know about `' '` and `&nbsp;`, but did you know about `&puncsp;` (`'\u2008'`) which takes up space but is able to wrap? there's even more Unicode characters: <https://stackoverflow.com/questions/8515365/are-there-other-whitespace-codes-like-nbsp-for-half-spaces-em-spaces-en-space> You can also do this in JS:
-    - `'\u{2713}' === '\u2713'` but can include other symbols than numbers in brackets
+You might know about `' '` and `&nbsp;`, but did you know about `&puncsp;` (`'\u2008'`) which takes up space but is able to wrap? there's even more Unicode characters: <https://stackoverflow.com/questions/8515365/are-there-other-whitespace-codes-like-nbsp-for-half-spaces-em-spaces-en-space> You can also do this in JS: - `'\u{2713}' === '\u2713'` but can include other symbols than numbers in brackets
 
 ```js
-'a'.padEnd(10, '\u2008'); // U+2008 is Unicode for &puncsp;
+"a".padEnd(10, "\u2008"); // U+2008 is Unicode for &puncsp;
 ```
 
 ### using JS to set CSS styles
 
 ```js
-element.style.color = 'red'; // this does something
-element.style.color = 'red !important'; // WARNING: this won't do anything! it won't even change the color!
-element.style.setProperty('color', 'red', 'important'); // this works if you want to include !important
+element.style.color = "red"; // this does something
+element.style.color = "red !important"; // WARNING: this won't do anything! it won't even change the color!
+element.style.setProperty("color", "red", "important"); // this works if you want to include !important
 ```
 
 ### width and height of HTML elements in CSS/JS
@@ -587,7 +594,7 @@ element.style.setProperty('color', 'red', 'important'); // this works if you wan
 ```js
 // if first child (likely textNode) starts with "#.", then remove that child:
 if (/^\d+\.$/.test(element.childNodes[0].nodeValue)) {
-    element.childNodes[0].remove();
+  element.childNodes[0].remove();
 }
 ```
 
@@ -608,24 +615,24 @@ if (/^\d+\.$/.test(element.childNodes[0].nodeValue)) {
 - <https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createHTMLDocument#examples>
 
 ```js
-output.innerHTML = '';
+output.innerHTML = "";
 const doc = document.implementation.createHTMLDocument(); // <-- a key part
-doc.write('<p>list:</p><ul><li>');
+doc.write("<p>list:</p><ul><li>");
 output.append(doc.body.firstChild); // <-- a key part
 // then to keep appending:
 let previousLength = 0; // until browser stream chunk implementation detail changes
 for await (const chunk of stream) {
-  const newContent = sanitized(chunk.slice(previousLength)) + '<li>';
+  const newContent = sanitized(chunk.slice(previousLength)) + "<li>";
   previousLength = chunk.length;
   doc.write(newContent); // <-- a key part for streaming instead of replacing all
 }
-doc.write('</ul>');
+doc.write("</ul>");
 ```
 
 which can more performant/streamable than this:
 
 ```js
-output.innerHTML = '<p>completely replacing everything every time</p>';
+output.innerHTML = "<p>completely replacing everything every time</p>";
 ```
 
 You can see the difference in Chrome DevTools with Ctrl+Shift+P > Rendering > Paint flashing.
@@ -639,9 +646,9 @@ You can see the difference in Chrome DevTools with Ctrl+Shift+P > Rendering > Pa
 first tab: (opens second tab in js code)
 
 ```js
-var child_window = window.open('http://localhost:5173', '_blank');
+var child_window = window.open("http://localhost:5173", "_blank");
 var var_from_child = child_window.some_var;
-child_window.someFunction( 'with', 'these', 'params' )
+child_window.someFunction("with", "these", "params");
 ```
 
 second tab: (opened by first tab in js code)
@@ -649,38 +656,40 @@ second tab: (opened by first tab in js code)
 ```js
 var parent_window = window.opener;
 var var_from_parent = parent_window.some_var;
-parent_window.someFunction( 'with', 'these', 'params' )
+parent_window.someFunction("with", "these", "params");
 ```
 
 <https://github.com/hchiam/learning-js/tree/main/postMessage>
 
 <https://github.com/hchiam/recreateVideoInSeparateWindow> (google meet `<video>` --> 2nd window `<canvas>`)
 
-## save SVG in the `<body>` as a .PNG file:
+## save SVG in the `<body>` as a .PNG file
 
-https://codepen.io/hchiam/pen/XJrYMNL?editors=1010
+<https://codepen.io/hchiam/pen/XJrYMNL?editors=1010>
 
-## `unicode-range` can be used to mix fonts or target letters to use different fonts:
+## `unicode-range` can be used to mix fonts or target letters to use different fonts
 
-- CSS+JS mixed font `unicode-range` "animation": https://codepen.io/hchiam/pen/YPKJKMY?editors=0100
+- CSS+JS mixed font `unicode-range` "animation": <https://codepen.io/hchiam/pen/YPKJKMY?editors=0100>
 
 ## why you would use `setTimeout` of `0` seconds
 
 ```js
-setTimeout(()=>{
-    //doSomething();
+setTimeout(() => {
+  //doSomething();
 }, 0);
 ```
-https://www.youtube.com/watch?v=8aGhZQkoFbQ&t=896s
+
+<https://www.youtube.com/watch?v=8aGhZQkoFbQ&t=896s>
+
 - QUICK EXPLANATION: use setTimeout with 0 seconds because event loop queue will be emptied after function call stack is clear
 
 ## installable PWA (Progressive Web App) template (uses a service worker)
 
-https://github.com/hchiam/pwa-template
+<https://github.com/hchiam/pwa-template>
 
 ## call stack string
 
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack
+<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack>
 
 ```js
 // note: not a recommended/standardized string - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack

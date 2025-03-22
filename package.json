@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "test": "jest --bail --findRelatedTests *.test.js",
+    "test1": "echo 'might need to chmod +x testSpecificJsTest.sh first if this fails:\n'; ./testSpecificJsTest.sh",
     "fuzz": "JAZZER_FUZZ=1 jest --testRunner=\"@jazzer.js/jest-runner\" --testMatch=\"<rootDir>/**/*.fuzz.js\"",
     "fuzz_regression": "JAZZER_FUZZ=0 jest --testRunner=\"@jazzer.js/jest-runner\" --testMatch=\"<rootDir>/**/*.fuzz.js\"",
     "lint": "prettier --write *.{js,css,html,scss,json,md,ts,tsx}",

@@ -1,5 +1,7 @@
-// i don't recommend actually using this code as it might slow your browser down a lot
+// i recommend sparingly using this code as it could slow your browser down a lot
 // see bookmarklets/preventOutlookRedDotOnBrowserTab.js
+// https://caniuse.com/mutationobserver - even IE 11 has support!
+// fuller example code: https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver#example
 
 const faviconLink = document.querySelector(`link[rel~="icon"]`);
 
@@ -37,3 +39,13 @@ function observeAttributeChange(element, callback) {
     attributes: true,
   });
 }
+
+/*
+ESSENTIALLY:
+
+const targetNode = $('.some-thing')[0];
+const config = { attributes: true }; // the other options default to false
+const observer = new MutationObserver(function callback(mutationList, observer) { });
+observer.observe(targetNode, config);
+// observer.disconnect();
+*/

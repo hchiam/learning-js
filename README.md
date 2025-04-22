@@ -699,3 +699,68 @@ const callStack = new Error().stack;
 ## locally play video with speed control
 
 <https://codepen.io/hchiam/pen/qEBVLWG>
+
+## Clipboard API (WIDELY AVAILABLE)
+
+    ```js
+    navigator.clipboard.read
+    navigator.clipboard.write
+    navigator.clipboard.writeText(text);
+    navigator.clipboard.readText();
+    ```
+
+## Resize Observer API (WIDELY AVAILABLE)
+
+    ```js
+    const resizeObserver = new ResizeObserver(entries => {
+      for (const entry of entries) {
+        entry.target;
+      }
+    });
+    resizeObserver.observe(element);
+    ```
+
+## Broadcast Channel API - if same origin (WIDELY AVAILABLE)
+
+    ```js
+    const bc = new BroadcastChannel(name);
+    bc.postMessage(message);
+    const bc = new BroadcastChannel(name);
+    bc.addEventListener('message', event => {
+      event.data;
+    });
+    ```
+
+## Performance Interface API
+
+    ```js
+    performance.getEntriesByType('navigation'); // (WIDELY AVAILABLE)
+    performance.navigation; // (NOT IN DENO OR NODE.JS)
+    performance.memory; // (NOT IN FIREFOX OR SAFARI)
+    performance.timing; // (NOT IN DENO)
+    ```
+
+## Channel Messaging API (WIDELY AVAILABLE): (more 1-to-1 than Broadcast Channel API)
+
+(available in web workers)
+
+<https://developer.mozilla.org/en-US/docs/Web/API/Channel_Messaging_API>
+
+## Notifications API
+
+    ```js
+    Notification?.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        new Notification('hi');
+      }
+    });
+    ```
+
+## Geolocation API
+
+    ```js
+    navigator.geolocation.getCurrentPosition(position => {
+      position.coords.latitude;
+      position.coords.longitude;
+    });
+    ```

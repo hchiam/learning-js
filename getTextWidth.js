@@ -1,4 +1,4 @@
-function getWidthOfText(text, font) {
+function getTextWidth(text, font) {
   const tempCanvas = document.createElement("canvas");
   const ctx = tempCanvas.getContext("2d");
   ctx.font = font ?? "1rem Arial";

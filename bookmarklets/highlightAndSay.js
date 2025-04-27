@@ -44,7 +44,7 @@ javascript: (function () {
     const info = getCaretInfo(x, y);
     if (!info) return null;
 
-    // find closest parent paragraph/div/article container:
+    /* find closest parent paragraph/div/article container: */
     let container = info.startContainer || info.offsetNode;
     while (container && !["P", "DIV", "ARTICLE"].includes(container.nodeName)) {
       container = container.parentElement;
@@ -56,7 +56,7 @@ javascript: (function () {
 
     const lineRange = document.createRange();
 
-    // find start of line by moving left
+    /* find start of line by moving left */
     let startInfo = getCaretInfo(containerRect.left, y);
     if (startInfo) {
       if (startInfo.startContainer) {
@@ -72,7 +72,7 @@ javascript: (function () {
       }
     }
 
-    // find end of line by moving right
+    /* find end of line by moving right */
     let endInfo = getCaretInfo(containerRect.right, y);
     if (endInfo) {
       if (endInfo.startContainer) {
@@ -133,7 +133,7 @@ javascript: (function () {
     }
   });
 
-  // hide overlay when not hovering over text:
+  /* hide overlay when not hovering over text: */
   document.addEventListener("mouseover", (e) => {
     if (!overlay.contains(e.target)) {
       overlay.style.display = "none";

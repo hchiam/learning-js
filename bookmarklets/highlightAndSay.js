@@ -3,6 +3,7 @@ javascript: (function () {
   console.log("Run again to toggle.");
 
   window.say = function (what, voiceLang, callback) {
+    speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(what);
     const voices = speechSynthesis.getVoices();
     utterance.voice = voiceLang

@@ -765,3 +765,17 @@ const callStack = new Error().stack;
       position.coords.longitude;
     });
     ```
+
+## a list of bunch of quick helpful JS functions
+
+https://github.com/devsmitra/javascript-quick-functions
+- generator
+- time to execute
+- array functions
+- number functions
+- string functions
+- date and object functions
+- promise-related functions
+- random hex colour
+- convert px to rem
+- **get selected text**

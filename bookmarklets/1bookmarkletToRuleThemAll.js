@@ -88,6 +88,8 @@ javascript: (function () {
 
       const list = document.createElement("ul");
       list.style.cssText = `
+        background: white;
+        color: black;
         list-style: none;
         padding: 0;
         margin: 0;

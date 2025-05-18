@@ -31,8 +31,8 @@ javascript: (function () {
   closeButton.textContent = "X";
   closeButton.style.cssText = `
     position: sticky;
-    top: 10px;
-    right: 10px;
+    top: 0;
+    right: 0;
     float: right;
     background: red;
     color: white;
@@ -91,6 +91,7 @@ javascript: (function () {
         list-style: none;
         padding: 0;
         margin: 0;
+        width: fit-content;
       `;
 
       const bookmarklets = data.filter(
@@ -108,7 +109,6 @@ javascript: (function () {
       bookmarklets.forEach((file) => {
         const item = document.createElement("li");
         item.style.cssText = `
-          width: 100%;
           padding: 8px 10px;
           border-bottom: 1px solid #eee;
           cursor: pointer;

@@ -1,41 +1,44 @@
-javascript:(() => {
+javascript: (() => {
   let textExpanderMemory = localStorage.textExpanderBookmarkletMemory;
   if (textExpanderMemory) {
     textExpanderMemory = JSON.parse(textExpanderMemory);
   } else {
-    textExpanderMemory = { 
-      'script': '<script></script>',
-      'style': '<style></style>',
-      'div': '<div></div>',
+    textExpanderMemory = {
+      script: "<script></script>",
+      style: "<style></style>",
+      div: "<div></div>",
     };
-    localStorage.textExpanderBookmarkletMemory = JSON.stringify(textExpanderMemory);
+    localStorage.textExpanderBookmarkletMemory =
+      JSON.stringify(textExpanderMemory);
   }
-  const overlay = document.createElement('div');
-  overlay.id = 'keypressBookmarkletOverlay';
-  overlay.style.position = 'fixed';
-  overlay.style.bottom = '10px';
-  overlay.style.left = '-100%';
-  overlay.style.padding = '10px';
-  overlay.style.backgroundColor = 'rgba(0,0,0,0.7)';
-  overlay.style.color = 'white';
-  overlay.style.zIndex = '10000';
-  overlay.style.borderRadius = '5px';
-  overlay.style.fontFamily = 'Arial, sans-serif';
-  overlay.style.fontSize = '16px';
-  overlay.style.userSelect = 'none';
-  overlay.style.cursor = 'pointer';
-  overlay.style.opacity = '0';
-  overlay.style.transition = 'left 0.2s, opacity 0.2s, padding 0.2s';
-  
-  overlay.addEventListener('mouseover', ()=> {
-    overlay.style.filter = 'invert(1)';
+  const overlay = document.createElement("div");
+  overlay.id = "keypressBookmarkletOverlay";
+  overlay.style.position = "fixed";
+  overlay.style.bottom = "10px";
+  overlay.style.left = "-100%";
+  overlay.style.padding = "10px";
+  overlay.style.backgroundColor = "rgba(0,0,0,0.7)";
+  overlay.style.color = "white";
+  overlay.style.zIndex = "10000";
+  overlay.style.borderRadius = "5px";
+  overlay.style.fontFamily = "Arial, sans-serif";
+  overlay.style.fontSize = "16px";
+  overlay.style.userSelect = "none";
+  overlay.style.cursor = "pointer";
+  overlay.style.opacity = "0";
+  overlay.style.transition = "left 0.2s, opacity 0.2s, padding 0.2s";
+
+  overlay.addEventListener("mouseover", () => {
+    overlay.style.filter = "invert(1)";
   });
 
-  overlay.addEventListener('click', () => {
+  overlay.addEventListener("click", () => {
     const key = overlay.innerText;
     const expandedText = textExpanderMemory[key];
     if (expandedText) {
-      const yes = confirm(`Copy the following to clipboard? \n\n${expandedText}`);
+      const yes = confirm(
+        `Copy the following to clipboard? \n\n${expandedText}`
+      );
       if (yes) copy(expandedText);
     }
   });
@@ -43,31 +46,39 @@ javascript:(() => {
   document.body.appendChild(overlay);
 
   let timeoutId = null;
-  let overlayText = '';
+  let overlayText = "";
 
-  document.addEventListener('keydown', (event) => {
-    if (document.activeElement.type === 'password') {
+  document.addEventListener("keydown", (event) => {
+    if (document.activeElement.type === "password") {
       resetOverlay();
       return;
     }
 
-    if (event.ctrlKey || event.altKey || event.metaKey || event.key.length > 1
-        /* || event.shiftKey */
-       ) {
+    if (
+      event.ctrlKey ||
+      event.altKey ||
+      event.metaKey ||
+      event.key.length > 1
+      /* || event.shiftKey */
+    ) {
       return;
     }
 
     overlayText += event.key;
 
-    if (Object.keys(textExpanderMemory).every(key => !key.startsWith(overlayText))) {
+    if (
+      Object.keys(textExpanderMemory).every(
+        (key) => !key.startsWith(overlayText)
+      )
+    ) {
       resetOverlay();
       return;
     }
 
     overlay.innerText = overlayText;
-    overlay.style.padding = '10px';
-    overlay.style.opacity = '1';
-    overlay.style.left = '10px';
+    overlay.style.padding = "10px";
+    overlay.style.opacity = "1";
+    overlay.style.left = "10px";
 
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
@@ -77,14 +88,14 @@ javascript:(() => {
 
   function resetOverlay() {
     clearTimeout(timeoutId);
-    overlayText = '';
-    overlay.innerText = '';
-    overlay.style.padding = '0';
-    overlay.style.opacity = '0';
-    overlay.style.filter = '';
+    overlayText = "";
+    overlay.innerText = "";
+    overlay.style.padding = "0";
+    overlay.style.opacity = "0";
+    overlay.style.filter = "";
   }
 
-  const style = document.createElement('style');
+  const style = document.createElement("style");
   document.head.appendChild(style);
   style.sheet.insertRule(`#keypressBookmarkletOverlay kbd {
     padding: 5px 10px !important;

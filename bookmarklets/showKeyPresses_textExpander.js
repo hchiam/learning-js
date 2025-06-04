@@ -97,7 +97,7 @@ javascript: (() => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
       resetOverlay();
-    }, 2000);
+    }, 3000);
   });
 
   function resetOverlay() {

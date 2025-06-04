@@ -1,4 +1,5 @@
 javascript: (() => {
+  const reservedShowAllShortcut = "~~";
   let textExpanderMemory = localStorage.textExpanderBookmarkletMemory;
   if (textExpanderMemory) {
     textExpanderMemory = JSON.parse(textExpanderMemory);
@@ -35,12 +36,23 @@ javascript: (() => {
 
   overlay.addEventListener("click", () => {
     const key = overlay.innerText;
-    const expandedText = textExpanderMemory[key];
-    if (expandedText) {
-      const yes = confirm(
-        `Copy the following to clipboard? \n\n${expandedText}`
+    const showAll = key === reservedShowAllShortcut;
+    if (showAll) {
+      alert(
+        JSON.stringify(
+          JSON.parse(localStorage.textExpanderBookmarkletMemory),
+          null,
+          2
+        )
       );
-      if (yes) copy(expandedText);
+    } else {
+      const expandedText = textExpanderMemory[key];
+      if (expandedText) {
+        const yes = confirm(
+          `Copy the following to clipboard? \n\n${expandedText}`
+        );
+        if (yes) copy(expandedText);
+      }
     }
   });
 
@@ -67,11 +79,12 @@ javascript: (() => {
 
     overlayText += event.key;
 
-    if (
-      Object.keys(textExpanderMemory).every(
-        (key) => !key.startsWith(overlayText)
-      )
-    ) {
+    const showAll = overlayText === reservedShowAllShortcut;
+    const foundMatch = Object.keys(textExpanderMemory).some((key) =>
+      key.startsWith(overlayText)
+    );
+
+    if (!showAll && !foundMatch) {
       resetOverlay();
       return;
     }

@@ -766,6 +766,23 @@ const callStack = new Error().stack;
     });
     ```
 
+## detect when all images have loaded
+
+`img` has a `.complete` property, so you can check if all `<img>`s in an HTML container are done loading, and you can do something like the following jQuery code:
+
+```js
+container.find('img').on('load', () => {
+  if (allImagesLoadingComplete(container)) {
+    callback();
+  }
+});
+
+function allImagesLoadingComplete(container) {
+  const images = container.is('img') ? container : container.find('img');
+  return images.toArray().every(img => img.complete);
+}
+```
+
 ## a list of bunch of quick helpful JS functions
 
 https://github.com/devsmitra/javascript-quick-functions

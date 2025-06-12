@@ -783,6 +783,20 @@ function allImagesLoadingComplete(container) {
 }
 ```
 
+## tasks vs microtasks
+
+There is a slight difference between `setTimeout` of 0 ms and `queueMicrotask`, but `queueMicrotask` seems more expressive/explicit/intentional in terms of waiting for a task complete to avoid a timing bug - https://www.freecodecamp.org/news/queuemicrotask/ = a shorter explanation than the following further reading: 
+- https://developer.mozilla.org/en-US/docs/Web/API/Window/queueMicrotask
+- https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide
+- For other related methods and details: https://macarthur.me/posts/navigating-the-event-loop/#the-tldr (see the [TL;DR](https://macarthur.me/posts/navigating-the-event-loop/#the-tldr) first):
+    - setTimeout(() => {}, 0)
+    - queueMicrotask(() => {}
+    - requestAnimationFrame(() => {})
+    - requestIdleCallback(() => {})
+- https://www.youtube.com/watch?v=cCOL7MC4Pl0
+
+compare with https://github.com/hchiam/learning-js/blob/main/event-loop_call-stack_task-queue_microtask-queue.js
+
 ## a list of bunch of quick helpful JS functions
 
 https://github.com/devsmitra/javascript-quick-functions

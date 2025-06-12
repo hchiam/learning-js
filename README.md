@@ -794,6 +794,10 @@ There is a slight difference between `setTimeout` of 0 ms and `queueMicrotask`, 
     - requestAnimationFrame(() => {})
     - requestIdleCallback(() => {})
 - https://www.youtube.com/watch?v=cCOL7MC4Pl0
+    - these 3 queues behave slightly differently: https://youtu.be/cCOL7MC4Pl0?t=1656
+    - 1: tasks queue: process one at a time.
+    - 2: animation callbacks queue: process all until completion, except for additional items that were queued during processing, until the next frame.
+    - 3: and microtasks queue: process all until completion, including any additional items that were queued during processing.
 
 compare with https://github.com/hchiam/learning-js/blob/main/event-loop_call-stack_task-queue_microtask-queue.js
 

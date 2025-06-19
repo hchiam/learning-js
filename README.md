@@ -493,6 +493,7 @@ $x(
 
 - `currentTarget` = listening element (e.g. the individual button that has the click event listener fired on it)
 - `target` = triggering element (i.e. maybe the button, or maybe the i or span you actually clicked on inside of the button)
+- my own mnemonic: "C" is for "catcher", "T" is for "trigger". also, the longer name is more specific to the "catcher" element(s), as opposed to the many more possible "trigger" elements/sources.
 
 <https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent/relatedTarget>
 

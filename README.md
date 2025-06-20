@@ -772,39 +772,41 @@ const callStack = new Error().stack;
 `img` has a `.complete` property, so you can check if all `<img>`s in an HTML container are done loading, and you can do something like the following jQuery code:
 
 ```js
-container.find('img').on('load', () => {
+container.find("img").on("load", () => {
   if (allImagesLoadingComplete(container)) {
     callback();
   }
 });
 
 function allImagesLoadingComplete(container) {
-  const images = container.is('img') ? container : container.find('img');
-  return images.toArray().every(img => img.complete);
+  const images = container.is("img") ? container : container.find("img");
+  return images.toArray().every((img) => img.complete);
 }
 ```
 
 ## tasks vs microtasks
 
-There is a slight difference between `setTimeout` of 0 ms and `queueMicrotask`, but `queueMicrotask` seems more expressive/explicit/intentional in terms of waiting for a task complete to avoid a timing bug - https://www.freecodecamp.org/news/queuemicrotask/ = a shorter explanation than the following further reading: 
-- https://developer.mozilla.org/en-US/docs/Web/API/Window/queueMicrotask
-- https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide
-- For other related methods and details: https://macarthur.me/posts/navigating-the-event-loop/#the-tldr (see the [TL;DR](https://macarthur.me/posts/navigating-the-event-loop/#the-tldr) first):
-    - setTimeout(() => {}, 0)
-    - queueMicrotask(() => {}
-    - requestAnimationFrame(() => {})
-    - requestIdleCallback(() => {})
-- https://www.youtube.com/watch?v=cCOL7MC4Pl0
-    - these 3 queues behave slightly differently: https://youtu.be/cCOL7MC4Pl0?t=1656
-    - 1: tasks queue: process one at a time.
-    - 2: animation callbacks queue: process all until completion, except for additional items that were queued during processing, until the next frame.
-    - 3: and microtasks queue: process all until completion, including any additional items that were queued during processing.
+There is a slight difference between `setTimeout` of 0 ms and `queueMicrotask`, but `queueMicrotask` seems more expressive/explicit/intentional in terms of waiting for a task complete to avoid a timing bug - <https://www.freecodecamp.org/news/queuemicrotask/> = a shorter explanation than the following further reading:
 
-compare with https://github.com/hchiam/learning-js/blob/main/event-loop_call-stack_task-queue_microtask-queue.js
+- <https://developer.mozilla.org/en-US/docs/Web/API/Window/queueMicrotask>
+- <https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide>
+- For other related methods and details: <https://macarthur.me/posts/navigating-the-event-loop/#the-tldr> (see the [TL;DR](https://macarthur.me/posts/navigating-the-event-loop/#the-tldr) first):
+  - setTimeout(() => {}, 0)
+  - queueMicrotask(() => {}
+  - requestAnimationFrame(() => {})
+  - requestIdleCallback(() => {})
+- <https://www.youtube.com/watch?v=cCOL7MC4Pl0>
+  - these 3 queues behave slightly differently: <https://youtu.be/cCOL7MC4Pl0?t=1656>
+  - 1: tasks queue: process one at a time.
+  - 2: animation callbacks queue: process all until completion, except for additional items that were queued during processing, until the next frame.
+  - 3: and microtasks queue: process all until completion, including any additional items that were queued during processing.
+
+compare with <https://github.com/hchiam/learning-js/blob/main/event-loop_call-stack_task-queue_microtask-queue.js>
 
 ## a list of bunch of quick helpful JS functions
 
-https://github.com/devsmitra/javascript-quick-functions
+<https://github.com/devsmitra/javascript-quick-functions>
+
 - generator
 - time to execute
 - array functions

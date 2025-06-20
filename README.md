@@ -817,3 +817,11 @@ compare with <https://github.com/hchiam/learning-js/blob/main/event-loop_call-st
 - random hex colour
 - convert px to rem
 - **get selected text**
+
+## take screenshot / screen capture of window and ideally just the viewport
+
+- using `getDisplayMedia` to take an actual screenshot, instead of using html2canvas to try to recreate things:
+
+  - Claude artifact: <https://claude.ai/public/artifacts/0c4b4813-2b92-42fd-b2e2-a0a47d9fbd18>
+
+  - Claude conversation leading up to that artifact: <https://claude.ai/share/38b43df5-f5eb-48f6-a8bb-afe287dbd92b>

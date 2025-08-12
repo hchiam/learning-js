@@ -3,7 +3,7 @@ javascript: (() => {
     "https://musiclab.chromeexperiments.com/Song-Maker"
   );
   if (!isInRightSite) {
-    alert("Please try again in in Chrome Music Labs Song Maker.");
+    alert("Please try again in Chrome Music Labs Song Maker.");
     return;
   }
   const overlay = document.createElement("div");
@@ -255,6 +255,10 @@ javascript: (() => {
         alert(
           "No cells were clicked. The image might be too light or the threshold too high. Try adjusting the threshold."
         );
+      } else {
+        setTimeout(() => {
+          alert("Done.");
+        }, clickCount * 150);
       }
     } catch (error) {
       console.error("Error applying pattern:", error);

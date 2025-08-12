@@ -232,9 +232,12 @@ javascript: (() => {
         cellHeight
       );
       const proceed = confirm(
-        `Continue? \n\nYou might want to turn off your volume. \n\n${clickCount} notes will be added to apply pattern to Song Maker...`
+        `Continue? \n\nYou might want to turn off your volume. \n\n${clickCount} notes will be added to apply pattern to Song Maker. \n\nAlso, you might not want to scroll during this process.`
       );
-      if (!proceed) return;
+      if (!proceed) {
+        alert("Cancelled.");
+        return;
+      }
       console.log(`Scheduled ${clickCount} canvas clicks`);
       cellClicksCount(
         pattern,

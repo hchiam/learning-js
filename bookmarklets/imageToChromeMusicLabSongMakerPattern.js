@@ -141,7 +141,9 @@ javascript: (() => {
     doneCallback?.();
   }
   function rgbToGrayScaleNumber(r, g, b) {
-    return Math.round(0.2989 * r + 0.587 * g + 0.114 * b);
+    return Math.round(
+      0.298936021293775 * r + 0.587043074451121 * g + 0.114020904255103 * b
+    );
   }
   convertBtn.addEventListener("click", function () {
     if (!imageData) return;

@@ -42,7 +42,7 @@ javascript: (() => {
           </label>
           <label style="display: flex; flex-direction: column; align-items: center;">
             <span>Grid Height:</span>
-            <input type="number" id="gridHeight" min="1" value="16" style="width: 4rem; text-align: center;">
+            <input type="number" id="gridHeight" min="1" value="15" style="width: 4rem; text-align: center;">
           </label>
         </div>
         <label style="display: flex; justify-content: space-between; align-items: center;">
@@ -102,7 +102,7 @@ javascript: (() => {
       return;
     }
     const gridWidth = parseInt(gridWidthInput.value) || 16;
-    const gridHeight = parseInt(gridHeightInput.value) || 16;
+    const gridHeight = parseInt(gridHeightInput.value) || 15;
     previewCanvas.width = gridWidth;
     previewCanvas.height = gridHeight;
     previewCanvas.style.display = "block";
@@ -148,7 +148,7 @@ javascript: (() => {
   convertBtn.addEventListener("click", function () {
     if (!imageData) return;
     const gridWidth = parseInt(gridWidthInput.value) || 16;
-    const gridHeight = parseInt(gridHeightInput.value) || 16;
+    const gridHeight = parseInt(gridHeightInput.value) || 15;
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
     canvas.width = gridWidth;
@@ -194,7 +194,7 @@ javascript: (() => {
       const gridCols = parseInt(gridWidthInput.value) || 16;
       const gridRows = Math.max(
         pattern.length,
-        parseInt(gridHeightInput.value) || 16
+        parseInt(gridHeightInput.value) || 15
       );
       const cellWidth = canvasWidth / gridCols;
       const cellHeight = canvasHeight / gridRows;

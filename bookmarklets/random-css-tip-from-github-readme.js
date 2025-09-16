@@ -1,4 +1,5 @@
 javascript: (function () {
+  /* UPDATE: this can be replaced by: https://random-css-note.surge.sh */
   var tips = [
     ...document.querySelectorAll(
       ".markdown-body > ul > li, .markdown-body > p, .markdown-body > .highlight-source-css"

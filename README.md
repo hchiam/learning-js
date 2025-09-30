@@ -827,3 +827,21 @@ compare with <https://github.com/hchiam/learning-js/blob/main/event-loop_call-st
   - Claude artifact: <https://claude.ai/public/artifacts/0c4b4813-2b92-42fd-b2e2-a0a47d9fbd18>
 
   - Claude conversation leading up to that artifact: <https://claude.ai/share/38b43df5-f5eb-48f6-a8bb-afe287dbd92b>
+
+## fix for iOS/iPad/iPhone "Invalid Date" bug
+
+- this won't work on iOS because someString has to be of format 2025-09-30T14:30:00Z for iOS, presumably because of the JS spec only requires/guarantees that YYYY-MM-DDTHH:mm:ss.sssZ is universally supported <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format>:
+
+  ```js
+  var someString = "2025-9-30";
+  new Date(someString);
+  ```
+
+- otherwise this should work for all browsers including iOS:
+
+  ```js
+  var x = new Date(someString); // has default time
+  x.setDate(dayOfMonth);
+  x.setFullYear(year);
+  x.setMonth(month - 1); // setMonth uses index
+  ```

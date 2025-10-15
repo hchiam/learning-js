@@ -1,6 +1,6 @@
 <!-- View on GitHub to get the convenient copy-to-clipboard button: -->
 
-# Hover over the code to see the copy-to-clipboard button:
+# Hover over the code to see the copy-to-clipboard button
 
 ![animation showing how to hover to get the copy-to-clipboard button](copy-code-to-clipboard.gif)
 
@@ -10,7 +10,7 @@ javascript: (function () {
     var keepGoing = true;
     var popup;
     var maxWidth = screen.width;
-    var minWidth = 152;
+    var minWidth = 177;
     var goWider = true;
 
     openPopup();
@@ -68,4 +68,4 @@ javascript: (function () {
 })();
 ```
 
-https://github.com/hchiam/learning-js/blob/main/bookmarklets/autoResizeWindowToTestMediaQueries.js
+<https://github.com/hchiam/learning-js/blob/main/bookmarklets/autoResizeWindowToTestMediaQueries.js>

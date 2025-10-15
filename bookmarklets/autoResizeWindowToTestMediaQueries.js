@@ -3,7 +3,7 @@ javascript: (function () {
     var keepGoing = true;
     var popup;
     var maxWidth = screen.width;
-    var minWidth = 152;
+    var minWidth = 177;
     var goWider = true;
 
     openPopup();

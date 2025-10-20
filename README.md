@@ -910,3 +910,17 @@ console.log(5, "translatorAvailability", translatorAvailability);
 
 // there's also monitor for monitoring download progress and usage quota
 ```
+
+## comma symbols
+
+‚ is a comma symbol that isn't ',' - reference: https://en.wiktionary.org/wiki/%E2%80%9A "SINGLE LOW-9 QUOTATION MARK" - this could be useful for avoiding splitting an option that has commas in its name when splitting a string of text by commas
+
+you can try comparing Ctrl+F with these:
+
+```txt
+‚
+```
+
+```txt
+,
+```

@@ -924,3 +924,18 @@ you can try comparing Ctrl+F with these:
 ```txt
 ,
 ```
+
+## IIFE
+
+Immediately Invoked Function Expression
+
+```js
+console.log(
+(function iifeBracketOutside(a){return a+2;})(1) === (function iifeBracketInside(a){return a+2;}(1));
+); // true
+
+(()=>{console.log('the way i first learned it')})();
+(()=>{console.log('the way i secondly encountered it')}());
+```
+
+an iife can also be `async` https://developer.mozilla.org/en-US/docs/Glossary/IIFE

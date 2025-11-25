@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "dev": "vite; # http://localhost:5173/",
+    "start": "vite; # http://localhost:5173/",
+    "build": "vite build --base=./",
+    "deploy": "yarn build; yarn deploy:vercel; yarn deploy:surge;",
+    "deploy:surge": "surge dist https://detect-shake.surge.sh/;",
+    "deploy:vercel": "vercel --prod; # https://detect-shake.vercel.app"
+  },
+  "devDependencies": {
+    "vite": "7.0.6"
+  }
+}

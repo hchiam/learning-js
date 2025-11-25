@@ -47,6 +47,7 @@
         return String((Math.round(value) * 10) / 10).padStart(2, "_");
       }
       let showing = false;
+      const threshold = 5;
       detectShake(({ x, y, z, magnitude, shaken }) => {
         const p = document.querySelector("p");
         if (!showing) p.classList.add("on");
@@ -54,6 +55,9 @@
         p.innerText = `${fmt(x)}\n${fmt(y)}\n${fmt(z)}\n${fmt(
           magnitude
         )}\nshaken`;
+        p.classList.remove("ten");
+        p.classList.remove("twenty");
+        p.classList.remove("thirty");
         if (magnitude >= 10 && magnitude < 20) {
           p.classList.add("ten");
         } else if (magnitude >= 20 && magnitude < 30) {
@@ -62,7 +66,7 @@
           p.classList.add("thirty");
         }
         p.classList.add("shaken");
-      });
+      }, threshold);
       /** detectShake(({ x, y, z, magnitude }) => {}); */
       function detectShake(callback = () => {}, threshold = 20) {
         let shaken = false;

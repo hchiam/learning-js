@@ -51,9 +51,9 @@
         const p = document.querySelector("p");
         if (!showing) p.classList.add("on");
         showing = true;
-        p.innerText = `${fmt(x)}\n${fmt(y)}\n${fmt(z)}\n${fmt(magnitude)}\n${
-          shaken ? "shaken" : ""
-        }`;
+        p.innerText = `${fmt(x)}\n${fmt(y)}\n${fmt(z)}\n${fmt(
+          magnitude
+        )}\nshaken`;
         if (magnitude >= 10 && magnitude < 20) {
           p.classList.add("ten");
         } else if (magnitude >= 20 && magnitude < 30) {
@@ -61,12 +61,10 @@
         } else if (magnitude >= 30) {
           p.classList.add("thirty");
         }
-        if (shaken) {
-          p.classList.add("shaken");
-        }
+        p.classList.add("shaken");
       });
       /** detectShake(({ x, y, z, magnitude }) => {}); */
-      export function detectShake(callback = () => {}, threshold = 20) {
+      function detectShake(callback = () => {}, threshold = 20) {
         let shaken = false;
         let previousVector = { x: 0, y: 0, z: 0 };
         window.addEventListener("devicemotion", (event) => {

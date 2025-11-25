@@ -70,9 +70,9 @@
         const p = document.querySelector("p");
         if (!showing) p.classList.add("on");
         showing = true;
-        p.innerText = `${fmt(x)}\n${fmt(y)}\n${fmt(z)}\n${fmt(
+        p.innerText = `${fmt(x)} = x\n${fmt(y)} = y\n${fmt(z)} = z\n${fmt(
           magnitude
-        )}\nshaken`;
+        )} = val\nshaken`;
         p.classList.remove("ten");
         p.classList.remove("twenty");
         p.classList.remove("thirty");

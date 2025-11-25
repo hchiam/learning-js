@@ -16,35 +16,53 @@
         align-items: center;
         justify-content: center;
       }
-      p.on {
-        font-size: 20dvmin;
+      main {
+        text-align: center;
       }
-      p.ten {
+      p {
+        text-align: center;
+        text-wrap: balance;
+        font-family: monospace;
+      }
+      p.on {
+        text-align: end;
+        font-size: 15dvmin;
+      }
+      .ten {
         background: yellow;
       }
-      p.twenty {
+      .twenty {
         background: green;
       }
-      p.thirty {
+      .thirty {
         background: lightblue;
       }
-      p.shaken {
+      .shaken {
         outline: solid 1rem lime;
       }
     </style>
   </head>
   <body>
-    <p>
-      open in mobile and shake to see output -
-      <a
-        href="https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent"
-        target="_blank"
-        >compare Firefox and Chrome</a
-      >
-    </p>
+    <main>
+      <div>
+        <small
+          ><span class="ten">&gt;10 = yellow</span>,
+          <span class="twenty">&gt;20 = green</span>,
+          <span class="thirty">&gt;30 = lightblue</span></small
+        >
+      </div>
+      <p>
+        open in mobile and shake to see output -
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent"
+          target="_blank"
+          >compare Firefox and Chrome</a
+        >
+      </p>
+    </main>
     <script>
       function fmt(value) {
-        return String((Math.round(value) * 10) / 10).padStart(2, "_");
+        return (Math.round(value) * 10) / 10;
       }
       let showing = false;
       const threshold = 5;

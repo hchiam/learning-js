@@ -1,5 +1,5 @@
-/** detectShake(({ x, y, z, magnitude, shaken }) => {}); */
-function detectShake(callback = () => {}, threshold = 20) {
+/** detectShake(({ x, y, z, magnitude }) => {}); */
+export function detectShake(callback = () => {}, threshold = 20) {
   let shaken = false;
   let previousVector = { x: 0, y: 0, z: 0 };
   window.addEventListener("devicemotion", (event) => {
@@ -15,13 +15,14 @@ function detectShake(callback = () => {}, threshold = 20) {
     if (magnitude >= threshold) {
       previousVector = { x, y, z };
     }
-    if (callback) {
+    if (shaken && callback) {
+      shaken = false;
+      previousVector = { x: 0, y: 0, z: 0 };
       const data = {
         x,
         y,
         z,
         magnitude,
-        shaken,
       };
       callback(data);
     }

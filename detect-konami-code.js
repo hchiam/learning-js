@@ -12,9 +12,14 @@ function onKonamiCode() {
     var konamiAsciiSequence = "38,38,40,40,37,39,37,39,66,65";
     var sequenceInWords =
       "ArrowUp,ArrowUp,ArrowDown,ArrowDown,ArrowLeft,ArrowRight,ArrowLeft,ArrowRight,b,a";
+    var autoCancelKonami = null;
     window.addEventListener(
       "keydown",
       function (event) {
+        clearTimeout(autoCancelKonami);
+        autoCancelKonami = setTimeout(function () {
+          seq = [];
+        }, 3000); // if too slow
         var key = event.key || event.which || event.keyCode;
         seq.push(key);
         var hitKonamiSequence =

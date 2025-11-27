@@ -1,35 +1,3 @@
-(async () => {
-  // https://en.wikipedia.org/wiki/Piano_key_frequencies
-  await note(); // C
-  // await beep(277.183);
-  await note(293.665); // D
-  // await beep(311.127);
-  await note(329.628); // E
-  await note(349.228); // F
-  // await beep(369.994);
-  await note(391.995); // G
-  // await beep(415.305);
-  await note(440.0); // A
-  // await beep(466.164);
-  await note(493.883); // B
-  await note(513.251); // high C
-})();
-
-async function note(f = 261.626 /*middle C*/, ms = 400) {
-  return new Promise((resolve) => {
-    const c = new AudioContext();
-    const o = c.createOscillator();
-    o.type = "sine";
-    o.frequency.value = f;
-    o.connect(c.destination);
-    o.start();
-    setTimeout(() => {
-      o.stop();
-      resolve();
-    }, ms);
-  });
-}
-
 // https://stackoverflow.com/questions/879152/how-do-i-make-javascript-beep/23395136#23395136
 
 function beep() {

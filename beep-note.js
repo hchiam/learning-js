@@ -23,6 +23,23 @@
   note("G", 1000);
   note("E", 1000);
   note("C", 1000);
+  await rest(1000);
+  // now play a chord progression:
+  note("C", 1000);
+  note("E", 1000);
+  note("G", 1000);
+  await rest(1000);
+  note("D", 1000);
+  note("F", 1000);
+  note("A", 1000);
+  await rest(1000);
+  note("F", 1000);
+  note("A", 1000);
+  note("high C", 1000);
+  await rest(1000);
+  note("C", 1000);
+  note("E", 1000);
+  note("G", 1000);
 })();
 
 async function play(sequence = []) {

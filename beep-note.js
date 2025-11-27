@@ -1,5 +1,5 @@
 (async () => {
-  await play([["E"], ["E"], [""], ["E"], [""], ["C"], ["E", 500], ["G", 500]]);
+  await play([["E"], ["E"], [""], ["E"], [""], ["C"], ["E", 500], ["G", 1000]]);
   await note("E");
   await note("E");
   await rest();
@@ -7,7 +7,7 @@
   await rest();
   await note("C");
   await note("E", 500);
-  await note("G", 500);
+  await note("G", 1000);
 })();
 
 async function play(sequence = []) {
@@ -31,9 +31,20 @@ async function note(f = 261.626 /*middle C*/, ms = 250) {
   return new Promise((resolve) => {
     const c = new AudioContext();
     const o = c.createOscillator();
+    const g = c.createGain();
+
     o.type = "sine";
     o.frequency.value = noteHelper(f);
-    o.connect(c.destination);
+    o.connect(g);
+    g.connect(c.destination);
+
+    if (g.gain.linearRampToValueAtTime) {
+      const now = c.currentTime;
+      g.gain.setValueAtTime(0, now);
+      g.gain.linearRampToValueAtTime(1, now + 0.01);
+      g.gain.linearRampToValueAtTime(0, now + ms / 1000 - 0.01);
+    }
+
     o.start();
     setTimeout(() => {
       o.stop();

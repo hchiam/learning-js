@@ -8,6 +8,10 @@
   await note("C");
   await note("E", 500);
   await note("G", 1000);
+  // chord:
+  note("G", 1000);
+  note("E", 1000);
+  note("C", 1000);
 })();
 
 async function play(sequence = []) {

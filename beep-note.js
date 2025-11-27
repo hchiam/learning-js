@@ -1,5 +1,16 @@
 (async () => {
+  // arbitrary key on 88-key piano:
+  await note("key 40"); // middle C
+  await note("key 42"); // D
+  await note("key 44"); // E
+  await note("key 45"); // F
+  await note("key 47"); // G
+  await note("key 49"); // A
+  await note("key 51"); // B
+  await note("key 52"); // high C
+  // play notes in sequence:
   await play([["E"], ["E"], [""], ["E"], [""], ["C"], ["E", 500], ["G", 1000]]);
+  // play notes one at a time:
   await note("E");
   await note("E");
   await rest();
@@ -93,6 +104,12 @@ function noteHelper(f) {
       return 277.183;
     case "C":
       return 261.626;
+  }
+
+  const isKeyOn88KeyPiano = String(f).startsWith("key ");
+  if (isKeyOn88KeyPiano) {
+    const keyN = Number(f.replace("key ", ""));
+    return 2 ** ((keyN - 49) / 12) * 440; // key 49 being A4 = 440 Hz
   }
 
   return f;

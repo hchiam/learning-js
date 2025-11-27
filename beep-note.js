@@ -1,4 +1,4 @@
-(async () => {
+(async function exampleUsage() {
   // arbitrary key on 88-key piano:
   await note("key 40"); // middle C
   await note("key 42"); // D
@@ -58,10 +58,11 @@ async function rest(ms = 250) {
   await new Promise((r) => setTimeout(r, ms));
 }
 
+const sharedContext = new AudioContext();
 async function note(f = 261.626 /*middle C*/, ms = 250) {
   await rest(50); // to help make notes sound distinct
   return new Promise((resolve) => {
-    const c = new AudioContext();
+    const c = sharedContext;
     const o = c.createOscillator();
     const g = c.createGain();
 

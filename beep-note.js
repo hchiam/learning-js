@@ -1,4 +1,5 @@
 (async () => {
+  await play([["E"], ["E"], [""], ["E"], [""], ["C"], ["E", 500], ["G", 500]]);
   await note("E");
   await note("E");
   await rest();
@@ -8,6 +9,19 @@
   await note("E", 500);
   await note("G", 500);
 })();
+
+async function play(sequence = []) {
+  for await (let item of sequence) {
+    console.log(item);
+    if (item[0] === "") {
+      const ms = item[1] ?? 250;
+      await rest(ms);
+    } else {
+      const [f, ms] = item;
+      await note(f, ms);
+    }
+  }
+}
 
 async function rest(ms = 250) {
   await new Promise((r) => setTimeout(r, ms));

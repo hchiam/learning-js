@@ -12,7 +12,6 @@
 
 async function play(sequence = []) {
   for await (let item of sequence) {
-    console.log(item);
     if (item[0] === "") {
       const ms = item[1] ?? 250;
       await rest(ms);

@@ -63,7 +63,7 @@ function noteHelper(f) {
   // https://en.wikipedia.org/wiki/Piano_key_frequencies
   switch (f) {
     case "high C":
-      return 513.251;
+      return 523.251;
     case "B":
       return 493.883;
     case "Bb":

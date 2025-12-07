@@ -7,13 +7,13 @@ NOTE: must also track min, since multiplication can easily flip!
 
 DP: recursive relation: continue or not continue. Since must be contiguous, not use means start new.
 
-Try starting at each index, so Ot(n^2), Os(n?) or Os(1?)
+Try starting at each index, so time O(n^2), space O(n?) or space O(1?)
 Can we do better?
 
-DP: Ot(n), Os(n?)
+DP: time O(n), space O(n?)
 Can we do even better?
 
-DP: Ot(n), Os(1) is possible!
+DP: time O(n), space O(1) is possible!
 How: 3 variables! (more like 6, but still constant space.)
 Track chain max to help with global max,
 track chain min in case you can get a better global max with double negative signs cancelling out,

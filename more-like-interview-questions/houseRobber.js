@@ -4,10 +4,10 @@
 /**
  * @param {number[]} nums
  * @return {number}
-naive: all valid combos: scan 1-n then 1+1-n+1 etc Ot(n^2) Os(1)
-BCR: Ot(n) Os(1)
-dp table? Ot(n) Os(n) --> try this first
-1 var? Ot(n) Os(1) --> do this later if time
+naive: all valid combos: scan 1-n then 1+1-n+1 etc time O(n^2) space O(1)
+BCR: time O(n) space O(1)
+dp table? time O(n) space O(n) --> try this first
+1 var? time O(n) space O(1) --> do this later if time
 remember: recursive relationship --> memo --> iterative --> variables
 1231
 1244
@@ -29,7 +29,7 @@ var rob = function (nums) {
 };
 
 function rob1(nums) {
-  // Ot(n) Os(n) solution:
+  // time O(n) space O(n) solution:
   if (nums.length < 3) return Math.max(...nums, 0);
   const dp = new Array(nums.length + 1).fill(0);
   // choices: choose or pass = recursive relationship
@@ -43,7 +43,7 @@ function rob1(nums) {
 }
 
 function rob2(nums) {
-  // Ot(n) Os(1) solution:
+  // time O(n) space O(1) solution:
   if (nums.length < 3) return Math.max(...nums, 0);
   let dp2 = 0;
   let dp1 = nums[0];

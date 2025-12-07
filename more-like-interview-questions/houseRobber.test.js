@@ -1,7 +1,7 @@
 const { rob1, rob2 } = require("./houseRobber.js");
 const { robii1, robii2 } = require("./houseRobberII.js");
 
-describe("Ot(n) Os(n) solution to the House Robber problem", () => {
+describe("time O(n) space O(n) solution to the House Robber problem", () => {
   it("works", () => {
     expect(rob1([1, 2, 3, 1])).toBe(4);
     expect(rob1([2, 7, 9, 3, 1])).toBe(12);
@@ -12,7 +12,7 @@ describe("Ot(n) Os(n) solution to the House Robber problem", () => {
   });
 });
 
-describe("Ot(n) Os(1) solution to the House Robber problem", () => {
+describe("time O(n) space O(1) solution to the House Robber problem", () => {
   it("works", () => {
     expect(rob2([1, 2, 3, 1])).toBe(4);
     expect(rob2([2, 7, 9, 3, 1])).toBe(12);
@@ -23,7 +23,7 @@ describe("Ot(n) Os(1) solution to the House Robber problem", () => {
   });
 });
 
-describe("Ot(n) Os(n) solution to the House Robber II problem", () => {
+describe("time O(n) space O(n) solution to the House Robber II problem", () => {
   it("works", () => {
     expect(robii1([1, 2, 3, 1])).toBe(4);
     expect(robii1([2, 7, 9, 3, 1])).toBe(11);
@@ -37,7 +37,7 @@ describe("Ot(n) Os(n) solution to the House Robber II problem", () => {
   });
 });
 
-describe("Ot(n) Os(1) solution to the House Robber II problem", () => {
+describe("time O(n) space O(1) solution to the House Robber II problem", () => {
   it("works", () => {
     expect(robii2([1, 2, 3, 1])).toBe(4);
     expect(robii2([2, 7, 9, 3, 1])).toBe(11);

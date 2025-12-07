@@ -1,5 +1,5 @@
 /**
- * Ot(n log n)
+ * time O(n log n)
  */
 function mergeSort(a) {
   if (a.length <= 1) return a;

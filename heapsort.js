@@ -4,7 +4,7 @@ console.log(heapSort([1, 2, 3]).join(","));
 console.log(heapSort([2, -3, -2, -3, 1]).join(","));
 
 /**
-heap sort can technically be done in Ot(n log n) Os(1)
+heap sort can technically be done in time O(n log n) space O(1)
 if done in-place with the left side being a max heap
 and the right side a growing list of sorted maxes start from the right.
 

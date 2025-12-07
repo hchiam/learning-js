@@ -3,15 +3,15 @@
 /**
  * @param {number[]} nums
  * @return {number[][]}
- naive: Ot(n^3)
- hash table: Ot(n^2) Os(n)
- 3 pointers: Ot(n^2) Os(1)
+ naive: time O(n^3)
+ hash table: time O(n^2) space O(n)
+ 3 pointers: time O(n^2) space O(1)
  */
 var threeSum = function (nums) {
-  // Os(1) Ot(n^2) = Ot(n log n + n^2)
+  // space O(1) time O(n^2) = time O(n log n + n^2)
   const output = [];
 
-  nums.sort((a, b) => a - b); // Ot(n log n) Os(1)
+  nums.sort((a, b) => a - b); // time O(n log n) space O(1)
 
   for (let i = 0; i < nums.length - 2; i++) {
     if (nums[i] > 0) continue; // 1, +, + = 0 is impossible

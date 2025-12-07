@@ -9,10 +9,10 @@
 /**
  * @param {number[]} nums
  * @return {number}
-naive: all valid combos: scan 1-n then 1+1-n+1 etc Ot(n^2) Os(1)
-BCR: Ot(n) Os(1)
-dp table? Ot(n) Os(n) --> try this first
-1 var? Ot(n) Os(1) --> do this later if time
+naive: all valid combos: scan 1-n then 1+1-n+1 etc time O(n^2) space O(1)
+BCR: time O(n) space O(1)
+dp table? time O(n) space O(n) --> try this first
+1 var? time O(n) space O(1) --> do this later if time
 remember: recursive relationship --> memo --> iterative --> variables
 BUT NOW CIRCULAR ARRAY! 
     --> basically can't use both start and end indices
@@ -20,12 +20,12 @@ BUT NOW CIRCULAR ARRAY!
         maybe start at index 1 and ignore index 0 until loop back?
             won't work with: 4411
         maybe duplicate first at end and track whether used it?
-        or store a variable that indicates whether it was used? Os(n)?
-        or store a variable that indicates whether it was used? Os(1)?
-        or simply check if last index gave max? Os(1)?
-        but need to check both, so likely still Os(n), for now?
-            then Ot(n) Os(n) < BCR
-            try getting Os(1) later if time
+        or store a variable that indicates whether it was used? space O(n)?
+        or store a variable that indicates whether it was used? space O(1)?
+        or simply check if last index gave max? space O(1)?
+        but need to check both, so likely still space O(n), for now?
+            then time O(n) space O(n) < BCR
+            try getting space O(1) later if time
     is there any case where you have to loop +2 spaces? try examples:
         010000004
             nah?
@@ -58,7 +58,7 @@ var rob = function (nums) {
 };
 
 function rob1(nums) {
-  // Ot(n) Os(n) solution:
+  // time O(n) space O(n) solution:
   if (nums.length < 3) return Math.max(...nums, 0);
   const dp = new Array(nums.length + 1).fill(0);
   // choices: choose or pass = recursive relationship
@@ -72,7 +72,7 @@ function rob1(nums) {
 }
 
 function rob2(nums) {
-  // Ot(n) Os(1) solution:
+  // time O(n) space O(1) solution:
   if (nums.length < 3) return Math.max(...nums, 0);
   let dp2 = 0;
   let dp1 = nums[0];
@@ -88,7 +88,7 @@ function rob2(nums) {
 function robii1(nums) {
   if (nums.length < 2) return nums[0];
   return Math.max(
-    rob1(nums.slice(1)), // TODO: refactor to avoid slice Ot(n)
+    rob1(nums.slice(1)), // TODO: refactor to avoid slice time O(n)
     rob1(nums.slice(0, nums.length - 1))
   );
 }
@@ -96,7 +96,7 @@ function robii1(nums) {
 function robii2(nums) {
   if (nums.length < 2) return nums[0];
   return Math.max(
-    rob2(nums.slice(1)), // TODO: refactor to avoid slice Ot(n)
+    rob2(nums.slice(1)), // TODO: refactor to avoid slice time O(n)
     rob2(nums.slice(0, nums.length - 1))
   );
 }

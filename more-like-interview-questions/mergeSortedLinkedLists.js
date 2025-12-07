@@ -1,7 +1,7 @@
 /**
  * If you aren't allowed to create a new LL for some reason,
  * and both input linked lists are sorted:
- * Ot(n + m), Os(1).
+ * time O(n + m), space O(1).
  *
  * Also consider edge cases:
  * - head

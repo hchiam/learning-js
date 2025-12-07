@@ -14,13 +14,13 @@ console.log(JSON.stringify(output) === "[[2,1,2],[3,2,3],[4,4,5]]");
 get stack of max height where boxes on top must be strictly smaller in all 3 dimensions
 
 ideas:
-1) brute force: all combos, and verify: Ot(n 2^n), Os(n)
-2) what is the BCR? Ot(n), Os(n)
+1) brute force: all combos, and verify: time O(n 2^n), space O(n)
+2) what is the BCR? time O(n), space O(n)
 3) sort by all 3 dimensions, since they must all be in order,
-and someone use DP table to find combos faster than Ot(n 2^n)?
-		-> Ot(n log n + n^2) = Ot(n^2) < Ot(n 2^n), but Os(n^2)
-		= Ot(n^2), Os(n^2)
-4) how can we do better and do Ot(n^2) AND Os(n)?
+and someone use DP table to find combos faster than time O(n 2^n)?
+		-> time O(n log n + n^2) = time O(n^2) < time O(n 2^n), but space O(n^2)
+		= time O(n^2), space O(n^2)
+4) how can we do better and do time O(n^2) AND space O(n)?
 	instead of a 2D table, just have a storage for the best height
 	per box item as base, and store the last-used box that goes over it,
 	and you can stack more than one box by realizing that you

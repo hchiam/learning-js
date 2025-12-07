@@ -1,5 +1,5 @@
 /*
-Ot(n^2 k) Os(n k) -> Ot(n k) Os(n k) -> Ot(n k) Os(n)
+time O(n^2 k) space O(n k) -> time O(n k) space O(n k) -> time O(n k) space O(n)
 
 We can get optimal solutions by combining subsolutions,
 and decisions affect other decisions, so got with DP, not a greedy algorithm.
@@ -10,10 +10,10 @@ DP:
 - base cases: first day, 0 transactions used.
 - recurrence relation: buy/sell or don't buy/sell.
 
-naive: Ot(2^min(n,k)), Os(n), since we have 2^n or 2^k choices.
-DP: Ot(n k), Os(n k), only 2 holding options, buy+sell = 1 transaction.
-    (Actually it's Ot(n^2 k), but with a running min we can avoid re-scanning.)
-DP: Ot(n k), Os(n), with only 2 rows.
+naive: time O(2^min(n,k)), space O(n), since we have 2^n or 2^k choices.
+DP: time O(n k), space O(n k), only 2 holding options, buy+sell = 1 transaction.
+    (Actually it's time O(n^2 k), but with a running min we can avoid re-scanning.)
+DP: time O(n k), space O(n), with only 2 rows.
 
 subsolution recurrence relation:
 	max(
@@ -54,14 +54,14 @@ buy & sell = sell today - buy previous day + max profit up to that previous day
 	because guaranteed buy/sell done once at each index (when we chose to do both at each row).
 
 and also track running max to avoid re-scanning,
-so we get Ot(n k) instead of Ot(n^2 k).
+so we get time O(n k) instead of time O(n^2 k).
 
 and we can save on space by realizing we only reuse 2 rows of the DP table anyways,
-so we get Os(n) instead of Os(n k).
+so we get space O(n) instead of space O(n k).
 */
 
 function maxProfitWithKTransactions_Ot_nk_Os_n(prices, k) {
-  // Ot(n k) Os(n)
+  // time O(n k) space O(n)
 
   if (!prices || !prices.length || !k) return 0;
 
@@ -97,7 +97,7 @@ function maxProfitWithKTransactions_Ot_nk_Os_n(prices, k) {
 }
 
 function maxProfitWithKTransactions_Ot_nk_Os_nk(prices, k) {
-  // Ot(n k) Os(n k) --> see other solution for Os(n)
+  // time O(n k) space O(n k) --> see other solution for space O(n)
 
   if (!prices || !prices.length || !k) return 0;
 

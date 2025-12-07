@@ -7,9 +7,9 @@
  */
 /**
 ideas:
-1) merge and sort: Ot(n log n) Os(n) or Os(1) technically
-2) min heap and pop: Ot(n log k) Os(k) or Os(1) technically
-3) we could merge and heapify in Ot(n) so then Ot(n) overall https://stackoverflow.com/questions/9755721/how-can-building-a-heap-be-on-time-complexity
+1) merge and sort: time O(n log n) space O(n) or space O(1) technically
+2) min heap and pop: time O(n log k) space O(k) or space O(1) technically
+3) we could merge and heapify in time O(n) so then time O(n) overall https://stackoverflow.com/questions/9755721/how-can-building-a-heap-be-on-time-complexity
 
 for practice, i'll stick to 2)
 */

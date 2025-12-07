@@ -2,7 +2,7 @@
 
 /**
  * based off of an interviewing.io video: https://www.youtube.com/watch?v=10WnvBk9sZc
- * Ot(n m min(n,m)), Os(n m min(n,m))
+ * time O(n m min(n,m)), space O(n m min(n,m))
  */
 const longestCommonSubSequence = (a, b) => {
   const results = [];
@@ -25,9 +25,9 @@ const longestCommonSubSequence = (a, b) => {
 };
 
 /**
-Ot(n m), Os(n m):
-Space is not as great as 2-row DP table Os(n m),
-but it's faster than Ot(n m min(n,m)),
+time O(n m), space O(n m):
+Space is not as great as 2-row DP table space O(n m),
+but it's faster than time O(n m min(n,m)),
 by avoiding string concatenation, and
 by using 2D breadcrumbs.
  */

@@ -1,8 +1,8 @@
 /*
-BCR: Ot(n), Os(1)
-naively check each node and min dist to both: Ot(~ n log n), Os(1)
-DFS and track paths to each and lowest root: Ot(n), Os(log n)
-DFS stack to track lowest manager candidate: Ot(n), Os(log n)
+BCR: time O(n), space O(1)
+naively check each node and min dist to both: time O(~ n log n), space O(1)
+DFS and track paths to each and lowest root: time O(n), space O(log n)
+DFS stack to track lowest manager candidate: time O(n), space O(log n)
 Also DFS = stack, technically.
 Gotta keep track of the path breadcrumbs, so can't do any better.
 

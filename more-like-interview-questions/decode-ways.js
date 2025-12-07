@@ -15,10 +15,10 @@ DP problem, where recursive relationship is single or pair
     instead of going forward, try going backwards to get combos
         e.g.: instead of 1 or 12, rather do the following:
         e.g.: 12 -> 1,2 or 12 to get to 12
-    Ot(n) Os(n^2)
-    Ot(n) Os(n) with single-row array optimization
-    Ot(n) Os(1)??? may not be possible with only a few variables
-BCR = Ot(n) Os(1) but may not be possible for now at least in time
+    time O(n) space O(n^2)
+    time O(n) space O(n) with single-row array optimization
+    time O(n) space O(1)??? may not be possible with only a few variables
+BCR = time O(n) space O(1) but may not be possible for now at least in time
 DP: recursive --> memo table
 226
     22 (2)

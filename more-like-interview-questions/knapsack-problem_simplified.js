@@ -15,8 +15,8 @@ console.log(
 
 /*
 ideas:
-1) generate each combo and check if it's valid: Ot(n 2^n)
-2) DP table: w possible weights (0-capacity) vs n items: Ot(w n)
+1) generate each combo and check if it's valid: time O(n 2^n)
+2) DP table: w possible weights (0-capacity) vs n items: time O(w n)
 	but to get the items used, need to keep the entire DP table:
 	at each cell, simply store the values (diagonal if used else above-cell value).
 

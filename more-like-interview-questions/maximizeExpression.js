@@ -8,17 +8,17 @@ console.log(output2, output2 === expected);
 
 /*
 Get max of a-b+c-d with locations a<b<c<d in array of integers.
-Ot(n) Os(n).
+time O(n) space O(n).
 
-BCR: Ot(n) Os(1) - key insight: try get max prev of a only. The recursive relation 
+BCR: time O(n) space O(1) - key insight: try get max prev of a only. The recursive relation 
 of the dynamic programming solution is max(skip, use), since you either use or not use. 
 ideas:
-1) brute force: each combo: Ot(n^4), Os(1)
-can we do Ot(n^2) with some pre-processing or extra storage?
+1) brute force: each combo: time O(n^4), space O(1)
+can we do time O(n^2) with some pre-processing or extra storage?
 2) get "half-solutions"? since a-b and c-d do the same op?
-	Ot(n^2) Os(n), then Ot(n^2) pairs, to get:
-	Ot(n^2) Os(n) overall
-how might we do better than Ot(n^2)?
+	time O(n^2) space O(n), then time O(n^2) pairs, to get:
+	time O(n^2) space O(n) overall
+how might we do better than time O(n^2)?
 how might DP help?
 3) do idea 2), but instead of all pairs, somehow avoid repeat work?
 let's try working thru an example:
@@ -38,15 +38,15 @@ let's try working thru an example:
 5)
 [  3,  6,  1, -3,  2,  7] OR MAYBE just find all 4 as we go?
 using key insight:
-   3   6   6   6   6   7 for +ve Ot(n)
-	-3  -3  -1   3   3   3 for -ve Ot(n)
+   3   6   6   6   6   7 for +ve time O(n)
+	-3  -3  -1   3   3   3 for -ve time O(n)
    but how would I use this table?
 
 6) or instead maybe this:
-make use of the running max +ve Ot(n) pass data in the -ve pass:
+make use of the running max +ve time O(n) pass data in the -ve pass:
    0   1   2   3   4   5 (=indices)
 [  3,  6,  1, -3,  2,  7]
-   3   6   6   6   6   7 running max for +ve Ot(n): max a
+   3   6   6   6   6   7 running max for +ve time O(n): max a
 	   \ | \ | \ | \ | \ |
 	    -3   5   9   9   9 running max for -ve AFTER the +ve pass: max a-b
 			   \ | \ | \ | \ |
@@ -55,8 +55,8 @@ make use of the running max +ve Ot(n) pass data in the -ve pass:
 						   1   1   4 running for -ve AFTER that +ve pass: max a-b+c-d
 							         4 is the answer!
 this works since each pass is a running max for the next term.
-this could be stored in Os(n) space, with just 2 rows (prev/curr).
-so Ot(n) Os(n), which is pretty close to the BCR!
+this could be stored in space O(n) space, with just 2 rows (prev/curr).
+so time O(n) space O(n), which is pretty close to the BCR!
 */
 
 /** version with more obvious logic (DAMP) */

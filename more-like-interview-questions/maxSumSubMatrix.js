@@ -26,17 +26,17 @@ console.log(
 /*
 ideas: (w,h,s)
 1) brute force: scan the square over all possible, return max
-		Ot(w h s^2) because you must re-calculate each square
-		Os(1)
-2) BCR Ot(w h), Os(s^2)? Ot(w h), Os(w h)?
+		time O(w h s^2) because you must re-calculate each square
+		space O(1)
+2) BCR time O(w h), space O(s^2)? time O(w h), space O(w h)?
 3) try to avoid the s^2 factor in the time complexity?
 	shifting window, and 
-	subtract the "edge leaving", add the "edge adding"? Ot(w h s)
-	Ot(w h s), Os(s^2) ≈ BCR
+	subtract the "edge leaving", add the "edge adding"? time O(w h s)
+	time O(w h s), space O(s^2) ≈ BCR
 	complication: must go on a path, not jump to start of column:
 		boustrophedon looping? but that's still some repetition
-4) how can we do even better than that? Ot(w h)?
-	store some cache? Os(w h)
+4) how can we do even better than that? time O(w h)?
+	store some cache? space O(w h)
 fill in a DP table of same size as w*h:
 making use of this pattern and applying it DP-style to each cell:
 in 2x2 square: sum of all four = left col + top row - top-left + me
@@ -56,7 +56,7 @@ becomes:
 
 How does this help us calculate faster? e.g. if size = 2:
 We can now much more quickly do the 
-	subtract the "edge leaving", add the "edge adding"? Ot(w h) instead!
+	subtract the "edge leaving", add the "edge adding"? time O(w h) instead!
 	because the amount to subtract/add is found in constant time!
 	(just subtract the pre-calc value at position-size up/left
 		and account for valid indices up/left
@@ -64,7 +64,7 @@ We can now much more quickly do the
   sum = me - top - left + top-left
 */
 
-// Ot(w h), Os(w h)
+// time O(w h), space O(w h)
 function maxSumSubMatrix(matrix, size) {
   const sums = getHelperSumsMatrix(matrix);
   return getMax(sums, size);

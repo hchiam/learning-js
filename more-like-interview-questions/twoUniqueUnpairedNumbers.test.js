@@ -1,6 +1,6 @@
 const { singleNumber } = require("./twoUniqueUnpairedNumbers.js");
 
-describe("2 unique unpaired numbers in Ot(n) Os(1)", () => {
+describe("2 unique unpaired numbers in time O(n) space O(1)", () => {
   it("works", () => {
     expect(singleNumber([1, 2, 1, 3, 2, 5]).sort()).toEqual([3, 5]);
     expect(singleNumber([-1, 0]).sort()).toEqual([-1, 0]);

@@ -6,13 +6,13 @@
  * }
 
 maybe in-order traversal sequence that includes both nodes and get the last node that was reached "twice" in that sequence?
-  if it works: Ot(n) Os(n)
+  if it works: time O(n) space O(n)
   but this fails with [3,1,4,2]
-BCR: Ot(n) Os(log n)
+BCR: time O(n) space O(log n)
 
 maybe make use of BST and use binary search to find a number between them?
   2 binary searches for each value and track paths?
-  Ot(n) Os(n)
+  time O(n) space O(n)
 
 or: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solutions/3384014/javascript-php-recursive-iterative-approaches/
 

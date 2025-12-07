@@ -3,9 +3,9 @@
 /**
  * @param {string} s
  * @return {string}
-BCR: Ot(n) Os(n)
-naive: all start & ends: Ot(n^2) Os(n)
-naive: all indices outwards, but account for even/odd too: Ot(n^2) Os(n)
+BCR: time O(n) space O(n)
+naive: all start & ends: time O(n^2) space O(n)
+naive: all indices outwards, but account for even/odd too: time O(n^2) space O(n)
 what if we used a stack? how might that work?
     acbbd
     [a,c,d] bb?
@@ -15,7 +15,7 @@ or maybe this:
 https://leetcode.com/problems/longest-palindromic-substring/solutions/3497051/c-java-python-javascript-detailed-explanation-easy-solution-3-approaches/
 
 manacher's algorithm? make use of precomputed work!
-    Ot(n) Os(1)
+    time O(n) space O(1)
     https://leetcode.com/problems/longest-palindromic-substring/solutions/3345856/manacher-js-beats-99/
 
 AEIOU

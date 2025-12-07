@@ -39,7 +39,7 @@ var mergeKLists = function (lists) {
 
 function push1FromEachLL(heap, LLs) {
   for (let i = 0; i < LLs.length; i++) {
-    // ideally get only 1 node from the LL you recently got the heap top from: Ot(n log k)
+    // ideally get only 1 node from the LL you recently got the heap top from: time O(n log k)
     let node = LLs[i];
     if (node) {
       // just get one from each list, instead of while (node)

@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 
 /**
- * Ot(n log n) on average, but Os(n) I think
- * Ot(n ^ 2) worst case if already sorted
+ * time O(n log n) on average, but space O(n) I think
+ * time O(n ^ 2) worst case if already sorted
  */
 function quickSort(a) {
   if (!a.length) return a;
@@ -17,7 +17,7 @@ function quickSort(a) {
  *
  * and this way it's also easy to know which indices to swap
  *
- * Ot(n log n) Os(log n) on average, but worst case Ot(n^2)
+ * time O(n log n) space O(log n) on average, but worst case time O(n^2)
  */
 function quickSort_betterSpaceMaybe(array) {
   let windowStart = 0;

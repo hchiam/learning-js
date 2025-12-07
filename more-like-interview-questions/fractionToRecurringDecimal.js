@@ -13,7 +13,7 @@ idea 2: thought: maybe do long division per digit and check if we've hit the sam
 
 1/7 = 0.142857142857 has repeating digits but because the remainders repeat.
 
-repeating remainders should guarantee repetition, and avoids having to create the raw string first and problems with never getting an "infinite" string and the associated problem with losing data with pattern truncation. look for that. Ot(d) Os(10)=Os(1), where d = number of digits in raw division output.
+repeating remainders should guarantee repetition, and avoids having to create the raw string first and problems with never getting an "infinite" string and the associated problem with losing data with pattern truncation. look for that. time O(d) space O(10)=space O(1), where d = number of digits in raw division output.
 
 idea 3: read: https://leetcode.com/problems/fraction-to-recurring-decimal/solutions/1669777/Accepted-Simple-Solution-with-Step-By-Step-Detailed-Explaination/
 

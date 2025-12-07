@@ -7,12 +7,12 @@
  * @return {number[]}
  */
 /* 
-BCR = Ot(n) Os(1)
+BCR = time O(n) space O(1)
 kudos to: https://leetcode.com/problems/product-of-array-except-self/discuss/1597994/C%2B%2BPython-4-Simple-Solutions-w-Explanation-or-Prefix-and-Suffix-product-O(1)-space-approach 
 use a prefix and suffix (array or var), and multiply output by number before/after 
-2 helper arrays: Ot(3n) Os(3n) = Ot(n) Os(n) > BCR
-1 helper var + 2 loops: Ot(2n) Os(1) = Ot(n) Os(1) ~ BCR
-2 helper vars + 1 loop: Ot(n) Os(1) = BCR
+2 helper arrays: time O(3n) space O(3n) = time O(n) space O(n) > BCR
+1 helper var + 2 loops: time O(2n) space O(1) = time O(n) space O(1) ~ BCR
+2 helper vars + 1 loop: time O(n) space O(1) = BCR
 */
 var productExceptSelf = function (nums) {
   const output = new Array(nums.length).fill(1);

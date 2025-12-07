@@ -5,8 +5,8 @@
 
 https://leetcode.com/problems/minimum-window-substring
 
-goal: Ot(m+n)
-naive: at each index of s, try t Ot(m n)
+goal: time O(m+n)
+naive: at each index of s, try t time O(m n)
 since order doesn't matter, maybe a HT? HT+stack?
 ADOBECODEBANC ABC
 111111   2222
@@ -36,7 +36,7 @@ ADOABECODE ABC
 ADABECODE AABC
 111111
   ------x
-looks like Ot(m + n)
+looks like time O(m + n)
 AEIO U
 
 

@@ -36,8 +36,8 @@
  * - do we even need case 3? e.g., if they won 2 horizontal, it'd auto-fail 1)
  *
  * optimizations:
- * - BCR: Ot(1) Os(1)
- * - idea so far: also Ot(1) Os(1) if always 3x3 grid
+ * - BCR: time O(1) space O(1)
+ * - idea so far: also time O(1) space O(1) if always 3x3 grid
  *
  * further work:
  * - incorporate who goes first, because can't continue playing after first player wins

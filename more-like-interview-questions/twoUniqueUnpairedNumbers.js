@@ -1,6 +1,6 @@
 /**
  * in linear time and constant space
- * Ot(n) Os(1)
+ * time O(n) space O(1)
  *
  * https://leetcode.com/problems/single-number-iii/
  *

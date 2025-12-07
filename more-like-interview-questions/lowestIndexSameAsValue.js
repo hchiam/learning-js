@@ -2,8 +2,8 @@
 
 /*
 Assuming distinct sorted integers.
-Idea 1: linear scan Ot(n) Os(1)
-Idea 2: binary search: Ot(log n) Os(1)
+Idea 1: linear scan time O(n) space O(1)
+Idea 2: binary search: time O(log n) space O(1)
   lower = go right,
   higher = go left,
   equal = check left with binary search

@@ -3,7 +3,7 @@
 const { Heap: CleanerHeap } = require("../minMaxHeap.js");
 
 /*
-BCR Ot(1), Os(1) seems possible, if you only need to read the median.
+BCR time O(1), space O(1) seems possible, if you only need to read the median.
 Just have at most 3 values stored:
 	- left
 	- right
@@ -11,14 +11,14 @@ Just have at most 3 values stored:
 but what if you're just given all numbers in order?
 	then you'd have to keep shifting the numbers
 	and you would need to know previous values
-so Ot(1), Os(n) seems to be the best we can do
-but what about ordering? wouldn't that make insertions > Ot(1)?
-	You'd have to sort: Ot(n log n) PER insert
-Feasibly Ot(n) insert, Ot(1) getMedian, Os(n).
+so time O(1), space O(n) seems to be the best we can do
+but what about ordering? wouldn't that make insertions > time O(1)?
+	You'd have to sort: time O(n log n) PER insert
+Feasibly time O(n) insert, time O(1) getMedian, space O(n).
 But can we do better? Yes.
-Use (Doubly?) Linked Lists? Ot(n) per insert
-Use min heaps: Ot(log n) per insert
-So actually, realistically Ot(log n) insert, Ot(1) median, Os(n)
+Use (Doubly?) Linked Lists? time O(n) per insert
+Use min heaps: time O(log n) per insert
+So actually, realistically time O(log n) insert, time O(1) median, space O(n)
 How to make the min heaps "balanced"? Track heights too.
 */
 
@@ -28,14 +28,14 @@ How to make the min heaps "balanced"? Track heights too.
 class ContinuousMedianHandler {
   // uses a min heap and a max heap
   constructor() {
-    // Os(n)
+    // space O(n)
     this.median = null;
     this.maxHeap = new CleanerHeap("max"); // left side
     this.minHeap = new CleanerHeap("min"); // right side
   }
 
   insert(number) {
-    // Ot(log n)
+    // time O(log n)
     // decide which heap to add to
     if (this.maxHeap.getSize() === 0 || number < this.maxHeap.top()) {
       this.maxHeap.add(number);
@@ -87,7 +87,7 @@ class ContinuousMedianHandler {
   }
 
   getMedian() {
-    // Ot(1)
+    // time O(1)
     return this.median;
   }
 }

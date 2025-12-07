@@ -3,8 +3,8 @@
 // https://leetcode.com/problems/top-k-frequent-elements/
 
 /**
- * better than Ot(n log n) means you can't use min heap
- * need Ot(n) --> HT of frequencies: HT x a few loops = Ot(n)
+ * better than time O(n log n) means you can't use min heap
+ * need time O(n) --> HT of frequencies: HT x a few loops = time O(n)
  * @param {number[]} nums
  * @param {number} k
  * @return {number[]}

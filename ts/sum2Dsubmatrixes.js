@@ -1,7 +1,7 @@
 /*
 Ideas:
-1) Directly store matrix Os(r c), update Ot(1), sumRegion Ot(r c), constructor Ot(r c).
-2) Store a matrix of sums Os(r c), update Ot(r c), sumRegion Ot(1), constructor Ot(r c)
+1) Directly store matrix space O(r c), update time O(1), sumRegion time O(r c), constructor time O(r c).
+2) Store a matrix of sums space O(r c), update time O(r c), sumRegion time O(1), constructor time O(r c)
     with sums from (top left) to (bottom right)
         = current cell + left square + top square - top left square (to de-dupe).
     and sums from (not at top left of matrix) to (bottom right)
@@ -9,8 +9,8 @@ Ideas:
 
 How can we get a low Ot for both update and sumRegion?
 What's faster than linear scans? A logarithmic scan?
-And then extending that to 2D, go from Ot(n^2) down to Ot((log n)^2)?
-Maybe Ot(log r log c) for both?
+And then extending that to 2D, go from time O(n^2) down to time O((log n)^2)?
+Maybe time O(log r log c) for both?
 
 3) Use a Fenwick tree, AKA a Binary Indexed Tree (a BIT)? https://en.wikipedia.org/wiki/Fenwick_tree
 Watch these YouTube explanations in order:

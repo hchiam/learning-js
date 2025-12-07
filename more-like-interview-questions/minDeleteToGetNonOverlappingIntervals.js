@@ -20,17 +20,17 @@ maybe also sort by first (then second) to keep things predictable?
 "fill in number line" won't work since e.g. 12 and 23 don't overlap?
 or maybe we can, just make range end numbers exclusive
 12 13 23 34: position on number line >= start && < end: 
-number line of arrays: Ot(max * n) Os(max * n)
+number line of arrays: time O(max * n) space O(max * n)
 1: 12, 13
 2: 13, 23
 3: 34
 4: -
-HT: Ot(max * n) Os(max * n)
+HT: time O(max * n) space O(max * n)
 12: 1
 13: 2
 23: 1
 34: 0
-BCR: Ot(n) Os(1) but how???
+BCR: time O(n) space O(1) but how???
 work from simple cases and build up!
 12 23 -> 0
 13 24 -> 1
@@ -41,11 +41,11 @@ work from simple cases and build up!
 sort to enable simple checks between neighbours
  */
 var eraseOverlapIntervals = function (intervals) {
-  // Ot(n log n) Os(1)
-  intervals.sort((a, b) => a[0] - b[0]); // Ot(n log n) Os(1)
+  // time O(n log n) space O(1)
+  intervals.sort((a, b) => a[0] - b[0]); // time O(n log n) space O(1)
   let removed = 0;
   for (let i = 1; i < intervals.length; i++) {
-    // Ot(n) Os(1)
+    // time O(n) space O(1)
     const a = intervals[i - 1];
     const b = intervals[i];
     const haveOverlap = a[1] > b[0]; // 12 23 aren't overlapping

@@ -98,11 +98,11 @@ c0122
 d0122
 e0123
 
-Ot(n m) Os(n m)
+time O(n m) space O(n m)
 
 but how might we do better?
 
-save space in the DP table: we only need 2 rows, so Os(min(n,m))
+save space in the DP table: we only need 2 rows, so space O(min(n,m))
 
  */
 function bottomUp_WithSmallerSpace(text1, text2) {

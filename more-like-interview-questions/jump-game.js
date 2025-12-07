@@ -4,11 +4,11 @@
  * @param {number[]} nums
  * @return {boolean}
 idea 1: left to right, fill in spaces can jump to
-    DP: Ot(n^2) Os(n)
-BCR: Ot(n) Os(1) but i doubt i can get that
+    DP: time O(n^2) space O(n)
+BCR: time O(n) space O(1) but i doubt i can get that
 idea 2: https://leetcode.com/problems/jump-game/solutions/3028797/simple-javascript-solution/
     right to left, work backwards to see if can get to the goal step by step
-    Ot(n) Os(1) = BCR!
+    time O(n) space O(1) = BCR!
  */
 var canJump = function (nums) {
   // return idea1(nums);
@@ -16,7 +16,7 @@ var canJump = function (nums) {
 };
 
 function idea2(nums) {
-  // Ot(n) Os(1)
+  // time O(n) space O(1)
 
   let currentIndex = nums.length - 1;
   // work backwards from the goal
@@ -45,7 +45,7 @@ function idea2(nums) {
 }
 
 function idea1(nums) {
-  // Ot(n^2) Os(n)
+  // time O(n^2) space O(n)
 
   const dp = new Array(nums.length).fill(false);
   dp[0] = true;

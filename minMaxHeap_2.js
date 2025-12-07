@@ -12,7 +12,7 @@ class MinMaxHeap_2 {
     }
   }
 
-  // Ot(n), Os(1)
+  // time O(n), space O(1)
   buildHeap(array) {
     const firstParentIdx = Math.floor((array.length - 2) / 2);
     for (let currentIdx = firstParentIdx; currentIdx >= 0; currentIdx--) {
@@ -21,7 +21,7 @@ class MinMaxHeap_2 {
     return array;
   }
 
-  // Ot(log n), Os(1)
+  // time O(log n), space O(1)
   siftDown(currentIdx, endIdx, heap) {
     let childOneIdx = currentIdx * 2 + 1;
     while (childOneIdx <= endIdx) {
@@ -46,7 +46,7 @@ class MinMaxHeap_2 {
     }
   }
 
-  // Ot(log n), Os(1)
+  // time O(log n), space O(1)
   siftUp(currentIdx, heap) {
     let parentIdx = Math.floor((currentIdx - 1) / 2);
     while (
@@ -59,12 +59,12 @@ class MinMaxHeap_2 {
     }
   }
 
-  // Ot(1), Os(1)
+  // time O(1), space O(1)
   peek() {
     return this.heap[0];
   }
 
-  // Ot(log n), Os(1)
+  // time O(log n), space O(1)
   remove() {
     this.swap(0, this.heap.length - 1, this.heap);
     const valueToRemove = this.heap.pop();
@@ -76,7 +76,7 @@ class MinMaxHeap_2 {
     return this.remove();
   }
 
-  // Ot(log n), Os(1)
+  // time O(log n), space O(1)
   insert(value) {
     this.heap.push(value);
     this.siftUp(this.heap.length - 1, this.heap);

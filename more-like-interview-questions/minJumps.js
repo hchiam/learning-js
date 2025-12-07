@@ -1,5 +1,5 @@
 /**
- * Ot(n), Os(1) = BCR!
+ * time O(n), space O(1) = BCR!
  * Key insight for most optimal (BCR) solution:
  * 		Update the next max reach, while checking whether you need to jump yet.
  * 		i.e. current max reach = previous max reach where you only add +1 jump,

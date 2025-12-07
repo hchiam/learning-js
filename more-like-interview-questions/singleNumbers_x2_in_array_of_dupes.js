@@ -1,6 +1,6 @@
 /**
  * [1,2,1,3,2,5] --> [3,5] are the only single items, the rest are paired.
- * Try to use bit manipulation to achieve Ot(n) Os(1)
+ * Try to use bit manipulation to achieve time O(n) space O(1)
  * https://leetcode.com/problems/single-number-iii/
  *
  * Conversation that helped me understand: https://leetcode.com/problems/single-number-iii/discuss/1561852/C++-Easy-and-Clean-Solution-or-Fastest-or-All-(4+)-Methods-or-Detailed-Explanation-and-Comments/1622431

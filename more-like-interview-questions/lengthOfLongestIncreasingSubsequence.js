@@ -2,8 +2,8 @@
 
 // https://leetcode.com/problems/longest-increasing-subsequence/
 
-// The solution below uses dynamic programming tabulation with Ot(n^2).
-// There's a faster solution Ot(n log n) with binary search.
+// The solution below uses dynamic programming tabulation with time O(n^2).
+// There's a faster solution time O(n log n) with binary search.
 
 const lengthOfLIS = (nums) => {
   const dp = new Array(nums.length).fill(1);

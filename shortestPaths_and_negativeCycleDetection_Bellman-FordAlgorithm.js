@@ -3,9 +3,9 @@
  * - gets shortest paths from a node to all others, even if edges can have -ve (<0) values (Dijkstra can't handle that), and
  * - detects whether any negative (<0) cycles exist in the graph.
  *
- * Ot(n^3) = Ot(V E), since E = V^2 (including "self-edges"), since the graph needs to be fully-connected (use a dummy node if you have to transform the graph).
+ * time O(n^3) = time O(V E), since E = V^2 (including "self-edges"), since the graph needs to be fully-connected (use a dummy node if you have to transform the graph).
  *
- * Os(n) = Os(V).
+ * space O(n) = space O(V).
  *
  * Steps:
  * 1) Update a tracker array/HT of min path distance TO each node by checking each edge from all nodes to other nodes.

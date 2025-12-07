@@ -22,17 +22,17 @@ Save all in the numbers array in memo as having 0 spaces = base cases.
 Then add the prefixes AND suffixes as (sub)-solutions to the memo, building up from those base cases. 
 The memo saves us from re-computing a ton of options. 
 
-Ot(n^3 + m) because you loop thru all prefix start positions (but just once each because of the memo), 
+time O(n^3 + m) because you loop thru all prefix start positions (but just once each because of the memo), 
             and process a suffix per prefix, (there are n^2 prefixes) 
-            and also slicing the string (Ot(n)), 
+            and also slicing the string (time O(n)), 
             + set up pre-processing. 
-Os(n + m) because of the memo storing answers for each prefix and each number in the given numbers array. 
+space O(n + m) because of the memo storing answers for each prefix and each number in the given numbers array. 
 
 ideas:
 (n = digits of pi given, m = numbers given)
 1) brute force: add 1 to n spaces, and loop and verify
-		Ot(n^n m), Os(n)
-2) BCR = Ot(n m), Os(1) (somehow one pass, with just a count of spaces)
+		time O(n^n m), space O(n)
+2) BCR = time O(n m), space O(1) (somehow one pass, with just a count of spaces)
 3) how?
 observations:
 - a number string can't be longer than the given section of pi
@@ -40,11 +40,11 @@ observations:
 - but not always: others may cover it differently & still return true
 - might have to check starting w/ each number: O(nm nm)= O(n^2 m^2) time
 	- and might have to check each place that each number appears
-- faster lookup? pre-get all locations per numbers Ot(n m)
-	- then overall becomes Ot(n m + m m), which is ≈ BCR! but Os(nm)
-4) apparently we can do Ot(n^3 + m), Os(n + m)
-- what if we put each number into a hashtable Ot(m) + 
-- and check every prefix (starting anywhere) of pi? Ot(n^2) * Ot(n)
+- faster lookup? pre-get all locations per numbers time O(n m)
+	- then overall becomes time O(n m + m m), which is ≈ BCR! but space O(nm)
+4) apparently we can do time O(n^3 + m), space O(n + m)
+- what if we put each number into a hashtable time O(m) + 
+- and check every prefix (starting anywhere) of pi? time O(n^2) * time O(n)
 */
 
 function numbersInPi(pi, numbers) {

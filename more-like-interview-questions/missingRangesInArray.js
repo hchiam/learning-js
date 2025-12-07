@@ -4,8 +4,8 @@ console.log(getMissingRangesInArray([0], 0, 1000));
 console.log(getMissingRangesInArray([1000], 0, 1000));
 
 /*
-1) Brute force: scan from lower to upper and check HT -> Ot(r), which is > Ot(n).
-2) Make use of the fact nums is sorted!!! -> scan nums instead -> Ot(n).
+1) Brute force: scan from lower to upper and check HT -> time O(r), which is > time O(n).
+2) Make use of the fact nums is sorted!!! -> scan nums instead -> time O(n).
 */
 
 /**

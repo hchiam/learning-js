@@ -16,11 +16,11 @@ function ListNode(val, next) {
 - and i think i remember MinPriorityQueue can be used in LeetCode
     - enqueue(num) dequeue() size() front().element
 - but for now, just merge all lists into one heap and let the heap output the next min
-  - Ot(n log n) Os(n)
+  - time O(n log n) space O(n)
 - if extra time, try to make the heap always only have k elements
-  - Ot(n log k) Os(n)
+  - time O(n log k) space O(n)
 - if extra time, try to slightly reduce space - not creating new nodes
-  - Ot(n log k) Os(1)
+  - time O(n log k) space O(1)
  */
 /**
  * @param {ListNode[]} lists

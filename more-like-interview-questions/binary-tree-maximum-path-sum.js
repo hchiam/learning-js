@@ -4,32 +4,32 @@
 /**
  * @param {TreeNode} root
  * @return {number}
-BCR: Ot(n) Os(1)
-likely have to do DFS, which is Ot(n), so can't do any better
+BCR: time O(n) space O(1)
+likely have to do DFS, which is time O(n), so can't do any better
 but can we still achieve that? let's do brute force first?
 per node, get max of:
-    node = Ot(1)
-    best 1 left + node = Ot(n/2) = Ot(n)
-    best 1 right + node = Ot(n/2) = Ot(n)
-    best 1 left + best 1 right + node = Ot(1), add sums from prev step
-    2 left = Ot(n/2) = Ot(n)
-    2 right = Ot(n/2) = Ot(n)
-    = Ot(2n) = Ot(n) per node
-    = Ot(n^2) overall > BCR
+    node = time O(1)
+    best 1 left + node = time O(n/2) = time O(n)
+    best 1 right + node = time O(n/2) = time O(n)
+    best 1 left + best 1 right + node = time O(1), add sums from prev step
+    2 left = time O(n/2) = time O(n)
+    2 right = time O(n/2) = time O(n)
+    = time O(2n) = time O(n) per node
+    = time O(n^2) overall > BCR
 can we do better?
     what if we do bottom-up, i.e. from the leaves, and compute "up"?
     if no leaves: max = node
     if only left:
         maybe max = max(node, left, node + left)?
         but how do we know if left has been used for single/2-armed?
-            need data --> Os(n) for Ot(n)
+            need data --> space O(n) for time O(n)
             so rather:
             if left 1-armed: max = max(node, left, node + left)
             if left 2-armed: max = max(node, left)
     if only right:
         maybe max = max(node, right, node + right)?
         but how do we know if right has been used for single/2-armed?
-            need data --> Os(n) for Ot(n)
+            need data --> space O(n) for time O(n)
             so rather:
             if right 1-armed: max = max(node, right, node + right)
             if right 2-armed: max = max(node, right)
@@ -49,8 +49,8 @@ can we do better?
         also track max single arm for current node
             = max(node, node + left(1), node + right(1))
         return max
-so so far Ot(n^2) Os(1)
-       vs Ot(n)   Os(n) --> let's choose this one for now
+so so far time O(n^2) space O(1)
+       vs time O(n)   space O(n) --> let's choose this one for now
  */
 let running = 0;
 var maxPathSum = function (root) {

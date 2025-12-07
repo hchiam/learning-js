@@ -32,8 +32,8 @@ array for order, check if length === number of courses to take (otherwise send e
 
 HT for tracking and reading deps fast
 
-Ot(n + p) Os(n + p), where n = number of courses, and p = number of prerequisite links
-basically Ot(edges + vertices) in DFS or BFS
+time O(n + p) space O(n + p), where n = number of courses, and p = number of prerequisite links
+basically time O(edges + vertices) in DFS or BFS
 
  */
 function findOrder(numCourses, prerequisites) {
@@ -42,16 +42,16 @@ function findOrder(numCourses, prerequisites) {
 
   // set up each course:
   for (let i = 0; i < numCourses; i++) {
-    ht[i] = { needs: { length: 0 }, helps: { length: 0 } }; // objects instead of arrays for Ot(1) checks/updates
+    ht[i] = { needs: { length: 0 }, helps: { length: 0 } }; // objects instead of arrays for time O(1) checks/updates
   }
 
   // set up deps:
   prerequisites.forEach((p) => {
     const toGet = p[0];
     const need = p[1];
-    ht[toGet].needs[need] = true; // for Ot(1) needs/helps checks/updates
+    ht[toGet].needs[need] = true; // for time O(1) needs/helps checks/updates
     ht[need].helps[toGet] = true;
-    ht[toGet].needs.length++; // for Ot(1) length/now-indep checks
+    ht[toGet].needs.length++; // for time O(1) length/now-indep checks
     ht[need].helps.length++;
     /*
       e.g.: [0,1] means 1->0: toGet = 0; need = 1:
@@ -66,12 +66,12 @@ function findOrder(numCourses, prerequisites) {
     if (ht[course].needs.length === 0) q.push(course);
   });
 
-  // try processing independent courses: Ot(n)
+  // try processing independent courses: time O(n)
   while (q.length) {
-    const indepCourse = q.pop(); // shift vs pop doesn't matter in this case, and shift would slow it to Ot(n^2) anyways
+    const indepCourse = q.pop(); // shift vs pop doesn't matter in this case, and shift would slow it to time O(n^2) anyways
     order.push(Number(indepCourse));
 
-    // try processing courses it helps: Ot(p)
+    // try processing courses it helps: time O(p)
     Object.keys(ht[indepCourse].helps).forEach((courseToUpdate) => {
       if (courseToUpdate === "length") return;
       if (ht[courseToUpdate].needs[indepCourse]) {

@@ -27,8 +27,8 @@ function check(actual, expected) {
  * @return {number[][]}
  */
 function minimumAbsDifference(arr) {
-  // idea 1: sort then get all bigrams Ot(n log n) Os(n)
-  // idea 2: remap to big temp array and do a few scans Ot(n) Os(n)
+  // idea 1: sort then get all bigrams time O(n log n) space O(n)
+  // idea 2: remap to big temp array and do a few scans time O(n) space O(n)
 
   return idea1(arr);
   // return idea2(arr);

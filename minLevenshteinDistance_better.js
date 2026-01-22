@@ -1,6 +1,6 @@
 // nodemon -x 'node minLevenshteinDistance_better.js'
 // nodemon -x 'jest minLevDistance.test.js'
-console.log(minLevenshteinDistance_evenBetter("abc", "yabd"));
+// console.log(minLevenshteinDistance_evenBetter("abc", "yabd"));
 
 /*
 Dynamic Programming (DP) table:

@@ -15,7 +15,6 @@
     "@datastructures-js/priority-queue": "6.3.0"
   },
   "devDependencies": {
-    "@jazzer.js/jest-runner": "^2.1.0",
     "eslint": "^6.4.0",
     "eslint-config-google": "^0.14.0",
     "husky": "^4.3.0",

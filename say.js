@@ -19,7 +19,7 @@ say('quelle heure est-il ?', 'fr-CA', null, {pitch:2});
 // https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance
 */
 function say(what, voiceLang, callback, { pitch, rate, volume } = {}) {
-  const utterance = new SpeechSynthesisUtterance(what);
+  const utterance = new SpeechSynthesisUtterance(what || "");
   if (pitch) utterance.pitch = pitch;
   if (rate) utterance.rate = rate;
   if (volume) utterance.volume = volume;

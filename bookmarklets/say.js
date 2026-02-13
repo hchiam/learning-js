@@ -4,7 +4,7 @@ javascript: window.say = function (
   callback,
   { pitch, rate, volume } = {}
 ) {
-  const utterance = new SpeechSynthesisUtterance(what);
+  const utterance = new SpeechSynthesisUtterance(what || "");
   if (pitch) utterance.pitch = pitch;
   if (rate) utterance.rate = rate;
   if (volume) utterance.volume = volume;

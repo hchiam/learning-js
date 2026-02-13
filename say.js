@@ -9,9 +9,20 @@ speechSynthesis.addEventListener("voiceschanged", () => {
 });
 
 say('quelle heure est-il ?', 'fr-CA');
+
+say('quelle heure est-il ?', 'fr-CA', null, {pitch:0.5});
+say('quelle heure est-il ?', 'fr-CA', null, {pitch:1});
+say('quelle heure est-il ?', 'fr-CA', null, {pitch:1.5});
+say('quelle heure est-il ?', 'fr-CA', null, {pitch:1.75});
+say('quelle heure est-il ?', 'fr-CA', null, {pitch:2});
+
+// https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance
 */
-function say(what, voiceLang, callback) {
+function say(what, voiceLang, callback, { pitch, rate, volume } = {}) {
   const utterance = new SpeechSynthesisUtterance(what);
+  if (pitch) utterance.pitch = pitch;
+  if (rate) utterance.rate = rate;
+  if (volume) utterance.volume = volume;
   const voices = speechSynthesis.getVoices();
   utterance.voice = voiceLang
     ? voices.filter((v) => v.lang === voiceLang)[0]

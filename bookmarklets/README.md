@@ -1,6 +1,6 @@
 # Bookmarklets
 
-What's a bookmarklet? More info here: https://en.wikipedia.org/wiki/Bookmarklet
+What's a bookmarklet? More info here: <https://en.wikipedia.org/wiki/Bookmarklet>
 
 Only use a bookmarklet after you read and understand its code!
 
@@ -23,8 +23,8 @@ An alternative to bookmarklets are [Chrome Snippets](https://developer.chrome.co
 
 ## You can also set up and use bookmarklets on mobile devices
 
-- https://support.start.me/en/articles/9182868-bookmarklet-install-on-your-mobile-device
-- https://paul.kinlan.me/use-bookmarklets-on-chrome-on-android/
+- <https://support.start.me/en/articles/9182868-bookmarklet-install-on-your-mobile-device>
+- <https://paul.kinlan.me/use-bookmarklets-on-chrome-on-android/>
 
 ## Tips for converting from normal JS to bookmarklet
 
@@ -33,7 +33,7 @@ An alternative to bookmarklets are [Chrome Snippets](https://developer.chrome.co
 - remove comments that use `//`, or replace them with `/* ... */` comments
 - **_NOTE_**: there's a rough limit of [2000 characters](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers).
 
-Or just use https://bookmarklet-generator.surge.sh
+Or just use <https://bookmarklet-generator.surge.sh>
 
 ## Minimizing diffs between the JS version and bookmarklet version
 
@@ -43,15 +43,16 @@ Or just use https://bookmarklet-generator.surge.sh
 
 ## There's also the possibility of HTML
 
-For example `data:text/html,<html contenteditable></html>`: https://github.com/hchiam/learning-js/blob/main/bookmarklets/notepad.html
+For example `data:text/html,<html contenteditable></html>`: <https://github.com/hchiam/learning-js/blob/main/bookmarklets/notepad.html>
 
 ## Enable running bookmarklets quickly with keyboard shortcuts
 
 Chrome currently includes bookmarks (and bookmarklets) in search suggestions by default. Hit `Ctrl+L` -> type part of the bookmarklet name -> hit Enter to run.
+
 - If you find Chrome suggesting tabs or history annoying, you can disable a flag: chrome://flags/#omnibox-grouping-framework-non-zps
 
 For Firefox: `Ctrl+B` -> type a search -> tab to bookmarklet -> spacebar to select -> Enter to run.
 
 ## Example bookmarklet project
 
-https://github.com/hchiam/basic-page-editor-bookmarklet
+<https://github.com/hchiam/basic-page-editor-bookmarklet>

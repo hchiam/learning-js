@@ -53,6 +53,10 @@ Chrome currently includes bookmarks (and bookmarklets) in search suggestions by 
 
 For Firefox: `Ctrl+B` -> type a search -> tab to bookmarklet -> spacebar to select -> Enter to run.
 
-## Example bookmarklet project
+## Example bookmarklet projects
 
 <https://github.com/hchiam/basic-page-editor-bookmarklet>
+
+or a little more powerfully/recently:
+
+<https://github.com/hchiam/lightweight-inspector>

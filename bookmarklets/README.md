@@ -1,6 +1,6 @@
 # Bookmarklets
 
-What's a bookmarklet? More info here: <https://en.wikipedia.org/wiki/Bookmarklet>
+What's a bookmarklet? A bookmark that runs JavaScript code! More info here: <https://en.wikipedia.org/wiki/Bookmarklet>
 
 Only use a bookmarklet after you read and understand its code!
 

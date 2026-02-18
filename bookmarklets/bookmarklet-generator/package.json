@@ -1,6 +1,8 @@
 {
   "scripts": {
     "dev": "vite",
-    "deploy": "rm -rf .cache; rm -rf dist; surge . https://bookmarklet-generator.surge.sh"
+    "deploy": "rm -rf .cache; rm -rf dist; yarn deploy:vercel; yarn deploy:surge",
+    "deploy:surge": "surge . https://hchiam-bookmarklet-generator.surge.sh",
+    "deploy:vercel": "vercel --prod; # https://hchiam-bookmarklet-generator.vercel.app"
   }
 }

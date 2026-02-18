@@ -33,7 +33,7 @@ An alternative to bookmarklets are [Chrome Snippets](https://developer.chrome.co
 - remove comments that use `//`, or replace them with `/* ... */` comments
 - **_NOTE_**: there's a rough limit of [2000 characters](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers).
 
-Or just use <https://bookmarklet-generator.surge.sh>
+Or just use <https://hchiam-bookmarklet-generator.surge.sh>
 
 ## Minimizing diffs between the JS version and bookmarklet version
 

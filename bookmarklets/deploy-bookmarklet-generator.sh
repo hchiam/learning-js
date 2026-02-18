@@ -1,2 +1,2 @@
-surge bookmarklet-generator https://bookmarklet-generator.surge.sh
-open https://bookmarklet-generator.surge.sh
+surge bookmarklet-generator https://hchiam-bookmarklet-generator.surge.sh
+open https://hchiam-bookmarklet-generator.surge.sh

@@ -6,7 +6,7 @@ console.log(getCssRulesArray($("h1")));
 console.log(getCssRulesString($("h1")));
 
 function getStyleAttributeString(el) {
-  return el.getAttribute("style");
+  return el.getAttribute("style") ?? "";
 }
 
 function getCssRulesString(el) {

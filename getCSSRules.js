@@ -1,8 +1,13 @@
 // to edit CSS rules: https://developer.mozilla.org/en-US/docs/Web/API/CSSRuleList "To edit the underlying rules returned by CSSRule objects, use CSSStyleSheet.insertRule() and CSSStyleSheet.deleteRule(), which are methods of CSSStyleSheet."
 
+console.log(getStyleAttributeString($("h1")));
 console.log(getCssRulesObjects($("h1")));
 console.log(getCssRulesArray($("h1")));
 console.log(getCssRulesString($("h1")));
+
+function getStyleAttributeString(el) {
+  return el.getAttribute("style");
+}
 
 function getCssRulesString(el) {
   return getCssRulesArray(el)

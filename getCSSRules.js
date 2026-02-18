@@ -12,9 +12,8 @@ function getCssRulesString(el) {
 ${declarations
   .split(/;\s*/)
   .filter(Boolean)
-  .map((d) => "  " + d)
-  .join(";\n")}
-}`;
+  .map((d) => "  " + d + ";\n")
+  .join("")}}`;
     })
     .join("\n");
 }

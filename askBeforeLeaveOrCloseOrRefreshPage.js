@@ -4,7 +4,7 @@ function askBeforeUnloadPage(shouldAskCallback) {
     if (shouldAskCallback && !shouldAskCallback()) return;
 
     // https://stackoverflow.com/a/19538231
-    let confirmationMessage = "o/";
+    let confirmationMessage = "o/"; // autoformatted version of \o/
     (event || window.event).returnValue = confirmationMessage; //Gecko + IE
     return confirmationMessage; //Webkit, Safari, Chrome
   });

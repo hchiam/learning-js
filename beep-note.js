@@ -40,6 +40,10 @@
   note("C", 1000);
   note("E", 1000);
   note("G", 1000);
+  await rest(1000);
+  chord(["F", "A", "high C"], 1000);
+  await rest(1000);
+  chord("C E G", 1000);
 })();
 
 async function play(sequence = []) {
@@ -131,4 +135,13 @@ function noteHelper(f) {
   }
 
   return f;
+}
+
+async function chord(notes = [], ms = 250) {
+  if (typeof notes === "string") {
+    notes = notes.split(/\s+/);
+  }
+  if (Array.isArray(notes)) {
+    notes.forEach((n) => note(n, ms));
+  }
 }

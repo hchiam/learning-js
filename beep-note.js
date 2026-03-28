@@ -1,4 +1,215 @@
 (async function exampleUsage() {
+  // testing synchronizing: // TODO: gets out of sync near the end
+  a();
+  b();
+  async function a() {
+    note("C", 1000);
+    note("E", 1000);
+    note("G", 1000);
+    await rest(1000);
+    note("D", 1000);
+    note("F", 1000);
+    note("A", 1000);
+    await rest(1000);
+    note("F", 1000);
+    note("A", 1000);
+    note("high C", 1000);
+    await rest(1000);
+    note("C", 1000);
+    note("E", 1000);
+    note("G", 1000);
+    await rest(1000);
+    note("C", 1000);
+    note("E", 1000);
+    note("G", 1000);
+    await rest(1000);
+    note("D", 1000);
+    note("F", 1000);
+    note("A", 1000);
+    await rest(1000);
+    note("F", 1000);
+    note("A", 1000);
+    note("high C", 1000);
+    await rest(1000);
+    note("C", 1000);
+    note("E", 1000);
+    note("G", 1000);
+    await rest(1000);
+    note("C", 1000);
+    note("E", 1000);
+    note("G", 1000);
+    await rest(1000);
+    note("D", 1000);
+    note("F", 1000);
+    note("A", 1000);
+    await rest(1000);
+    note("F", 1000);
+    note("A", 1000);
+    note("high C", 1000);
+    await rest(1000);
+    note("C", 1000);
+    note("E", 1000);
+    note("G", 1000);
+    await rest(1000);
+    note("C", 1000);
+    note("E", 1000);
+    note("G", 1000);
+    await rest(1000);
+    note("D", 1000);
+    note("F", 1000);
+    note("A", 1000);
+    await rest(1000);
+    note("F", 1000);
+    note("A", 1000);
+    note("high C", 1000);
+    await rest(1000);
+    note("C", 1000);
+    note("E", 1000);
+    note("G", 1000);
+    await rest(1000);
+  }
+  async function b() {
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+    note("high C", 250);
+    await rest(250);
+  }
   // arbitrary key on 88-key piano:
   await note("key 40"); // middle C
   await note("key 42"); // D

@@ -27,6 +27,8 @@ javascript: (function () {
     box-shadow: 0 0 1rem rgba(0,0,0,0.2);
   `;
 
+  const shadow = container.attachShadow({ mode: "open" });
+
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
   closeButton.style.cssText = `
@@ -46,17 +48,17 @@ javascript: (function () {
   closeButton.onclick = function () {
     container.style.display = "none";
   };
-  container.appendChild(closeButton);
+  shadow.appendChild(closeButton);
 
   const title = document.createElement("h3");
   title.textContent = "Bookmarklets:";
   title.style.cssText = "margin-top: 0; color: #333;";
-  container.appendChild(title);
+  shadow.appendChild(title);
 
   const loadingMsg = document.createElement("div");
   loadingMsg.textContent = "Loading bookmarklets...";
   loadingMsg.style.cssText = "margin: 10px 0;";
-  container.appendChild(loadingMsg);
+  shadow.appendChild(loadingMsg);
 
   document.body.appendChild(container);
 
@@ -84,7 +86,7 @@ javascript: (function () {
   fetch(urlToAllBookmarklets)
     .then((response) => response.json())
     .then((data) => {
-      container.removeChild(loadingMsg);
+      shadow.removeChild(loadingMsg);
 
       const list = document.createElement("ul");
       list.style.cssText = `
@@ -104,7 +106,7 @@ javascript: (function () {
         const noFiles = document.createElement("div");
         noFiles.textContent = "No bookmarklet files found.";
         noFiles.style.cssText = "margin: 10px 0;";
-        container.appendChild(noFiles);
+        shadow.appendChild(noFiles);
         return;
       }
 
@@ -132,15 +134,15 @@ javascript: (function () {
         list.appendChild(item);
       });
 
-      container.appendChild(list);
+      shadow.appendChild(list);
     })
     .catch((error) => {
-      container.removeChild(loadingMsg);
+      shadow.removeChild(loadingMsg);
 
       const errorMsg = document.createElement("div");
       errorMsg.textContent = "Error loading bookmarklets: " + error.message;
       errorMsg.style.cssText = "color: #dc3545; margin: 10px 0;";
-      container.appendChild(errorMsg);
+      shadow.appendChild(errorMsg);
 
       console.error("Error fetching bookmarklets:", error);
     });

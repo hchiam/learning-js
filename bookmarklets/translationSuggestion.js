@@ -70,10 +70,10 @@ javascript: (() => {
   };
 
   let timer,
-    seq = 0;
+    latestRequestId = 0;
   const cancel = () => {
     clearTimeout(timer);
-    ++seq;
+    ++latestRequestId;
     pill.style.display = "none";
   };
 
@@ -93,13 +93,13 @@ javascript: (() => {
       place(el, pill);
 
       clearTimeout(timer);
-      const my = ++seq; /* discard stale results */
+      const myRequestId = ++latestRequestId; /* discard stale results */
       timer = setTimeout(async () => {
         try {
           const cn = /[\u4e00-\u9fff]/.test(text);
           const t = await tx(cn ? "zh-Hant" : "en", cn ? "en" : "zh-Hant");
           const r = await t.translate(text);
-          if (my !== seq) return;
+          if (myRequestId !== latestRequestId) return;
           pill.style.display = "none";
           last = r;
           pop.textContent = r + "  ✕";

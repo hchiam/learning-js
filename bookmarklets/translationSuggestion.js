@@ -1,16 +1,16 @@
 javascript: (() => {
   /* don't double-install */
-  if (window.__st) return;
-  window.__st = 1;
+  if (window.__translatorInstalled) return;
+  window.__translatorInstalled = 1;
   if (!("Translator" in self))
     return alert("Translator API needs Chrome 138+ desktop");
 
   /* cache one translator per direction */
-  const cache = {};
-  const tx = (s, t) =>
-    (cache[s + t] ??= Translator.create({
-      sourceLanguage: s,
-      targetLanguage: t,
+  const translatorCache = {};
+  const getTranslator = (sourceLang, targetLang) =>
+    (translatorCache[sourceLang + targetLang] ??= Translator.create({
+      sourceLanguage: sourceLang,
+      targetLanguage: targetLang,
     }));
 
   /* tiny pill while typing/debouncing */
@@ -24,7 +24,7 @@ javascript: (() => {
   );
 
   /* popup with the translation (click to copy) */
-  const pop = document.body.appendChild(
+  const popup = document.body.appendChild(
     Object.assign(document.createElement("div"), {
       style:
         "position:fixed;z-index:2147483647;background:#fff;color:#000;" +
@@ -34,39 +34,39 @@ javascript: (() => {
     })
   );
 
-  let last = "";
-  pop.onclick = async () => {
-    if (!last) {
-      pop.style.display = "none";
+  let lastTranslation = "";
+  popup.onclick = async () => {
+    if (!lastTranslation) {
+      popup.style.display = "none";
       return;
     }
     try {
-      await navigator.clipboard.writeText(last);
-      pop.textContent = "✓ copied to clipboard";
+      await navigator.clipboard.writeText(lastTranslation);
+      popup.textContent = "✓ copied to clipboard";
       setTimeout(() => {
-        pop.style.display = "none";
+        popup.style.display = "none";
       }, 1500);
-    } catch (e) {
-      pop.textContent = "⚠ copy failed: " + e.message;
+    } catch (error) {
+      popup.textContent = "⚠ copy failed: " + error.message;
     }
   };
 
-  const place = (el, n) => {
-    const r = el.getBoundingClientRect();
-    n.style.left = r.left + "px";
-    n.style.top = r.bottom + 4 + "px";
-    n.style.display = "block";
+  const positionBelow = (inputElement, node) => {
+    const rectangle = inputElement.getBoundingClientRect();
+    node.style.left = rectangle.left + "px";
+    node.style.top = rectangle.bottom + 4 + "px";
+    node.style.display = "block";
   };
 
-  const isInput = (el) =>
-    el &&
-    (el.tagName === "TEXTAREA" ||
-      (el.tagName === "INPUT" && /^text$/i.test(el.type)) ||
-      el.isContentEditable);
+  const isInput = (element) =>
+    element &&
+    (element.tagName === "TEXTAREA" ||
+      (element.tagName === "INPUT" && /^text$/i.test(element.type)) ||
+      element.isContentEditable);
 
-  const vis = (el) => {
-    const r = el.getBoundingClientRect();
-    return r.width > 0 && r.height > 0;
+  const isVisible = (element) => {
+    const rectangle = element.getBoundingClientRect();
+    return rectangle.width > 0 && rectangle.height > 0;
   };
 
   let timer,
@@ -79,33 +79,40 @@ javascript: (() => {
 
   document.addEventListener(
     "input",
-    (e) => {
-      const el = e.target;
-      if (!isInput(el) || !vis(el)) return;
-      const text = (el.value ?? el.textContent ?? "").trim();
+    (event) => {
+      const inputElement = event.target;
+      if (!isInput(inputElement) || !isVisible(inputElement)) return;
+      const text = (
+        inputElement.value ??
+        inputElement.textContent ??
+        ""
+      ).trim();
       if (!text) {
         cancel();
-        pop.style.display = "none";
+        popup.style.display = "none";
         return;
       }
 
       pill.textContent = "⌛ thinking of translation suggestion…";
-      place(el, pill);
+      positionBelow(inputElement, pill);
 
       clearTimeout(timer);
       const myRequestId = ++latestRequestId; /* discard stale results */
       timer = setTimeout(async () => {
         try {
-          const cn = /[\u4e00-\u9fff]/.test(text);
-          const t = await tx(cn ? "zh-Hant" : "en", cn ? "en" : "zh-Hant");
-          const r = await t.translate(text);
+          const isChinese = /[\u4e00-\u9fff]/.test(text);
+          const translator = await getTranslator(
+            isChinese ? "zh-Hant" : "en",
+            isChinese ? "en" : "zh-Hant"
+          );
+          const translation = await translator.translate(text);
           if (myRequestId !== latestRequestId) return;
           pill.style.display = "none";
-          last = r;
-          pop.textContent = r + "  ✕";
-          place(el, pop);
-        } catch (err) {
-          pill.textContent = "⚠ " + err.message;
+          lastTranslation = translation;
+          popup.textContent = translation + "  ✕";
+          positionBelow(inputElement, popup);
+        } catch (error) {
+          pill.textContent = "⚠ " + error.message;
         }
       }, 3000);
     },

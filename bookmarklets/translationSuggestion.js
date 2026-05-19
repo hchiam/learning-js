@@ -1,11 +1,14 @@
 javascript: (() => {
-  /* don't double-install */
-  if (window.__translatorInstalled) return;
-  window.__translatorInstalled = 1;
+  if (window.__translatorInstalledAlready) return;
+  window.__translatorInstalledAlready = 1;
   if (!("Translator" in self))
     return alert("Translator API needs Chrome 138+ desktop");
 
-  /* cache one translator per direction */
+  const MAX_Z_INDEX = 2147483647;
+  const POPUP_OFFSET_BELOW_INPUT_PX = 4;
+  const COPIED_FEEDBACK_DURATION_MS = 1500;
+  const TYPING_DEBOUNCE_MS = 3000;
+
   const translatorCache = {};
   const getTranslator = (sourceLang, targetLang) =>
     (translatorCache[sourceLang + targetLang] ??= Translator.create({
@@ -13,48 +16,68 @@ javascript: (() => {
       targetLanguage: targetLang,
     }));
 
-  /* tiny pill while typing/debouncing */
-  const pill = document.body.appendChild(
+  const thinkingTextClickToCancel = document.body.appendChild(
     Object.assign(document.createElement("div"), {
       style:
-        "position:fixed;z-index:2147483647;background:#222;color:#fff;" +
-        "padding:6px 10px;border-radius:6px;font:13px sans-serif;" +
-        "pointer-events:none;display:none",
+        `position:fixed;z-index:${MAX_Z_INDEX};background:#222;color:#fff;` +
+        "padding:6px 10px;border-radius:999px;font:13px sans-serif;" +
+        "cursor:pointer;display:none",
     })
   );
 
-  /* popup with the translation (click to copy) */
-  const popup = document.body.appendChild(
+  const popupWithTranslationAndDismissChildren = document.body.appendChild(
     Object.assign(document.createElement("div"), {
       style:
-        "position:fixed;z-index:2147483647;background:#fff;color:#000;" +
-        "border:2px solid #222;padding:10px 14px;border-radius:8px;" +
-        "font:14px sans-serif;max-width:400px;display:none;cursor:pointer;" +
+        `position:fixed;z-index:${MAX_Z_INDEX};background:#fff;color:#000;` +
+        "border:2px solid #222;padding:10px 14px;border-radius:999px;" +
+        "font:14px sans-serif;max-width:400px;overflow-wrap:break-word;display:none;" +
         "box-shadow:0 4px 16px rgba(0,0,0,.3)",
     })
   );
 
-  let lastTranslation = "";
-  popup.onclick = async () => {
-    if (!lastTranslation) {
-      popup.style.display = "none";
-      return;
-    }
+  const translationTextClickToCopy =
+    popupWithTranslationAndDismissChildren.appendChild(
+      Object.assign(document.createElement("span"), {
+        style: "cursor:pointer",
+      })
+    );
+
+  const dismissButton = popupWithTranslationAndDismissChildren.appendChild(
+    Object.assign(document.createElement("button"), {
+      textContent: "✕",
+      style:
+        "background:none;border:none;cursor:pointer;font:inherit;" +
+        "padding:0 0 0 8px;color:#999;vertical-align:top",
+    })
+  );
+
+  let previousTranslation = "";
+
+  translationTextClickToCopy.onclick = async () => {
+    if (!previousTranslation) return;
     try {
-      await navigator.clipboard.writeText(lastTranslation);
-      popup.textContent = "✓ copied to clipboard";
+      await navigator.clipboard.writeText(previousTranslation);
+      translationTextClickToCopy.textContent = "✓ copied to clipboard";
       setTimeout(() => {
-        popup.style.display = "none";
-      }, 1500);
+        popupWithTranslationAndDismissChildren.style.display = "none";
+      }, COPIED_FEEDBACK_DURATION_MS);
     } catch (error) {
-      popup.textContent = "⚠ copy failed: " + error.message;
+      translationTextClickToCopy.textContent =
+        "⚠ copy failed" +
+        (error.message ? ": " + error.message : error.message);
     }
+  };
+
+  dismissButton.onclick = (event) => {
+    event.stopPropagation();
+    popupWithTranslationAndDismissChildren.style.display = "none";
+    previousTranslation = "";
   };
 
   const positionBelow = (inputElement, node) => {
     const rectangle = inputElement.getBoundingClientRect();
     node.style.left = rectangle.left + "px";
-    node.style.top = rectangle.bottom + 4 + "px";
+    node.style.top = rectangle.bottom + POPUP_OFFSET_BELOW_INPUT_PX + "px";
     node.style.display = "block";
   };
 
@@ -69,13 +92,16 @@ javascript: (() => {
     return rectangle.width > 0 && rectangle.height > 0;
   };
 
-  let timer,
-    latestRequestId = 0;
+  let timer = null;
+  let latestRequestId = 0;
+
   const cancel = () => {
     clearTimeout(timer);
     ++latestRequestId;
-    pill.style.display = "none";
+    thinkingTextClickToCancel.style.display = "none";
   };
+
+  thinkingTextClickToCancel.onclick = cancel;
 
   document.addEventListener(
     "input",
@@ -89,12 +115,13 @@ javascript: (() => {
       ).trim();
       if (!text) {
         cancel();
-        popup.style.display = "none";
+        popupWithTranslationAndDismissChildren.style.display = "none";
         return;
       }
 
-      pill.textContent = "⌛ thinking of translation suggestion…";
-      positionBelow(inputElement, pill);
+      thinkingTextClickToCancel.textContent =
+        "⌛ thinking of translation suggestion… (click to cancel)";
+      positionBelow(inputElement, thinkingTextClickToCancel);
 
       clearTimeout(timer);
       const myRequestId = ++latestRequestId; /* discard stale results */
@@ -107,14 +134,14 @@ javascript: (() => {
           );
           const translation = await translator.translate(text);
           if (myRequestId !== latestRequestId) return;
-          pill.style.display = "none";
-          lastTranslation = translation;
-          popup.textContent = translation + "  ✕";
-          positionBelow(inputElement, popup);
+          thinkingTextClickToCancel.style.display = "none";
+          previousTranslation = translation;
+          translationTextClickToCopy.textContent = translation;
+          positionBelow(inputElement, popupWithTranslationAndDismissChildren);
         } catch (error) {
-          pill.textContent = "⚠ " + error.message;
+          thinkingTextClickToCancel.textContent = "⚠ " + error.message;
         }
-      }, 3000);
+      }, TYPING_DEBOUNCE_MS);
     },
     true
   );

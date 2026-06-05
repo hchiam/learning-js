@@ -3,7 +3,7 @@ function $(x) {
 }
 
 const alertDialog = $("dialog#alert");
-const confirmDialog = $("dialog#confirm");
+const confirmDialog = $("dialog#confirm"); // for creating a dialog, check the bookmarklets/dialog.js
 const confirmYesButton = confirmDialog.querySelector(".confirm-yes");
 const confirmNoButton = confirmDialog.querySelector(".confirm-no");
 

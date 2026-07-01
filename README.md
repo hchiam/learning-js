@@ -939,3 +939,15 @@ console.log(
 ```
 
 an iife can also be `async` <https://developer.mozilla.org/en-US/docs/Glossary/IIFE>
+
+## detect browser tab being viewed or not
+
+`document.hidden` is helpful for detecting whether the browser tab is being viewed or not (not the same thing as visually displayed by CSS).
+
+you can try it yourself in the browser devtools console:
+
+```js
+setInterval(() => {
+  console.log(document.hidden);
+}, 1000);
+```

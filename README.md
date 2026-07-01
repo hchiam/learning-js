@@ -944,6 +944,8 @@ an iife can also be `async` <https://developer.mozilla.org/en-US/docs/Glossary/I
 
 `document.hidden` is helpful for detecting whether the browser tab is being viewed or not (not the same thing as visually displayed by CSS).
 
+`document.hidden` returns a boolean, `document.visibilityState` returns a string (`'visible'` or `'hidden'`)
+
 you can try it yourself in the browser devtools console:
 
 ```js

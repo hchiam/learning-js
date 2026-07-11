@@ -13,7 +13,7 @@ javascript: (async () => {
   }
 
   async function note(f = 261.626 /*middle C*/, ms = 250) {
-    await rest(50); // to help make notes sound distinct
+    await rest(50); /* to help make notes sound distinct */
     return new Promise((resolve) => {
       const c = sharedContext;
       const o = c.createOscillator();
@@ -42,7 +42,7 @@ javascript: (async () => {
   function noteHelper(f) {
     if (!isNaN(f)) return f;
 
-    // https://en.wikipedia.org/wiki/Piano_key_frequencies
+    /* https://en.wikipedia.org/wiki/Piano_key_frequencies */
     switch (f) {
       case "high C":
         return 523.251;
@@ -80,7 +80,7 @@ javascript: (async () => {
     const isKeyOn88KeyPiano = String(f).startsWith("key ");
     if (isKeyOn88KeyPiano) {
       const keyN = Number(f.replace("key ", ""));
-      return 2 ** ((keyN - 49) / 12) * 440; // key 49 being A4 = 440 Hz
+      return 2 ** ((keyN - 49) / 12) * 440; /* key 49 being A4 = 440 Hz */
     }
 
     return f;
